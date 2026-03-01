@@ -1,0 +1,16 @@
+{
+  "name": "humanified-ecosystem",
+  "version": "1.0.0",
+  "description": "3-tier ecosystem (thomasaarup.dk + humanified.dk + ohgodmode.dk)",
+  "main": "index.js",
+  "scripts": {
+    "dev": "echo 'Start local development'",
+    "build": "echo 'Build static sites'",
+    "test": "echo 'Run tests'",
+    "deploy": "echo 'Deploy to Vercel'"
+  },
+  "keywords": ["humanified", "ecosystem", "templates"],
+  "author": "Thomas Aarup",
+  "license": "MIT",
+  "dependencies": {}
+}
