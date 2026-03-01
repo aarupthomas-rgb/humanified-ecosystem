@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="OH GOD MODE - Free brand templates for builders. Start with carpenter, plumber, painter templates.">
+  <title>OH GOD MODE - Free Brand Templates</title>
+  <link rel="stylesheet" href="../shared/css/style.css">
+  <style>
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+      padding: var(--spacing-3xl) var(--spacing-lg);
+    }
+
+    .hero-content {
+      max-width: 800px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 8vw, 4.5rem);
+      margin-bottom: var(--spacing-lg);
+      color: var(--color-white);
+    }
+
+    .hero-subtitle {
+      font-size: var(--text-xl);
+      color: var(--text-secondary);
+      margin-bottom: var(--spacing-2xl);
+      line-height: var(--leading-relaxed);
+    }
+
+    .hero-accent {
+      color: var(--accent);
+    }
+
+    .templates-section {
+      padding: var(--spacing-3xl) var(--spacing-lg);
+      background-color: var(--bg-secondary);
+    }
+
+    .template-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: var(--spacing-2xl);
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .template-card {
+      background-color: var(--bg-tertiary);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: all var(--transition-base);
+      box-shadow: var(--shadow-md);
+    }
+
+    .template-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .template-image {
+      width: 100%;
+      height: 200px;
+      background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      border-bottom: 3px solid var(--accent);
+    }
+
+    .template-content {
+      padding: var(--spacing-lg);
+    }
+
+    .template-content h3 {
+      color: var(--accent);
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .template-content p {
+      color: var(--text-secondary);
+      font-size: var(--text-sm);
+      margin-bottom: var(--spacing-md);
+      line-height: var(--leading-relaxed);
+    }
+
+    .template-features {
+      list-style: none;
+      margin: var(--spacing-md) 0;
+      padding: 0;
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+    }
+
+    .template-features li {
+      padding: var(--spacing-xs) 0;
+      padding-left: var(--spacing-md);
+      position: relative;
+    }
+
+    .template-features li:before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+
+    .cta-button {
+      display: inline-block;
+      margin-top: var(--spacing-md);
+    }
+
+    .why-section {
+      padding: var(--spacing-3xl) var(--spacing-lg);
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: var(--spacing-2xl);
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .why-card {
+      text-align: center;
+    }
+
+    .why-card-icon {
+      font-size: 2.5rem;
+      margin-bottom: var(--spacing-md);
+    }
+
+    .why-card h3 {
+      color: var(--accent);
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .why-card p {
+      color: var(--text-secondary);
+      font-size: var(--text-sm);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container flex flex-between py-lg">
+      <h1 style="margin: 0; font-size: var(--text-2xl);">OH GOD MODE</h1>
+      <nav class="flex gap-lg">
+        <a href="#templates">Templates</a>
+        <a href="#why">Why</a>
+        <a href="#start">Get Started</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Build Your Brand. <span class="hero-accent">Without the Stress.</span></h1>
+        <p class="hero-subtitle">
+          Free, modern templates for carpenters, plumbers, painters, and every trade. Start brand building in minutes.
+        </p>
+        <a href="#templates" class="btn btn-primary btn-lg">Browse Templates</a>
+        <p style="color: var(--text-muted); font-size: var(--text-sm); margin-top: var(--spacing-lg);">
+          Completely free. No hidden costs. Use commercially.
+        </p>
+      </div>
+    </section>
+
+    <!-- WHY SECTION -->
+    <section class="why-section">
+      <div class="container">
+        <h2 style="text-align: center; margin-bottom: var(--spacing-3xl);">Why Templates Matter</h2>
+
+        <div class="why-grid">
+          <div class="why-card">
+            <div class="why-card-icon">🎨</div>
+            <h3>Professional Design</h3>
+            <p>Modern, minimal aesthetics that make you look like you know what you're doing.</p>
+          </div>
+
+          <div class="why-card">
+            <div class="why-card-icon">⚡</div>
+            <h3>Quick Setup</h3>
+            <p>No design experience needed. Customize in minutes, launch in hours.</p>
+          </div>
+
+          <div class="why-card">
+            <div class="why-card-icon">📱</div>
+            <h3>Mobile Ready</h3>
+            <p>Looks perfect on phones, tablets, and desktops. Your customers are mobile-first.</p>
+          </div>
+
+          <div class="why-card">
+            <div class="why-card-icon">🆓</div>
+            <h3>100% Free</h3>
+            <p>Use commercially, modify, share. Zero fees. Ever.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TEMPLATES SECTION -->
+    <section class="templates-section" id="templates">
+      <div class="container">
+        <h2 style="text-align: center; margin-bottom: var(--spacing-3xl);">Available Templates</h2>
+
+        <div class="template-grid">
+          <!-- CARPENTER TEMPLATE -->
+          <div class="template-card">
+            <div class="template-image">🪵</div>
+            <div class="template-content">
+              <h3>Carpenter</h3>
+              <p>For craftspeople who build with precision and pride.</p>
+              <ul class="template-features">
+                <li>Portfolio gallery</li>
+                <li>Before/after showcase</li>
+                <li>Service descriptions</li>
+                <li>Contact form</li>
+                <li>About section</li>
+              </ul>
+              <a href="#start" class="btn btn-primary btn-sm cta-button">View Template</a>
+            </div>
+          </div>
+
+          <!-- PLUMBER TEMPLATE -->
+          <div class="template-card">
+            <div class="template-image">🔧</div>
+            <div class="template-content">
+              <h3>Plumber</h3>
+              <p>For professionals who solve problems fast and reliably.</p>
+              <ul class="template-features">
+                <li>Services menu</li>
+                <li>Emergency info</li>
+                <li>Testimonials</li>
+                <li>Pricing guide</li>
+                <li>Quick contact</li>
+              </ul>
+              <a href="#start" class="btn btn-outline btn-sm cta-button">Coming Soon</a>
+            </div>
+          </div>
+
+          <!-- PAINTER TEMPLATE -->
+          <div class="template-card">
+            <div class="template-image">🎭</div>
+            <div class="template-content">
+              <h3>Painter</h3>
+              <p>For artists who create beautiful, transformative spaces.</p>
+              <ul class="template-features">
+                <li>Color showcase</li>
+                <li>Project gallery</li>
+                <li>Inspiration board</li>
+                <li>Consultation form</li>
+                <li>Style guide</li>
+              </ul>
+              <a href="#start" class="btn btn-outline btn-sm cta-button">Coming Soon</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GET STARTED SECTION -->
+    <section class="section" style="background-color: var(--bg-secondary);" id="start">
+      <div class="container-md">
+        <h2 style="text-align: center; margin-bottom: var(--spacing-lg);">Ready to Launch?</h2>
+        <p style="text-align: center; color: var(--text-secondary); margin-bottom: var(--spacing-2xl);">
+          Download your template and customize it in minutes.
+        </p>
+
+        <form class="flex flex-col gap-md">
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" placeholder="What's your name?" required>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="your@email.com" required>
+          </div>
+
+          <div class="form-group">
+            <label for="trade">Your Trade</label>
+            <select id="trade" name="trade" required>
+              <option value="">-- Select --</option>
+              <option value="carpenter">Carpenter</option>
+              <option value="plumber">Plumber</option>
+              <option value="painter">Painter</option>
+              <option value="other">Other Trade</option>
+            </select>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-lg">Download Template</button>
+          <p style="color: var(--text-muted); font-size: var(--text-sm); text-align: center;">
+            We'll send download + customization guide to your email
+          </p>
+        </form>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section">
+      <div class="container-md">
+        <h2 style="text-align: center; margin-bottom: var(--spacing-2xl);">Common Questions</h2>
+
+        <div class="flex flex-col gap-lg">
+          <div class="card">
+            <h4>Can I modify the template?</h4>
+            <p style="color: var(--text-secondary);">Absolutely. It's yours to customize completely. No restrictions.</p>
+          </div>
+
+          <div class="card">
+            <h4>Do I need technical skills?</h4>
+            <p style="color: var(--text-secondary);">No. Basic editing knowledge is all you need. We include guides for everything.</p>
+          </div>
+
+          <div class="card">
+            <h4>Can I use this commercially?</h4>
+            <p style="color: var(--text-secondary);">Yes. 100% free to use commercially, modify, and share.</p>
+          </div>
+
+          <div class="card">
+            <h4>What if I get stuck?</h4>
+            <p style="color: var(--text-secondary);">We're here to help. Email support + community forum included.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="grid grid-3" style="margin-bottom: var(--spacing-2xl);">
+        <div>
+          <h4>OH GOD MODE</h4>
+          <p style="color: var(--text-secondary); font-size: var(--text-sm);">Free templates for builders.</p>
+        </div>
+
+        <div>
+          <h4>Explore</h4>
+          <ul style="list-style: none; margin: 0; padding: 0;">
+            <li><a href="https://thomasaarup.dk">Thomas Aarup</a></li>
+            <li><a href="https://humanified.dk">HUMANIFIED</a></li>
+            <li><a href="#start">Get Started</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Help</h4>
+          <p style="color: var(--text-secondary); font-size: var(--text-sm);">
+            Email: hello@ohgodmode.dk<br>
+            Discord: Community
+          </p>
+        </div>
+      </div>
+
+      <div style="border-top: 1px solid var(--bg-tertiary); padding-top: var(--spacing-lg); text-align: center; color: var(--text-muted); font-size: var(--text-sm);">
+        <p>© 2026 OH GOD MODE. Free templates. No strings attached.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

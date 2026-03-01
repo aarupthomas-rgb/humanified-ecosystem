@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Thomas Aarup - Building systems for human transformation">
+  <title>Thomas Aarup - Values-Based Leadership & Systems Design</title>
+  <link rel="stylesheet" href="../shared/css/style.css">
+  <style>
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+      padding: var(--spacing-3xl) var(--spacing-lg);
+    }
+
+    .hero-content {
+      max-width: 800px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 8vw, 5rem);
+      margin-bottom: var(--spacing-lg);
+      color: var(--color-white);
+    }
+
+    .hero-subtitle {
+      font-size: var(--text-2xl);
+      color: var(--text-secondary);
+      margin-bottom: var(--spacing-2xl);
+      line-height: var(--leading-relaxed);
+    }
+
+    .hero-accent {
+      color: var(--accent);
+    }
+
+    .cta-group {
+      display: flex;
+      gap: var(--spacing-md);
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: var(--spacing-2xl);
+    }
+
+    .values-section {
+      padding: var(--spacing-3xl) var(--spacing-lg);
+      background-color: var(--bg-secondary);
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: var(--spacing-2xl);
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .value-card {
+      background-color: var(--bg-tertiary);
+      padding: var(--spacing-2xl);
+      border-radius: var(--radius-lg);
+      border-left: 4px solid var(--accent);
+      transition: all var(--transition-base);
+    }
+
+    .value-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .value-card h3 {
+      color: var(--accent);
+      margin-bottom: var(--spacing-md);
+    }
+
+    .value-card p {
+      color: var(--text-secondary);
+      line-height: var(--leading-relaxed);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container flex flex-between py-lg">
+      <h1 style="margin: 0; font-size: var(--text-2xl);">Thomas Aarup</h1>
+      <nav class="flex gap-lg">
+        <a href="#vision">Vision</a>
+        <a href="#values">Values</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Building Systems for <span class="hero-accent">Human Transformation</span></h1>
+        <p class="hero-subtitle">
+          Values-based leadership, authentic partnerships, and systems that serve freedom
+        </p>
+        <div class="cta-group">
+          <a href="https://humanified.dk" class="btn btn-primary btn-lg">Explore Humanified</a>
+          <a href="https://ohgodmode.dk" class="btn btn-outline btn-lg">Free Templates</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- VALUES SECTION -->
+    <section class="values-section" id="values">
+      <div class="container">
+        <h2 style="text-align: center; margin-bottom: var(--spacing-3xl);">The 4 Søjler</h2>
+
+        <div class="values-grid">
+          <div class="value-card">
+            <h3>FADERSKAB</h3>
+            <p>Care for futures. Build systems others can use. Think long-term, act with responsibility.</p>
+          </div>
+
+          <div class="value-card">
+            <h3>FAMILIESAMMENHOLD</h3>
+            <p>Authentic relationships matter. Community over hierarchy. We're stronger together.</p>
+          </div>
+
+          <div class="value-card">
+            <h3>INTEGRITET</h3>
+            <p>What you say = what you do. No shortcuts. Quality never compromised.</p>
+          </div>
+
+          <div class="value-card">
+            <h3>SELVVÆRD</h3>
+            <p>Trust your judgment. You see systems others miss. Dignity in all things.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section class="section">
+      <div class="container">
+        <h2 style="text-align: center; margin-bottom: var(--spacing-2xl);">Active Initiatives</h2>
+
+        <div class="grid grid-3">
+          <div class="card">
+            <h3>HUMANIFIED</h3>
+            <p>Self-discovery platform with AI-powered insights. For those ready to build authentically.</p>
+            <a href="https://humanified.dk" class="btn btn-primary btn-sm mt-lg" style="display: inline-block;">Visit →</a>
+          </div>
+
+          <div class="card">
+            <h3>OH GOD MODE</h3>
+            <p>Free templates for founders. Carpenter, plumber, painter. Build your brand system.</p>
+            <a href="https://ohgodmode.dk" class="btn btn-primary btn-sm mt-lg" style="display: inline-block;">Explore →</a>
+          </div>
+
+          <div class="card">
+            <h3>VALUES MENTOR</h3>
+            <p>Connecting experienced entrepreneurs with young founders. Building culture together.</p>
+            <a href="#contact" class="btn btn-outline btn-sm mt-lg" style="display: inline-block;">Learn More →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section class="section" style="background-color: var(--bg-secondary);" id="contact">
+      <div class="container-md">
+        <h2 style="text-align: center; margin-bottom: var(--spacing-lg);">Let's Build Together</h2>
+        <p style="text-align: center; color: var(--text-secondary); margin-bottom: var(--spacing-2xl);">
+          Ideas? Collaboration? Questions? Reach out.
+        </p>
+
+        <form class="flex flex-col gap-md">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Your name" required>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="your@email.com" required>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Tell me what's on your mind..." rows="5" required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-lg">Send Message</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="grid grid-3" style="margin-bottom: var(--spacing-2xl);">
+        <div>
+          <h4>Thomas Aarup</h4>
+          <p style="color: var(--text-secondary); font-size: var(--text-sm);">Building values-based systems for human transformation.</p>
+        </div>
+
+        <div>
+          <h4>Projects</h4>
+          <ul style="list-style: none; margin: 0; padding: 0;">
+            <li><a href="https://humanified.dk">Humanified</a></li>
+            <li><a href="https://ohgodmode.dk">Oh God Mode</a></li>
+            <li><a href="#contact">Get in Touch</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Connect</h4>
+          <p style="color: var(--text-secondary); font-size: var(--text-sm);">
+            Email: hello@thomasaarup.dk<br>
+            Based in: Helsingør, Denmark
+          </p>
+        </div>
+      </div>
+
+      <div style="border-top: 1px solid var(--bg-tertiary); padding-top: var(--spacing-lg); text-align: center; color: var(--text-muted); font-size: var(--text-sm);">
+        <p>© 2026 Thomas Aarup. Values-locked architecture. Built with integrity.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
