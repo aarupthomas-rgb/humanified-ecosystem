@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Mit Dashboard - Track dine progresser i HUMANIFIED Academy">
+  <title>Dashboard - HUMANIFIED Academy</title>
+  <link rel="stylesheet" href="../shared/css/style.css">
+  <link rel="stylesheet" href="css/academy-theme.css">
+  <style>
+    .dashboard-header {
+      background: linear-gradient(135deg, var(--color-gradient-blue) 0%, var(--color-gradient-purple) 50%, var(--color-gradient-magenta) 100%);
+      padding: 3rem 1.5rem;
+      text-align: center;
+      color: white;
+    }
+
+    .dashboard-greeting {
+      font-size: clamp(1.5rem, 5vw, 2.5rem);
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+    }
+
+    .dashboard-subtext {
+      font-size: 1.1rem;
+      opacity: 0.95;
+    }
+
+    .dashboard-container {
+      max-width: 1200px;
+      margin: -2rem auto 3rem;
+      padding: 0 1.5rem;
+    }
+
+    /* Stats Grid */
+    .dashboard-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .stat-card {
+      background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
+      padding: 2rem;
+      border-radius: 12px;
+      border: 1px solid var(--bg-tertiary);
+      text-align: center;
+    }
+
+    .stat-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .stat-label {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .stat-value {
+      font-size: 2.5rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--color-gradient-blue), var(--color-gradient-magenta));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Progress Bars */
+    .dashboard-progress {
+      background: var(--bg-secondary);
+      padding: 2rem;
+      border-radius: 12px;
+      margin-bottom: 3rem;
+    }
+
+    .progress-title {
+      color: white;
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+    }
+
+    .progress-item {
+      margin-bottom: 2rem;
+    }
+
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+    }
+
+    .progress-label strong {
+      color: white;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 8px;
+      background: var(--bg-tertiary);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--color-gradient-blue), var(--color-gradient-magenta));
+      transition: width 400ms ease;
+    }
+
+    /* Badges */
+    .dashboard-badges {
+      background: var(--bg-secondary);
+      padding: 2rem;
+      border-radius: 12px;
+      margin-bottom: 3rem;
+    }
+
+    .badges-title {
+      color: white;
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+    }
+
+    .badges-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+      gap: 1rem;
+    }
+
+    .badge-item {
+      aspect-ratio: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg-tertiary);
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 200ms ease;
+      border: 2px solid var(--bg-tertiary);
+    }
+
+    .badge-item:hover {
+      transform: translateY(-4px);
+      border-color: var(--color-gradient-purple);
+    }
+
+    .badge-item.earned {
+      background: linear-gradient(135deg, rgba(155, 89, 182, 0.1) 0%, rgba(233, 30, 99, 0.1) 100%);
+      border-color: var(--color-gradient-purple);
+    }
+
+    .badge-item.locked {
+      opacity: 0.3;
+    }
+
+    .badge-emoji {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .badge-name {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      text-align: center;
+    }
+
+    .badge-item.earned .badge-name {
+      color: var(--color-gradient-purple);
+      font-weight: 600;
+    }
+
+    /* Activity Timeline */
+    .dashboard-activity {
+      background: var(--bg-secondary);
+      padding: 2rem;
+      border-radius: 12px;
+      margin-bottom: 3rem;
+    }
+
+    .activity-title {
+      color: white;
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+    }
+
+    .activity-timeline {
+      position: relative;
+      padding-left: 2rem;
+    }
+
+    .activity-timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(180deg, var(--color-gradient-blue), var(--color-gradient-magenta));
+    }
+
+    .activity-item {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .activity-dot {
+      width: 12px;
+      height: 12px;
+      background: var(--color-gradient-purple);
+      border-radius: 50%;
+      margin-top: 0.25rem;
+      flex-shrink: 0;
+      margin-left: -2.4rem;
+    }
+
+    .activity-content {
+      color: var(--text-secondary);
+    }
+
+    .activity-action {
+      color: white;
+      font-weight: 600;
+    }
+
+    .activity-time {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .activity-empty {
+      color: var(--text-muted);
+      text-align: center;
+      padding: 2rem;
+    }
+
+    /* CTA Section */
+    .dashboard-cta {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .cta-card {
+      background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
+      padding: 1.5rem;
+      border-radius: 12px;
+      border: 1px solid var(--bg-tertiary);
+      text-align: center;
+    }
+
+    .cta-card h3 {
+      color: white;
+      margin-bottom: 0.5rem;
+    }
+
+    .cta-card p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .cta-button {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background: linear-gradient(135deg, var(--color-gradient-blue), var(--color-gradient-magenta));
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 250ms ease-in-out;
+      text-decoration: none;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(155, 89, 182, 0.3);
+    }
+
+    /* Clear Progress Button */
+    .dashboard-actions {
+      text-align: center;
+      padding: 1rem;
+    }
+
+    .clear-button {
+      padding: 0.5rem 1rem;
+      background: var(--bg-tertiary);
+      color: var(--text-secondary);
+      border: 1px solid var(--bg-tertiary);
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      transition: all 200ms ease;
+    }
+
+    .clear-button:hover {
+      border-color: #ef4444;
+      color: #ef4444;
+    }
+
+    @media (max-width: 768px) {
+      .dashboard-header {
+        padding: 2rem 1rem;
+      }
+
+      .dashboard-container {
+        margin: -1rem auto 2rem;
+      }
+
+      .dashboard-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .badges-grid {
+        grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+      }
+
+      .dashboard-cta {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container flex flex-between py-lg">
+      <h1 style="margin: 0; font-size: var(--text-2xl); color: var(--color-white);">
+        <a href="index.html" style="text-decoration: none; color: inherit;">
+          <span style="background: linear-gradient(135deg, var(--color-gradient-blue), var(--color-gradient-magenta)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">HUMANIFIED</span>
+        </a>
+      </h1>
+      <nav class="flex gap-lg">
+        <a href="index.html" style="color: var(--text-secondary); text-decoration: none;">Hjem</a>
+        <a href="templates.html" style="color: var(--text-secondary); text-decoration: none;">Templates</a>
+        <a href="learn.html" style="color: var(--text-secondary); text-decoration: none;">Lær</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HEADER -->
+    <section class="dashboard-header">
+      <div class="container-md">
+        <div class="dashboard-greeting">Velkommen tilbage, <span id="user-name">Elev</span>! 👋</div>
+        <div class="dashboard-subtext">Se dine progresser og badges her</div>
+      </div>
+    </section>
+
+    <div class="dashboard-container">
+      <!-- STATS -->
+      <div class="dashboard-stats">
+        <div class="stat-card">
+          <div class="stat-icon">📚</div>
+          <div class="stat-label">Lektioner Gennemført</div>
+          <div class="stat-value"><span id="lessons-completed">0</span>/<span id="lessons-total">24</span></div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon">✅</div>
+          <div class="stat-label">Quizzer Bestået</div>
+          <div class="stat-value"><span id="quizzes-passed">0</span>/<span id="quizzes-total">3</span></div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon">🏆</div>
+          <div class="stat-label">Badges Optjent</div>
+          <div class="stat-value"><span id="badges-earned">0</span></div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon">⚡</div>
+          <div class="stat-label">Samlet Progres</div>
+          <div class="stat-value"><span id="overall-progress">0</span>%</div>
+        </div>
+      </div>
+
+      <!-- PROGRESS BARS -->
+      <div class="dashboard-progress">
+        <div class="progress-title">Læringsspor</div>
+
+        <div class="progress-item">
+          <div class="progress-label">
+            <strong>HTML Grundlæggende</strong>
+            <span id="html-progress-text">0/8</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="html-progress-bar" style="width: 0%;"></div>
+          </div>
+        </div>
+
+        <div class="progress-item">
+          <div class="progress-label">
+            <strong>CSS Styling</strong>
+            <span>Kommer Snart</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: 0%; opacity: 0.3;"></div>
+          </div>
+        </div>
+
+        <div class="progress-item">
+          <div class="progress-label">
+            <strong>JavaScript Interaktivitet</strong>
+            <span>Kommer Snart</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: 0%; opacity: 0.3;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BADGES -->
+      <div class="dashboard-badges">
+        <div class="badges-title">Dine Badges</div>
+        <div class="badges-grid" id="badges-grid">
+          <!-- Populated by JavaScript -->
+        </div>
+      </div>
+
+      <!-- ACTIVITY -->
+      <div class="dashboard-activity">
+        <div class="activity-title">Seneste Aktivitet</div>
+        <div class="activity-timeline" id="activity-timeline">
+          <!-- Populated by JavaScript -->
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="dashboard-cta">
+        <div class="cta-card">
+          <h3>📖 Fortsæt Læring</h3>
+          <p>Du var på lektion 1. Fortsæt derfra!</p>
+          <a href="learn.html?track=html-basics&lesson=1" class="cta-button">Åbn Lektioner</a>
+        </div>
+
+        <div class="cta-card">
+          <h3>🎨 Prøv Templates</h3>
+          <p>Byg din drømmehjemmeside med vores templates</p>
+          <a href="templates.html" class="cta-button">Se Templates</a>
+        </div>
+
+        <div class="cta-card">
+          <h3>⚡ Bliv Expert</h3>
+          <p>Gennemfør alle lektioner og vind alle badges</p>
+          <a href="learn.html" class="cta-button">Tag Næste Spor</a>
+        </div>
+      </div>
+
+      <!-- ACTIONS -->
+      <div class="dashboard-actions">
+        <button class="clear-button" onclick="clearProgress()">Nulstil Progres</button>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div style="border-top: 1px solid var(--bg-tertiary); padding-top: var(--spacing-lg); text-align: center; color: var(--text-muted); font-size: var(--text-sm);">
+        <p>© 2026 HUMANIFIED Template Academy. Du er på vej til at blive meester!</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // All available badges
+    const allBadges = [
+      { id: 'html-beginner', emoji: '📚', name: 'HTML Starter', description: 'Gennemførte HTML kurset' },
+      { id: 'html-master', emoji: '🏆', name: 'HTML Master', description: 'Scorede 80%+ på HTML quiz' },
+      { id: 'css-beginner', emoji: '🎨', name: 'CSS Starter', description: 'Gennemførte CSS kurset' },
+      { id: 'css-master', emoji: '✨', name: 'CSS Master', description: 'Scorede 80%+ på CSS quiz' },
+      { id: 'js-beginner', emoji: '⚡', name: 'JS Starter', description: 'Gennemførte JS kurset' },
+      { id: 'js-master', emoji: '🚀', name: 'JS Master', description: 'Scorede 80%+ på JS quiz' },
+      { id: 'all-tracks', emoji: '🌟', name: 'Meester Udvikler', description: 'Gennemførte alle 3 track' },
+      { id: 'all-quizzes', emoji: '👑', name: 'Quiz Kæmpe', description: 'Bestod alle quizzer med 80%+' }
+    ];
+
+    function loadDashboard() {
+      const progress = JSON.parse(localStorage.getItem('academy-progress') || '{}');
+      const userName = progress.user?.name || localStorage.getItem('userName') || 'Elev';
+
+      document.getElementById('user-name').textContent = userName;
+
+      // Count lessons completed
+      const lessonsCompleted = Object.keys(progress.lessons || {}).length;
+      const lessonsTotal = 24; // 3 tracks * 8 lessons
+      document.getElementById('lessons-completed').textContent = lessonsCompleted;
+      document.getElementById('lessons-total').textContent = lessonsTotal;
+
+      // HTML progress specifically
+      const htmlLessons = Object.keys(progress.lessons || {})
+        .filter(key => key.startsWith('html-basics'))
+        .length;
+      document.getElementById('html-progress-text').textContent = `${htmlLessons}/8`;
+      document.getElementById('html-progress-bar').style.width = (htmlLessons / 8) * 100 + '%';
+
+      // Count quizzes passed
+      const quizzesPassed = Object.values(progress.quizzes || {})
+        .filter(q => q.passed).length;
+      const quizzesTotal = 3;
+      document.getElementById('quizzes-passed').textContent = quizzesPassed;
+      document.getElementById('quizzes-total').textContent = quizzesTotal;
+
+      // Badges
+      const earnedBadges = progress.badges || [];
+      document.getElementById('badges-earned').textContent = earnedBadges.length;
+      renderBadges(earnedBadges);
+
+      // Overall progress
+      const overallProgress = Math.round((lessonsCompleted / lessonsTotal) * 100);
+      document.getElementById('overall-progress').textContent = overallProgress;
+
+      // Activity timeline
+      renderActivity(progress);
+    }
+
+    function renderBadges(earned) {
+      const badgesGrid = document.getElementById('badges-grid');
+      badgesGrid.innerHTML = allBadges.map(badge => `
+        <div class="badge-item ${earned.includes(badge.id) ? 'earned' : 'locked'}" title="${badge.description}">
+          <div class="badge-emoji">${badge.emoji}</div>
+          <div class="badge-name">${badge.name}</div>
+        </div>
+      `).join('');
+    }
+
+    function renderActivity(progress) {
+      const timeline = document.getElementById('activity-timeline');
+      const activities = [];
+
+      // Add lesson activities
+      Object.entries(progress.lessons || {}).forEach(([key, value]) => {
+        activities.push({
+          type: 'lesson',
+          action: `Gennemførte lektion: ${key}`,
+          time: 'tidligere'
+        });
+      });
+
+      // Add quiz activities
+      Object.entries(progress.quizzes || {}).forEach(([key, value]) => {
+        if (value.completed) {
+          activities.push({
+            type: 'quiz',
+            action: `Scorede ${value.score}% på ${key} quiz`,
+            time: value.timestamp ? new Date(value.timestamp).toLocaleDateString('da-DK') : 'tidligere'
+          });
+        }
+      });
+
+      // Add badge activities
+      (progress.badges || []).forEach(badge => {
+        const badgeInfo = allBadges.find(b => b.id === badge);
+        if (badgeInfo) {
+          activities.push({
+            type: 'badge',
+            action: `Optjent badge: ${badgeInfo.name}`,
+            time: 'tidligere'
+          });
+        }
+      });
+
+      if (activities.length === 0) {
+        timeline.innerHTML = '<div class="activity-empty">Du er lige begyndt! Start en lektion for at se aktivitet her.</div>';
+        return;
+      }
+
+      // Show last 10 activities
+      timeline.innerHTML = activities.slice(-10).reverse().map(activity => `
+        <div class="activity-item">
+          <div class="activity-dot"></div>
+          <div class="activity-content">
+            <div class="activity-action">${activity.action}</div>
+            <div class="activity-time">${activity.time}</div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function clearProgress() {
+      if (confirm('Er du sikker på, at du vil nulstille al progres? Dette kan ikke fortrydes!')) {
+        localStorage.removeItem('academy-progress');
+        location.reload();
+      }
+    }
+
+    // Load dashboard on page load
+    window.addEventListener('load', loadDashboard);
+  </script>
+</body>
+</html>

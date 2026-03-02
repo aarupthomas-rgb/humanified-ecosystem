@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="HUMANIFIED TEMPLATE ACADEMY - Lær at bygge professionelle hjemmesider. Gratis kurser, live editor, og skabeloner for håndværkere.">
+  <title>HUMANIFIED Template Academy - Lær at Kode</title>
+  <link rel="stylesheet" href="../shared/css/style.css">
+  <style>
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--color-gradient-blue) 0%, var(--color-gradient-purple) 50%, var(--color-gradient-magenta) 100%);
+      padding: var(--spacing-3xl) var(--spacing-lg);
+    }
+
+    .hero-content {
+      max-width: 800px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 8vw, 4.5rem);
+      margin-bottom: var(--spacing-lg);
+      color: var(--color-white);
+      font-weight: 800;
+      line-height: 1.2;
+    }
+
+    .hero-subtitle {
+      font-size: var(--text-2xl);
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: var(--spacing-2xl);
+      line-height: var(--leading-relaxed);
+    }
+
+    .hero-accent {
+      color: rgba(255, 255, 255, 1);
+      font-weight: 700;
+    }
+
+    .cta-group {
+      display: flex;
+      gap: var(--spacing-md);
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: var(--spacing-2xl);
+    }
+
+    .btn-white {
+      background-color: var(--color-white);
+      color: var(--color-gradient-purple);
+      font-weight: 600;
+      border: 2px solid var(--color-white);
+      padding: var(--spacing-md) var(--spacing-2xl);
+      border-radius: var(--radius-lg);
+      cursor: pointer;
+      transition: all var(--transition-base);
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-white:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .btn-outline-white {
+      background: transparent;
+      color: var(--color-white);
+      border: 2px solid var(--color-white);
+      padding: var(--spacing-md) var(--spacing-2xl);
+      border-radius: var(--radius-lg);
+      cursor: pointer;
+      transition: all var(--transition-base);
+      text-decoration: none;
+      display: inline-block;
+      font-weight: 600;
+    }
+
+    .btn-outline-white:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      transform: translateY(-3px);
+    }
+
+    .features-section {
+      padding: var(--spacing-3xl) var(--spacing-lg);
+      background-color: var(--bg-secondary);
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: var(--spacing-2xl);
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .feature-card {
+      background-color: var(--bg-tertiary);
+      padding: var(--spacing-2xl);
+      border-radius: var(--radius-lg);
+      border-top: 4px solid var(--color-gradient-purple);
+      transition: all var(--transition-base);
+    }
+
+    .feature-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .feature-icon {
+      font-size: 3rem;
+      margin-bottom: var(--spacing-lg);
+    }
+
+    .feature-card h3 {
+      color: var(--color-white);
+      margin-bottom: var(--spacing-md);
+      font-size: var(--text-xl);
+    }
+
+    .feature-card p {
+      color: var(--text-secondary);
+      line-height: var(--leading-relaxed);
+    }
+
+    .how-section {
+      padding: var(--spacing-3xl) var(--spacing-lg);
+      background-color: var(--bg-primary);
+    }
+
+    .how-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: var(--spacing-2xl);
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .how-step {
+      position: relative;
+      padding-left: var(--spacing-3xl);
+    }
+
+    .step-number {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, var(--color-gradient-blue), var(--color-gradient-magenta));
+      color: var(--color-white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: var(--text-2xl);
+    }
+
+    .how-step h3 {
+      color: var(--color-white);
+      margin-bottom: var(--spacing-md);
+    }
+
+    .how-step p {
+      color: var(--text-secondary);
+      line-height: var(--leading-relaxed);
+    }
+
+    .cta-section {
+      padding: var(--spacing-3xl) var(--spacing-lg);
+      background: linear-gradient(135deg, var(--color-gradient-blue) 0%, var(--color-gradient-purple) 50%, var(--color-gradient-magenta) 100%);
+      text-align: center;
+    }
+
+    .cta-section h2 {
+      color: var(--color-white);
+      margin-bottom: var(--spacing-lg);
+    }
+
+    .cta-section p {
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: var(--spacing-2xl);
+      font-size: var(--text-lg);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container flex flex-between py-lg">
+      <h1 style="margin: 0; font-size: var(--text-2xl); color: var(--color-white);">
+        <span style="background: linear-gradient(135deg, var(--color-gradient-blue), var(--color-gradient-magenta)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">HUMANIFIED</span>
+      </h1>
+      <nav class="flex gap-lg">
+        <a href="#features" style="color: var(--text-secondary); text-decoration: none;">Features</a>
+        <a href="#how" style="color: var(--text-secondary); text-decoration: none;">Hvordan</a>
+        <a href="#start" style="color: var(--text-secondary); text-decoration: none;">Start</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Byg Din <span class="hero-accent">Drømmehjemmeside</span></h1>
+        <p class="hero-subtitle">
+          Lær at kode. Få professionelle skabeloner.<br>
+          <span style="font-size: var(--text-lg); font-weight: normal;">Alt hvad du skal bruge uden at være "supernørd"</span>
+        </p>
+        <div class="cta-group">
+          <a href="#start" class="btn-white">Start Gratis</a>
+          <a href="#features" class="btn-outline-white">Læs Mere</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURES SECTION -->
+    <section class="features-section" id="features">
+      <div class="container">
+        <h2 style="text-align: center; color: var(--color-white); margin-bottom: var(--spacing-3xl);">Hvad Du Får</h2>
+
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">🎨</div>
+            <h3>Professionelle Skabeloner</h3>
+            <p>Lærerige skabeloner til tømrere, VVS-folk, malere og andre håndværkere. Helt klar til at ændre.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">✏️</div>
+            <h3>Live Kode Editor</h3>
+            <p>Se ændringerne mens du skriver. HTML, CSS, JavaScript - alt på samme skærm.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">📚</div>
+            <h3>Gratis Kurser</h3>
+            <p>Step-by-step tutorials i dansk. Fra nybegynder til færdig hjemmeside på få timer.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">⚡</div>
+            <h3>Øjeblikkelig Deploy</h3>
+            <p>Download din færdige hjemmeside og få den live på nettet samme dag.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">🏆</div>
+            <h3>Skill Badges</h3>
+            <p>Tjek af hvad du kan. Badges viser verden dine evner.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">🤝</div>
+            <h3>Fællesskab</h3>
+            <p>Forbind dig med andre håndværkere der bygger online.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="how-section" id="how">
+      <div class="container">
+        <h2 style="text-align: center; color: var(--color-white); margin-bottom: var(--spacing-3xl);">Sådan Virker Det</h2>
+
+        <div class="how-grid">
+          <div class="how-step">
+            <div class="step-number">1</div>
+            <h3>Vælg Template</h3>
+            <p>Browse gennem skabeloner lavet til din branche. Hver enkelt er designet af professionelle.</p>
+          </div>
+
+          <div class="how-step">
+            <div class="step-number">2</div>
+            <h3>Tilpas i Editor</h3>
+            <p>Åbn live editoren. Ændr farver, tekst, billeder. Se resultatet øjeblikkeligt.</p>
+          </div>
+
+          <div class="how-step">
+            <div class="step-number">3</div>
+            <h3>Lær Mens Du Går</h3>
+            <p>Tutorials guider dig igennem hver ændring. Du lærer HTML, CSS, JavaScript naturligt.</p>
+          </div>
+
+          <div class="how-step">
+            <div class="step-number">4</div>
+            <h3>Download & Deploy</h3>
+            <p>Klar? Download som ZIP. Upload til Vercel/Netlify. Din hjemmeside er live.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section class="cta-section" id="start">
+      <div class="container-md">
+        <h2>Klar Til At Starte?</h2>
+        <p>Ingen kreditkort. Ingen tilmelding. Bare start.</p>
+        <a href="templates.html" class="btn-white" style="display: inline-block; margin-top: var(--spacing-lg);">Se Templates →</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div style="border-top: 1px solid var(--bg-tertiary); padding-top: var(--spacing-lg); text-align: center; color: var(--text-muted); font-size: var(--text-sm);">
+        <p>© 2026 HUMANIFIED Template Academy. Bygget af håndværkere for håndværkere. Værdier-låst arkitektur.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

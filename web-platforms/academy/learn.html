@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Lær at kode med HUMANIFIED Academy - gratis tutorials for håndværkere">
+  <title>Lær - HUMANIFIED Academy</title>
+  <link rel="stylesheet" href="../shared/css/style.css">
+  <link rel="stylesheet" href="css/academy-theme.css">
+  <style>
+    .learn-hero {
+      background: linear-gradient(135deg, var(--color-gradient-blue) 0%, var(--color-gradient-purple) 50%, var(--color-gradient-magenta) 100%);
+      padding: 4rem 1.5rem;
+      text-align: center;
+      color: white;
+    }
+
+    .learn-hero h1 {
+      font-size: clamp(2rem, 8vw, 3.5rem);
+      margin-bottom: 1rem;
+      font-weight: 800;
+    }
+
+    .learn-hero p {
+      font-size: 1.2rem;
+      margin: 1rem 0 0;
+      opacity: 0.95;
+    }
+
+    .learn-tracks-container {
+      max-width: 1200px;
+      margin: 3rem auto;
+      padding: 0 1.5rem;
+    }
+
+    .learn-section-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .learn-section-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: white;
+      margin-bottom: 1rem;
+    }
+
+    .learn-section-subtitle {
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+    }
+
+    .learn-tracks-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 2rem;
+      margin-bottom: 4rem;
+    }
+
+    .track-card {
+      background: var(--bg-tertiary);
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--bg-tertiary);
+      transition: all 300ms ease-in-out;
+    }
+
+    .track-card:hover {
+      transform: translateY(-12px);
+      border-color: var(--color-gradient-purple);
+      box-shadow: 0 20px 40px rgba(155, 89, 182, 0.2);
+    }
+
+    .track-icon {
+      width: 100%;
+      height: 150px;
+      background: linear-gradient(135deg, rgba(74, 144, 226, 0.1) 0%, rgba(233, 30, 99, 0.1) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      border-bottom: 2px solid var(--color-gradient-purple);
+    }
+
+    .track-content {
+      padding: 1.5rem;
+    }
+
+    .track-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 0.5rem;
+    }
+
+    .track-description {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+      line-height: 1.5;
+    }
+
+    .track-stats {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      font-size: 0.9rem;
+    }
+
+    .track-stat {
+      color: var(--text-muted);
+    }
+
+    .track-stat strong {
+      color: var(--color-gradient-purple);
+    }
+
+    .track-progress {
+      width: 100%;
+      height: 6px;
+      background: var(--bg-secondary);
+      border-radius: 3px;
+      overflow: hidden;
+      margin-bottom: 1.5rem;
+    }
+
+    .track-progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, var(--color-gradient-blue), var(--color-gradient-magenta));
+      width: 0%;
+      transition: width 300ms ease;
+    }
+
+    .track-button {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      background: linear-gradient(135deg, var(--color-gradient-blue), var(--color-gradient-magenta));
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 250ms ease-in-out;
+    }
+
+    .track-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(155, 89, 182, 0.3);
+    }
+
+    /* Lesson Viewer */
+    .lesson-viewer {
+      display: none;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .lesson-viewer.active {
+      display: block;
+    }
+
+    .lesson-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 2px solid var(--bg-tertiary);
+    }
+
+    .lesson-back-button {
+      padding: 0.5rem 1rem;
+      background: var(--bg-secondary);
+      color: var(--text-secondary);
+      border: 1px solid var(--bg-tertiary);
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 250ms ease-in-out;
+    }
+
+    .lesson-back-button:hover {
+      border-color: var(--color-gradient-purple);
+      color: var(--color-gradient-purple);
+    }
+
+    .lesson-progress {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .lesson-content {
+      background: var(--bg-secondary);
+      padding: 2rem;
+      border-radius: 12px;
+      margin-bottom: 2rem;
+      line-height: 1.8;
+    }
+
+    .lesson-content h2 {
+      color: white;
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .lesson-content p {
+      color: var(--text-secondary);
+      margin-bottom: 1rem;
+    }
+
+    .lesson-content strong {
+      color: white;
+    }
+
+    .lesson-code-example {
+      background: var(--bg-primary);
+      padding: 1rem;
+      border-left: 4px solid var(--color-gradient-purple);
+      border-radius: 6px;
+      margin: 1.5rem 0;
+      overflow-x: auto;
+    }
+
+    .lesson-code-example code {
+      font-family: 'Monaco', 'Menlo', monospace;
+      font-size: 0.9rem;
+      color: #a1d8ff;
+    }
+
+    .lesson-sidebar {
+      display: grid;
+      grid-template-columns: 250px 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .lesson-list {
+      background: var(--bg-tertiary);
+      padding: 1.5rem;
+      border-radius: 12px;
+      position: sticky;
+      top: 2rem;
+    }
+
+    .lesson-list h3 {
+      color: white;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .lesson-item {
+      padding: 0.75rem 1rem;
+      margin-bottom: 0.5rem;
+      border-radius: 6px;
+      cursor: pointer;
+      color: var(--text-secondary);
+      transition: all 200ms ease;
+      border-left: 3px solid transparent;
+    }
+
+    .lesson-item:hover {
+      background: var(--bg-secondary);
+      color: white;
+    }
+
+    .lesson-item.active {
+      background: linear-gradient(135deg, rgba(74, 144, 226, 0.2) 0%, rgba(233, 30, 99, 0.2) 100%);
+      color: white;
+      border-left-color: var(--color-gradient-purple);
+      font-weight: 600;
+    }
+
+    .lesson-item.completed {
+      color: #4ade80;
+      position: relative;
+    }
+
+    .lesson-item.completed::before {
+      content: "✓";
+      margin-right: 0.5rem;
+      font-weight: 700;
+    }
+
+    .lesson-nav {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .lesson-nav button {
+      flex: 1;
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--bg-tertiary);
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 250ms ease-in-out;
+    }
+
+    .lesson-nav .prev-button {
+      background: var(--bg-secondary);
+      color: var(--text-secondary);
+    }
+
+    .lesson-nav .prev-button:hover {
+      border-color: var(--color-gradient-purple);
+      color: var(--color-gradient-purple);
+    }
+
+    .lesson-nav .prev-button:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+
+    .lesson-nav .next-button {
+      background: linear-gradient(135deg, var(--color-gradient-blue), var(--color-gradient-magenta));
+      color: white;
+    }
+
+    .lesson-nav .next-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(155, 89, 182, 0.3);
+    }
+
+    .lesson-nav .quiz-button {
+      background: linear-gradient(135deg, #10b981, #059669);
+      color: white;
+    }
+
+    .lesson-nav .quiz-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(16, 185, 129, 0.3);
+    }
+
+    .lesson-nav .quiz-button:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+
+    @media (max-width: 768px) {
+      .lesson-sidebar {
+        grid-template-columns: 1fr;
+      }
+
+      .lesson-list {
+        position: static;
+        display: flex;
+        overflow-x: auto;
+        gap: 0.5rem;
+      }
+
+      .lesson-item {
+        flex-shrink: 0;
+      }
+
+      .learn-tracks-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container flex flex-between py-lg">
+      <h1 style="margin: 0; font-size: var(--text-2xl); color: var(--color-white);">
+        <a href="index.html" style="text-decoration: none; color: inherit;">
+          <span style="background: linear-gradient(135deg, var(--color-gradient-blue), var(--color-gradient-magenta)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">HUMANIFIED</span>
+        </a>
+      </h1>
+      <nav class="flex gap-lg">
+        <a href="index.html" style="color: var(--text-secondary); text-decoration: none;">Hjem</a>
+        <a href="templates.html" style="color: var(--text-secondary); text-decoration: none;">Templates</a>
+        <a href="learn.html" style="color: white; text-decoration: none; font-weight: 600;">Lær</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="learn-hero">
+      <div class="container-md">
+        <h1>Lær at Kode</h1>
+        <p>Gratis tutorials trin for trin - fra nybegynder til meester</p>
+      </div>
+    </section>
+
+    <!-- TRACKS SECTION -->
+    <section class="learn-tracks-container" id="tracks-view">
+      <div class="learn-section-header">
+        <h2 class="learn-section-title">LæringstSpor</h2>
+        <p class="learn-section-subtitle">Vælg et og begynd din rejse</p>
+      </div>
+
+      <div class="learn-tracks-grid">
+        <!-- HTML BASICS TRACK -->
+        <div class="track-card" onclick="openTrack('html-basics', event)">
+          <div class="track-icon">📖</div>
+          <div class="track-content">
+            <h3 class="track-title">HTML Grundlæggende</h3>
+            <p class="track-description">Lær HTML tags, struktur og hvordan du bygger semantisk korrekttwebsider.</p>
+            <div class="track-stats">
+              <span class="track-stat"><strong>8</strong> lektioner</span>
+              <span class="track-stat"><strong>2</strong> timer</span>
+            </div>
+            <div class="track-progress">
+              <div class="track-progress-bar" id="progress-html-basics" style="width: 0%;"></div>
+            </div>
+            <button class="track-button">Start eller Fortsæt →</button>
+          </div>
+        </div>
+
+        <!-- CSS STYLING TRACK (Phase 2) -->
+        <div class="track-card" style="opacity: 0.5; cursor: not-allowed;">
+          <div class="track-icon">🎨</div>
+          <div class="track-content">
+            <h3 class="track-title">CSS Styling</h3>
+            <p class="track-description">Kom snart - Lær at style dine websider med farver, layouts og animations.</p>
+            <div class="track-stats">
+              <span class="track-stat"><strong>8</strong> lektioner</span>
+              <span class="track-stat"><strong>2</strong> timer</span>
+            </div>
+            <button class="track-button" disabled style="opacity: 0.5;">Kommer Snart</button>
+          </div>
+        </div>
+
+        <!-- JAVASCRIPT TRACK (Phase 2) -->
+        <div class="track-card" style="opacity: 0.5; cursor: not-allowed;">
+          <div class="track-icon">⚡</div>
+          <div class="track-content">
+            <h3 class="track-title">JavaScript Interaktivitet</h3>
+            <p class="track-description">Kom snart - Gør dine websider interaktive med JavaScript og DOM manipulation.</p>
+            <div class="track-stats">
+              <span class="track-stat"><strong>8</strong> lektioner</span>
+              <span class="track-stat"><strong>2</strong> timer</span>
+            </div>
+            <button class="track-button" disabled style="opacity: 0.5;">Kommer Snart</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LESSON VIEWER SECTION -->
+    <section class="learn-tracks-container lesson-viewer" id="lesson-view">
+      <div class="lesson-header">
+        <button class="lesson-back-button" onclick="backToTracks()">← Tilbage til Spor</button>
+        <div class="lesson-progress">
+          <span id="lesson-current">1</span> / <span id="lesson-total">8</span>
+        </div>
+      </div>
+
+      <div class="lesson-sidebar">
+        <div class="lesson-list" id="lesson-list">
+          <!-- Populated by JavaScript -->
+        </div>
+
+        <div class="lesson-content" id="lesson-content">
+          <!-- Populated by JavaScript -->
+        </div>
+      </div>
+
+      <div class="lesson-nav">
+        <button class="lesson-nav button prev-button" id="prev-lesson" onclick="previousLesson()" disabled>← Forrige</button>
+        <button class="lesson-nav button next-button" id="next-lesson" onclick="nextLesson()">Næste →</button>
+        <button class="lesson-nav button quiz-button" id="quiz-button" onclick="startQuiz()" style="display: none;">Tag Quiz 🎓</button>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div style="border-top: 1px solid var(--bg-tertiary); padding-top: var(--spacing-lg); text-align: center; color: var(--text-muted); font-size: var(--text-sm);">
+        <p>© 2026 HUMANIFIED Template Academy. Lær gratis, byg drømmehjemmesider.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Tutorial data
+    const tutorials = {
+      'html-basics': {
+        title: 'HTML Grundlæggende',
+        lessons: [
+          {
+            id: 1,
+            title: 'Hvad er HTML?',
+            content: `
+              <h2>Hvad er HTML?</h2>
+              <p><strong>HTML</strong> står for "HyperText Markup Language". Det er sproget vi bruger til at bygge websider.</p>
+              <p>HTML bruges til at fortælle browseren hvilke elementer, der skal vises på siden - såsom overskrifter, paragrafer, billeder og links.</p>
+              <p>HTML er IKKE et programmeringssprog. Det er et markup-sprog, der bruger tags til at beskrive indhold.</p>
+              <div class="lesson-code-example">
+                <code>&lt;h1&gt;Velkommen til min hjemmeside&lt;/h1&gt;</code>
+              </div>
+              <p>I eksemplet ovenfor definerer &lt;h1&gt; en stor overskrift. Alt mellem &lt;h1&gt; og &lt;/h1&gt; er indholdet.</p>
+            `
+          },
+          {
+            id: 2,
+            title: 'HTML Tags og Struktur',
+            content: `
+              <h2>HTML Tags</h2>
+              <p>En HTML tag består af tre dele:</p>
+              <p><strong>1. Åbningstag:</strong> &lt;h1&gt;<br>
+              <strong>2. Indhold:</strong> Dit tekst indhold<br>
+              <strong>3. Lukningstag:</strong> &lt;/h1&gt;</p>
+              <p>Nogle tags er selv-lukkende og behøver ingen lukningstag:</p>
+              <div class="lesson-code-example">
+                <code>&lt;img src="billede.jpg" alt="beskrivelse"&gt;</code>
+              </div>
+              <p>De vigtigste HTML tags til at starte med er:</p>
+              <p><strong>&lt;h1&gt; til &lt;h6&gt;</strong> - Overskrifter (h1 er størst)<br>
+              <strong>&lt;p&gt;</strong> - Paragrafer/tekst<br>
+              <strong>&lt;a&gt;</strong> - Links<br>
+              <strong>&lt;img&gt;</strong> - Billeder<br>
+              <strong>&lt;div&gt;</strong> - Beholdere til at gruppere indhold</p>
+            `
+          },
+          {
+            id: 3,
+            title: 'Overskrifter og Paragrafer',
+            content: `
+              <h2>Overskrifter og Paragrafer</h2>
+              <p>Overskrifter bruges til at strukturere dit indhold og gøre det læsbart.</p>
+              <p><strong>&lt;h1&gt;</strong> skal bruges til sidens hovedoverskrift (kun 1 per side)<br>
+              <strong>&lt;h2&gt;</strong> til &lt;h6&gt; bruges til under-overskrifter</p>
+              <div class="lesson-code-example">
+                <code>&lt;h1&gt;Min Håndværkfirma&lt;/h1&gt;<br>&lt;h2&gt;Vores Tjenester&lt;/h2&gt;<br>&lt;p&gt;Vi tilbyder professionelt håndværk...&lt;/p&gt;</code>
+              </div>
+              <p><strong>&lt;p&gt;</strong> bruges til normale tekstafsnit.</p>
+              <p>En god HTML struktur hjælper både brugere og søgemaskiner med at forstå dit indhold.</p>
+            `
+          },
+          {
+            id: 4,
+            title: 'Links og Billeder',
+            content: `
+              <h2>Links og Billeder</h2>
+              <p><strong>Links</strong> bruges til at navigere mellem sider.</p>
+              <div class="lesson-code-example">
+                <code>&lt;a href="om-os.html"&gt;Om Os&lt;/a&gt;</code>
+              </div>
+              <p><strong>href</strong> attributtet peger på den side linket skal gå til.</p>
+              <p><strong>Billeder</strong> vises med &lt;img&gt; tagget:</p>
+              <div class="lesson-code-example">
+                <code>&lt;img src="mit-billede.jpg" alt="Beskrivelse"&gt;</code>
+              </div>
+              <p><strong>src</strong> peger på billedets sti<br>
+              <strong>alt</strong> er tekst hvis billedet ikke kan vises</p>
+              <p>Alt-tekst er vigtig for blinde brugere og SEO!</p>
+            `
+          },
+          {
+            id: 5,
+            title: 'Lister',
+            content: `
+              <h2>Lister i HTML</h2>
+              <p>Der er tre typer lister:</p>
+              <p><strong>1. Uordnede Lister (&lt;ul&gt;)</strong> - med punkter</p>
+              <div class="lesson-code-example">
+                <code>&lt;ul&gt;<br>&lt;li&gt;Point 1&lt;/li&gt;<br>&lt;li&gt;Point 2&lt;/li&gt;<br>&lt;/ul&gt;</code>
+              </div>
+              <p><strong>2. Ordnede Lister (&lt;ol&gt;)</strong> - nummereret</p>
+              <div class="lesson-code-example">
+                <code>&lt;ol&gt;<br>&lt;li&gt;Første&lt;/li&gt;<br>&lt;li&gt;Anden&lt;/li&gt;<br>&lt;/ol&gt;</code>
+              </div>
+              <p><strong>3. Definitionslister (&lt;dl&gt;)</strong> - ord + definition</p>
+              <p>&lt;li&gt; er til list items (listeindhold)</p>
+            `
+          },
+          {
+            id: 6,
+            title: 'Kontaktformularer',
+            content: `
+              <h2>Kontaktformularer</h2>
+              <p>Formularer bruges til at samle data fra brugere.</p>
+              <div class="lesson-code-example">
+                <code>&lt;form action="submit.php" method="POST"&gt;<br>&lt;input type="text" placeholder="Dit navn"&gt;<br>&lt;input type="email" placeholder="Din email"&gt;<br>&lt;textarea placeholder="Din besked"&gt;&lt;/textarea&gt;<br>&lt;button type="submit"&gt;Send&lt;/button&gt;<br>&lt;/form&gt;</code>
+              </div>
+              <p><strong>&lt;input&gt;</strong> for tekstfelter, emails, telefon<br>
+              <strong>&lt;textarea&gt;</strong> for længere tekst<br>
+              <strong>&lt;button&gt;</strong> for at sende formularen</p>
+              <p><strong>type</strong> attributtet definerer input-typen (text, email, tel, osv.)</p>
+            `
+          },
+          {
+            id: 7,
+            title: 'Semantiske Tags',
+            content: `
+              <h2>Semantiske HTML Tags</h2>
+              <p>Semantiske tags fortæller browseren hvad elementet betyder - ikke bare hvordan det ser ud.</p>
+              <p><strong>&lt;header&gt;</strong> - Sidens top-sektion<br>
+              <strong>&lt;nav&gt;</strong> - Navigation menu<br>
+              <strong>&lt;main&gt;</strong> - Sidens hovedindhold<br>
+              <strong>&lt;section&gt;</strong> - En selvstændig sektion<br>
+              <strong>&lt;article&gt;</strong> - Selvstændig indhold (blog post osv.)<br>
+              <strong>&lt;footer&gt;</strong> - Sidens bund</p>
+              <div class="lesson-code-example">
+                <code>&lt;header&gt;<br>&lt;h1&gt;Mit Firma&lt;/h1&gt;<br>&lt;nav&gt;Menu&lt;/nav&gt;<br>&lt;/header&gt;<br>&lt;main&gt;Indhold&lt;/main&gt;<br>&lt;footer&gt;Footer&lt;/footer&gt;</code>
+              </div>
+              <p>Semantiske tags gør HTML mere læsbar og hjælper søgemaskiner.</p>
+            `
+          },
+          {
+            id: 8,
+            title: 'Dit Første Projekt',
+            content: `
+              <h2>Byg Din Første Hjemmeside</h2>
+              <p>Nu har du lært grundlæggende HTML! Det er tid til at bygge noget rigtigt.</p>
+              <p><strong>Opgave:</strong> Byg en simpel hjemmeside for en fiktiv virksomhed:</p>
+              <p>✓ &lt;header&gt; med virksomhedsnavn<br>
+              ✓ &lt;nav&gt; med links til (Hjem, Om, Tjenester, Kontakt)<br>
+              ✓ &lt;main&gt; med 3 sektioner<br>
+              ✓ En &lt;section&gt; med h2 og 3 servicepoints i en liste<br>
+              ✓ En kontaktform med navn, email og besked<br>
+              ✓ En &lt;footer&gt; med copyright tekst</p>
+              <p>Tip: Gå til Templates siden og vælg en af vores templates. Brug playground editoren til at bygge og se dit arbejde live.</p>
+              <p>Når du er klar - tag HTML Quiz og test dine kunskaber!</p>
+            `
+          }
+        ]
+      }
+    };
+
+    let currentTrack = null;
+    let currentLesson = 0;
+
+    function openTrack(trackId, event) {
+      if (event) event.preventDefault();
+      currentTrack = trackId;
+      currentLesson = 0;
+
+      document.getElementById('tracks-view').style.display = 'none';
+      document.getElementById('lesson-view').classList.add('active');
+
+      loadLesson(currentLesson);
+    }
+
+    function backToTracks() {
+      currentTrack = null;
+      document.getElementById('lesson-view').classList.remove('active');
+      document.getElementById('tracks-view').style.display = 'block';
+    }
+
+    function loadLesson(lessonIndex) {
+      const track = tutorials[currentTrack];
+      const lesson = track.lessons[lessonIndex];
+
+      // Update progress
+      document.getElementById('lesson-current').textContent = lessonIndex + 1;
+      document.getElementById('lesson-total').textContent = track.lessons.length;
+
+      // Load lesson content
+      document.getElementById('lesson-content').innerHTML = lesson.content;
+
+      // Update lesson list
+      const lessonList = document.getElementById('lesson-list');
+      lessonList.innerHTML = `<h3>${track.title}</h3>` +
+        track.lessons.map((l, idx) => `
+          <div class="lesson-item ${idx === lessonIndex ? 'active' : ''}" onclick="goToLesson(${idx})">
+            Lektion ${idx + 1}: ${l.title}
+          </div>
+        `).join('');
+
+      // Update nav buttons
+      document.getElementById('prev-lesson').disabled = lessonIndex === 0;
+
+      const isLastLesson = lessonIndex === track.lessons.length - 1;
+      document.getElementById('next-lesson').style.display = isLastLesson ? 'none' : 'block';
+      document.getElementById('quiz-button').style.display = isLastLesson ? 'block' : 'none';
+
+      // Update progress bar
+      const trackId = currentTrack;
+      const progress = ((lessonIndex + 1) / track.lessons.length) * 100;
+      const progressBar = document.getElementById(`progress-${trackId}`);
+      if (progressBar) {
+        progressBar.style.width = progress + '%';
+      }
+
+      // Save progress to localStorage
+      const progressData = JSON.parse(localStorage.getItem('academy-progress') || '{}');
+      if (!progressData.lessons) progressData.lessons = {};
+      progressData.lessons[`${trackId}-${lessonIndex + 1}`] = { completed: true };
+      localStorage.setItem('academy-progress', JSON.stringify(progressData));
+    }
+
+    function goToLesson(index) {
+      currentLesson = index;
+      loadLesson(currentLesson);
+    }
+
+    function previousLesson() {
+      if (currentLesson > 0) {
+        currentLesson--;
+        loadLesson(currentLesson);
+      }
+    }
+
+    function nextLesson() {
+      const track = tutorials[currentTrack];
+      if (currentLesson < track.lessons.length - 1) {
+        currentLesson++;
+        loadLesson(currentLesson);
+      }
+    }
+
+    function startQuiz() {
+      window.location.href = 'quiz.html?track=' + currentTrack;
+    }
+
+    // Load progress on page load
+    window.addEventListener('load', function() {
+      const progress = JSON.parse(localStorage.getItem('academy-progress') || '{}');
+
+      // Update progress bars for tracks
+      Object.keys(tutorials).forEach(trackId => {
+        const completedCount = Object.keys(progress.lessons || {})
+          .filter(key => key.startsWith(trackId))
+          .length;
+        const track = tutorials[trackId];
+        const progressBar = document.getElementById(`progress-${trackId}`);
+        if (progressBar && track) {
+          const percent = (completedCount / track.lessons.length) * 100;
+          progressBar.style.width = percent + '%';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
