@@ -9,10 +9,13 @@
   --color-dark-secondary: #1a1a1a;
   --color-dark-tertiary: #2d2d2d;
 
-  /* ACCENT COLORS */
-  --color-accent: #ff6b35;
-  --color-accent-light: #ff8a5b;
-  --color-accent-dark: #d45a2b;
+  /* ACCENT COLORS - HUMANISED-AI GRADIENT */
+  --color-gradient-blue: #4A90E2;
+  --color-gradient-purple: #9B59B6;
+  --color-gradient-magenta: #E91E63;
+  --color-accent: #9B59B6;
+  --color-accent-light: #b573c9;
+  --color-accent-dark: #7d4899;
 
   /* NEUTRALS */
   --color-white: #ffffff;
