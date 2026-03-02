@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Tutorial | HUMANIFIED Academy</title>
+    <link rel="stylesheet" href="css/academy-theme.css">
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        .header { background: linear-gradient(135deg, #0099ff, #ff8c00); color: white; padding: 40px 20px; text-align: center; }
+        .header h1 { margin: 0; font-size: 32px; }
+        .header p { margin: 10px 0 0 0; opacity: 0.9; }
+        .content { display: grid; grid-template-columns: 1fr 3fr; gap: 30px; margin-top: 40px; }
+        .sidebar { background: #f0f7ff; padding: 20px; border-radius: 8px; height: fit-content; position: sticky; top: 20px; }
+        .sidebar h3 { margin-top: 0; color: #0066cc; }
+        .lesson-list { list-style: none; padding: 0; margin: 0; }
+        .lesson-item { padding: 10px; margin: 5px 0; border-radius: 4px; cursor: pointer; transition: all 0.3s; }
+        .lesson-item:hover { background: #ddd; }
+        .lesson-item.active { background: linear-gradient(135deg, #0099ff, #ff8c00); color: white; }
+        .main-content { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .lesson { display: none; }
+        .lesson.active { display: block; }
+        .lesson h2 { color: #333; margin-top: 0; border-bottom: 3px solid #0099ff; padding-bottom: 10px; }
+        .lesson-body { line-height: 1.8; color: #555; }
+        .lesson-code { background: #f5f5f5; border-left: 4px solid #0099ff; padding: 15px; margin: 20px 0; overflow-x: auto; }
+        .lesson-code code { font-family: 'Courier New', monospace; font-size: 13px; }
+        .lesson-takeaways { background: #f0f7ff; border-radius: 4px; padding: 15px; margin-top: 20px; }
+        .lesson-takeaways strong { color: #0099ff; }
+        .navigation { display: flex; justify-content: space-between; margin-top: 30px; gap: 15px; }
+        .btn { padding: 12px 24px; border-radius: 4px; border: none; cursor: pointer; font-weight: 600; transition: all 0.3s; }
+        .btn-primary { background: linear-gradient(135deg, #0099ff, #ff8c00); color: white; }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,153,255,0.3); }
+        .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+        .progress-bar { background: #ddd; height: 8px; border-radius: 4px; margin-top: 10px; overflow: hidden; }
+        .progress-fill { background: linear-gradient(90deg, #0099ff, #ff8c00); height: 100%; width: 0%; transition: width 0.3s; }
+        @media (max-width: 768px) {
+            .content { grid-template-columns: 1fr; }
+            .sidebar { position: static; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>JavaScript Tutorial</h1>
+        <p>Lær JavaScript fra grundlagen til avancerede interaktive features</p>
+    </div>
+
+    <div class="container">
+        <div class="content">
+            <aside class="sidebar">
+                <h3>Lessons</h3>
+                <ul class="lesson-list" id="lessonList"></ul>
+                <div class="progress-bar" style="margin-top: 20px;">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <p style="margin-top: 10px; font-size: 14px; color: #666;">
+                    Progress: <span id="progressText">0/12</span>
+                </p>
+            </aside>
+
+            <main class="main-content">
+                <div id="lessonContent"></div>
+                <div class="navigation">
+                    <button class="btn btn-primary" id="prevBtn" onclick="previousLesson()">← Forrige</button>
+                    <button class="btn btn-primary" id="nextBtn" onclick="nextLesson()">Næste →</button>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript lessons will be injected here by the system
+        const lessons = [
+            // Placeholder - will be replaced with actual content from curriculum agent
+            {
+                title: "Loading JavaScript Curriculum...",
+                content: "Lessons are being loaded. Please wait.",
+                codeExample: "// JavaScript will load shortly"
+            }
+        ];
+
+        let currentLessonIndex = 0;
+
+        function initLessons() {
+            const lessonList = document.getElementById('lessonList');
+            lessons.forEach((lesson, index) => {
+                const li = document.createElement('li');
+                li.className = `lesson-item ${index === 0 ? 'active' : ''}`;
+                li.textContent = `Lesson ${index + 1}: ${lesson.title}`;
+                li.onclick = () => goToLesson(index);
+                lessonList.appendChild(li);
+            });
+            displayLesson(0);
+        }
+
+        function displayLesson(index) {
+            currentLessonIndex = index;
+            const lesson = lessons[index];
+
+            const contentDiv = document.getElementById('lessonContent');
+            contentDiv.innerHTML = `
+                <h2>${lesson.title}</h2>
+                <div class="lesson-body">${lesson.content}</div>
+                ${lesson.codeExample ? `<div class="lesson-code"><code>${lesson.codeExample}</code></div>` : ''}
+                ${lesson.takeaways ? `<div class="lesson-takeaways"><strong>Key Takeaways:</strong><ul>${lesson.takeaways.map(t => `<li>${t}</li>`).join('')}</ul></div>` : ''}
+            `;
+
+            // Update active lesson in sidebar
+            document.querySelectorAll('.lesson-item').forEach((item, i) => {
+                item.classList.toggle('active', i === index);
+            });
+
+            // Update navigation buttons
+            document.getElementById('prevBtn').disabled = index === 0;
+            document.getElementById('nextBtn').disabled = index === lessons.length - 1;
+
+            // Update progress
+            const progress = Math.round(((index + 1) / lessons.length) * 100);
+            document.getElementById('progressFill').style.width = progress + '%';
+            document.getElementById('progressText').textContent = `${index + 1}/${lessons.length}`;
+
+            // Save progress to localStorage
+            localStorage.setItem('jsLessonProgress', index);
+        }
+
+        function nextLesson() {
+            if (currentLessonIndex < lessons.length - 1) {
+                displayLesson(currentLessonIndex + 1);
+            }
+        }
+
+        function previousLesson() {
+            if (currentLessonIndex > 0) {
+                displayLesson(currentLessonIndex - 1);
+            }
+        }
+
+        function goToLesson(index) {
+            displayLesson(index);
+        }
+
+        // Initialize on page load
+        window.addEventListener('load', () => {
+            const savedProgress = localStorage.getItem('jsLessonProgress');
+            const startIndex = savedProgress ? parseInt(savedProgress) : 0;
+            initLessons();
+            if (startIndex > 0) {
+                displayLesson(startIndex);
+            }
+        });
+    </script>
+</body>
+</html>
