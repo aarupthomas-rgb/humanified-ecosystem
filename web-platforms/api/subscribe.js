@@ -64,7 +64,7 @@ function isValidEmail(email) {
 /**
  * Main handler function
  */
-export default async function handler(req, res) {
+async function handler(req, res) {
   // Only allow POST requests
   if (req.method !== 'POST') {
     return res.status(405).json({
@@ -179,3 +179,5 @@ export default async function handler(req, res) {
     });
   }
 }
+
+module.exports = handler;
