@@ -114,6 +114,15 @@ async function handler(req, res) {
     const mailchimpUrl =
       `https://${MAILCHIMP_SERVER}.api.mailchimp.com/3.0/lists/${listData.listId}/members`;
 
+    // DEBUG: Log URL and credentials
+    console.log('DEBUG - Mailchimp call:', {
+      url: mailchimpUrl,
+      server: MAILCHIMP_SERVER,
+      listId: listData.listId,
+      email: email,
+      timestamp: new Date().toISOString(),
+    });
+
     // Create Basic Auth header
     const basicAuth = Buffer.from(`anystring:${MAILCHIMP_API_KEY}`).toString('base64');
 
@@ -157,9 +166,11 @@ async function handler(req, res) {
     }
 
     // === SUCCESS ===
+    const successData = await mailchimpResponse.json();
     console.log('Subscription success:', {
       email: email,
       list: listData.tags[0],
+      mailchimpResponse: successData,
       timestamp: new Date().toISOString(),
     });
 
