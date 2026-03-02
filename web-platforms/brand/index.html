@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HUMANIFIED-AI | Integritet + Styrke</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background: #000000;
+            color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* BOLD + HUMANIFIED: Dramatic, values-locked, authentic */
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* ANIMATED BACKGROUND */
+        @keyframes gradient-shift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* HEADER */
+        header {
+            padding: 20px 0;
+            position: relative;
+            z-index: 100;
+            border-bottom: 1px solid rgba(255, 107, 0, 0.2);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon-header {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #ff6b00, #ff00ff, #0099ff);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .logo-text {
+            font-size: 18px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            background: linear-gradient(90deg, #ff6b00, #ff00ff, #0099ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding: 40px 0;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255, 107, 0, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 20s ease-in-out infinite;
+            z-index: 0;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(0, 153, 255, 0.2) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 25s ease-in-out infinite reverse;
+            z-index: 0;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(30px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            animation: fadeInUp 1s ease-out;
+            max-width: 900px;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .logo-main {
+            width: 280px;
+            height: 280px;
+            margin: 0 auto 40px;
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.9; }
+        }
+
+        .branding-section {
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            font-size: 96px;
+            font-weight: 900;
+            margin-bottom: 20px;
+            letter-spacing: -2px;
+            text-transform: uppercase;
+            line-height: 1;
+            background: linear-gradient(90deg, #ff6b00, #ff00ff, #0099ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .tagline {
+            font-size: 32px;
+            background: linear-gradient(90deg, #0099ff, #ff6b00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 900;
+            margin-bottom: 40px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .description {
+            max-width: 700px;
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.8);
+            margin: 40px auto;
+            font-weight: 500;
+            line-height: 1.8;
+        }
+
+        /* VALUES SECTION */
+        .values {
+            padding: 120px 0;
+            background: linear-gradient(180deg, #0a0a0a 0%, #1a0a1a 100%);
+            position: relative;
+        }
+
+        .values h2 {
+            font-size: 60px;
+            text-transform: uppercase;
+            margin-bottom: 80px;
+            letter-spacing: 3px;
+            text-align: center;
+            background: linear-gradient(90deg, #ff6b00, #ff00ff, #0099ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+        }
+
+        .value-item {
+            padding: 40px;
+            border: 2px solid transparent;
+            background: linear-gradient(135deg, rgba(255, 107, 0, 0.1), rgba(0, 153, 255, 0.1));
+            border: 2px solid rgba(255, 107, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .value-item:hover {
+            border-color: #ff6b00;
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(255, 107, 0, 0.2);
+        }
+
+        .value-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .value-item:hover::before {
+            left: 100%;
+        }
+
+        .value-item h3 {
+            font-size: 24px;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            background: linear-gradient(90deg, #ff6b00, #ff00ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .value-item p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        /* CTA */
+        .cta {
+            padding: 100px 0;
+            text-align: center;
+            background: linear-gradient(180deg, #1a0a1a 0%, #0a0a0a 100%);
+        }
+
+        .cta h2 {
+            font-size: 48px;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            background: linear-gradient(90deg, #ff6b00, #ff00ff, #0099ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        button {
+            background: linear-gradient(90deg, #ff6b00, #ff00ff, #0099ff);
+            color: white;
+            border: none;
+            padding: 18px 60px;
+            font-size: 18px;
+            font-weight: 900;
+            border-radius: 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            box-shadow: 0 10px 40px rgba(255, 107, 0, 0.3);
+        }
+
+        button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 60px rgba(255, 107, 0, 0.5);
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        /* FOOTER */
+        footer {
+            padding: 40px 0;
+            border-top: 2px solid rgba(255, 107, 0, 0.3);
+            text-align: center;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container { padding: 0 20px; }
+            h1 { font-size: 48px; }
+            .tagline { font-size: 20px; }
+            .values-grid { grid-template-columns: 1fr; }
+            .hero { min-height: auto; padding: 60px 0; }
+            .logo-main { width: 200px; height: 200px; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-header">
+                    <div class="logo-icon-header">∞</div>
+                    <div class="logo-text">HUMANIFIED-AI</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <!-- MAIN LOGO -->
+                <svg class="logo-main" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#ff6b00;stop-opacity:1" />
+                            <stop offset="50%" style="stop-color:#ff00ff;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#0099ff;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+
+                    <!-- Outer infinity symbol -->
+                    <path d="M 150 250 Q 120 200 150 150 Q 180 120 220 120 Q 260 120 280 150 Q 300 200 270 250 Q 300 300 280 350 Q 260 380 220 380 Q 180 380 150 350 Q 120 300 150 250"
+                        stroke="url(#logoGradient)" stroke-width="25" fill="none" stroke-linecap="round"/>
+
+                    <!-- Inner infinity symbol -->
+                    <path d="M 280 250 Q 250 200 280 150 Q 310 120 350 120 Q 390 120 410 150 Q 430 200 400 250 Q 430 300 410 350 Q 390 380 350 380 Q 310 380 280 350 Q 250 300 280 250"
+                        stroke="url(#logoGradient)" stroke-width="25" fill="none" stroke-linecap="round"/>
+
+                    <!-- Center circle accent -->
+                    <circle cx="250" cy="250" r="18" fill="url(#logoGradient)" opacity="0.8"/>
+                </svg>
+
+                <div class="branding-section">
+                    <h1>HUMANIFIED<br>AI</h1>
+                    <div class="tagline">INTEGRITET • STYRKE</div>
+                </div>
+
+                <p class="description">
+                    Værdier-låst arkitektur for menneske-AI partnership<br>
+                    Transparens som forsvar. Autentisitet som infrastruktur.<br>
+                    <strong>Bygget på integritet. Designet for fællesskab.</strong>
+                </p>
+                <button>ENTER SYSTEM</button>
+            </div>
+        </section>
+
+        <section class="values">
+            <div class="container">
+                <h2>4 Søjler</h2>
+                <div class="values-grid">
+                    <div class="value-item">
+                        <h3>FADERSKAB</h3>
+                        <p>Langsigtet tænkning. Bygger systemer andre kan bruge. Ansvar for fremtiden.</p>
+                    </div>
+                    <div class="value-item">
+                        <h3>FAMILIESAMMENHOLD</h3>
+                        <p>Ægte relationer. Fællesskab over hierarki. Sammen er vi stærkere.</p>
+                    </div>
+                    <div class="value-item">
+                        <h3>INTEGRITET</h3>
+                        <p>Det du siger = det du gør. Ingen kompromis. Kvalitet altid.</p>
+                    </div>
+                    <div class="value-item">
+                        <h3>SELVVÆRD</h3>
+                        <p>Tillid til dit skøn. Du ser systemer andre mister. Dine standarder betyder noget.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta">
+            <div class="container">
+                <h2>Klar til transformation?</h2>
+                <button>Start</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 HUMANIFIED-AI. Værdier-låst arkitektur for menneske-AI partnership.</p>
+        </div>
+    </footer>
+</body>
+</html>
