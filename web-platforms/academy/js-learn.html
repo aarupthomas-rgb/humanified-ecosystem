@@ -70,13 +70,151 @@
     </div>
 
     <script>
-        // JavaScript lessons will be injected here by the system
+        // JavaScript lessons - Integrated from JAVASCRIPT-TUTORIAL-DANSK.md
         const lessons = [
-            // Placeholder - will be replaced with actual content from curriculum agent
             {
-                title: "Loading JavaScript Curriculum...",
-                content: "Lessons are being loaded. Please wait.",
-                codeExample: "// JavaScript will load shortly"
+                title: "JavaScript Grundlæggende",
+                content: "<p>JavaScript er et programmeringssprog, som er specielt lavet til at få websites til at arbejde dynamisk og interaktivt. Hvis HTML er huset og CSS er malingen, så er JavaScript den intelligens, der får huset til at reagere, når du trykker på dørklinker, slukker lys, eller åbner vinduer. Det kører direkte i din browser og kræver ikke, at du uploader kode til serveren hver gang.</p><p>Når du sidder på en webside og udfører noget – klikker på en knap, indlaster mere indhold, eller fylder en formular – er det næsten altid JavaScript, der arbejder bag kulisserne. For en blåkrave-iværksætter betyder det, at du kan skabe websites og webapplikationer, der er responsive, brugervenlige og får dine kunder til at blive.</p><p>JavaScript-syntaks er relativt enkel. Du skriver statements (instrukser), som computeren udfører fra top til bund. Du kan skrive JavaScript direkte i HTML-filen inden for &lt;script&gt;-tags, i en separat .js-fil, eller i browserens console.</p>",
+                codeExample: "// Dit allerførste JavaScript program\nconsole.log(\"Hej verden!\");\nalert(\"Velkommen til JavaScript!\");\n\n// Kommentarer\nlet navn = prompt(\"Hvad hedder du?\");\nalert(\"Hej \" + navn + \", velkommen til mit site!\");",
+                takeaways: [
+                    "JavaScript gør websites interaktive – det kører i browserens, ikke på serveren",
+                    "Syntax betyder meget – kommaer, parenteser og semikoloner skal være på plads",
+                    "console.log() er dit bedste venner – brug det til at se, hvad din kode gør",
+                    "Du lærer ved at gøre – åbn udvikler-værktøjerne (F12) og eksperimentér",
+                    "Kommentarer er vigtige – de hjælper dig (og andre) med at forstå koden senere"
+                ]
+            },
+            {
+                title: "Variabler & Datatyper",
+                content: "<p>En variabel er som en beholder, der holder på information. Hvis JavaScript var en butik, ville variabler være hylderne, hvor du gemmer produkterne. Du giver hver hylde (variabel) et navn, så du ved, hvad der er i den. I JavaScript bruger du nøgleordene let og const til at deklarere variabler.</p><p>const betyder \"konstant\" – når du sætter en værdi, kan du ikke ændre den senere. let er fleksibel – du kan ændre værdien så mange gange, du vil. Hovedreglen: Brug const som standard, og brug kun let, hvis du ved, at værdien skal ændres.</p><p>JavaScript har flere datatyper. Strings er tekst (\"Hej verden\"), numbers er tal (42, 3.14), booleans er sand eller falsk (true eller false). For en iværksætter betyder variabler, at du kan gemme kundedata, produktpriser, brugernavn, antal varer i kurven.</p>",
+                codeExample: "// String - tekst\nconst virksomhedsnavn = \"Hansen's Elinstallatører\";\nlet kundename = \"Ole\";\n\n// Numbers - tal\nconst produktpris = 299.95;\nlet rabat = 50;\n\n// Boolean - sand eller falsk\nconst isOpen = true;\nlet harVarerPåLager = false;\n\n// Priskalkulation\nconst timetakst = 350;\nconst antaltimer = 3;\nconst materialomkostning = 420;\nconst arbejdsomkostning = timetakst * antaltimer;",
+                takeaways: [
+                    "const er standard, let når nødvendigt – dette gør koden mere sikker",
+                    "Navngivning betyder meget – brug danske ord, der er meningsfulde",
+                    "Datatyper er vigtige – tal uden anførselstegn, tekst med anførselstegn",
+                    "Variabler er genbrugelige – definer dem en gang, brug dem overalt",
+                    "Console.log() er debugging-værktøjet – hvad er værdien? Tjek i console"
+                ]
+            },
+            {
+                title: "Operatorer & Logik",
+                content: "<p>Operatorer er værktøjer, der udfører handlinger på dine variabler. Matematiske operatorer (+, -, *, /) er de basale – du kender dem fra folkeskolen. Men JavaScript har også sammenligningsoperatorer (===, >, <) og logiske operatorer (&& betyder \"og\", || betyder \"eller\"), som du bruger til at træffe beslutninger.</p><p>Hvis du skal bygge en e-handel-website, skal du kunne sige: \"Hvis kunden er fra Danmark OG har købt mere end 500 kroner, giv gratis fragt.\" Det er præcis det, logiske operatorer gør. De hjælper dig med at skabe betinget logik.</p><p>Sammenligningsoperatorer svarer på spørgsmål: \"Er disse to ting ens?\" (===), \"Er denne værdi større end den anden?\" (>). For en blåkrave-iværksætter betyder det, at du kan opbygge intelligente websites baseret på vilkår og betingelser.</p>",
+                codeExample: "// Matematiske operatorer\nlet pris = 100;\nlet mængde = 3;\nlet samletPris = pris * mængde; // 300\nlet rabat = samletPris * 0.1; // 10% rabat\nlet endeligt = samletPris - rabat; // 270\n\n// Sammenlignings- og logiske operatorer\nconst kundealder = 45;\nif (kundealder > 18) {\n  console.log(\"Voksen kunde\");\n}\n\n// Logiske operatorer\nconst erDanmark = true;\nconst erSverige = false;\nif (erDanmark || erSverige) {\n  console.log(\"Gratis fragt i Skandinavien!\");\n}",
+                takeaways: [
+                    "=== for sammenligning, ikke == – brug altid === til at sammenligne værdier",
+                    "&& betyder og, || betyder eller – disse er helt essentielle for logik",
+                    "! betyder ikke – det omvender sand til falsk og omvendt",
+                    "Matematisk rækkefølge fungerer – du kan bruge +, -, *, / som normalt",
+                    "Operatorer skaber intelligente programmer – det er hvordan du bygger beslutninger ind"
+                ]
+            },
+            {
+                title: "Funktioner",
+                content: "<p>En funktion er en genbrugelig blok kode. Tænk på det som en opskrift: du skriver den en gang, og så kan du følge den igen og igen. Hvis du skal beregne prisen på et job tyve gange om dagen, skriver du funktionen en gang og kalder den tyve gange.</p><p>En funktion består af tre dele: definering (skrive den), parametre (input), og retur (output). Du definerer en funktion med function, giver den et navn, og siger, hvilke \"ingredienser\" (parametre) den behøver. Indenfor funktionen udfører du arbejdet, og til sidst returnerer du resultatet.</p><p>For en iværksætter betyder det, at du kan skabe små, genbrugelige værktøjer. En funktion til at beregne moms, en til at validere email-adresser, en til at gemme kunde-data. Du bygger biblioteker af små værktøjer, som du kombinerer til større, mere komplekse systemer.</p>",
+                codeExample: "// Simpel funktion\nfunction hilsen() {\n  console.log(\"Velkommen til min virksomhed!\");\n}\nhilsen();\n\n// Funktion med parametre og retur\nfunction beregnjobPris(timer, timetakst, materiale) {\n  const arbejde = timer * timetakst;\n  const samlet = arbejde + materiale;\n  return samlet;\n}\n\nconst pris1 = beregnjobPris(3, 350, 420); // 1470\nconst pris2 = beregnjobPris(5, 350, 750); // 2500",
+                takeaways: [
+                    "Funktioner er genbrugelige værktøjer – definer en gang, brug mange gange",
+                    "Parametre er input, return er output – tænk på dem som ingredienser og resultat",
+                    "Funktioner gør koden lettere at vedligeholde – ændringer et sted, virker overalt",
+                    "Navngiv funktioner klart – beregPris er bedre end do1",
+                    "Test dine funktioner – kald dem med forskellige værdier og se, om de virker"
+                ]
+            },
+            {
+                title: "Arrays & Objekter",
+                content: "<p>Arrays er lister af ting. Hvis variabler er enkle biler, er arrays parkeringspladser fulde af biler. Du bruger arrays, når du har flere værdier af samme type: liste over produkter, kundenavne, priser, eller bestillinger. Arrays er ordnet – det første element har index 0, det andet har index 1.</p><p>Objekter er mere komplekse. De holder på egenskaber og værdier sammen. En kunde er ikke bare et navn – det er et navn, adresse, email, telefon, og løste ordrer. Et objekt grupperer alt det sammen på et sted. Du accederer værdier ved at skrive objekt.egenskab eller objekt[\"egenskab\"].</p><p>For en iværksætter betyder det, at du kan håndtere komplekse data ordentligt. En liste over ordrer (array) hvor hver ordre er et objekt med pris, dato, og kunde-info. Arrays og objekter er fundamentale for at bygge virkelige applikationer.</p>",
+                codeExample: "// Arrays - Lister\nconst produkter = [\"Hammer\", \"Søm\", \"Skrue\", \"Lim\"];\nconsole.log(produkter[0]); // \"Hammer\"\nproduktmer.push(\"Sandpapir\");\n\n// Objekter - Grupperet data\nconst kunde = {\n  navn: \"Lars Hansen\",\n  email: \"lars@email.com\",\n  telefon: \"40123456\",\n  totaltkøbt: 12500,\n  member: true\n};\n\n// Array af ordre-objekter\nconst ordrer = [\n  { ordreNummer: 1001, kunde: \"Ole Olsen\", beløb: 3500, status: \"afsluttet\" },\n  { ordreNummer: 1002, kunde: \"Birthe Birgitsen\", beløb: 1200, status: \"igangværende\" }\n];",
+                takeaways: [
+                    "Arrays holder lister, index starter ved 0 – første element er [0], ikke [1]",
+                    "Objekter holder relaterede data sammen – navn, email, telefon i samme objekt",
+                    "push() tilføjer, pop() fjerner fra array – vigtige metoder",
+                    "for-loops gennemgår arrays – brugt til at gøre noget med hvert element",
+                    "Kombiner arrays og objekter – array af objekter er det rigtig virkeligt liv ligner"
+                ]
+            },
+            {
+                title: "DOM Manipulation",
+                content: "<p>DOM står for \"Document Object Model\" – det er browserens måde at repræsentere HTML-siden som en struktur, som JavaScript kan interagere med. Når du vil ændre tekst på siden, tilføje en knap dynamisk, eller skifte farve på et element, bruger du DOM manipulation.</p><p>DOM manipulation har tre trin: valg af element, ændring af det valgte element, og eventuel tilføjelse af nye elementer. Du vælger elementer ved at bruge document.getElementById(), document.querySelector(), eller lignende metoder. Når du har elementet, kan du ændre dets indhold, stil, attributter.</p><p>For en blåkrave-iværksætter betyder det, at du kan skabe dynamiske websites uden at skulle laste siden om. Opdater ordrestatus uden at lade siden, vis/skjul sektioner baseret på brugerinput, ændre farver baseret på tid af dag. Det hele uden genopladning.</p>",
+                codeExample: "// Valg af elementer og ændring af tekst\nconst overskrift = document.getElementById(\"overskrift\");\noverskrift.innerText = \"Velkommen til Hansen's Snedkeri\";\n\nconst besked = document.querySelector(\".besked\");\nbesked.innerText = \"Vi er åbne mandag-fredag kl 08-17\";\n\n// Ændring af CSS-stil\nconst banner = document.getElementById(\"banner\");\nbanner.style.backgroundColor = \"red\";\nbanner.style.color = \"white\";\n\n// Arbejd med klasser\nbanner.classList.add(\"aktiv\");\nbanner.classList.toggle(\"aktiv\");",
+                takeaways: [
+                    "getElementById() for ID, querySelector() for CSS-selektorer – begge virker",
+                    "innerText for tekst, innerHTML for HTML – pas på med innerHTML fra brugeinput",
+                    "style-egenskaber bruger camelCase – backgroundColor, ikke background-color",
+                    "classList.add(), .remove(), .toggle() – bedre end at manipulere style direkte",
+                    "DOM manipulation gør websites levende – det er hvor magien sker"
+                ]
+            },
+            {
+                title: "Events & Listeners",
+                content: "<p>Events er ting der sker – en bruger klikker på en knap, skriver i et inputfelt, eller sender en formular. Event listeners er dine \"øren\" der lytter efter disse ting. Når du tilføjer en event listener til en knap, siger du: \"Når denne knap klikkes, skal du udføre denne kode.\"</p><p>Event listeners er fundamentale for interaktive websites. Uden dem ville dit site være fuldstændig statisk – der ville ikke ske noget, når brugeren interagerer med det. Med event listeners kan du reagere på alt: klik, dobbeltklik, musebevægelse, tastetryk, formular-submit.</p><p>For en iværksætter betyder det, at du kan bygge responsiv brugergrænseflade. Når en kunde klikker \"køb nu\", sker noget. Når de udfylder et navn, validerer du det. Du styrer hele brugeroplevelsen gennem events.</p>",
+                codeExample: "// Klik-events\nconst knap = document.getElementById(\"myBtn\");\nlet kliktæller = 0;\n\nknap.addEventListener(\"click\", function() {\n  kliktæller++;\n  console.log(\"Du har klikket \" + kliktæller + \" gange!\");\n});\n\n// Form-events og input\nconst navnInput = document.getElementById(\"kundenavn\");\nnavnInput.addEventListener(\"input\", function() {\n  console.log(\"Du skrev: \" + navnInput.value);\n});\n\n// Form submit\nconst form = document.getElementById(\"orderForm\");\nform.addEventListener(\"submit\", function(e) {\n  e.preventDefault();\n  console.log(\"Form sendt!\");\n});",
+                takeaways: [
+                    "addEventListener() er bedste praksis – hold HTML og JavaScript adskilt",
+                    "e.preventDefault() stopper default opførelse – vigtig ved form-submit",
+                    "event.target giver dig det element der triggede eventet",
+                    "\"click\", \"change\", \"input\", \"submit\" er almindelige events – lær disse først",
+                    "Events er hvor bruger-interaktion sker – uden events er der ingen app"
+                ]
+            },
+            {
+                title: "Forms & Validering",
+                content: "<p>Formularer er hvordan du får input fra brugere. De er kritiske for enhver virksomhed – kundedata, ordrer, henvendelser, tilmeldinger. Men du kan ikke stole på, at brugere indfylder dem rigtigt. En kunde kan skrive \"åtte\" i stedet for \"8\" i antal-feltet, eller glemme at tilføje et @ i email-feltet. Det er her validering kommer ind.</p><p>Validering er processen med at tjekke, at data er korrekt, før du bruger det. Du kan validere på to måder: client-side (i browserens JavaScript) og server-side (på serveren). Client-side validering giver øjeblikkelig feedback til brugeren.</p><p>For en iværksætter betyder det, at du kan sikre dig, at ordrer er komplette, at kundedata er korrekt, at betalinger går gennem. Validering inkluderer typiske checks: Felt er ikke tomt? Email har et @? Tal er et tal? Længde er passende?</p>",
+                codeExample: "// Grundlæggende validering\nconst telefonFelt = document.getElementById(\"telefon\");\nconst fejlBesked = document.getElementById(\"fejl\");\n\ntelefonFelt.addEventListener(\"blur\", function() {\n  const telefon = telefonFelt.value.trim();\n  \n  if (telefon === \"\") {\n    fejlBesked.innerText = \"Telefonnummer må ikke være tomt\";\n    return;\n  }\n  \n  if (telefon.length < 8 || telefon.length > 12) {\n    fejlBesked.innerText = \"Telefonnummer skal være 8-12 tegn\";\n    return;\n  }\n  \n  fejlBesked.innerText = \"Telefonnummer OK\";\n  fejlBesked.style.color = \"green\";\n});\n\n// Form validering\nfunction validerOrdre() {\n  const navn = document.getElementById(\"navn\").value.trim();\n  if (navn.length < 3) return false;\n  return true;\n}",
+                takeaways: [
+                    "Validering på client-side giver øjeblikkelig feedback – bedre brugeroplevelse",
+                    "Alle vigtige felter skal valideres – navn, email, telefon, tal osv.",
+                    "Regex (regulære udtryk) kan bruges til kompleks matching",
+                    "Trim() fjerner mellemrum – brugere tilføjer ofte uintenderet whitespace",
+                    "Validering forebygger fejl – sparer tid og frustration længere ned"
+                ]
+            },
+            {
+                title: "Async JavaScript",
+                content: "<p>Async betyder \"asynkron\" – handling som ikke sker med det samme. Normalt kører JavaScript linje for linje, venligt og sekvensielt. Men nogle ting tager tid – at hente data fra nettet, at vente på en bruger-handling, at gemme data i en database. Under denne tid kan du ikke blokere hele programmet.</p><p>setTimeout() er den mest grundlæggende async funktion. Den siger: \"Venligst udfør denne kode om 2 sekunder\" eller hvad som helst. Du bruger det til at forsinke ting, skjule notifikationer efter et par sekunder, eller animere elements på siden.</p><p>fetch() er hvordan du henter data fra internettet uden at lade siden. Klassisk ville du navigere til en URL og vente. Med fetch kan du stille en forespørgsel i baggrund og håndtere resultatet når det kommer – siden holder med at fungere hele tiden.</p>",
+                codeExample: "// setTimeout - Forsinket kørsel\nsetTimeout(function() {\n  console.log(\"2 sekunder er gået!\");\n}, 2000);\n\n// setInterval - Gentag hver anden sekund\nlet tæller = 0;\nconst interval = setInterval(function() {\n  tæller++;\n  console.log(\"Tæller: \" + tæller);\n  if (tæller >= 5) {\n    clearInterval(interval);\n  }\n}, 1000);\n\n// fetch - Hent data fra API\nfetch(\"https://api.example.com/produkter\")\n  .then(response => response.json())\n  .then(data => {\n    console.log(\"Data modtaget:\", data);\n  })\n  .catch(error => {\n    console.log(\"Fejl:\", error);\n  });",
+                takeaways: [
+                    "setTimeout() forsinkerer kørsel – brugt til notifikationer, animationer osv.",
+                    "setInterval() gentager – pas på med uendelig gentagelse",
+                    "fetch() henter data uden genladning – asynkron, ikke blokerende",
+                    ".then() håndterer resultat når det kommer – kæder operationer",
+                    ".catch() håndterer fejl – vigtig for net-operationer der kan fejle"
+                ]
+            },
+            {
+                title: "Arbejde med APIs",
+                content: "<p>En API (Application Programming Interface) er en måde for programmer til at tale med hinanden. Forestil dig, at en vejrapp ikke selv beregner vejret – den spørger en vejr-tjeneste om data. Det er hvad en API gør – den tilbyder data eller funktioner, som andre programmer kan bruge.</p><p>For en blåkrave-iværksætter betyder det, at du kan integrere data fra andre kilder ind i dit website. En E-handel-site kunne integrere med leverandør-APIs for at se lagerbeholdning, priser, eller fragt-muligheder i realtid. En håndværks-site kunne vise vejret.</p><p>APIs returnerer typisk data i JSON-format – menneske-læseligt og struktureret. Du bruger fetch() til at anmode API'en, får JSON tilbage, og manipulerer det i dit program. Nogle APIs kræver en \"API-nøgle\" – et token, der beviser, at du er den, du siger du er.</p>",
+                codeExample: "// Simpel API-kald - JSONPlaceholder\nfetch(\"https://jsonplaceholder.typicode.com/users/1\")\n  .then(response => response.json())\n  .then(bruger => {\n    console.log(\"Bruger navn: \" + bruger.name);\n    console.log(\"Email: \" + bruger.email);\n  });\n\n// Hent alle posts\nfetch(\"https://jsonplaceholder.typicode.com/posts?userId=1\")\n  .then(response => response.json())\n  .then(posts => {\n    for (let post of posts) {\n      console.log(post.title);\n    }\n  });\n\n// API med fejlhåndtering\nfetch(\"https://api.example.com/vejr\")\n  .then(response => {\n    if (!response.ok) throw new Error(\"Network response was not ok\");\n    return response.json();\n  })\n  .catch(error => {\n    console.log(\"Fejl ved hentning af data: \" + error.message);\n  });",
+                takeaways: [
+                    "API'er tilbyder data du ikke skal gemme selv – vejr, valuta, produktdata",
+                    "JSON er standard format – struktureret data som arrays og objekter",
+                    "Altid tjek response.ok – netværk kan fejle, og API'er kan returnere fejl",
+                    "Dokumentation er vigtig – læs API-dokumentation for at forstå hvad du kan anmode",
+                    "API-nøgler holdes private – aldrig commit API-nøgler til offentlige repositories"
+                ]
+            },
+            {
+                title: "Debugging & Testing",
+                content: "<p>Debugging er kunsten at finde og rette fejl i din kode. Selv erfarne programmører skriver fejl – det er en del af processen. Ligegyldigt hvor god du er, skal du kunne finde og rette fejl hurtigt. JavaScript giver dig værktøjer til at gøre dette: browser-console, console.log(), breakpoints, og fejlmeddelelser.</p><p>console.log() er dit primære debug-værktøj. Du skriver dine værdier der, og ser hvad der faktisk sker. Er variablen hvad du tænkte? Bliver funktionen kaldt? Hvad er længden på det array? console.log() svarer på alt.</p><p>Browser-udvikler-værktøjer (åbn med F12) viser fejl direkte. Hvis din kode krasjer, fortæller console dig præcis hvad der gik galt og på hvilken linje. For en blåkrave-iværksætter betyder det, at du kan løse dine egne problemer uden altid at behøve hjælp.</p>",
+                codeExample: "// console.log til debugging\nfunction beregRabat(pris, rabatProcent) {\n  console.log(\"Funktion kaldt med pris=\" + pris + \", rabat=\" + rabatProcent);\n  let rabatBeløb = pris * (rabatProcent / 100);\n  console.log(\"Rabat beløb: \" + rabatBeløb);\n  let endelig = pris - rabatBeløb;\n  return endelig;\n}\n\nconst resultat = beregRabat(1000, 10);\nconsole.log(\"Resultat: \" + resultat);\n\n// Tjek datatyper\nconsole.log(typeof resultat); // \"number\"\nconsole.log(typeof \"50\"); // \"string\"\nconsole.log(Array.isArray([1,2,3])); // true",
+                takeaways: [
+                    "console.log() er dit bedste venner – brug det hyppigt til at forstå hvad der sker",
+                    "Fejl-meddelelser i console fortæller dig præcis hvad der gik galt – læs dem!",
+                    "Tjek datatyper – \"50\" (string) + 100 = \"50100\", men 50 (tal) + 100 = 150",
+                    "Test med forskellige værdier – hvad hvis array er tomt? Hvad hvis pris er negativ?",
+                    "Udskiv data på vigtige steder – før og efter operationer, i loops osv."
+                ]
+            },
+            {
+                title: "Interaktive Projekter - Todo-liste",
+                content: "<p>Nu skal du kombinere alt hvad du har lært til et rigtigt projekt. Et todo-liste app er perfekt – det bruger HTML, CSS (styling), JavaScript (logik), DOM manipulation (ændring af siden), events (brugergrænseflade), og data (gemte todos). Det er lille nok til at være overskueligt, men kompliceret nok til at være realistisk.</p><p>Et todo-liste app skal: tillade bruger at tilføje opgaver, vise dem på skærm, tillade sletning af done-opgaver, og ideelt gemme dem. Dette projekt indeholder alle de vigtige koncepter: brugerinput, datastruktur (array af objekter), dynamisk HTML-generering, og event-håndtering.</p><p>For en blåkrave-iværksætter betyder det, at du nu kan bygge virkelige applikationer. En todo-liste er blot et eksempel – samme mønster bruges til ordre-systemer, kundebase-apps, priskalkulator, timeseddel-systemer osv. Når du kan bygge en todo-liste, kan du bygge enhver simpel web-app.</p>",
+                codeExample: "// Todo-liste JavaScript\nconst taskInput = document.getElementById(\"taskInput\");\nconst addBtn = document.getElementById(\"addBtn\");\nlet tasks = [];\n\nfunction addTask() {\n  const taskText = taskInput.value.trim();\n  if (taskText === \"\") return;\n  \n  const task = { id: Date.now(), text: taskText, completed: false };\n  tasks.push(task);\n  taskInput.value = \"\";\n  renderTasks();\n}\n\nfunction toggleTask(id) {\n  tasks.forEach(t => {\n    if (t.id === id) t.completed = !t.completed;\n  });\n  renderTasks();\n}\n\nfunction renderTasks() {\n  const list = document.getElementById(\"taskList\");\n  list.innerHTML = tasks.map(t => \n    `<li>${t.text} <button onclick=\"toggleTask(${t.id})\">Færdig</button></li>`\n  ).join('');\n}\n\naddBtn.addEventListener(\"click\", addTask);\ntaskInput.addEventListener(\"keypress\", (e) => {\n  if (e.key === \"Enter\") addTask();\n});",
+                takeaways: [
+                    "Kombiner alle koncepter fra lektionerne – variabler, arrays, objekter, eventos, DOM",
+                    "Start simpel – få det grundlæggende til at virke, og udvid efterfølgende",
+                    "Brug objekter for struktur – hver task er et objekt med ID, tekst, status",
+                    "localStorage lader dig gemme mellem siden-indlæsninger – data er ikke væk når siden gentændes",
+                    "Test grundigt – tilføj tasks, marker færdig, slet, lad siden og genopfriskes - virker det stadig?"
+                ]
             }
         ];
 

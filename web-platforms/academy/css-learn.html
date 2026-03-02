@@ -70,13 +70,79 @@
     </div>
 
     <script>
-        // CSS lessons will be injected here by the system
+        // CSS lessons integrated from CSS-TUTORIAL-DANSK-12-LEKTIONER.md
         const lessons = [
-            // Placeholder - will be replaced with actual content from curriculum agent
             {
-                title: "Loading CSS Curriculum...",
-                content: "Lessons are being loaded. Please wait.",
-                codeExample: "/* CSS will load shortly */"
+                title: "Selektorer & Egenskaber",
+                content: "<p>CSS (Cascading Style Sheets) er sproget, der gør websider pæne. Hvis HTML er \"huset\", er CSS \"maling og møbler\". En CSS-regel består af tre dele: selektor (hvad skal styles?), egenskab (hvad ændrer vi?) og værdi (hvad skal det være?).</p><p>De vigtigste selektorer er type-selektorer (tag-navne som p eller div), class-selektorer (start med .) og ID-selektorer (start med #). Classes bruges til at style grupper af elementer, ID'er til at style præcis ét element. Du bruger classes i 99% af tilfældene.</p><p>Det vigtigste at forstå er \"cascade\" - CSS læses fra top til bund, og senere regler tilsidesætter tidligere regler. Også, specificitetets regel: ID-selektorer slår class-selektorer, som slår type-selektorer.</p>",
+                codeExample: "/* Type-selektor */\np { color: #333333; font-size: 16px; }\n\n/* Class-selektor */\n.highlight { background-color: #ffff00; padding: 10px; }\n\n/* ID-selektor */\n#banner { background-color: #0066cc; color: white; padding: 20px; }",
+                takeaways: ["Selektor → Egenskab: Værdi er syntaksen for alle CSS-regler", "Classes bruger 99% af tiden - de er lette at forstå og genbrue", "Cascade betyder senere regler vinder, specificitet vinder over cascade", "ID > class > type i termer af specificitet"]
+            },
+            {
+                title: "Farver & Typografi",
+                content: "<p>Farver og skrifttyper er det første folk ser på din website. En god typografi og farvevalg gør siden både pæn og let at læse. Dårlig typografi får selv pæne designs til at se billige ud.</p><p>I CSS arbejder du med font-family (hvilken skrifttype?), font-size (hvor stor?) og font-weight (hvor fed?). font-family skal altid have backup-skrifttyper. Standard sikre skrifttyper er Arial, Helvetica, sans-serif for sans-serif, eller Georgia, serif for serif.</p><p>For farver bruger du color til tekst og background-color til baggrundsfarver. Hex-farver (som #0066cc) er mest normale. Husk kontrast: hvis teksten skal være læsbar, må tekst-farven og baggrunds-farven være mørk nok adskilt.</p>",
+                codeExample: "body {\n  font-family: Arial, Helvetica, sans-serif;\n  font-size: 16px;\n  color: #333333;\n}\n\nh1 {\n  font-size: 32px;\n  font-weight: bold;\n  color: #0066cc;\n}\n\np { line-height: 1.6; /* Afstand mellem linjer */ }",
+                takeaways: ["font-family skal altid have backup-skrifttyper", "line-height: 1.6 gør tekst meget lettere at læse", "Kontrast mellem tekst og baggrund er vigtig for læsbarhed", "Hex-farver: # + 6 tegn (#000000 sort, #ffffff hvid)"]
+            },
+            {
+                title: "Box Model",
+                content: "<p>Alt på en website består af \"kasser\" (boxes). Hver box har fire lag: content (selve teksten/billede), padding (luft inden i boxen omkring content), border (grænse omkring padding), og margin (luft uden for boxen).</p><p>Padding er afstanden inden i boxen - mellem tekst og kanten. Margin er afstanden uden for boxen - mellem denne box og naboboksene. Hvis du vil have luft omkring en knap, bruger du padding. Hvis du vil have luft mellem to knapper, bruger du margin.</p><p>Box-sizing: border-box er vigtig! Det ændrer hvordan boxene beregnes, så en box med width: 200px faktisk er 200px bred selv med padding og border. Brug box-sizing: border-box på alle elementer.</p>",
+                codeExample: "* { box-sizing: border-box; }\n\n.card {\n  background-color: #ffffff;\n  padding: 20px;\n  margin: 20px;\n  border: 2px solid #0066cc;\n}\n\n.button {\n  padding: 10px 20px;\n  margin: 5px;\n}",
+                takeaways: ["Content → Padding → Border → Margin er lagene i box modellen", "Padding er luft inden i, margin er luft uden for", "box-sizing: border-box skal være på næsten alle websites", "Shorthand: margin: 20px betyder 20px på alle sider"]
+            },
+            {
+                title: "Positionering",
+                content: "<p>Normalt følger HTML-elementer en \"normal flow\" - de stilles under hinanden fra top til bund. Men nogle gange vil du placere elementer forskellige steder. Det gør du med position egenskaben.</p><p>position: static (standard) følger normal flow. position: relative følger normal flow, men du kan flytte det med top, left osv. position: absolute fjerner helt fra normal flow og placeres i forhold til sin nærmeste \"positioned\" parent. position: fixed placeres i forhold til browserens viewport og bevæger sig ikke når siden scrolles.</p><p>z-index kontrollerer hvilket lag elementer ligger på. Højere tal = foran. Kun vigtig når elementer overlapper.</p>",
+                codeExample: ".moved {\n  position: relative;\n  top: 10px;\n  left: 20px;\n}\n\n.navbar {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  z-index: 1000;\n}\n\n.badge {\n  position: absolute;\n  top: 10px;\n  right: 10px;\n}",
+                takeaways: ["position: static følger normal flow, ignorer top/left/right/bottom", "position: relative flyt element uden at påvirke andre", "position: absolute fjern fra normal flow, placer i forhold til nærmeste positioned parent", "position: fixed perfekt til navigationsbarer og floating elementer"]
+            },
+            {
+                title: "Display & Flow",
+                content: "<p>Hver HTML-element har en standard display værdi der kontrollerer hvordan den opfører sig. De vigtigste display-typer er: block, inline, og flex.</p><p>display: block betyder elementet tager hele bredden (100%) og starter på ny linje. Du kan sætte width og height på block-elementer. display: inline betyder elementet tager kun plads som det behøver og flyder med teksten. Du kan IKKE sætte width og height på inline elementer.</p><p>display: inline-block er en hybrid - elementet flyder som inline men du kan sætte width/height på den. display: flex gør en container til en \"flexbox\" hvor børn-elementer kan arrangeres fleksibelt. Det er værktøjet til moderne layouts.</p>",
+                codeExample: ".block-element {\n  display: block;\n  width: 200px;\n}\n\n.inline-element {\n  display: inline;\n  padding: 10px;\n}\n\n.button-group {\n  display: flex;\n  gap: 10px;\n}\n\n.button-group > * {\n  flex: 1;\n}",
+                takeaways: ["display: block tager hele bredden, kan have width/height", "display: inline flyder med tekst, kan IKKE have width/height", "display: flex er moderne layout værktøj (læs næste lektion!)", "display: none fjerner element helt (tager ingen plads)"]
+            },
+            {
+                title: "Flexbox Mastery",
+                content: "<p>Flexbox er det vigtigste layout-værktøj i moderne CSS. Det løser 80% af alle layout-problemer uden at være svært. En flexbox-container kan arrangere dens børn-elementer på næsten enhver måde: horizontalt, vertikalt, lige fordelt, med afstand osv.</p><p>Du laver en flexbox ved at sætte display: flex på parent-elementet. Så kan du kontrollere børnene med egenskaber som gap (afstand), justify-content (fordel elementer horisontalt), align-items (fordel elementer vertikalt), og flex-direction (lav de lodret i stedet for vandret).</p><p>Børn-elementer kan have flex egenskaben som fortæller hvor meget plads de skal have. flex: 1 betyder \"tag en tredjedel hvis der er tre elementer med flex: 1\".</p>",
+                codeExample: ".container {\n  display: flex;\n  gap: 20px;\n  justify-content: space-between;\n  align-items: center;\n}\n\n.item {\n  flex: 1;\n}\n\n.navbar {\n  display: flex;\n  flex-direction: column;\n  gap: 10px;\n}",
+                takeaways: ["display: flex på parent gør børnene flexible", "gap: 20px afstand mellem elementer (meget praktisk!)", "justify-content fordeler elementer horisontalt", "align-items fordeler elementer vertikalt", "flex: 1 betyder tag lige meget plads"]
+            },
+            {
+                title: "CSS Grid Basics",
+                content: "<p>Hvis flexbox er \"en-dimensionel\" (enten rækker eller kolonner), er CSS Grid \"to-dimensionel\" (både rækker OG kolonner). Grid er kraftfuldt når du vil lave komplekse layouts med flere rækker og kolonner.</p><p>Du lavar en grid ved at sætte display: grid på parent-elementet. Så definerer du kolonner med grid-template-columns og rækker med grid-template-rows. For eksempel: grid-template-columns: 1fr 2fr 1fr betyder tre kolonner hvor den midterste er dobbelt så bred som de andre to.</p><p>1fr betyder \"en andel af fri plads\". gap virker på samme måde som i flexbox - afstand mellem elementer. Grid gør det muligt at bygge meget komplekse layouts med relativ simple CSS.</p>",
+                codeExample: ".grid-container {\n  display: grid;\n  grid-template-columns: 1fr 1fr 1fr;\n  gap: 20px;\n}\n\n.portfolio-grid {\n  display: grid;\n  grid-template-columns: repeat(3, 1fr);\n  gap: 20px;\n}\n\n.auto-grid {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));\n  gap: 20px;\n}",
+                takeaways: ["display: grid på parent gør børnene til grid-elementer", "grid-template-columns: 1fr 1fr 1fr definerer tre lige brede kolonner", "1fr betyder en andel af fri plads", "repeat(auto-fit, minmax(250px, 1fr)) er magisk for responsiv grid"]
+            },
+            {
+                title: "Responsive Design",
+                content: "<p>En responsiv website ser godt ud på både små skærme (mobiltelefoner), medium skærme (tablets) og store skærme (computere). Du lavar responsiv design med media queries - CSS regler der kun gælder når bestemte betingelser er opfyldt.</p><p>Mobile-first tilgang betyder at du først designer for små skærme (mobil), og så gør siden større/bedre for større skærme. Det er lettere end at designe for stor skærm og prøve at gøre det mindre.</p><p>Media queries starter med @media og en betingelse. For eksempel: @media (max-width: 768px) betyder \"hvis skærmen er 768px bred eller mindre\". max-width betyder \"under denne størrelse\"; min-width betyder \"over denne størrelse\".</p>",
+                codeExample: "/* Mobile først */\n.container { flex-direction: column; }\n\n.sidebar { display: none; }\n\n/* Tablet og større */\n@media (min-width: 768px) {\n  .container { flex-direction: row; }\n  .sidebar { display: block; flex: 1; }\n}\n\n/* Desktop */\n@media (min-width: 1024px) {\n  .container { max-width: 1200px; }\n}",
+                takeaways: ["@media (min-width: 768px) betyder hvis bredde er 768px eller større", "Mobile-først tilgang: design for mobil først", "max-width: 100% på billeder gør dem responsiv", "Fælles breakpoints: 480px (mobile), 768px (tablet), 1024px (desktop)"]
+            },
+            {
+                title: "Animationer & Transitions",
+                content: "<p>Animationer gør websites levende. CSS har to måder: transitions (glat ændring fra en tilstand til anden) og animations (komplekse bevægelser defineret trin-for-trin).</p><p>Transitions er enkleste. Du siger \"når noget ændres, ændres det glat over 0.3 sekunder i stedet for øjeblikkeligt\". For eksempel: transition: all 0.3s ease betyder \"alle egenskaber skal ændres glat over 0.3 sekunder\". Du kombinerer det ofte med :hover pseudo-class.</p><p>Animations er mere komplekse. Du definerer \"keyframes\" (trin) med @keyframes og siger \"play denne animation over 2 sekunder\". Brug animationer til effekter som spinning loading-icons eller fade-in ved page-load.</p>",
+                codeExample: ".button {\n  transition: all 0.3s ease;\n}\n\n.button:hover {\n  background-color: #0052a3;\n  transform: scale(1.05);\n}\n\n@keyframes fadeIn {\n  from { opacity: 0; }\n  to { opacity: 1; }\n}\n\n.fade-in { animation: fadeIn 1s ease; }",
+                takeaways: ["transition: all 0.3s ease gør ændringer glat", "transition virker ofte best med :hover", "@keyframes definerer trin-for-trin animationer", "infinite betyder animationen gentager sig for evigt"]
+            },
+            {
+                title: "Pseudo-klasser & Tilstande",
+                content: "<p>Pseudo-klasser er CSS-selektorer der matcher elementer baseret på deres tilstand eller position i HTML. De starter med : (enkelt kolon). De vigtigste er :hover (når musekursor er over), :focus (når element er fokuseret, f.eks. input felt), og :active (når element klikkes på).</p><p>:hover bruges typisk på links og knapper for at give feedback når brugeren peger på dem. :focus er vigtig for keyboard-brugere - når de trykker Tab for at navigere, kan du se hvilken knap der er fokuseret.</p><p>:first-child og :last-child matcher første/sidste barn i en parent. :nth-child(2) matcher barn nummer 2. :not(selector) matcher alt undtagen noget specifikt. :disabled matcher deaktiverede form-elementer.</p>",
+                codeExample: "a:hover { color: #ff6600; text-decoration: underline; }\n\ninput:focus {\n  border-color: #0066cc;\n  outline: none;\n  box-shadow: 0 0 5px rgba(0, 102, 204, 0.3);\n}\n\nli:nth-child(odd) { background-color: #f5f5f5; }\n\nbutton:disabled { opacity: 0.6; cursor: not-allowed; }",
+                takeaways: [":hover når musekursor er over elementet", ":focus når element er fokuseret (vigtig for keyboard-brugere)", ":active når element klikkes på", ":nth-child(odd) for hvert andet element"]
+            },
+            {
+                title: "CSS Best Practices",
+                content: "<p>God CSS-organisation betyder din kode er nem at vedligeholde, nem at udvide, og nem for andre at forstå. Der er flere metoder til at organisere CSS, men vi fokuserer på praktisk best practices som små håndværker-virksomheder kan bruge.</p><p>Navngivning: Brug beskrivende class-navne. button-primary er bedre end btn1. card-service er bedre end box. Hvis du kan læse class-navnet og forstå hvad det gør, er du på rette spor.</p><p>File-organisation: Hold CSS i en separat fil (ikke inline i HTML). Hvis siden har mere end cirka 200 linjer CSS, overvej at dele det op i flere filer: base.css (globale styles), components.css (genbrugelige dele), layout.css (side-struktur).</p>",
+                codeExample: "/* BEM naming */\n.user-card { }\n.user-card__image { }\n.user-card__name { }\n.user-card--featured { }\n\n/* CSS-variabler */\n:root {\n  --color-primary: #0066cc;\n  --spacing-md: 20px;\n}\n\n.button { background-color: var(--color-primary); }",
+                takeaways: ["Navngivning: Brug beskrivende, forståelige class-navne", "Organisering: Del CSS op i sektor (reset, typografi, komponenter)", "BEM naming: Block__Element--Modifier gør CSS-struktur tydelig", "CSS-variabler: Brug :root og var() for konsistens"]
+            },
+            {
+                title: "Bygning af en Komplet Website",
+                content: "<p>Nu er det tid til at bygge en rigtig website - en komplet, responsiv side. Vi skal samle alt vi har lært: HTML-struktur, CSS-selektorer, flexbox, responsive design, animationer, og god organisation.</p><p>Projektet har: en header med navigation, hero-sektion, tjeneste-kort, portfolio-galleri, testimonial-sektion, og en footer. Vi bruger flexbox og grid til layout, media queries til responsiv design, og transitions til interaktivitet.</p><p>Plan: 1) Struktur HTML med semantic tags, 2) Skid CSS op i sektioner, 3) Brug classes for styling (ingen inline styles), 4) Test på både mobil (380px) og desktop (1200px), 5) Tilføj transitions/animations for polish.</p>",
+                codeExample: "/* Structure */\n<header><nav>...</nav></header>\n<section class=\"hero\">...</section>\n<section class=\"services\"><div class=\"grid\">...</div></section>\n<footer><div class=\"footer-grid\">...</div></footer>\n\n/* CSS-variabler */\n:root { --primary: #0066cc; --spacing-lg: 40px; }\n\n/* Reusable classes */\n.button { } .card { } .grid { }",
+                takeaways: ["Struktur først: Skelettet er HTML, krydret er CSS", "Responsive design: Tester på mobil (380px), tablet (768px), desktop (1200px)", "Reusable components: .button, .card, .grid bruges flere steder", "CSS-variabler: :root gør konsistens nem"]
             }
         ];
 
