@@ -281,7 +281,7 @@
           Download skabelonen og tilpas den på få minutter. Vi sender guide + alt hvad du har brug for til din email.
         </p>
 
-        <form class="flex flex-col gap-md">
+        <form action="/api/subscribe" method="POST" class="flex flex-col gap-md">
           <div class="form-group">
             <label for="name">Dit Navn</label>
             <input type="text" id="name" name="name" placeholder="Hvad hedder du?" required>
