@@ -1,0 +1,42 @@
+﻿2026-03-02T11:22:46.9468550Z ##[group]Run amondnet/vercel-action@v20
+2026-03-02T11:22:46.9469131Z with:
+2026-03-02T11:22:46.9469836Z   vercel-token: ***
+2026-03-02T11:22:46.9470485Z   vercel-org-id: ***
+2026-03-02T11:22:46.9471126Z   vercel-project-id: ***
+2026-03-02T11:22:46.9471575Z   github-comment: true
+2026-03-02T11:22:46.9471997Z   github-deployment: false
+2026-03-02T11:22:46.9472424Z ##[endgroup]
+2026-03-02T11:22:47.0124700Z set environment for vercel cli
+2026-03-02T11:22:47.0125671Z set env variable : VERCEL_ORG_ID
+2026-03-02T11:22:47.0127121Z set env variable : VERCEL_PROJECT_ID
+2026-03-02T11:22:47.0222519Z [command]/usr/local/bin/npx vercel  -t *** -m githubCommitSha=15b62e34ece2ce246d35d490deb7b9bbd6b19c46 -m githubCommitAuthorName=aarupthomas-rgb -m githubCommitAuthorLogin=aarupthomas-rgb -m githubDeployment=1 -m githubOrg=aarupthomas-rgb -m githubRepo=humanified-ecosystem -m githubCommitOrg=aarupthomas-rgb -m githubCommitRepo=humanified-ecosystem -m githubCommitMessage="Fix: Add API form action to subscription forms
+2026-03-02T11:22:47.0227864Z 
+2026-03-02T11:22:47.0228501Z - humanified/index.html: Added action=/api/subscribe method=POST
+2026-03-02T11:22:47.0229871Z - ohgodmode/index.html: Added action=/api/subscribe method=POST
+2026-03-02T11:22:47.0231292Z - Forms now POST to API instead of GET
+2026-03-02T11:22:47.0232421Z - Email capture pipeline now complete" -m githubCommitRef=main
+2026-03-02T11:22:52.6945338Z npm warn exec The following package was not found and will be installed: vercel@50.25.4
+2026-03-02T11:22:52.6947774Z 
+2026-03-02T11:22:52.6948702Z npm warn exec The following package was not found and will be installed: vercel@50.25.4
+2026-03-02T11:23:01.9841836Z npm warn deprecated tar@7.5.7: Old versions of tar are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+2026-03-02T11:23:01.9848724Z 
+2026-03-02T11:23:01.9850501Z npm warn deprecated tar@7.5.7: Old versions of tar are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+2026-03-02T11:23:04.2234672Z > NOTE: The Vercel CLI now collects telemetry regarding usage of the CLI.
+2026-03-02T11:23:04.2237299Z 
+2026-03-02T11:23:04.2237664Z > NOTE: The Vercel CLI now collects telemetry regarding usage of the CLI.
+2026-03-02T11:23:04.2238527Z > This information is used to shape the CLI roadmap and prioritize features.
+2026-03-02T11:23:04.2239317Z > You can learn more, including how to opt-out if you'd not like to participate in this program, by visiting the following URL:
+2026-03-02T11:23:04.2240129Z > https://vercel.com/docs/cli/about-telemetry
+2026-03-02T11:23:04.2240460Z 
+2026-03-02T11:23:04.2240760Z > This information is used to shape the CLI roadmap and prioritize features.
+2026-03-02T11:23:04.2241490Z > You can learn more, including how to opt-out if you'd not like to participate in this program, by visiting the following URL:
+2026-03-02T11:23:04.2242688Z > https://vercel.com/docs/cli/about-telemetry
+2026-03-02T11:23:04.2692562Z Retrieving project…
+2026-03-02T11:23:04.2693079Z 
+2026-03-02T11:23:04.2693315Z Retrieving project…
+2026-03-02T11:23:04.5524888Z Error: Project not found ({"VERCEL_PROJECT_ID":"***","VERCEL_ORG_ID":"***"})
+2026-03-02T11:23:04.5525416Z 
+2026-03-02T11:23:04.5525429Z 
+2026-03-02T11:23:04.5526224Z Error: Project not found ({"VERCEL_PROJECT_ID":"***","VERCEL_ORG_ID":"***"})
+2026-03-02T11:23:04.5526585Z 
+2026-03-02T11:23:04.8371192Z ##[error]The process '/usr/local/bin/npx' failed with exit code 1

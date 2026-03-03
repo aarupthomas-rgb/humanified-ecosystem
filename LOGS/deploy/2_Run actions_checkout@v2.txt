@@ -1,0 +1,113 @@
+﻿2026-03-02T11:22:46.4809829Z ##[group]Run actions/checkout@v2
+2026-03-02T11:22:46.4810714Z with:
+2026-03-02T11:22:46.4811235Z   repository: aarupthomas-rgb/humanified-ecosystem
+2026-03-02T11:22:46.4812009Z   token: ***
+2026-03-02T11:22:46.4812513Z   ssh-strict: true
+2026-03-02T11:22:46.4813161Z   persist-credentials: true
+2026-03-02T11:22:46.4813626Z   clean: true
+2026-03-02T11:22:46.4814003Z   fetch-depth: 1
+2026-03-02T11:22:46.4814616Z   lfs: false
+2026-03-02T11:22:46.4815009Z   submodules: false
+2026-03-02T11:22:46.4815431Z   set-safe-directory: true
+2026-03-02T11:22:46.4816166Z ##[endgroup]
+2026-03-02T11:22:46.5858495Z Syncing repository: aarupthomas-rgb/humanified-ecosystem
+2026-03-02T11:22:46.5860487Z ##[group]Getting Git version info
+2026-03-02T11:22:46.5861403Z Working directory is '/home/runner/work/humanified-ecosystem/humanified-ecosystem'
+2026-03-02T11:22:46.5862573Z [command]/usr/bin/git version
+2026-03-02T11:22:46.5935435Z git version 2.53.0
+2026-03-02T11:22:46.5960019Z ##[endgroup]
+2026-03-02T11:22:46.5975643Z Temporarily overriding HOME='/home/runner/work/_temp/2b440429-b044-4b49-b5b0-993595f9eeed' before making global git config changes
+2026-03-02T11:22:46.5977285Z Adding repository directory to the temporary git global config as a safe directory
+2026-03-02T11:22:46.5979124Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/humanified-ecosystem/humanified-ecosystem
+2026-03-02T11:22:46.6022520Z Deleting the contents of '/home/runner/work/humanified-ecosystem/humanified-ecosystem'
+2026-03-02T11:22:46.6026733Z ##[group]Initializing the repository
+2026-03-02T11:22:46.6030041Z [command]/usr/bin/git init /home/runner/work/humanified-ecosystem/humanified-ecosystem
+2026-03-02T11:22:46.6173234Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-03-02T11:22:46.6175157Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-03-02T11:22:46.6176769Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-03-02T11:22:46.6178134Z hint: call:
+2026-03-02T11:22:46.6178915Z hint:
+2026-03-02T11:22:46.6180143Z hint: 	git config --global init.defaultBranch <name>
+2026-03-02T11:22:46.6181267Z hint:
+2026-03-02T11:22:46.6182017Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-03-02T11:22:46.6183031Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-03-02T11:22:46.6183834Z hint:
+2026-03-02T11:22:46.6184245Z hint: 	git branch -m <name>
+2026-03-02T11:22:46.6185104Z hint:
+2026-03-02T11:22:46.6185792Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-03-02T11:22:46.6187578Z Initialized empty Git repository in /home/runner/work/humanified-ecosystem/humanified-ecosystem/.git/
+2026-03-02T11:22:46.6189680Z [command]/usr/bin/git remote add origin https://github.com/aarupthomas-rgb/humanified-ecosystem
+2026-03-02T11:22:46.6225546Z ##[endgroup]
+2026-03-02T11:22:46.6226521Z ##[group]Disabling automatic garbage collection
+2026-03-02T11:22:46.6228995Z [command]/usr/bin/git config --local gc.auto 0
+2026-03-02T11:22:46.6258938Z ##[endgroup]
+2026-03-02T11:22:46.6265146Z ##[group]Setting up auth
+2026-03-02T11:22:46.6265892Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-03-02T11:22:46.6294995Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-03-02T11:22:46.6679559Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-03-02T11:22:46.6710075Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-03-02T11:22:46.6942808Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-03-02T11:22:46.6979330Z ##[endgroup]
+2026-03-02T11:22:46.6981071Z ##[group]Fetching the repository
+2026-03-02T11:22:46.6989118Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --progress --no-recurse-submodules --depth=1 origin +15b62e34ece2ce246d35d490deb7b9bbd6b19c46:refs/remotes/origin/main
+2026-03-02T11:22:46.8872343Z remote: Enumerating objects: 26, done.        
+2026-03-02T11:22:46.8873929Z remote: Counting objects:   3% (1/26)        
+2026-03-02T11:22:46.8875499Z remote: Counting objects:   7% (2/26)        
+2026-03-02T11:22:46.8876588Z remote: Counting objects:  11% (3/26)        
+2026-03-02T11:22:46.8877660Z remote: Counting objects:  15% (4/26)        
+2026-03-02T11:22:46.8878692Z remote: Counting objects:  19% (5/26)        
+2026-03-02T11:22:46.8879503Z remote: Counting objects:  23% (6/26)        
+2026-03-02T11:22:46.8880146Z remote: Counting objects:  26% (7/26)        
+2026-03-02T11:22:46.8881100Z remote: Counting objects:  30% (8/26)        
+2026-03-02T11:22:46.8882088Z remote: Counting objects:  34% (9/26)        
+2026-03-02T11:22:46.8882774Z remote: Counting objects:  38% (10/26)        
+2026-03-02T11:22:46.8883745Z remote: Counting objects:  42% (11/26)        
+2026-03-02T11:22:46.8885012Z remote: Counting objects:  46% (12/26)        
+2026-03-02T11:22:46.8885762Z remote: Counting objects:  50% (13/26)        
+2026-03-02T11:22:46.8886856Z remote: Counting objects:  53% (14/26)        
+2026-03-02T11:22:46.8887707Z remote: Counting objects:  57% (15/26)        
+2026-03-02T11:22:46.8888359Z remote: Counting objects:  61% (16/26)        
+2026-03-02T11:22:46.8889061Z remote: Counting objects:  65% (17/26)        
+2026-03-02T11:22:46.8889695Z remote: Counting objects:  69% (18/26)        
+2026-03-02T11:22:46.8890289Z remote: Counting objects:  73% (19/26)        
+2026-03-02T11:22:46.8890861Z remote: Counting objects:  76% (20/26)        
+2026-03-02T11:22:46.8891451Z remote: Counting objects:  80% (21/26)        
+2026-03-02T11:22:46.8892019Z remote: Counting objects:  84% (22/26)        
+2026-03-02T11:22:46.8892578Z remote: Counting objects:  88% (23/26)        
+2026-03-02T11:22:46.8893161Z remote: Counting objects:  92% (24/26)        
+2026-03-02T11:22:46.8893966Z remote: Counting objects:  96% (25/26)        
+2026-03-02T11:22:46.8894732Z remote: Counting objects: 100% (26/26)        
+2026-03-02T11:22:46.8895347Z remote: Counting objects: 100% (26/26), done.        
+2026-03-02T11:22:46.8895998Z remote: Compressing objects:   5% (1/19)        
+2026-03-02T11:22:46.8896761Z remote: Compressing objects:  10% (2/19)        
+2026-03-02T11:22:46.8897358Z remote: Compressing objects:  15% (3/19)        
+2026-03-02T11:22:46.8897957Z remote: Compressing objects:  21% (4/19)        
+2026-03-02T11:22:46.8898563Z remote: Compressing objects:  26% (5/19)        
+2026-03-02T11:22:46.8899141Z remote: Compressing objects:  31% (6/19)        
+2026-03-02T11:22:46.8899738Z remote: Compressing objects:  36% (7/19)        
+2026-03-02T11:22:46.8900327Z remote: Compressing objects:  42% (8/19)        
+2026-03-02T11:22:46.8900907Z remote: Compressing objects:  47% (9/19)        
+2026-03-02T11:22:46.8901507Z remote: Compressing objects:  52% (10/19)        
+2026-03-02T11:22:46.8902112Z remote: Compressing objects:  57% (11/19)        
+2026-03-02T11:22:46.8902706Z remote: Compressing objects:  63% (12/19)        
+2026-03-02T11:22:46.8903293Z remote: Compressing objects:  68% (13/19)        
+2026-03-02T11:22:46.8903890Z remote: Compressing objects:  73% (14/19)        
+2026-03-02T11:22:46.8904591Z remote: Compressing objects:  78% (15/19)        
+2026-03-02T11:22:46.8905186Z remote: Compressing objects:  84% (16/19)        
+2026-03-02T11:22:46.8905781Z remote: Compressing objects:  89% (17/19)        
+2026-03-02T11:22:46.8906375Z remote: Compressing objects:  94% (18/19)        
+2026-03-02T11:22:46.8922209Z remote: Compressing objects: 100% (19/19)        
+2026-03-02T11:22:46.8923367Z remote: Compressing objects: 100% (19/19), done.        
+2026-03-02T11:22:46.8933600Z remote: Total 26 (delta 2), reused 19 (delta 0), pack-reused 0 (from 0)        
+2026-03-02T11:22:46.9038591Z From https://github.com/aarupthomas-rgb/humanified-ecosystem
+2026-03-02T11:22:46.9040130Z  * [new ref]         15b62e34ece2ce246d35d490deb7b9bbd6b19c46 -> origin/main
+2026-03-02T11:22:46.9074752Z ##[endgroup]
+2026-03-02T11:22:46.9077223Z ##[group]Determining the checkout info
+2026-03-02T11:22:46.9078197Z ##[endgroup]
+2026-03-02T11:22:46.9078866Z ##[group]Checking out the ref
+2026-03-02T11:22:46.9081424Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-03-02T11:22:46.9141211Z Switched to a new branch 'main'
+2026-03-02T11:22:46.9144601Z branch 'main' set up to track 'origin/main'.
+2026-03-02T11:22:46.9150074Z ##[endgroup]
+2026-03-02T11:22:46.9184153Z [command]/usr/bin/git log -1 --format='%H'
+2026-03-02T11:22:46.9208993Z '15b62e34ece2ce246d35d490deb7b9bbd6b19c46'

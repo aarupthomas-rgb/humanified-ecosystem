@@ -1,0 +1,32 @@
+﻿2026-03-02T11:22:45.3220428Z Current runner version: '2.331.0'
+2026-03-02T11:22:45.3257916Z ##[group]Runner Image Provisioner
+2026-03-02T11:22:45.3259387Z Hosted Compute Agent
+2026-03-02T11:22:45.3260380Z Version: 20260213.493
+2026-03-02T11:22:45.3261444Z Commit: 5c115507f6dd24b8de37d8bbe0bb4509d0cc0fa3
+2026-03-02T11:22:45.3262810Z Build Date: 2026-02-13T00:28:41Z
+2026-03-02T11:22:45.3263965Z Worker ID: {96094920-095b-45b6-9e94-ebbc9cf4af16}
+2026-03-02T11:22:45.3265422Z Azure Region: eastus2
+2026-03-02T11:22:45.3266447Z ##[endgroup]
+2026-03-02T11:22:45.3268953Z ##[group]Operating System
+2026-03-02T11:22:45.3270002Z Ubuntu
+2026-03-02T11:22:45.3271061Z 24.04.3
+2026-03-02T11:22:45.3271896Z LTS
+2026-03-02T11:22:45.3272800Z ##[endgroup]
+2026-03-02T11:22:45.3273824Z ##[group]Runner Image
+2026-03-02T11:22:45.3274952Z Image: ubuntu-24.04
+2026-03-02T11:22:45.3276071Z Version: 20260224.36.1
+2026-03-02T11:22:45.3277977Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260224.36/images/ubuntu/Ubuntu2404-Readme.md
+2026-03-02T11:22:45.3280984Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260224.36
+2026-03-02T11:22:45.3282709Z ##[endgroup]
+2026-03-02T11:22:45.3285056Z ##[group]GITHUB_TOKEN Permissions
+2026-03-02T11:22:45.3288194Z Contents: read
+2026-03-02T11:22:45.3289053Z Metadata: read
+2026-03-02T11:22:45.3289978Z Packages: read
+2026-03-02T11:22:45.3290973Z ##[endgroup]
+2026-03-02T11:22:45.3293863Z Secret source: Actions
+2026-03-02T11:22:45.3295339Z Prepare workflow directory
+2026-03-02T11:22:45.3747907Z Prepare all required actions
+2026-03-02T11:22:45.3802991Z Getting action download info
+2026-03-02T11:22:45.6700011Z Download action repository 'actions/checkout@v2' (SHA:ee0669bd1cc54295c223e0bb666b733df41de1c5)
+2026-03-02T11:22:46.0265710Z Download action repository 'amondnet/vercel-action@v20' (SHA:2d78157ee070f28ff89dd4da74e0369fc26d3b34)
+2026-03-02T11:22:46.4114244Z Complete job name: deploy
