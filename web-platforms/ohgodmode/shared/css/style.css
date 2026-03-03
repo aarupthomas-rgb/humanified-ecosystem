@@ -1,0 +1,96 @@
+/* ========================================
+   HUMANIFIED BRAND SYSTEM V1
+   Main import file - loads all modules
+   ======================================== */
+
+/* 1. DESIGN TOKENS & VARIABLES */
+@import url('./variables.css');
+
+/* 2. TYPOGRAPHY SYSTEM */
+@import url('./typography.css');
+
+/* 3. COMPONENT LIBRARY */
+@import url('./components.css');
+
+/* 4. LAYOUT UTILITIES */
+@import url('./layout.css');
+
+/* ========================================
+   GLOBAL STYLES
+   ======================================== */
+
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  font-weight: var(--weight-normal);
+}
+
+/* MAIN CONTENT */
+main {
+  min-height: 100vh;
+}
+
+/* HEADER */
+header {
+  background-color: var(--bg-secondary);
+  border-bottom: 1px solid var(--bg-tertiary);
+  padding: var(--spacing-md) 0;
+  position: sticky;
+  top: 0;
+  z-index: var(--z-dropdown);
+}
+
+/* FOOTER */
+footer {
+  background-color: var(--bg-secondary);
+  border-top: 1px solid var(--bg-tertiary);
+  padding: var(--spacing-3xl) var(--spacing-lg);
+  margin-top: var(--spacing-3xl);
+}
+
+/* IMAGES */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* SCROLLBAR */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--bg-tertiary);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gray-dark);
+}
+
+/* PRINT STYLES */
+@media print {
+  body {
+    background-color: var(--color-white);
+    color: var(--color-text);
+  }
+}
