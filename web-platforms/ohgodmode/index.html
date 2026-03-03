@@ -17,8 +17,25 @@
     }
 
     .hero-content {
-      max-width: 800px;
+      max-width: 900px;
       text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--spacing-2xl);
+    }
+
+    .hero-rocket {
+      width: 280px;
+      height: auto;
+      max-width: 100%;
+      animation: float 6s ease-in-out infinite;
+      margin-bottom: var(--spacing-lg);
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
     }
 
     .hero h1 {
@@ -168,7 +185,8 @@
     <!-- HERO SECTION -->
     <section class="hero">
       <div class="hero-content">
-        <h1>Byg Dit Brand. <span class="hero-accent">Uden Stresset.</span></h1>
+        <img src="../ASSETS/ohgodmode-rocket.png" alt="OH GOD MODE Rocket" class="hero-rocket">
+        <h1 style="margin-top: 0;">Hjælp til at bygge<br><span class="hero-accent">Byg for at hjælpe</span></h1>
         <p class="hero-subtitle">
           Gratis, moderne skabeloner til tømrer, VVS, maler og alle håndværk. Start med at opbygge din brand på få minutter.
         </p>
