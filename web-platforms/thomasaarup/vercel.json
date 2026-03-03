@@ -5,6 +5,14 @@
   "public": true,
   "routes": [
     {
+      "src": "^/academy/?$",
+      "dest": "/academy/index.html"
+    },
+    {
+      "src": "^/academy/(.*)$",
+      "dest": "/academy/$1"
+    },
+    {
       "src": "^/(.*)$",
       "dest": "/$1",
       "status": 200
