@@ -1,0 +1,197 @@
+﻿2026-03-03T14:17:38.8172435Z Current runner version: '2.331.0'
+2026-03-03T14:17:38.8208718Z ##[group]Runner Image Provisioner
+2026-03-03T14:17:38.8209687Z Hosted Compute Agent
+2026-03-03T14:17:38.8210280Z Version: 20260213.493
+2026-03-03T14:17:38.8211003Z Commit: 5c115507f6dd24b8de37d8bbe0bb4509d0cc0fa3
+2026-03-03T14:17:38.8211824Z Build Date: 2026-02-13T00:28:41Z
+2026-03-03T14:17:38.8212532Z Worker ID: {ddb68b69-a919-414a-a009-747fbcc8d40c}
+2026-03-03T14:17:38.8213219Z Azure Region: northcentralus
+2026-03-03T14:17:38.8213965Z ##[endgroup]
+2026-03-03T14:17:38.8215355Z ##[group]Operating System
+2026-03-03T14:17:38.8215968Z Ubuntu
+2026-03-03T14:17:38.8216884Z 24.04.3
+2026-03-03T14:17:38.8217414Z LTS
+2026-03-03T14:17:38.8217836Z ##[endgroup]
+2026-03-03T14:17:38.8218478Z ##[group]Runner Image
+2026-03-03T14:17:38.8219057Z Image: ubuntu-24.04
+2026-03-03T14:17:38.8219667Z Version: 20260224.36.1
+2026-03-03T14:17:38.8220886Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260224.36/images/ubuntu/Ubuntu2404-Readme.md
+2026-03-03T14:17:38.8222518Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260224.36
+2026-03-03T14:17:38.8223402Z ##[endgroup]
+2026-03-03T14:17:38.8224606Z ##[group]GITHUB_TOKEN Permissions
+2026-03-03T14:17:38.8227022Z Contents: read
+2026-03-03T14:17:38.8227558Z Metadata: read
+2026-03-03T14:17:38.8228217Z Packages: read
+2026-03-03T14:17:38.8228766Z ##[endgroup]
+2026-03-03T14:17:38.8230783Z Secret source: Actions
+2026-03-03T14:17:38.8231957Z Prepare workflow directory
+2026-03-03T14:17:38.8638079Z Prepare all required actions
+2026-03-03T14:17:38.8694417Z Getting action download info
+2026-03-03T14:17:39.2262468Z Download action repository 'actions/checkout@v4' (SHA:34e114876b0b11c390a56381ad16ebd13914f8d5)
+2026-03-03T14:17:39.3787452Z Download action repository 'amondnet/vercel-action@v25' (SHA:16e87c0a08142b0d0d33b76aeaf20823c381b9b9)
+2026-03-03T14:17:39.9194811Z Complete job name: deploy
+2026-03-03T14:17:39.9914726Z ##[group]Run actions/checkout@v4
+2026-03-03T14:17:39.9915703Z with:
+2026-03-03T14:17:39.9916457Z   repository: aarupthomas-rgb/humanified-ecosystem
+2026-03-03T14:17:39.9917362Z   token: ***
+2026-03-03T14:17:39.9917814Z   ssh-strict: true
+2026-03-03T14:17:39.9918280Z   ssh-user: git
+2026-03-03T14:17:39.9918759Z   persist-credentials: true
+2026-03-03T14:17:39.9919286Z   clean: true
+2026-03-03T14:17:39.9919762Z   sparse-checkout-cone-mode: true
+2026-03-03T14:17:39.9920336Z   fetch-depth: 1
+2026-03-03T14:17:39.9920803Z   fetch-tags: false
+2026-03-03T14:17:39.9921289Z   show-progress: true
+2026-03-03T14:17:39.9921770Z   lfs: false
+2026-03-03T14:17:39.9922207Z   submodules: false
+2026-03-03T14:17:39.9922688Z   set-safe-directory: true
+2026-03-03T14:17:39.9923471Z ##[endgroup]
+2026-03-03T14:17:40.0999894Z Syncing repository: aarupthomas-rgb/humanified-ecosystem
+2026-03-03T14:17:40.1002005Z ##[group]Getting Git version info
+2026-03-03T14:17:40.1003119Z Working directory is '/home/runner/work/humanified-ecosystem/humanified-ecosystem'
+2026-03-03T14:17:40.1004452Z [command]/usr/bin/git version
+2026-03-03T14:17:40.1090353Z git version 2.53.0
+2026-03-03T14:17:40.1116099Z ##[endgroup]
+2026-03-03T14:17:40.1130655Z Temporarily overriding HOME='/home/runner/work/_temp/9418a99e-cb76-452c-a09e-3a6fa40027ae' before making global git config changes
+2026-03-03T14:17:40.1133469Z Adding repository directory to the temporary git global config as a safe directory
+2026-03-03T14:17:40.1142911Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/humanified-ecosystem/humanified-ecosystem
+2026-03-03T14:17:40.1184284Z Deleting the contents of '/home/runner/work/humanified-ecosystem/humanified-ecosystem'
+2026-03-03T14:17:40.1187937Z ##[group]Initializing the repository
+2026-03-03T14:17:40.1191963Z [command]/usr/bin/git init /home/runner/work/humanified-ecosystem/humanified-ecosystem
+2026-03-03T14:17:40.1313165Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-03-03T14:17:40.1314705Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-03-03T14:17:40.1316673Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-03-03T14:17:40.1318210Z hint: call:
+2026-03-03T14:17:40.1318888Z hint:
+2026-03-03T14:17:40.1320010Z hint: 	git config --global init.defaultBranch <name>
+2026-03-03T14:17:40.1321477Z hint:
+2026-03-03T14:17:40.1322851Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-03-03T14:17:40.1325040Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-03-03T14:17:40.1326885Z hint:
+2026-03-03T14:17:40.1327645Z hint: 	git branch -m <name>
+2026-03-03T14:17:40.1328584Z hint:
+2026-03-03T14:17:40.1329970Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-03-03T14:17:40.1332578Z Initialized empty Git repository in /home/runner/work/humanified-ecosystem/humanified-ecosystem/.git/
+2026-03-03T14:17:40.1336641Z [command]/usr/bin/git remote add origin https://github.com/aarupthomas-rgb/humanified-ecosystem
+2026-03-03T14:17:40.1370600Z ##[endgroup]
+2026-03-03T14:17:40.1372058Z ##[group]Disabling automatic garbage collection
+2026-03-03T14:17:40.1374809Z [command]/usr/bin/git config --local gc.auto 0
+2026-03-03T14:17:40.1405426Z ##[endgroup]
+2026-03-03T14:17:40.1407082Z ##[group]Setting up auth
+2026-03-03T14:17:40.1413352Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-03-03T14:17:40.1447612Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-03-03T14:17:40.1829470Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-03-03T14:17:40.1860324Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-03-03T14:17:40.2092038Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-03-03T14:17:40.2124197Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-03-03T14:17:40.2370895Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-03-03T14:17:40.2406055Z ##[endgroup]
+2026-03-03T14:17:40.2407938Z ##[group]Fetching the repository
+2026-03-03T14:17:40.2417227Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +71b0ba052bda6453193d9d5b3fc2438baa9cf0af:refs/remotes/origin/main
+2026-03-03T14:17:40.7783711Z From https://github.com/aarupthomas-rgb/humanified-ecosystem
+2026-03-03T14:17:40.7788118Z  * [new ref]         71b0ba052bda6453193d9d5b3fc2438baa9cf0af -> origin/main
+2026-03-03T14:17:40.7821695Z ##[endgroup]
+2026-03-03T14:17:40.7823709Z ##[group]Determining the checkout info
+2026-03-03T14:17:40.7825794Z ##[endgroup]
+2026-03-03T14:17:40.7829919Z [command]/usr/bin/git sparse-checkout disable
+2026-03-03T14:17:40.7880000Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-03-03T14:17:40.7910858Z ##[group]Checking out the ref
+2026-03-03T14:17:40.7914281Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-03-03T14:17:40.8109387Z Switched to a new branch 'main'
+2026-03-03T14:17:40.8112171Z branch 'main' set up to track 'origin/main'.
+2026-03-03T14:17:40.8150369Z ##[endgroup]
+2026-03-03T14:17:40.8153696Z [command]/usr/bin/git log -1 --format=%H
+2026-03-03T14:17:40.8183712Z 71b0ba052bda6453193d9d5b3fc2438baa9cf0af
+2026-03-03T14:17:40.8564667Z ##[group]Run amondnet/vercel-action@v25
+2026-03-03T14:17:40.8565871Z with:
+2026-03-03T14:17:40.8567702Z   vercel-token: ***
+2026-03-03T14:17:40.8568806Z   vercel-org-id: ***
+2026-03-03T14:17:40.8569989Z   vercel-project-id: ***
+2026-03-03T14:17:40.8571031Z   github-comment: true
+2026-03-03T14:17:40.8572028Z   github-deployment: false
+2026-03-03T14:17:40.8573323Z ##[endgroup]
+2026-03-03T14:17:40.9503981Z set environment for vercel cli
+2026-03-03T14:17:40.9505921Z set env variable : VERCEL_ORG_ID
+2026-03-03T14:17:40.9508385Z set env variable : VERCEL_PROJECT_ID
+2026-03-03T14:17:40.9617413Z [command]/usr/local/bin/npx vercel@25.1.0 -t *** -m githubCommitSha=71b0ba052bda6453193d9d5b3fc2438baa9cf0af -m githubCommitAuthorName=aarupthomas-rgb -m githubCommitAuthorLogin=aarupthomas-rgb -m githubDeployment=1 -m githubOrg=aarupthomas-rgb -m githubRepo=humanified-ecosystem -m githubCommitOrg=aarupthomas-rgb -m githubCommitRepo=humanified-ecosystem -m githubCommitMessage="Fix asset paths for Vercel split projects
+2026-03-03T14:17:40.9624008Z 
+2026-03-03T14:17:40.9624705Z Updated path references in all three site HTML files.
+2026-03-03T14:17:40.9626382Z Asset images now correctly resolve on Vercel deployments.
+2026-03-03T14:17:40.9627377Z 
+2026-03-03T14:17:40.9628293Z Co-Authored-By: Claude Haiku 4.5 <noreply@anthropic.com>" -m githubCommitRef=main
+2026-03-03T14:17:47.9243516Z npm warn exec The following package was not found and will be installed: vercel@25.1.0
+2026-03-03T14:17:47.9244791Z 
+2026-03-03T14:17:47.9245325Z npm warn exec The following package was not found and will be installed: vercel@25.1.0
+2026-03-03T14:17:53.8110586Z npm warn deprecated osenv@0.1.5: This package is no longer supported.
+2026-03-03T14:17:53.8111515Z 
+2026-03-03T14:17:53.8112118Z npm warn deprecated osenv@0.1.5: This package is no longer supported.
+2026-03-03T14:17:54.5115915Z npm warn deprecated are-we-there-yet@2.0.0: This package is no longer supported.
+2026-03-03T14:17:54.5119284Z 
+2026-03-03T14:17:54.5123989Z npm warn deprecated are-we-there-yet@2.0.0: This package is no longer supported.
+2026-03-03T14:17:54.6003932Z npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+2026-03-03T14:17:54.6008025Z 
+2026-03-03T14:17:54.6010011Z npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+2026-03-03T14:17:54.6657892Z npm warn deprecated rimraf@3.0.2: Rimraf versions prior to v4 are no longer supported
+2026-03-03T14:17:54.6659415Z 
+2026-03-03T14:17:54.6660731Z npm warn deprecated rimraf@3.0.2: Rimraf versions prior to v4 are no longer supported
+2026-03-03T14:17:54.6661733Z npm warn deprecated npmlog@5.0.1: This package is no longer supported.
+2026-03-03T14:17:54.6662332Z 
+2026-03-03T14:17:54.6662685Z npm warn deprecated npmlog@5.0.1: This package is no longer supported.
+2026-03-03T14:17:54.7212905Z npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+2026-03-03T14:17:54.7214879Z 
+2026-03-03T14:17:54.7217394Z npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+2026-03-03T14:17:54.7951164Z npm warn deprecated gauge@3.0.2: This package is no longer supported.
+2026-03-03T14:17:54.7951992Z 
+2026-03-03T14:17:54.7953073Z npm warn deprecated gauge@3.0.2: This package is no longer supported.
+2026-03-03T14:17:54.7993481Z npm warn deprecated rimraf@2.7.1: Rimraf versions prior to v4 are no longer supported
+2026-03-03T14:17:54.7994143Z 
+2026-03-03T14:17:54.7994536Z npm warn deprecated rimraf@2.7.1: Rimraf versions prior to v4 are no longer supported
+2026-03-03T14:17:54.8120183Z npm warn deprecated npmlog@4.1.2: This package is no longer supported.
+2026-03-03T14:17:54.8121249Z 
+2026-03-03T14:17:54.8122584Z npm warn deprecated npmlog@4.1.2: This package is no longer supported.
+2026-03-03T14:17:54.8200288Z npm warn deprecated are-we-there-yet@1.1.7: This package is no longer supported.
+2026-03-03T14:17:54.8200918Z 
+2026-03-03T14:17:54.8201309Z npm warn deprecated are-we-there-yet@1.1.7: This package is no longer supported.
+2026-03-03T14:17:54.8914530Z npm warn deprecated gauge@2.7.4: This package is no longer supported.
+2026-03-03T14:17:54.8917115Z 
+2026-03-03T14:17:54.8918395Z npm warn deprecated gauge@2.7.4: This package is no longer supported.
+2026-03-03T14:17:54.9319172Z npm warn deprecated tar@6.2.1: Old versions of tar are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+2026-03-03T14:17:54.9321001Z 
+2026-03-03T14:17:54.9322568Z npm warn deprecated tar@6.2.1: Old versions of tar are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+2026-03-03T14:17:54.9503601Z npm warn deprecated node-pre-gyp@0.13.0: Please upgrade to @mapbox/node-pre-gyp: the non-scoped node-pre-gyp package is deprecated and only the @mapbox scoped package will recieve updates in the future
+2026-03-03T14:17:54.9504882Z 
+2026-03-03T14:17:54.9506037Z npm warn deprecated node-pre-gyp@0.13.0: Please upgrade to @mapbox/node-pre-gyp: the non-scoped node-pre-gyp package is deprecated and only the @mapbox scoped package will recieve updates in the future
+2026-03-03T14:17:54.9711572Z npm warn deprecated tar@4.4.19: Old versions of tar are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+2026-03-03T14:17:54.9713290Z 
+2026-03-03T14:17:54.9714821Z npm warn deprecated tar@4.4.19: Old versions of tar are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+2026-03-03T14:17:57.3783341Z Vercel CLI 25.1.0
+2026-03-03T14:17:57.3786469Z 
+2026-03-03T14:17:57.3810511Z Vercel CLI 25.1.0
+2026-03-03T14:17:57.4087609Z Retrieving project…
+2026-03-03T14:17:57.4088617Z 
+2026-03-03T14:17:57.4088941Z Retrieving project…
+2026-03-03T14:17:57.6301017Z The vercel.json file should be inside of the provided root directory.
+2026-03-03T14:17:57.6302092Z 
+2026-03-03T14:17:57.6314088Z The vercel.json file should be inside of the provided root directory.
+2026-03-03T14:17:57.6314847Z Deploying aarupthomas-rgbs-projects/humanified-ecosystem
+2026-03-03T14:17:57.6315256Z 
+2026-03-03T14:17:57.6315515Z Deploying aarupthomas-rgbs-projects/humanified-ecosystem
+2026-03-03T14:17:58.6885072Z Error! Environment Variable "NEXT_PUBLIC_SITE_URL" references Secret "site_url", which does not exist.
+2026-03-03T14:17:58.6886037Z 
+2026-03-03T14:17:58.6886895Z Error! Environment Variable "NEXT_PUBLIC_SITE_URL" references Secret "site_url", which does not exist.
+2026-03-03T14:17:58.7724598Z ##[error]The process '/usr/local/bin/npx' failed with exit code 1
+2026-03-03T14:17:58.7877030Z Post job cleanup.
+2026-03-03T14:17:58.8860885Z [command]/usr/bin/git version
+2026-03-03T14:17:58.8903902Z git version 2.53.0
+2026-03-03T14:17:58.8949118Z Temporarily overriding HOME='/home/runner/work/_temp/b24bea81-3a65-4a27-916e-2bc4ab12c81b' before making global git config changes
+2026-03-03T14:17:58.8950448Z Adding repository directory to the temporary git global config as a safe directory
+2026-03-03T14:17:58.9053207Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/humanified-ecosystem/humanified-ecosystem
+2026-03-03T14:17:58.9059783Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-03-03T14:17:58.9061977Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-03-03T14:17:58.9338710Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-03-03T14:17:58.9366512Z http.https://github.com/.extraheader
+2026-03-03T14:17:58.9382300Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-03-03T14:17:58.9419780Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-03-03T14:17:58.9684218Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-03-03T14:17:58.9720249Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-03-03T14:17:59.0090438Z Cleaning up orphan processes
