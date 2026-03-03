@@ -9,13 +9,19 @@
   --color-dark-secondary: #1a1a1a;
   --color-dark-tertiary: #2d2d2d;
 
-  /* ACCENT COLORS - HUMANISED-AI GRADIENT */
-  --color-gradient-blue: #4A90E2;
-  --color-gradient-purple: #9B59B6;
-  --color-gradient-magenta: #E91E63;
-  --color-accent: #9B59B6;
-  --color-accent-light: #b573c9;
-  --color-accent-dark: #7d4899;
+  /* ACCENT COLORS - HUMANISED-AI GRADIENT (Primary) */
+  --color-gradient-blue: #0066FF;
+  --color-gradient-purple: #6600FF;
+  --color-gradient-magenta: #FF00FF;
+  --color-accent: #FF00FF;
+  --color-accent-light: #ff4dff;
+  --color-accent-dark: #cc00cc;
+
+  /* WARM ACCENT COLORS - Blomst Flower (Secondary) */
+  --color-accent-orange: #FF8C00;
+  --color-accent-gold: #FFB84D;
+  --color-accent-copper: #B87333;
+  --color-accent-warm: #FF8C00;
 
   /* NEUTRALS */
   --color-white: #ffffff;
@@ -62,6 +68,36 @@
   --transition-fast: 150ms ease-in-out;
   --transition-base: 250ms ease-in-out;
   --transition-slow: 350ms ease-in-out;
+
+  /* GRADIENTS */
+  --gradient-primary: linear-gradient(135deg, #0066FF 0%, #6600FF 50%, #FF00FF 100%);
+  --gradient-warm: linear-gradient(135deg, #FF8C00 0%, #FFB84D 50%, #B87333 100%);
+  --gradient-dark: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+
+  /* TYPOGRAPHY */
+  --font-primary: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-accent: 'Lato', 'Helvetica', sans-serif;
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 2rem;
+  --text-4xl: 2.5rem;
+  --text-5xl: 3rem;
+
+  --font-light: 300;
+  --font-normal: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+
+  --leading-tight: 1.2;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.75;
+  --leading-loose: 2;
 }
 
 /* Dark mode is default (entire brand is dark) */
