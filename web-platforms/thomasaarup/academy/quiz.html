@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Test dine kunskaber - Quiz i HUMANIFIED Academy">
+  <title>Quiz - HUMANIFIED Academy</title>
+  <link rel="stylesheet" href="../shared/css/style.css">
+  <link rel="stylesheet" href="css/academy-theme.css">
+  <style>
+    .quiz-container {
+      max-width: 800px;
+      margin: 3rem auto;
+      padding: 2rem;
+    }
+
+    .quiz-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .quiz-title {
+      font-size: 2rem;
+      font-weight: 800;
+      color: white;
+      margin-bottom: 1rem;
+    }
+
+    .quiz-progress {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 2px solid var(--bg-tertiary);
+    }
+
+    .quiz-progress-bar {
+      flex: 1;
+      height: 8px;
+      background: var(--bg-tertiary);
+      border-radius: 4px;
+      margin: 0 1rem;
+      overflow: hidden;
+    }
+
+    .quiz-progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--color-gradient-blue), var(--color-gradient-magenta));
+      width: 0%;
+      transition: width 300ms ease;
+    }
+
+    .quiz-counter {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    /* Question Card */
+    .quiz-question-card {
+      background: var(--bg-secondary);
+      padding: 2rem;
+      border-radius: 12px;
+      margin-bottom: 2rem;
+    }
+
+    .quiz-question-text {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: white;
+      margin-bottom: 2rem;
+    }
+
+    .quiz-options {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .quiz-option {
+      display: flex;
+      align-items: center;
+      padding: 1rem;
+      background: var(--bg-tertiary);
+      border: 2px solid var(--bg-tertiary);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 200ms ease;
+    }
+
+    .quiz-option:hover {
+      border-color: var(--color-gradient-purple);
+      background: var(--bg-primary);
+    }
+
+    .quiz-option input {
+      margin-right: 1rem;
+      cursor: pointer;
+      width: 20px;
+      height: 20px;
+    }
+
+    .quiz-option-text {
+      color: var(--text-secondary);
+      flex: 1;
+    }
+
+    .quiz-option.selected {
+      border-color: var(--color-gradient-purple);
+      background: linear-gradient(135deg, rgba(74, 144, 226, 0.1) 0%, rgba(233, 30, 99, 0.1) 100%);
+    }
+
+    .quiz-option.correct {
+      border-color: #10b981;
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(5, 150, 105, 0.1) 100%);
+    }
+
+    .quiz-option.incorrect {
+      border-color: #ef4444;
+      background: linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, rgba(220, 38, 38, 0.1) 100%);
+    }
+
+    .quiz-feedback {
+      margin-top: 1.5rem;
+      padding: 1rem;
+      border-radius: 8px;
+      display: none;
+    }
+
+    .quiz-feedback.show {
+      display: block;
+    }
+
+    .quiz-feedback.correct {
+      background: rgba(16, 185, 129, 0.1);
+      border-left: 4px solid #10b981;
+      color: #86efac;
+    }
+
+    .quiz-feedback.incorrect {
+      background: rgba(239, 68, 68, 0.1);
+      border-left: 4px solid #ef4444;
+      color: #fca5a5;
+    }
+
+    .quiz-feedback-icon {
+      font-size: 1.2rem;
+      margin-right: 0.5rem;
+    }
+
+    .quiz-feedback-text {
+      color: var(--text-secondary);
+      margin-top: 0.5rem;
+    }
+
+    /* Navigation */
+    .quiz-nav {
+      display: flex;
+      gap: 1rem;
+      justify-content: flex-end;
+    }
+
+    .quiz-nav button {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 250ms ease-in-out;
+    }
+
+    .quiz-back-button {
+      background: var(--bg-secondary);
+      color: var(--text-secondary);
+      border: 1px solid var(--bg-tertiary);
+    }
+
+    .quiz-back-button:hover {
+      border-color: var(--color-gradient-purple);
+      color: var(--color-gradient-purple);
+    }
+
+    .quiz-next-button {
+      background: linear-gradient(135deg, var(--color-gradient-blue), var(--color-gradient-magenta));
+      color: white;
+    }
+
+    .quiz-next-button:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(155, 89, 182, 0.3);
+    }
+
+    .quiz-next-button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    /* Results Screen */
+    .quiz-results {
+      display: none;
+      text-align: center;
+      padding: 3rem 2rem;
+      background: var(--bg-secondary);
+      border-radius: 12px;
+    }
+
+    .quiz-results.show {
+      display: block;
+    }
+
+    .quiz-final-score {
+      font-size: 4rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--color-gradient-blue), var(--color-gradient-magenta));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin: 2rem 0;
+    }
+
+    .quiz-results-message {
+      font-size: 1.5rem;
+      color: white;
+      margin-bottom: 1rem;
+    }
+
+    .quiz-results-text {
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+
+    .quiz-badge {
+      font-size: 5rem;
+      margin: 2rem 0;
+      animation: bounce 0.6s ease-in-out;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+
+    .quiz-results-button {
+      padding: 1rem 2rem;
+      background: linear-gradient(135deg, var(--color-gradient-blue), var(--color-gradient-magenta));
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 250ms ease-in-out;
+    }
+
+    .quiz-results-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(155, 89, 182, 0.3);
+    }
+
+    .quiz-results-button-group {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    @media (max-width: 768px) {
+      .quiz-container {
+        padding: 1rem;
+      }
+
+      .quiz-final-score {
+        font-size: 3rem;
+      }
+
+      .quiz-nav {
+        flex-direction: column;
+      }
+
+      .quiz-nav button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container flex flex-between py-lg">
+      <h1 style="margin: 0; font-size: var(--text-2xl); color: var(--color-white);">
+        <a href="index.html" style="text-decoration: none; color: inherit;">
+          <span style="background: linear-gradient(135deg, var(--color-gradient-blue), var(--color-gradient-magenta)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">HUMANIFIED</span>
+        </a>
+      </h1>
+      <nav class="flex gap-lg">
+        <a href="index.html" style="color: var(--text-secondary); text-decoration: none;">Hjem</a>
+        <a href="learn.html" style="color: var(--text-secondary); text-decoration: none;">Lær</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="quiz-container">
+      <!-- QUIZ HEADER -->
+      <div class="quiz-header" id="quiz-header">
+        <h1 class="quiz-title" id="quiz-title">HTML Quiz</h1>
+        <div class="quiz-progress">
+          <span class="quiz-counter"><span id="current-question">1</span> / <span id="total-questions">10</span></span>
+          <div class="quiz-progress-bar">
+            <div class="quiz-progress-fill" id="progress-fill"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- QUIZ QUESTION -->
+      <div class="quiz-question-card" id="quiz-question-card">
+        <div class="quiz-question-text" id="question-text">
+          <!-- Populated by JavaScript -->
+        </div>
+        <div class="quiz-options" id="quiz-options">
+          <!-- Options will be populated by JavaScript -->
+        </div>
+        <div class="quiz-feedback" id="quiz-feedback">
+          <span class="quiz-feedback-icon" id="feedback-icon"></span>
+          <span id="feedback-text"></span>
+          <div class="quiz-feedback-text" id="feedback-hint"></div>
+        </div>
+      </div>
+
+      <!-- NAVIGATION -->
+      <div class="quiz-nav" id="quiz-nav">
+        <button class="quiz-back-button" onclick="goBackToLesson()">← Tilbage</button>
+        <button class="quiz-next-button" id="next-button" onclick="nextQuestion()" disabled>Næste Spørgsmål →</button>
+      </div>
+
+      <!-- RESULTS SCREEN -->
+      <div class="quiz-results" id="quiz-results">
+        <div class="quiz-results-message" id="results-message"></div>
+        <div class="quiz-final-score" id="final-score"></div>
+        <div class="quiz-badge" id="badge-emoji"></div>
+        <div class="quiz-results-text" id="results-text"></div>
+        <div class="quiz-results-button-group">
+          <button class="quiz-results-button" onclick="goBackToLesson()">← Tilbage til Lektioner</button>
+          <button class="quiz-results-button" onclick="goToDashboard()" style="background: linear-gradient(135deg, #10b981, #059669);">Se mit Dashboard 📊</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div style="border-top: 1px solid var(--bg-tertiary); padding-top: var(--spacing-lg); text-align: center; color: var(--text-muted); font-size: var(--text-sm);">
+        <p>© 2026 HUMANIFIED Template Academy. Test dine kunskaber og vind badges!</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Quiz data
+    const quizzes = {
+      'html-basics': {
+        title: 'HTML Quiz',
+        questions: [
+          {
+            id: 1,
+            question: 'Hvad står HTML for?',
+            options: [
+              'Hyper Text Markup Language',
+              'High Tech Modern Logic',
+              'Home Tool Markup List',
+              'Hyper Text Modern Language'
+            ],
+            correct: 0,
+            explanation: 'HTML står for HyperText Markup Language - sproget vi bruger til at bygge websider.'
+          },
+          {
+            id: 2,
+            question: 'Hvad er formålet med &lt;h1&gt; tagget?',
+            options: [
+              'At skjule tekst',
+              'At definere en stor overskrift',
+              'At lave et link',
+              'At indsætte et billede'
+            ],
+            correct: 1,
+            explanation: '&lt;h1&gt; bruges til at definere den vigtigste overskrift på siden. &lt;h1&gt; til &lt;h6&gt; bruges til overskrifter.'
+          },
+          {
+            id: 3,
+            question: 'Hvilken tag bruges til paragraffer?',
+            options: [
+              '&lt;para&gt;',
+              '&lt;p&gt;',
+              '&lt;paragraph&gt;',
+              '&lt;text&gt;'
+            ],
+            correct: 1,
+            explanation: '&lt;p&gt; tagget bruges til at definere paragraffer i HTML.'
+          },
+          {
+            id: 4,
+            question: 'Hvordan indsætter man et link i HTML?',
+            options: [
+              '&lt;link href="url"&gt;Tekst&lt;/link&gt;',
+              '&lt;a href="url"&gt;Tekst&lt;/a&gt;',
+              '&lt;url&gt;Tekst&lt;/url&gt;',
+              '&lt;navigate&gt;Tekst&lt;/navigate&gt;'
+            ],
+            correct: 1,
+            explanation: '&lt;a&gt; tagget bruges til at skabe links. href attributtet indeholder URL\'en.'
+          },
+          {
+            id: 5,
+            question: 'Hvad er formålet med alt attributten på billeder?',
+            options: [
+              'At ændre billedets farve',
+              'At gøre billeder mindre',
+              'At beskrive billede for blinde brugere og SEO',
+              'At tilføje border til billedet'
+            ],
+            correct: 2,
+            explanation: 'Alt-tekst er vigtig for tilgængelighed (blinde brugere) og SEO (søgemaskiner).'
+          },
+          {
+            id: 6,
+            question: 'Hvilken tag bruges til at liste uordnede punkter?',
+            options: [
+              '&lt;ol&gt;',
+              '&lt;ul&gt;',
+              '&lt;list&gt;',
+              '&lt;items&gt;'
+            ],
+            correct: 1,
+            explanation: '&lt;ul&gt; (unordered list) bruges til usorterede lister. &lt;ol&gt; bruges til sorterede lister.'
+          },
+          {
+            id: 7,
+            question: 'Hvad bruges &lt;form&gt; tagget til?',
+            options: [
+              'At indsætte billeder',
+              'At skabe layout',
+              'At samle brugerinput fra tekstfelter, knapper osv.',
+              'At lave en tabel'
+            ],
+            correct: 2,
+            explanation: '&lt;form&gt; bruges til at samle brugerinput fra elementer som &lt;input&gt; og &lt;textarea&gt;.'
+          },
+          {
+            id: 8,
+            question: 'Hvad er en semantisk HTML tag?',
+            options: [
+              'En tag der altid er rødt',
+              'En tag der fortæller hvad elementet betyder, ikke bare hvordan det ser ud',
+              'En tag der kan kun bruges en gang per side',
+              'En tag der indeholder programmering'
+            ],
+            correct: 1,
+            explanation: 'Semantiske tags som &lt;header&gt;, &lt;nav&gt;, &lt;main&gt;, &lt;footer&gt; fortæller hvad elementet betyder.'
+          },
+          {
+            id: 9,
+            question: 'Hvilken af disse er NOT en semantisk tag?',
+            options: [
+              '&lt;section&gt;',
+              '&lt;article&gt;',
+              '&lt;div&gt;',
+              '&lt;header&gt;'
+            ],
+            correct: 2,
+            explanation: '&lt;div&gt; er en generic container uden semantisk betydning. De andre er semantiske.'
+          },
+          {
+            id: 10,
+            question: 'Hvad er første skridt når du bygger en HTML side?',
+            options: [
+              'At skrive CSS styling',
+              'At skrive JavaScript',
+              'At skrive HTML struktur og indhold',
+              'At indsætte billeder'
+            ],
+            correct: 2,
+            explanation: 'HTML er strukturen og indholdet. CSS styler det, og JavaScript gør det interaktivt. Start altid med HTML.'
+          }
+        ]
+      }
+    };
+
+    let currentQuiz = null;
+    let currentQuestion = 0;
+    let score = 0;
+    let answered = false;
+    let selectedOption = null;
+
+    function initQuiz(quizId) {
+      currentQuiz = quizId;
+      const quiz = quizzes[quizId];
+
+      document.getElementById('quiz-title').textContent = quiz.title;
+      document.getElementById('total-questions').textContent = quiz.questions.length;
+
+      loadQuestion(0);
+    }
+
+    function loadQuestion(index) {
+      const quiz = quizzes[currentQuiz];
+      const question = quiz.questions[index];
+
+      document.getElementById('current-question').textContent = index + 1;
+      document.getElementById('question-text').textContent = question.question;
+
+      // Create options
+      const optionsHTML = question.options.map((option, idx) => `
+        <label class="quiz-option" onclick="selectOption(${idx})">
+          <input type="radio" name="option" value="${idx}" id="option-${idx}">
+          <span class="quiz-option-text">${option}</span>
+        </label>
+      `).join('');
+
+      document.getElementById('quiz-options').innerHTML = optionsHTML;
+
+      // Update progress bar
+      const progress = ((index + 1) / quiz.questions.length) * 100;
+      document.getElementById('progress-fill').style.width = progress + '%';
+
+      // Reset state
+      answered = false;
+      selectedOption = null;
+      document.getElementById('quiz-feedback').classList.remove('show', 'correct', 'incorrect');
+      document.getElementById('next-button').disabled = true;
+
+      // Show/hide results
+      const isLastQuestion = index === quiz.questions.length - 1;
+      document.getElementById('quiz-question-card').style.display = 'block';
+      document.getElementById('quiz-header').style.display = 'block';
+    }
+
+    function selectOption(index) {
+      if (answered) return;
+
+      selectedOption = index;
+      const quiz = quizzes[currentQuiz];
+      const question = quiz.questions[currentQuestion];
+      const isCorrect = index === question.correct;
+
+      // Update UI
+      document.querySelectorAll('.quiz-option').forEach((el, i) => {
+        el.classList.remove('selected', 'correct', 'incorrect');
+        if (i === index) {
+          el.classList.add('selected', isCorrect ? 'correct' : 'incorrect');
+        }
+        if (isCorrect && i === index) {
+          el.classList.add('correct');
+        }
+        if (!isCorrect && i === question.correct && answered) {
+          el.classList.add('correct');
+        }
+      });
+
+      // Show feedback
+      const feedback = document.getElementById('quiz-feedback');
+      feedback.classList.add('show', isCorrect ? 'correct' : 'incorrect');
+
+      if (isCorrect) {
+        document.getElementById('feedback-icon').textContent = '✓';
+        document.getElementById('feedback-text').textContent = 'Korrekt!';
+        score++;
+      } else {
+        document.getElementById('feedback-icon').textContent = '✗';
+        document.getElementById('feedback-text').textContent = 'Forkert. Prøv igen eller se svaret nedenfor.';
+      }
+
+      document.getElementById('feedback-hint').textContent = question.explanation;
+
+      answered = true;
+      document.getElementById('next-button').disabled = false;
+    }
+
+    function nextQuestion() {
+      const quiz = quizzes[currentQuiz];
+      currentQuestion++;
+
+      if (currentQuestion >= quiz.questions.length) {
+        showResults();
+      } else {
+        loadQuestion(currentQuestion);
+      }
+    }
+
+    function showResults() {
+      const quiz = quizzes[currentQuiz];
+      const percent = Math.round((score / quiz.questions.length) * 100);
+      const hasPassed = percent >= 80;
+
+      document.getElementById('quiz-question-card').style.display = 'none';
+      document.getElementById('quiz-header').style.display = 'none';
+      document.getElementById('quiz-nav').style.display = 'none';
+
+      const results = document.getElementById('quiz-results');
+      results.classList.add('show');
+
+      document.getElementById('results-message').textContent = hasPassed
+        ? '🎉 Fantastisk Præstation!'
+        : 'God Indsats!';
+
+      document.getElementById('final-score').textContent = `${percent}%`;
+
+      if (hasPassed) {
+        document.getElementById('badge-emoji').textContent = '🏆';
+        document.getElementById('results-text').textContent = `Du scorede ${score} ud af ${quiz.questions.length} korrekt. Du har optjent badge: HTML Master!`;
+      } else {
+        document.getElementById('badge-emoji').textContent = '📚';
+        document.getElementById('results-text').textContent = `Du scorede ${score} ud af ${quiz.questions.length} korrekt. Prøv igen for at få badge!`;
+      }
+
+      // Save to localStorage
+      const progress = JSON.parse(localStorage.getItem('academy-progress') || '{}');
+      if (!progress.quizzes) progress.quizzes = {};
+      progress.quizzes[currentQuiz] = {
+        completed: true,
+        score: percent,
+        passed: hasPassed,
+        timestamp: new Date().toISOString()
+      };
+      if (hasPassed && !progress.badges) progress.badges = [];
+      if (hasPassed && !progress.badges.includes('html-master')) {
+        progress.badges.push('html-master');
+      }
+      localStorage.setItem('academy-progress', JSON.stringify(progress));
+    }
+
+    function goBackToLesson() {
+      window.location.href = 'learn.html?track=' + currentQuiz;
+    }
+
+    function goToDashboard() {
+      window.location.href = 'dashboard.html';
+    }
+
+    // Initialize on load
+    window.addEventListener('load', function() {
+      const params = new URLSearchParams(window.location.search);
+      const track = params.get('track') || 'html-basics';
+      initQuiz(track);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="HUMANIFIED Academy - Live Code Editor">
+  <title>Live Code Editor - HUMANIFIED Academy</title>
+  <link rel="stylesheet" href="../shared/css/style.css">
+  <link rel="stylesheet" href="css/academy-theme.css">
+  <!-- CodeMirror CSS -->\n  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror6/6.0.1/codemirror.min.css\">
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+    }
+
+    .playground-header {
+      background: var(--academy-bg-card);
+      border-bottom: 1px solid var(--academy-border);
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: white;
+    }
+
+    .playground-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+
+    .playground-buttons {
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    .playground-button {
+      padding: 0.6rem 1.2rem;
+      background: linear-gradient(135deg, var(--color-gradient-blue), var(--color-gradient-magenta));
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 250ms ease-in-out;
+    }
+
+    .playground-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(155, 89, 182, 0.3);
+    }
+
+    .playground-button.secondary {
+      background: var(--academy-border);
+      color: var(--editor-text);
+    }
+
+    .playground-button.secondary:hover {
+      background: var(--academy-gradient-mid);
+      color: white;
+    }
+
+    .editor-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      height: calc(100vh - 60px);
+    }
+
+    .editor-panel {
+      display: flex;
+      flex-direction: column;
+      background: var(--editor-bg);
+      border-right: 1px solid var(--academy-border);
+    }
+
+    .editor-tabs {
+      display: flex;
+      background: var(--academy-bg-card);
+      border-bottom: 1px solid var(--academy-border);
+      gap: 0;
+    }
+
+    .editor-tab {
+      flex: 1;
+      padding: 1rem;
+      background: var(--academy-bg-card);
+      border: none;
+      border-bottom: 3px solid transparent;
+      color: var(--editor-line-number);
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 250ms ease-in-out;
+      text-align: center;
+    }
+
+    .editor-tab:hover {
+      color: var(--editor-text);
+      background: var(--academy-border);
+    }
+
+    .editor-tab.active {
+      color: var(--academy-gradient-mid);
+      border-bottom-color: var(--academy-gradient-mid);
+      background: var(--editor-bg);
+    }
+
+    .editor-content {
+      flex: 1;
+      overflow: auto;
+      position: relative;
+    }
+
+    .codemirror {
+      height: 100% !important;
+      font-family: 'Fira Code', 'Courier New', monospace !important;
+      font-size: 14px !important;
+    }
+
+    .cm-editor {
+      height: 100% !important;
+    }
+
+    .editor-toolbar {
+      display: flex;
+      gap: 0.5rem;
+      padding: 1rem;
+      background: var(--academy-bg-card);
+      border-top: 1px solid var(--academy-border);
+      justify-content: flex-end;
+      flex-wrap: wrap;
+    }
+
+    .preview-panel {
+      display: flex;
+      flex-direction: column;
+      background: white;
+      border-left: 1px solid var(--academy-border);
+    }
+
+    .preview-toolbar {
+      display: flex;
+      gap: 0.5rem;
+      padding: 1rem;
+      background: var(--academy-bg-card);
+      border-bottom: 1px solid var(--academy-border);
+      justify-content: center;
+    }
+
+    .preview-button {
+      padding: 0.5rem 1rem;
+      background: var(--academy-border);
+      color: var(--editor-text);
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 12px;
+      transition: all 150ms ease-in-out;
+    }
+
+    .preview-button:hover {
+      background: var(--academy-gradient-mid);
+      color: white;
+    }
+
+    .preview-button.active {
+      background: var(--academy-gradient-mid);
+      color: white;
+    }
+
+    .preview-frame {
+      flex: 1;
+      border: none;
+      background: white;
+    }
+
+    @media (max-width: 1024px) {
+      .editor-container {
+        grid-template-columns: 1fr;
+      }
+
+      .editor-panel {
+        border-right: none;
+        border-bottom: 1px solid var(--academy-border);
+        height: 50%;
+      }
+
+      .preview-panel {
+        border-left: none;
+        height: 50%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="playground-header">
+    <div class="playground-title">
+      <span id="templateName">Template Editor</span>
+    </div>
+    <div class="playground-buttons">
+      <button class="playground-button secondary" onclick="resetCode()">↻ Nulstil</button>
+      <button class="playground-button secondary" onclick="downloadTemplate()">↓ Download</button>
+      <button class="playground-button" onclick="saveCode()">✓ Gem</button>
+    </div>
+  </div>
+
+  <div class="editor-container">
+    <!-- EDITOR PANEL -->
+    <div class="editor-panel">
+      <div class="editor-tabs">
+        <button class="editor-tab active" onclick="switchTab('html')">HTML</button>
+        <button class="editor-tab" onclick="switchTab('css')">CSS</button>
+        <button class="editor-tab" onclick="switchTab('js')">JavaScript</button>
+      </div>
+
+      <div class="editor-content" id="htmlEditor"></div>
+      <div class="editor-content" id="cssEditor" style="display: none;"></div>
+      <div class="editor-content" id="jsEditor" style="display: none;"></div>
+
+      <div class="editor-toolbar">
+        <small style="color: var(--editor-line-number); flex: 1; align-self: center;">Ændringer gemmes automatisk lokalt</small>
+      </div>
+    </div>
+
+    <!-- PREVIEW PANEL -->
+    <div class="preview-panel">
+      <div class="preview-toolbar">
+        <button class="preview-button active" onclick="setPreviewMode('desktop')">🖥 Desktop</button>
+        <button class="preview-button" onclick="setPreviewMode('tablet')">📱 Tablet</button>
+        <button class="preview-button" onclick="setPreviewMode('mobile')">📲 Mobile</button>
+      </div>
+      <iframe class="preview-frame" id="preview" sandbox="allow-scripts"></iframe>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror6/6.0.1/codemirror.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror6/6.0.1/lang-html.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror6/6.0.1/lang-css.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror6/6.0.1/lang-javascript.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.utils.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+
+  <script>
+    // Template data
+    const templates = {
+      toemmerer: {
+        name: 'Tømrer Template',
+        html: '<h1>Tømrerfirma</h1><p>Velkommen til vores hjemmeside</p>',
+        css: 'body { font-family: Arial; background: #f0f0f0; }',
+        js: 'console.log(\"Tømrer template loaded\");'
+      },
+      vvs: {
+        name: 'VVS Template',
+        html: '<h1>VVS Service</h1><p>24/7 Service</p>',
+        css: 'body { font-family: Arial; background: #e0f7fa; }',
+        js: 'console.log(\"VVS template loaded\");'
+      },
+      maler: {
+        name: 'Maler Template',
+        html: '<h1>Professionel Maling</h1><p>Kvalitet Du Kan Se</p>',
+        css: 'body { font-family: Arial; background: #fef2f2; }',
+        js: 'console.log(\"Maler template loaded\");'
+      }
+    };
+
+    let currentTemplate = 'toemmerer';
+    let editors = {};
+    let currentTab = 'html';
+
+    // Initialize
+    function init() {
+      const params = new URLSearchParams(window.location.search);
+      currentTemplate = params.get('template') || 'toemmerer';
+
+      document.getElementById('templateName').textContent = templates[currentTemplate].name + ' - Live Editor';
+
+      // Load saved code or template code
+      const saved = JSON.parse(localStorage.getItem('academy_' + currentTemplate) || '{}');
+
+      const htmlCode = saved.html || templates[currentTemplate].html;
+      const cssCode = saved.css || templates[currentTemplate].css;
+      const jsCode = saved.js || templates[currentTemplate].js;
+
+      // Create editors (simplified - using textarea fallback for better compatibility)
+      createSimpleEditors(htmlCode, cssCode, jsCode);
+      updatePreview();
+    }
+
+    function createSimpleEditors(html, css, js) {
+      // Use textareas as fallback
+      document.getElementById('htmlEditor').innerHTML = '<textarea id="htmlInput" style="width:100%;height:100%;border:none;padding:1rem;font-family:monospace;background:#1e1e1e;color:#e8e8e8;resize:none;" spellcheck="false">' + escapeHtml(html) + '</textarea>';
+      document.getElementById('cssEditor').innerHTML = '<textarea id="cssInput\" style="width:100%;height:100%;border:none;padding:1rem;font-family:monospace;background:#1e1e1e;color:#e8e8e8;resize:none;" spellcheck="false">' + escapeHtml(css) + '</textarea>';
+      document.getElementById('jsEditor').innerHTML = '<textarea id=\"jsInput\" style="width:100%;height:100%;border:none;padding:1rem;font-family:monospace;background:#1e1e1e;color:#e8e8e8;resize:none;" spellcheck="false">' + escapeHtml(js) + '</textarea>';
+
+      // Auto-update preview
+      document.getElementById('htmlInput').addEventListener('input', updatePreview);
+      document.getElementById('cssInput').addEventListener('input', updatePreview);
+      document.getElementById('jsInput').addEventListener('input', updatePreview);
+    }
+
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    function getCode() {
+      return {
+        html: document.getElementById('htmlInput').value,
+        css: document.getElementById('cssInput').value,
+        js: document.getElementById('jsInput').value
+      };
+    }
+
+    function updatePreview() {
+      const { html, css, js } = getCode();
+      const preview = document.getElementById('preview');
+      const fullHtml = `
+        <!DOCTYPE html>
+        <html>
+        <head>
+          <meta charset="UTF-8">
+          <style>${css}</style>
+        </head>
+        <body>
+          ${html}
+          <script>${js}<\/script>
+        </body>
+        </html>
+      `;
+
+      preview.srcdoc = fullHtml;
+    }
+
+    function switchTab(tab) {
+      currentTab = tab;
+      document.querySelectorAll('.editor-tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.editor-content').forEach(c => c.style.display = 'none');
+      event.target.classList.add('active');
+      document.getElementById(tab + 'Editor').style.display = 'block';
+    }
+
+    function saveCode() {
+      const code = getCode();
+      localStorage.setItem('academy_' + currentTemplate, JSON.stringify(code));
+      alert('✓ Kode gemt lokalt!');
+    }
+
+    function resetCode() {
+      if (confirm('Nulstil til original template?')) {
+        document.getElementById('htmlInput').value = templates[currentTemplate].html;
+        document.getElementById('cssInput').value = templates[currentTemplate].css;
+        document.getElementById('jsInput').value = templates[currentTemplate].js;
+        updatePreview();
+      }
+    }
+
+    async function downloadTemplate() {
+      const { html, css, js } = getCode();
+      const zip = new JSZip();
+      zip.file('index.html', html);
+      zip.file('style.css', css);
+      zip.file('script.js', js);
+      const blob = await zip.generateAsync({type: 'blob'});
+      saveAs(blob, 'template.zip');
+    }
+
+    function setPreviewMode(mode) {
+      const preview = document.getElementById('preview');
+      document.querySelectorAll('.preview-button').forEach(b => b.classList.remove('active'));
+      event.target.classList.add('active');
+
+      switch(mode) {
+        case 'mobile':
+          preview.style.width = '375px';
+          preview.style.height = '667px';
+          preview.style.margin = 'auto';
+          break;
+        case 'tablet':
+          preview.style.width = '768px';
+          preview.style.height = '1024px';
+          preview.style.margin = 'auto';
+          break;
+        default:
+          preview.style.width = '100%';
+          preview.style.height = '100%';
+      }
+    }
+
+    // Start
+    init();
+  </script>
+</body>
+</html>

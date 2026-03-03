@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="HUMANIFIED Template Academy - Vælg blandt professionelle skabeloner til dit håndværk">
+  <title>Template Katalog - HUMANIFIED Academy</title>
+  <link rel="stylesheet" href="../shared/css/style.css">
+  <link rel="stylesheet" href="css/academy-theme.css">
+  <style>
+    .templates-hero {
+      background: linear-gradient(135deg, var(--color-gradient-blue) 0%, var(--color-gradient-purple) 50%, var(--color-gradient-magenta) 100%);
+      padding: 4rem 1.5rem;
+      text-align: center;
+      color: white;
+    }
+
+    .templates-hero h1 {
+      font-size: clamp(2rem, 8vw, 3.5rem);
+      margin-bottom: 1rem;
+      font-weight: 800;
+    }
+
+    .templates-search {
+      max-width: 500px;
+      margin: 2rem auto 0;
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .templates-search input {
+      flex: 1;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+
+    .templates-search button {
+      padding: 0.75rem 1.5rem;
+      background: white;
+      color: var(--color-gradient-purple);
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 250ms ease-in-out;
+    }
+
+    .templates-search button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .templates-grid-container {
+      max-width: 1200px;
+      margin: 3rem auto;
+      padding: 0 1.5rem;
+    }
+
+    .templates-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 2rem;
+    }
+
+    .template-card {
+      background: var(--bg-tertiary);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: all 300ms ease-in-out;
+      border: 1px solid var(--bg-tertiary);
+    }
+
+    .template-card:hover {
+      transform: translateY(-12px);
+      border-color: var(--color-gradient-purple);
+      box-shadow: 0 20px 40px rgba(155, 89, 182, 0.2);
+    }
+
+    .template-preview {
+      width: 100%;
+      height: 200px;
+      background: linear-gradient(135deg, rgba(74, 144, 226, 0.1) 0%, rgba(233, 30, 99, 0.1) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      border-bottom: 2px solid var(--color-gradient-purple);
+    }
+
+    .template-content {
+      padding: 1.5rem;
+    }
+
+    .template-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 0.5rem;
+    }
+
+    .template-description {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+      line-height: 1.5;
+    }
+
+    .template-tags {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+    }
+
+    .template-tag {
+      font-size: 0.8rem;
+      padding: 0.35rem 0.75rem;
+      background: rgba(155, 89, 182, 0.2);
+      color: var(--color-gradient-purple);
+      border-radius: 20px;
+    }
+
+    .template-buttons {
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    .template-button {
+      flex: 1;
+      padding: 0.7rem 1rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 250ms ease-in-out;
+    }
+
+    .template-button-primary {
+      background: linear-gradient(135deg, var(--color-gradient-blue), var(--color-gradient-magenta));
+      color: white;
+    }
+
+    .template-button-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(155, 89, 182, 0.3);
+    }
+
+    .template-button-secondary {
+      background: var(--bg-secondary);
+      color: var(--text-secondary);
+      border: 1px solid var(--bg-tertiary);
+    }
+
+    .template-button-secondary:hover {
+      border-color: var(--color-gradient-purple);
+      color: var(--color-gradient-purple);
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: white;
+      margin-bottom: 1rem;
+    }
+
+    .section-subtitle {
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container flex flex-between py-lg">
+      <h1 style="margin: 0; font-size: var(--text-2xl); color: var(--color-white);">
+        <a href="index.html" style="text-decoration: none; color: inherit;">
+          <span style="background: linear-gradient(135deg, var(--color-gradient-blue), var(--color-gradient-magenta)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">HUMANIFIED</span>
+        </a>
+      </h1>
+      <nav class="flex gap-lg">
+        <a href="index.html" style="color: var(--text-secondary); text-decoration: none;">Hjem</a>
+        <a href="#templates" style="color: var(--text-secondary); text-decoration: none;">Templates</a>
+        <a href="css-learn.html" style="color: var(--text-secondary); text-decoration: none;">CSS</a>
+        <a href="js-learn.html" style="color: var(--text-secondary); text-decoration: none;">JavaScript</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="templates-hero">
+      <div class="container-md">
+        <h1>Vælg Din Template</h1>
+        <p style="font-size: 1.2rem; margin: 1rem 0 0;">Professionelle designet til din branche. Klar til at ændre.</p>
+      </div>
+    </section>
+
+    <!-- TEMPLATES SECTION -->
+    <section class="templates-grid-container" id="templates">
+      <div class="section-header">
+        <h2 class="section-title">Populære Skabeloner</h2>
+        <p class="section-subtitle">Vælg en og start med at bygge din hjemmeside</p>
+      </div>
+
+      <div class="templates-grid">
+        <!-- TØMRER TEMPLATE -->
+        <div class="template-card">
+          <div class="template-preview">🔨</div>
+          <div class="template-content">
+            <h3 class="template-title">Tømrer Template</h3>
+            <p class="template-description">Professionel hjemmeside til tømrerfirma. Vis dine projekter, priser og kontaktformular.</p>
+            <div class="template-tags">
+              <span class="template-tag">Tømrer</span>
+              <span class="template-tag">Blå</span>
+              <span class="template-tag">Galleri</span>
+            </div>
+            <div class="template-buttons">
+              <button class="template-button template-button-secondary" onclick="previewTemplate('toemmerer')">Forhåndsvis</button>
+              <button class="template-button template-button-primary" onclick="startTemplate('toemmerer')">Brug Template</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- VVS TEMPLATE -->
+        <div class="template-card">
+          <div class="template-preview">🔧</div>
+          <div class="template-content">
+            <h3 class="template-title">VVS Template</h3>
+            <p class="template-description">Moderne hjemmeside til VVS-virksomhed. Servicebeskrivelse, priskalkulator og kontakt.</p>
+            <div class="template-tags">
+              <span class="template-tag">VVS</span>
+              <span class="template-tag">Moderne</span>
+              <span class="template-tag">Kalkulator</span>
+            </div>
+            <div class="template-buttons">
+              <button class="template-button template-button-secondary" onclick="previewTemplate('vvs')">Forhåndsvis</button>
+              <button class="template-button template-button-primary" onclick="startTemplate('vvs')">Brug Template</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- MALER TEMPLATE -->
+        <div class="template-card">
+          <div class="template-preview">🎨</div>
+          <div class="template-content">
+            <h3 class="template-title">Maler Template</h3>
+            <p class="template-description">Farverig hjemmeside til malervirksomhed. Fokus på billeder, portfolio og tilbud.</p>
+            <div class="template-tags">
+              <span class="template-tag">Maler</span>
+              <span class="template-tag">Farverig</span>
+              <span class="template-tag">Portfolio</span>
+            </div>
+            <div class="template-buttons">
+              <button class="template-button template-button-secondary" onclick="previewTemplate('maler')">Forhåndsvis</button>
+              <button class="template-button template-button-primary" onclick="startTemplate('maler')">Brug Template</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GETTING STARTED SECTION -->
+    <section style="padding: 4rem 1.5rem; background: var(--bg-secondary); text-align: center;">
+      <div class="container-md">
+        <h2 style="color: white; font-size: 2rem; margin-bottom: 1.5rem;">Sådan Kommer Du Igang</h2>
+        <ol style="text-align: left; max-width: 500px; margin: 0 auto; color: var(--text-secondary); line-height: 2;">
+          <li style="margin-bottom: 1rem;"><strong style="color: white;">Vælg template</strong> - Find en som matcher din branche</li>
+          <li style="margin-bottom: 1rem;"><strong style="color: white;">Åbn editor</strong> - Klik "Brug Template" for at åbne live editor</li>
+          <li style="margin-bottom: 1rem;"><strong style="color: white;">Ændr indhold</strong> - Tilpas tekst, billeder og farver</li>
+          <li style="margin-bottom: 1rem;"><strong style="color: white;">Gem dine ændringer</strong> - Klik "Gem" for at gemme dit arbejde</li>
+          <li><strong style="color: white;">Download & deploy</strong> - Download som ZIP og upload til dit hosting</li>
+        </ol>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div style="border-top: 1px solid var(--bg-tertiary); padding-top: var(--spacing-lg); text-align: center; color: var(--text-muted); font-size: var(--text-sm);">
+        <p>© 2026 HUMANIFIED Template Academy. Gratis templates til håndværkere og små virksomheder.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function previewTemplate(templateName) {
+      alert('Forhåndsvisning af ' + templateName + ' template kommer snart!');
+    }
+
+    function startTemplate(templateName) {
+      window.location.href = 'playground.html?template=' + templateName;
+    }
+  </script>
+</body>
+</html>
