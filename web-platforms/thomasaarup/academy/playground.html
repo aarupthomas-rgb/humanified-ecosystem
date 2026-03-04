@@ -243,45 +243,51 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
 
   <script>
-    // Template data
-    const templates = {
-      toemmerer: {
-        name: 'Tømrer Template',
-        html: '<h1>Tømrerfirma</h1><p>Velkommen til vores hjemmeside</p>',
-        css: 'body { font-family: Arial; background: #f0f0f0; }',
-        js: 'console.log(\"Tømrer template loaded\");'
-      },
-      vvs: {
-        name: 'VVS Template',
-        html: '<h1>VVS Service</h1><p>24/7 Service</p>',
-        css: 'body { font-family: Arial; background: #e0f7fa; }',
-        js: 'console.log(\"VVS template loaded\");'
-      },
-      maler: {
-        name: 'Maler Template',
-        html: '<h1>Professionel Maling</h1><p>Kvalitet Du Kan Se</p>',
-        css: 'body { font-family: Arial; background: #fef2f2; }',
-        js: 'console.log(\"Maler template loaded\");'
-      }
+    // Template names
+    const templateNames = {
+      toemmerer: 'Tømrer Template',
+      vvs: 'VVS Template',
+      maler: 'Maler Template'
     };
 
     let currentTemplate = 'toemmerer';
+    let currentTemplateData = null;
     let editors = {};
     let currentTab = 'html';
 
+    // Load template from JSON file
+    async function loadTemplate(templateId) {
+      try {
+        const response = await fetch(`data/templates/template-${templateId}.json`);
+        const data = await response.json();
+        return data.files;
+      } catch (error) {
+        console.error('Error loading template:', error);
+        // Fallback to minimal template
+        return {
+          html: '<h1>Template</h1><p>Fejl ved loading af template</p>',
+          css: 'body { font-family: Arial; }',
+          js: '// Template fejl'
+        };
+      }
+    }
+
     // Initialize
-    function init() {
+    async function init() {
       const params = new URLSearchParams(window.location.search);
       currentTemplate = params.get('template') || 'toemmerer';
 
-      document.getElementById('templateName').textContent = templates[currentTemplate].name + ' - Live Editor';
+      // Load template data from JSON
+      currentTemplateData = await loadTemplate(currentTemplate);
+
+      document.getElementById('templateName').textContent = templateNames[currentTemplate] + ' - Live Editor';
 
       // Load saved code or template code
       const saved = JSON.parse(localStorage.getItem('academy_' + currentTemplate) || '{}');
 
-      const htmlCode = saved.html || templates[currentTemplate].html;
-      const cssCode = saved.css || templates[currentTemplate].css;
-      const jsCode = saved.js || templates[currentTemplate].js;
+      const htmlCode = saved.html || currentTemplateData.html;
+      const cssCode = saved.css || currentTemplateData.css;
+      const jsCode = saved.js || currentTemplateData.js;
 
       // Create editors (simplified - using textarea fallback for better compatibility)
       createSimpleEditors(htmlCode, cssCode, jsCode);
@@ -350,9 +356,9 @@
 
     function resetCode() {
       if (confirm('Nulstil til original template?')) {
-        document.getElementById('htmlInput').value = templates[currentTemplate].html;
-        document.getElementById('cssInput').value = templates[currentTemplate].css;
-        document.getElementById('jsInput').value = templates[currentTemplate].js;
+        document.getElementById('htmlInput').value = currentTemplateData.html;
+        document.getElementById('cssInput').value = currentTemplateData.css;
+        document.getElementById('jsInput').value = currentTemplateData.js;
         updatePreview();
       }
     }
@@ -390,7 +396,7 @@
     }
 
     // Start
-    init();
+    init().catch(err => console.error('Init error:', err));
   </script>
 </body>
 </html>
