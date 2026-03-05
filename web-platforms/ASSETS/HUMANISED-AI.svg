@@ -1,0 +1,22 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle -->
+  <circle cx="100" cy="100" r="95" fill="#0A0E1F" stroke="#FF8C00" stroke-width="2"/>
+
+  <!-- Orange/Gold center mark -->
+  <circle cx="100" cy="100" r="15" fill="#FF8C00"/>
+
+  <!-- Values radiating out -->
+  <line x1="100" y1="25" x2="100" y2="60" stroke="#FFB84D" stroke-width="3" stroke-linecap="round"/>
+  <line x1="100" y1="140" x2="100" y2="175" stroke="#FFB84D" stroke-width="3" stroke-linecap="round"/>
+  <line x1="25" y1="100" x2="60" y2="100" stroke="#FFB84D" stroke-width="3" stroke-linecap="round"/>
+  <line x1="140" y1="100" x2="175" y2="100" stroke="#FFB84D" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Diagonal connections -->
+  <line x1="42" y1="42" x2="65" y2="65" stroke="#FF8C00" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+  <line x1="158" y1="158" x2="135" y2="135" stroke="#FF8C00" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+  <line x1="158" y1="42" x2="135" y2="65" stroke="#FF8C00" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+  <line x1="42" y1="158" x2="65" y2="135" stroke="#FF8C00" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+
+  <!-- Text: INTEGRITY-STRENGTH -->
+  <text x="100" y="195" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#FF8C00" text-anchor="middle" font-weight="bold">INTEGRITY</text>
+</svg>

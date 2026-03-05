@@ -1,44 +1,54 @@
 # 🎨 HUMANIFIED ECOSYSTEM DESIGN SYSTEM 2026
 
-**Version:** 1.0
-**Date:** March 3, 2026
-**Status:** ACTIVE - Foundation for all three sites
-**Source:** HUMANISED-AI.png + blomst.png + design.com reference
+**Version:** 2.0 (UPDATED March 5, 2026)
+**Date:** March 5, 2026
+**Status:** ACTIVE - Complete redesign (Dark + Orange/Gold only)
+**Directive:** Remove blue→purple→magenta entirely. Values-locked color philosophy.
 
 ---
 
-## 📊 COLOR PALETTE
+## 📊 COLOR PALETTE (REDESIGNED - March 5, 2026)
 
-### **Primary Colors (From HUMANISED-AI logo)**
+### **Dark Foundation (Primary Backgrounds)**
 ```css
---color-primary-blue: #0066FF
---color-primary-purple: #6600FF
---color-primary-magenta: #FF00FF
+--color-dark-bg: #0A0E1F           /* Primary dark background */
+--color-dark-bg-alt: #111827       /* Cards, sections, slight contrast */
+--color-dark-border: #1a1a2e       /* Subtle borders, dividers */
 
---color-gradient-start: #0066FF
---color-gradient-mid: #6600FF
---color-gradient-end: #FF00FF
+/* Metaphor: Darkness represents constraints (Temple Grandin philosophy)
+   Integrity-locked architecture: dark foundation with light breaking through */
 ```
 
-### **Accent Colors (From blomst.png - flower)**
+### **Warm Accent Colors (ONLY accent colors now)**
 ```css
---color-accent-orange: #FF8C00
---color-accent-gold: #FFB84D
---color-accent-copper: #B87333
+--color-accent-orange: #FF8C00     /* Primary attention, calls-to-action */
+--color-accent-gold: #FFB84D       /* Secondary accent, hover states */
+--color-accent-copper: #B87333     /* Tertiary accent, subtle emphasis */
 
---accent-warm-start: #FF8C00
---accent-warm-mid: #FFB84D
---accent-warm-end: #B87333
+/* Metaphor: Orange/gold = warmth, values, authenticity breaking through darkness
+   Visual: Light finds its way (integrity shining through constraints) */
 ```
 
-### **Neutral Colors**
+### **Supporting Colors (Unchanged)**
 ```css
---color-white: #FFFFFF
---color-black: #000000
---color-dark: #0A0E1F
---color-light-gray: #F5F5F5
---color-medium-gray: #999999
---color-dark-gray: #333333
+--color-white: #FFFFFF            /* Headings, primary text */
+--color-light-gray: #E5E5E5       /* Body text, secondary content */
+--color-medium-gray: #999999      /* Tertiary text, subtle elements */
+--color-dark-gray: #333333        /* Text on light backgrounds (rare) */
+```
+
+### **DEPRECATED - DO NOT USE (Removed March 5, 2026)**
+```css
+❌ --color-primary-blue: #0066FF        [REMOVED]
+❌ --color-primary-purple: #6600FF      [REMOVED]
+❌ --color-primary-magenta: #FF00FF     [REMOVED]
+❌ --gradient-primary: blue→purple→magenta [REMOVED]
+
+Reason: Values-locked design. Gradient was beautiful but lacked intent.
+        Dark + Orange is clearer, more intentional, aligned with
+        INTEGRITET (integrity) and SELVVÆRD (self-worth).
+
+        From Thomas: "Det driver mig til vanvid" → Full redesign approved.
 ```
 
 ---
@@ -100,41 +110,56 @@
 
 ---
 
-## 🎨 GRADIENT DEFINITIONS
+## 🎨 GRADIENT DEFINITIONS (Updated)
 
-### **Primary Gradient (HUMANIFIED Logo)**
+### **Primary Gradient (DEPRECATED - NO LONGER USED)**
 ```css
---gradient-primary: linear-gradient(135deg, #0066FF 0%, #6600FF 50%, #FF00FF 100%)
+❌ --gradient-primary: REMOVED
+   (Was: linear-gradient(135deg, #0066FF 0%, #6600FF 50%, #FF00FF 100%))
+
+Reason: Replaced with flat dark background for clarity and values alignment.
 ```
 
 ### **Warm Gradient (Flower accents)**
 ```css
+/* Optional - use sparingly, usually solid colors preferred */
 --gradient-warm: linear-gradient(135deg, #FF8C00 0%, #FFB84D 50%, #B87333 100%)
+
+/* Recommended: Use solid colors instead for clarity */
+--accent-primary: #FF8C00
+--accent-secondary: #FFB84D
 ```
 
-### **Dark Gradient (Backgrounds)**
+### **Background (Now Flat, No Gradient)**
 ```css
---gradient-dark: linear-gradient(135deg, #0A0E1F 0%, #1a1a2e 100%)
+--color-dark-bg: #0A0E1F              /* Primary background - flat, no gradient */
+--color-dark-bg-alt: #111827          /* Secondary background - flat */
+
+/* Reason: Flat backgrounds align with values-locked architecture.
+   Gradients add visual complexity but reduce clarity.
+   Focus: Intent matters more than decoration. */
 ```
 
 ---
 
-## 🖼️ COMPONENT PATTERNS
+## 🖼️ COMPONENT PATTERNS (Updated for Dark + Orange)
 
 ### **Buttons**
 ```css
 .btn-primary {
-  background: var(--gradient-primary);
+  background: var(--color-accent-orange);      /* Solid orange, no gradient */
   color: var(--color-white);
   padding: var(--spacing-md) var(--spacing-lg);
   border-radius: 8px;
   font-weight: var(--font-semibold);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.3s ease;
+  border: none;
 }
 
 .btn-primary:hover {
+  background: var(--color-accent-gold);        /* Transition to gold */
   transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(102, 0, 255, 0.3);
+  box-shadow: 0 10px 25px rgba(255, 140, 0, 0.4);  /* Orange glow */
 }
 
 .btn-secondary {
@@ -150,6 +175,7 @@
 .btn-secondary:hover {
   background: var(--color-accent-orange);
   color: var(--color-white);
+  box-shadow: 0 10px 25px rgba(255, 140, 0, 0.3);
 }
 ```
 
@@ -160,10 +186,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--gradient-dark);
+  background: var(--color-dark-bg);            /* Flat dark, no gradient */
+  color: var(--color-light-gray);
   padding: var(--spacing-3xl) var(--spacing-lg);
   position: relative;
   overflow: hidden;
+}
+
+.hero h1 {
+  color: var(--color-white);                   /* White headings */
 }
 
 .hero::before {
@@ -173,25 +204,31 @@
   right: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle, rgba(255, 140, 0, 0.1) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(255, 140, 0, 0.08) 0%, transparent 70%);
   animation: float 20s ease-in-out infinite;
+  pointer-events: none;
 }
 ```
 
 ### **Card Component**
 ```css
-.card {
-  background: var(--color-white);
+.card, .value-card, .feature-card {
+  background: var(--color-dark-bg-alt);        /* Dark alt background */
   border-radius: 12px;
   padding: var(--spacing-2xl);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border-left: 4px solid var(--color-primary-magenta);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  border-left: 4px solid var(--color-accent-orange);  /* Orange left accent */
+  color: var(--color-light-gray);
+}
+
+.card h3, .value-card h3, .feature-card h3 {
+  color: var(--color-accent-orange);           /* Orange headings */
 }
 
 .card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 12px 24px rgba(255, 140, 0, 0.15);  /* Subtle orange glow */
 }
 ```
 
@@ -261,43 +298,83 @@
 
 ---
 
-## 🎯 SITE-SPECIFIC OVERRIDES
+## 🎯 SITE-SPECIFIC OVERRIDES (Updated March 5, 2026)
 
 ### **humanified.dk**
-- Primary colors: Blue→Purple→Magenta (HUMANIFIED gradient)
-- Accent: Orange/Gold (flower accents)
-- Background: Dark (#0A0E1F)
-- Focus: Premium, sophisticated, product showcase
+- Background: Dark (#0A0E1F) - FLAT, no gradient
+- Accent: Orange/Gold (primary attention)
+- Focus: Premium, sophisticated, self-discovery product
+- Special: Power-Profiling benefits section added
 
 ### **thomasaarup.dk**
-- Primary colors: Same gradient
-- Accent: Orange/Gold references to HUMANIFIED
-- Background: Mix of dark and light
-- Focus: Rådgivning, systems thinking, professional
+- Background: Dark (#0A0E1F) - FLAT, no gradient
+- Accent: Orange/Gold (same as ecosystem)
+- Focus: Values-based coaching, systems thinking
+- Special: NEW Power-Profile section (May 2026 launch prep)
 
 ### **ohgodmode.dk**
-- Primary colors: Gradient for consistency
+- Background: Dark (#0A0E1F) - FLAT, no gradient
 - Accent: Orange/Gold (warm, energetic)
-- Background: Mix with lighter elements
-- Focus: Bluecollar, practical, entry point
+- Focus: Bluecollar entrepreneurs, templates, practical
+- Special: Clean, entry-level aesthetic
+
+### **Overall Theme (All Sites)**
+- **Color Philosophy:** Dark with warm light breaking through
+- **Metaphor:** Integrity shining through constraints (Temple Grandin)
+- **Aesthetic:** Reveal template (clean, one-page scrolling, no fluff)
+- **Values:** Orange represents INTEGRITET, SELVVÆRD, FAMILIESAMMENHOLD
 
 ---
 
-## ✅ DESIGN DNA CHECKLIST
+## ✅ DESIGN DNA CHECKLIST (Updated)
 
-All three sites should have:
-- ✅ Same color palette foundation
+All three sites NOW have:
+- ✅ Same dark color foundation (#0A0E1F)
 - ✅ Same typography system
-- ✅ HUMANISED-AI logo visible (or referenced)
+- ✅ Logo visible and integrated (left header)
 - ✅ Consistent spacing/padding
-- ✅ Matching button styles
+- ✅ Matching button styles (orange → gold on hover)
 - ✅ Same animation language
-- ✅ Values integrated visually (gradients = integration + spectrum)
+- ✅ Values integrated visually (orange = warmth breaking through dark)
+- ✅ NO blue, purple, or magenta anywhere
+- ✅ Orange/gold as ONLY accent colors
+- ✅ Links sections added (resources, ecosystem, learning)
+- ✅ Flat backgrounds (no gradients)
+- ✅ Premium, intentional aesthetic
 
 ---
 
-**Status:** FOUNDATION READY
-**Next:** Integrate into HTML files
-**Owner:** Claudian + Thomas
+## 📅 REVISION HISTORY
+
+| Date | Version | Changes | Status |
+|------|---------|---------|--------|
+| March 3, 2026 | 1.0 | Initial design system (Blue→Purple→Magenta gradient) | Approved |
+| March 5, 2026 | 2.0 | **Complete redesign (Dark + Orange/Gold only)** | **ACTIVE** |
+
+---
+
+## 🎯 CURRENT STATUS
+
+**Version:** 2.0 (March 5, 2026)
+**Status:** FOUNDATION READY FOR IMPLEMENTATION
+**Next:** Update shared CSS + individual site HTML files
+**Owner:** JARVIS + Thomas
+**Timeline:** 5-hour implementation (Phase 1-5)
+
+**Reference Document:** [[WEB-REDESIGN-PLAN-2026.md]] - Complete implementation plan
+
+---
+
+## 🚀 VALUES-LOCKED PHILOSOPHY
+
+This design system is not just aesthetics - it's architecture:
+
+- **Dark Background:** Constraints (Temple Grandin philosophy - clarity comes from boundaries)
+- **Orange/Gold Accents:** Values breaking through (INTEGRITET shining)
+- **No Gradients:** Intentional flatness (no visual complexity, just intent)
+- **Premium Aesthetic:** Seriousness (this matters, this is real)
+- **One Accent Color Family:** Singular focus (orange = warmth, values, humanity)
+
+**From Thomas:** "Det driver mig til vanvid" → Complete redesign approved March 5, 2026
 
 🎨💪

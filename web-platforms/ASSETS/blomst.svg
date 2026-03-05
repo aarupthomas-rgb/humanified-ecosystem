@@ -1,0 +1,28 @@
+<svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Petals (5 petals in orange/gold gradient) -->
+  <!-- Top petal -->
+  <ellipse cx="150" cy="50" rx="35" ry="60" fill="#FF8C00" opacity="0.9"/>
+
+  <!-- Top-right petal -->
+  <ellipse cx="205" cy="75" rx="35" ry="60" fill="#FFB84D" opacity="0.9" transform="rotate(72 150 150)"/>
+
+  <!-- Bottom-right petal -->
+  <ellipse cx="205" cy="225" rx="35" ry="60" fill="#B87333" opacity="0.9" transform="rotate(144 150 150)"/>
+
+  <!-- Bottom-left petal -->
+  <ellipse cx="95" cy="225" rx="35" ry="60" fill="#FFB84D" opacity="0.9" transform="rotate(216 150 150)"/>
+
+  <!-- Top-left petal -->
+  <ellipse cx="95" cy="75" rx="35" ry="60" fill="#FF8C00" opacity="0.9" transform="rotate(288 150 150)"/>
+
+  <!-- Center circle -->
+  <circle cx="150" cy="150" r="45" fill="#FFB84D"/>
+  <circle cx="150" cy="150" r="35" fill="#FF8C00"/>
+  <circle cx="150" cy="150" r="25" fill="#0A0E1F"/>
+
+  <!-- Decorative inner element -->
+  <circle cx="150" cy="140" r="8" fill="#FFB84D" opacity="0.7"/>
+  <circle cx="140" cy="150" r="6" fill="#FFB84D" opacity="0.7"/>
+  <circle cx="150" cy="160" r="8" fill="#FFB84D" opacity="0.7"/>
+  <circle cx="160" cy="150" r="6" fill="#FFB84D" opacity="0.7"/>
+</svg>
