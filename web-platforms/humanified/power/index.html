@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="POWER Orchestrator - Intelligent Routing for Maximum Margin. Smart agent selection, cost optimization, real-time routing decisions.">
+    <title>POWER Orchestrator - Intelligent Agent Routing</title>
+    <style>
+        /* ========== CSS RESET & VARIABLES ========== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Color Palette */
+            --primary: #667eea;
+            --primary-dark: #764ba2;
+            --accent: #4ade80;
+            --danger: #ef4444;
+            --bg-light: #f5f7fa;
+            --bg-white: #ffffff;
+            --text-dark: #1a1a1a;
+            --text-light: #666666;
+            --border-color: #e5e7eb;
+
+            /* Typography */
+            --font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            --font-mono: "Courier New", Courier, monospace;
+
+            /* Spacing */
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 2rem;
+            --spacing-lg: 4rem;
+            --spacing-xl: 6rem;
+
+            /* Transitions */
+            --transition: all 0.3s ease;
+        }
+
+        html, body {
+            height: 100%;
+            font-family: var(--font-stack);
+            color: var(--text-dark);
+            background-color: var(--bg-white);
+            line-height: 1.6;
+        }
+
+        /* ========== RESPONSIVE UTILITIES ========== */
+        @media (max-width: 768px) {
+            :root {
+                --spacing-lg: 2rem;
+                --spacing-xl: 3rem;
+            }
+        }
+
+        /* ========== NAVIGATION ========== */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: var(--bg-white);
+            border-bottom: 1px solid var(--border-color);
+            padding: var(--spacing-md) 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: var(--spacing-md);
+        }
+
+        nav a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: 4px;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+            background-color: rgba(102, 126, 234, 0.1);
+        }
+
+        nav .breadcrumb {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-left: auto;
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                gap: var(--spacing-sm);
+                flex-wrap: wrap;
+            }
+
+            nav a {
+                font-size: 0.9rem;
+                padding: var(--spacing-xs) var(--spacing-xs);
+            }
+
+            nav .breadcrumb {
+                display: none;
+            }
+        }
+
+        /* ========== CONTAINER & SECTIONS ========== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+
+        section {
+            padding: var(--spacing-xl) 0;
+        }
+
+        /* ========== HERO SECTION ========== */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: var(--spacing-xl) 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: var(--spacing-md);
+            line-height: 1.2;
+        }
+
+        .hero .subheader {
+            font-size: 1.25rem;
+            opacity: 0.95;
+            margin-bottom: var(--spacing-lg);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero .cta-group {
+            display: flex;
+            gap: var(--spacing-md);
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero .subheader {
+                font-size: 1rem;
+                margin-bottom: var(--spacing-md);
+            }
+
+            .hero .cta-group {
+                flex-direction: column;
+            }
+        }
+
+        /* ========== BUTTONS ========== */
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+            min-width: 150px;
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+            color: var(--text-dark);
+        }
+
+        .btn-primary:hover {
+            background-color: #22c55e;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(74, 222, 128, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: white;
+            color: var(--primary);
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.9);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .btn {
+                padding: 0.875rem 1.5rem;
+                font-size: 0.95rem;
+                min-width: 140px;
+            }
+        }
+
+        /* ========== FEATURES SECTION ========== */
+        .features-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: var(--spacing-lg);
+            color: var(--text-dark);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-lg);
+        }
+
+        .feature-item {
+            background: white;
+            padding: var(--spacing-lg);
+            border-radius: 12px;
+            border-left: 4px solid var(--accent);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+        }
+
+        .feature-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+        }
+
+        .feature-item .icon {
+            font-size: 2.5rem;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .feature-item h3 {
+            color: var(--accent);
+            font-size: 1.25rem;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .feature-item p {
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        @media (max-width: 768px) {
+            .features-section h2 {
+                font-size: 1.75rem;
+            }
+
+            .feature-item {
+                padding: var(--spacing-md);
+            }
+        }
+
+        /* ========== HOW IT WORKS SECTION ========== */
+        .how-section {
+            background-color: var(--bg-light);
+        }
+
+        .how-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: var(--spacing-lg);
+            color: var(--text-dark);
+        }
+
+        .how-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: var(--spacing-lg);
+        }
+
+        .how-card {
+            background: white;
+            padding: var(--spacing-lg);
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            position: relative;
+        }
+
+        .how-card h3 {
+            color: var(--accent);
+            font-size: 1.1rem;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .how-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        .how-card::before {
+            content: "";
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border-radius: 50%;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .how-card:nth-child(1)::after {
+            content: "1";
+            position: absolute;
+            top: -18px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+
+        .how-card:nth-child(2)::after {
+            content: "2";
+            position: absolute;
+            top: -18px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+
+        .how-card:nth-child(3)::after {
+            content: "3";
+            position: absolute;
+            top: -18px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .how-section h2 {
+                font-size: 1.75rem;
+            }
+
+            .how-card {
+                padding: var(--spacing-md);
+                margin-top: var(--spacing-md);
+            }
+        }
+
+        /* ========== COST OPTIMIZATION SECTION ========== */
+        .cost-section {
+            background-color: white;
+        }
+
+        .cost-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: var(--spacing-lg);
+            color: var(--text-dark);
+        }
+
+        .cost-example {
+            background: linear-gradient(135deg, rgba(74, 222, 128, 0.1), rgba(102, 126, 234, 0.1));
+            border-radius: 12px;
+            padding: var(--spacing-lg);
+            margin-bottom: var(--spacing-lg);
+            border-left: 4px solid var(--accent);
+        }
+
+        .cost-breakdown {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-md);
+        }
+
+        .cost-item {
+            background: white;
+            padding: var(--spacing-md);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .cost-item label {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            display: block;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .cost-item .value {
+            color: var(--accent);
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        @media (max-width: 768px) {
+            .cost-section h2 {
+                font-size: 1.75rem;
+            }
+
+            .cost-breakdown {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ========== INTEGRATION SECTION ========== */
+        .integration-section {
+            background-color: var(--bg-light);
+        }
+
+        .integration-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: var(--spacing-lg);
+            color: var(--text-dark);
+        }
+
+        .integration-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .integration-step {
+            background: white;
+            padding: var(--spacing-lg);
+            border-radius: 12px;
+            margin-bottom: var(--spacing-md);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .integration-step h3 {
+            color: var(--accent);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .integration-step p {
+            color: var(--text-light);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .integration-step code {
+            background-color: var(--bg-light);
+            padding: var(--spacing-xs);
+            border-radius: 4px;
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            color: var(--primary);
+        }
+
+        @media (max-width: 768px) {
+            .integration-section h2 {
+                font-size: 1.75rem;
+            }
+
+            .integration-step {
+                padding: var(--spacing-md);
+            }
+        }
+
+        /* ========== CTA SECTION ========== */
+        .cta-section {
+            background: linear-gradient(135deg, var(--accent) 0%, rgba(74, 222, 128, 0.8) 100%);
+            color: white;
+            padding: var(--spacing-xl) 0;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: var(--spacing-md);
+            line-height: 1.2;
+            color: var(--text-dark);
+        }
+
+        .cta-section p {
+            font-size: 1.1rem;
+            margin-bottom: var(--spacing-lg);
+            color: rgba(26, 26, 26, 0.8);
+        }
+
+        /* ========== FOOTER ========== */
+        footer {
+            background-color: var(--text-dark);
+            color: white;
+            padding: var(--spacing-xl) 0 var(--spacing-lg);
+        }
+
+        footer .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        footer h4 {
+            margin-bottom: var(--spacing-md);
+            color: var(--accent);
+        }
+
+        footer ul {
+            list-style: none;
+        }
+
+        footer li {
+            margin-bottom: var(--spacing-sm);
+        }
+
+        footer a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        footer a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: var(--spacing-lg);
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            footer .container {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: var(--spacing-md);
+                margin-bottom: var(--spacing-md);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ========== NAVIGATION ========== -->
+    <nav>
+        <div class="container">
+            <a href="/" class="logo">HUMANIFIED</a>
+            <ul>
+                <li><a href="/#services">Services</a></li>
+                <li><a href="/#how-it-works">How It Works</a></li>
+                <li><a href="/#contact">Contact</a></li>
+                <li><a href="https://thomasaarup.dk" target="_blank">About</a></li>
+            </ul>
+            <span class="breadcrumb">Home > POWER Orchestrator</span>
+        </div>
+    </nav>
+
+    <!-- ========== HERO SECTION ========== -->
+    <section class="hero">
+        <div class="container">
+            <h1>POWER Orchestrator</h1>
+            <p class="subheader">Intelligent routing for maximum margin. Real-time agent selection. Cost optimization. Transparent pricing. Complete control.</p>
+            <div class="cta-group">
+                <a href="#how" class="btn btn-primary">How It Works</a>
+                <a href="#integration" class="btn btn-secondary">See Docs</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FEATURES SECTION ========== -->
+    <section class="features-section">
+        <div class="container">
+            <h2>Why Use POWER</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="icon">🧠</div>
+                    <h3>Intelligent Routing</h3>
+                    <p>AI-powered decision making. Analyzes queries in real-time and routes to optimal agents automatically.</p>
+                </div>
+
+                <div class="feature-item">
+                    <div class="icon">💰</div>
+                    <h3>Cost Optimization</h3>
+                    <p>Reduce costs by 40% on average. POWER finds cheapest paths without sacrificing quality.</p>
+                </div>
+
+                <div class="feature-item">
+                    <div class="icon">⚡</div>
+                    <h3>Speed Advantage</h3>
+                    <p>Parallel execution when possible. Sequential when needed. Always optimal timing.</p>
+                </div>
+
+                <div class="feature-item">
+                    <div class="icon">📊</div>
+                    <h3>Full Transparency</h3>
+                    <p>See every decision. Cost breakdown before execution. Blockchain-logged for proof.</p>
+                </div>
+
+                <div class="feature-item">
+                    <div class="icon">🔄</div>
+                    <h3>Multi-Agent Support</h3>
+                    <p>Routes to Trinity, competitors, or any external agents. You stay in control.</p>
+                </div>
+
+                <div class="feature-item">
+                    <div class="icon">📈</div>
+                    <h3>Margin Tracking</h3>
+                    <p>Monitor margins in real-time. Understand profitability per query type.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== HOW IT WORKS SECTION ========== -->
+    <section id="how" class="how-section">
+        <div class="container">
+            <h2>How POWER Works</h2>
+            <div class="how-grid">
+                <div class="how-card">
+                    <h3>Receive Request</h3>
+                    <p>User sends research query with budget and quality requirements.</p>
+                </div>
+
+                <div class="how-card">
+                    <h3>Analyze & Route</h3>
+                    <p>POWER analyzes the query, compares available agents, and finds optimal routing path.</p>
+                </div>
+
+                <div class="how-card">
+                    <h3>Execute & Deliver</h3>
+                    <p>Send request to selected agents, collect results, and return to user with cost breakdown.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== COST OPTIMIZATION SECTION ========== -->
+    <section class="cost-section">
+        <div class="container">
+            <h2>Cost Optimization in Action</h2>
+
+            <div class="cost-example">
+                <h3 style="color: var(--text-dark); margin-bottom: var(--spacing-md);">Example: "Research climate change impact on agriculture"</h3>
+
+                <div class="cost-breakdown">
+                    <div class="cost-item">
+                        <label>User Price</label>
+                        <div class="value">0.30 USDC</div>
+                    </div>
+                    <div class="cost-item">
+                        <label>POWER Routing Cost</label>
+                        <div class="value">0.165 USDC</div>
+                    </div>
+                    <div class="cost-item">
+                        <label>Your Margin</label>
+                        <div class="value">0.135 USDC</div>
+                    </div>
+                    <div class="cost-item">
+                        <label>Margin %</label>
+                        <div class="value">45%</div>
+                    </div>
+                </div>
+
+                <p style="color: var(--text-dark); margin-top: var(--spacing-md); font-size: 0.95rem;">
+                    POWER selected Validator + Research + Quality agents. Skipped Synthesizer & Formatter (not needed for this query). Saved 0.04 USDC vs standard route.
+                </p>
+            </div>
+
+            <div style="background: var(--bg-light); padding: var(--spacing-lg); border-radius: 12px; text-align: center;">
+                <h3 style="color: var(--text-dark); margin-bottom: var(--spacing-sm);">The Math</h3>
+                <p style="color: var(--text-light);">Your Revenue - Agent Costs = Your Margin<br>Control pricing, POWER controls costs. Maximize margin.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== INTEGRATION SECTION ========== -->
+    <section id="integration" class="integration-section">
+        <div class="container">
+            <h2>Integration Guide</h2>
+
+            <div class="integration-content">
+                <div class="integration-step">
+                    <h3>1. Enable POWER for Your Account</h3>
+                    <p>Toggle POWER routing in your dashboard. Takes 30 seconds. No code required.</p>
+                </div>
+
+                <div class="integration-step">
+                    <h3>2. Set Your Pricing & Targets</h3>
+                    <p>Define user prices and target margin %. POWER automatically optimizes agent selection to hit your targets.</p>
+                </div>
+
+                <div class="integration-step">
+                    <h3>3. Start Receiving Optimized Results</h3>
+                    <p>All queries now routed through POWER. Watch margins improve immediately. Monitor via dashboard.</p>
+                </div>
+
+                <div class="integration-step">
+                    <h3>4. Monitor Performance</h3>
+                    <p>Track costs, margins, and routing decisions in real-time. Export data for analysis.</p>
+                </div>
+
+                <p style="text-align: center; color: var(--text-light); margin-top: var(--spacing-lg);">
+                    Full API documentation available at <code>https://humanified.dk/docs/power-api</code>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CTA SECTION ========== -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Maximize Your Margins?</h2>
+            <p>Enable POWER routing today and watch your profitability improve immediately.</p>
+            <a href="https://api.humanified.dk/power/enable" class="btn btn-primary">Enable POWER Routing</a>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer>
+        <div class="container">
+            <div>
+                <h4>POWER</h4>
+                <ul>
+                    <li><a href="#how">How It Works</a></li>
+                    <li><a href="#integration">Integration</a></li>
+                    <li><a href="https://humanified.dk/docs/power-api">API Docs</a></li>
+                    <li><a href="#">Dashboard</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4>HUMANIFIED</h4>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/#services">Services</a></li>
+                    <li><a href="/trinity/">Trinity Research</a></li>
+                    <li><a href="https://thomasaarup.dk">About</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4>Developers</h4>
+                <ul>
+                    <li><a href="#">SDK</a></li>
+                    <li><a href="#">Webhooks</a></li>
+                    <li><a href="#">Status Page</a></li>
+                    <li><a href="#">Support</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Privacy</a></li>
+                    <li><a href="#">Terms</a></li>
+                    <li><a href="#">Security</a></li>
+                    <li><a href="#">Compliance</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 POWER Orchestrator. Built by <a href="https://thomasaarup.dk" target="_blank">HUMANIFIED</a>. Intelligent routing. Maximum margin.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

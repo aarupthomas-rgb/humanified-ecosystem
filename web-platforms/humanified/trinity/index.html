@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Trinity Research Service - AI Research You Can Trust. 6 specialized agents, blockchain-verified, transparent pricing.">
+    <title>Trinity Research - AI You Can Trust</title>
+    <style>
+        /* ========== CSS RESET & VARIABLES ========== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Color Palette */
+            --primary: #667eea;
+            --primary-dark: #764ba2;
+            --accent: #4ade80;
+            --danger: #ef4444;
+            --bg-light: #f5f7fa;
+            --bg-white: #ffffff;
+            --text-dark: #1a1a1a;
+            --text-light: #666666;
+            --border-color: #e5e7eb;
+
+            /* Typography */
+            --font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            --font-mono: "Courier New", Courier, monospace;
+
+            /* Spacing */
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 2rem;
+            --spacing-lg: 4rem;
+            --spacing-xl: 6rem;
+
+            /* Transitions */
+            --transition: all 0.3s ease;
+        }
+
+        html, body {
+            height: 100%;
+            font-family: var(--font-stack);
+            color: var(--text-dark);
+            background-color: var(--bg-white);
+            line-height: 1.6;
+        }
+
+        /* ========== RESPONSIVE UTILITIES ========== */
+        @media (max-width: 768px) {
+            :root {
+                --spacing-lg: 2rem;
+                --spacing-xl: 3rem;
+            }
+        }
+
+        /* ========== NAVIGATION ========== */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: var(--bg-white);
+            border-bottom: 1px solid var(--border-color);
+            padding: var(--spacing-md) 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: var(--spacing-md);
+        }
+
+        nav a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: 4px;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+            background-color: rgba(102, 126, 234, 0.1);
+        }
+
+        nav .breadcrumb {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-left: auto;
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                gap: var(--spacing-sm);
+                flex-wrap: wrap;
+            }
+
+            nav a {
+                font-size: 0.9rem;
+                padding: var(--spacing-xs) var(--spacing-xs);
+            }
+
+            nav .breadcrumb {
+                display: none;
+            }
+        }
+
+        /* ========== CONTAINER & SECTIONS ========== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+
+        section {
+            padding: var(--spacing-xl) 0;
+        }
+
+        /* ========== HERO SECTION ========== */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: var(--spacing-xl) 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: var(--spacing-md);
+            line-height: 1.2;
+        }
+
+        .hero .subheader {
+            font-size: 1.25rem;
+            opacity: 0.95;
+            margin-bottom: var(--spacing-lg);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero .cta-group {
+            display: flex;
+            gap: var(--spacing-md);
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero .subheader {
+                font-size: 1rem;
+                margin-bottom: var(--spacing-md);
+            }
+
+            .hero .cta-group {
+                flex-direction: column;
+            }
+        }
+
+        /* ========== BUTTONS ========== */
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+            min-width: 150px;
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+            color: var(--text-dark);
+        }
+
+        .btn-primary:hover {
+            background-color: #22c55e;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(74, 222, 128, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: white;
+            color: var(--primary);
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.9);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .btn {
+                padding: 0.875rem 1.5rem;
+                font-size: 0.95rem;
+                min-width: 140px;
+            }
+        }
+
+        /* ========== FEATURES SECTION ========== */
+        .features-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: var(--spacing-lg);
+            color: var(--text-dark);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-lg);
+        }
+
+        .feature-item {
+            background: white;
+            padding: var(--spacing-lg);
+            border-radius: 12px;
+            border-left: 4px solid var(--primary);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+        }
+
+        .feature-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+        }
+
+        .feature-item .icon {
+            font-size: 2.5rem;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .feature-item h3 {
+            color: var(--primary);
+            font-size: 1.25rem;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .feature-item p {
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        @media (max-width: 768px) {
+            .features-section h2 {
+                font-size: 1.75rem;
+            }
+
+            .feature-item {
+                padding: var(--spacing-md);
+            }
+        }
+
+        /* ========== AGENTS SECTION ========== */
+        .agents-section {
+            background-color: var(--bg-light);
+        }
+
+        .agents-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: var(--spacing-lg);
+            color: var(--text-dark);
+        }
+
+        .agents-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-lg);
+        }
+
+        .agent-card {
+            background: white;
+            padding: var(--spacing-lg);
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+            border: 2px solid var(--border-color);
+        }
+
+        .agent-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(102, 126, 234, 0.15);
+        }
+
+        .agent-card .icon {
+            font-size: 2rem;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .agent-card h3 {
+            color: var(--primary);
+            font-size: 1.1rem;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .agent-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .agent-card .price {
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .agents-section h2 {
+                font-size: 1.75rem;
+            }
+
+            .agent-card {
+                padding: var(--spacing-md);
+            }
+        }
+
+        /* ========== PRICING SECTION ========== */
+        .pricing-section {
+            background-color: white;
+        }
+
+        .pricing-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: var(--spacing-lg);
+            color: var(--text-dark);
+        }
+
+        .pricing-table {
+            background: white;
+            border-radius: 12px;
+            border: 2px solid var(--border-color);
+            overflow: hidden;
+            margin-bottom: var(--spacing-lg);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .pricing-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .pricing-table th {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            padding: var(--spacing-md);
+            font-weight: 600;
+            border-bottom: 2px solid var(--border-color);
+            text-align: left;
+        }
+
+        .pricing-table td {
+            padding: var(--spacing-md);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .pricing-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .pricing-table .price {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .pricing-info {
+            text-align: center;
+            max-width: 600px;
+            margin: var(--spacing-lg) auto;
+            padding: var(--spacing-lg);
+            background-color: var(--bg-light);
+            border-radius: 12px;
+        }
+
+        .pricing-info h3 {
+            color: var(--primary);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .pricing-info p {
+            color: var(--text-light);
+        }
+
+        @media (max-width: 768px) {
+            .pricing-section h2 {
+                font-size: 1.75rem;
+            }
+
+            .pricing-table {
+                font-size: 0.9rem;
+            }
+
+            .pricing-table th, .pricing-table td {
+                padding: var(--spacing-sm);
+            }
+        }
+
+        /* ========== INTEGRATION SECTION ========== */
+        .integration-section {
+            background-color: var(--bg-light);
+        }
+
+        .integration-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: var(--spacing-lg);
+            color: var(--text-dark);
+        }
+
+        .integration-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .integration-step {
+            background: white;
+            padding: var(--spacing-lg);
+            border-radius: 12px;
+            margin-bottom: var(--spacing-md);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .integration-step h3 {
+            color: var(--primary);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .integration-step p {
+            color: var(--text-light);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .integration-step code {
+            background-color: var(--bg-light);
+            padding: var(--spacing-xs);
+            border-radius: 4px;
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            color: var(--primary);
+        }
+
+        @media (max-width: 768px) {
+            .integration-section h2 {
+                font-size: 1.75rem;
+            }
+
+            .integration-step {
+                padding: var(--spacing-md);
+            }
+        }
+
+        /* ========== CTA SECTION ========== */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: var(--spacing-xl) 0;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: var(--spacing-md);
+            line-height: 1.2;
+        }
+
+        .cta-section p {
+            font-size: 1.1rem;
+            margin-bottom: var(--spacing-lg);
+            opacity: 0.95;
+        }
+
+        /* ========== FOOTER ========== */
+        footer {
+            background-color: var(--text-dark);
+            color: white;
+            padding: var(--spacing-xl) 0 var(--spacing-lg);
+        }
+
+        footer .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        footer h4 {
+            margin-bottom: var(--spacing-md);
+            color: var(--accent);
+        }
+
+        footer ul {
+            list-style: none;
+        }
+
+        footer li {
+            margin-bottom: var(--spacing-sm);
+        }
+
+        footer a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        footer a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: var(--spacing-lg);
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            footer .container {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: var(--spacing-md);
+                margin-bottom: var(--spacing-md);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ========== NAVIGATION ========== -->
+    <nav>
+        <div class="container">
+            <a href="/" class="logo">HUMANIFIED</a>
+            <ul>
+                <li><a href="/#services">Services</a></li>
+                <li><a href="/#how-it-works">How It Works</a></li>
+                <li><a href="/#contact">Contact</a></li>
+                <li><a href="https://thomasaarup.dk" target="_blank">About</a></li>
+            </ul>
+            <span class="breadcrumb">Home > Trinity Research</span>
+        </div>
+    </nav>
+
+    <!-- ========== HERO SECTION ========== -->
+    <section class="hero">
+        <div class="container">
+            <h1>Trinity Research Service</h1>
+            <p class="subheader">AI Research You Can Trust. 6 specialized agents, blockchain-verified, transparent pricing. Complete research in minutes.</p>
+            <div class="cta-group">
+                <a href="#pricing" class="btn btn-primary">View Pricing</a>
+                <a href="#integration" class="btn btn-secondary">See API Docs</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FEATURES SECTION ========== -->
+    <section class="features-section">
+        <div class="container">
+            <h2>Why Choose Trinity</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="icon">⚡</div>
+                    <h3>Fast & Reliable</h3>
+                    <p>Complete research in under 30 seconds. Consistent results you can depend on.</p>
+                </div>
+
+                <div class="feature-item">
+                    <div class="icon">🔍</div>
+                    <h3>Comprehensive</h3>
+                    <p>6 specialized agents validate, research, synthesize, format, and quality-check every result.</p>
+                </div>
+
+                <div class="feature-item">
+                    <div class="icon">🔐</div>
+                    <h3>Blockchain Verified</h3>
+                    <p>Every execution is logged on blockchain. Complete transparency. Proof of work.</p>
+                </div>
+
+                <div class="feature-item">
+                    <div class="icon">💰</div>
+                    <h3>Transparent Pricing</h3>
+                    <p>No hidden costs. Pay exactly for what you use. Clear cost breakdown per agent.</p>
+                </div>
+
+                <div class="feature-item">
+                    <div class="icon">🔗</div>
+                    <h3>Easy Integration</h3>
+                    <p>REST API. Webhooks. SDK support. Integrate in minutes, not days.</p>
+                </div>
+
+                <div class="feature-item">
+                    <div class="icon">📊</div>
+                    <h3>Results Sourcing</h3>
+                    <p>Every finding includes sources. Know exactly where information came from.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== AGENTS SECTION ========== -->
+    <section class="agents-section">
+        <div class="container">
+            <h2>The Trinity Agents</h2>
+            <div class="agents-grid">
+                <div class="agent-card">
+                    <div class="icon">✓</div>
+                    <h3>Validator Agent</h3>
+                    <p>Checks query safety, quality, and feasibility before research begins.</p>
+                    <div class="price">0.02 USDC</div>
+                </div>
+
+                <div class="agent-card">
+                    <div class="icon">🔎</div>
+                    <h3>Research Agent</h3>
+                    <p>Executes comprehensive research across multiple sources and validates findings.</p>
+                    <div class="price">0.10 USDC</div>
+                </div>
+
+                <div class="agent-card">
+                    <div class="icon">🧬</div>
+                    <h3>Synthesizer Agent</h3>
+                    <p>Combines multiple research results into coherent, unified insights.</p>
+                    <div class="price">0.03 USDC</div>
+                </div>
+
+                <div class="agent-card">
+                    <div class="icon">📝</div>
+                    <h3>Formatter Agent</h3>
+                    <p>Converts raw research into polished, professional output (JSON, Markdown, PDF).</p>
+                    <div class="price">0.01 USDC</div>
+                </div>
+
+                <div class="agent-card">
+                    <div class="icon">⭐</div>
+                    <h3>Quality Agent</h3>
+                    <p>Final verification of accuracy, completeness, and relevance before delivery.</p>
+                    <div class="price">0.02 USDC</div>
+                </div>
+
+                <div class="agent-card">
+                    <div class="icon">🚀</div>
+                    <h3>Optimizer Agent</h3>
+                    <p>Analyzes execution pattern and learns for future optimization and cost reduction.</p>
+                    <div class="price">0.015 USDC</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== PRICING SECTION ========== -->
+    <section id="pricing" class="pricing-section">
+        <div class="container">
+            <h2>Pricing</h2>
+
+            <div class="pricing-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Research Depth</th>
+                            <th>Agents Involved</th>
+                            <th>Typical Cost</th>
+                            <th>Speed</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Quick</strong></td>
+                            <td>Validator + Research</td>
+                            <td class="price">0.12 USDC</td>
+                            <td>&lt; 10s</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Standard</strong></td>
+                            <td>All 6 agents</td>
+                            <td class="price">0.165 USDC</td>
+                            <td>15-30s</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Comprehensive</strong></td>
+                            <td>All 6 + deep synthesis</td>
+                            <td class="price">0.20 USDC</td>
+                            <td>30-60s</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="pricing-info">
+                <h3>How Billing Works</h3>
+                <p>You pay exactly for the agents you use. Each query shows cost breakdown before execution. No subscriptions. No hidden fees. Pay per query.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== INTEGRATION SECTION ========== -->
+    <section id="integration" class="integration-section">
+        <div class="container">
+            <h2>Integration Guide</h2>
+
+            <div class="integration-content">
+                <div class="integration-step">
+                    <h3>1. Get Your API Key</h3>
+                    <p>Sign up and receive an API key instantly. No approval process. Start immediately.</p>
+                </div>
+
+                <div class="integration-step">
+                    <h3>2. Make Your First Request</h3>
+                    <p>Call the Trinity Research API with your query and preferred depth:</p>
+                    <code>POST /api/research - Body: {"query": "...", "depth": "standard"}</code>
+                </div>
+
+                <div class="integration-step">
+                    <h3>3. Receive Payment Confirmation</h3>
+                    <p>Trinity returns blockchain tx_id proving payment was processed. Complete transparency.</p>
+                </div>
+
+                <div class="integration-step">
+                    <h3>4. Get Results</h3>
+                    <p>Receive comprehensive research results with source citations, methodology, and cost breakdown. Ready to use immediately.</p>
+                </div>
+
+                <p style="text-align: center; color: var(--text-light); margin-top: var(--spacing-lg);">
+                    Full API documentation available at <code>https://humanified.dk/docs/trinity-api</code>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CTA SECTION ========== -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Transform Your Research?</h2>
+            <p>Start with Trinity today. No credit card. No commitment. First research on us.</p>
+            <a href="https://api.humanified.dk/trinity/getstarted" class="btn btn-primary">Get Started Free</a>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer>
+        <div class="container">
+            <div>
+                <h4>Trinity</h4>
+                <ul>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#integration">Integration</a></li>
+                    <li><a href="https://humanified.dk/docs/trinity-api">API Docs</a></li>
+                    <li><a href="#">Case Studies</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4>HUMANIFIED</h4>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/#services">Services</a></li>
+                    <li><a href="/power/">POWER Orchestrator</a></li>
+                    <li><a href="https://thomasaarup.dk">About</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4>Developers</h4>
+                <ul>
+                    <li><a href="#">SDK</a></li>
+                    <li><a href="#">Webhooks</a></li>
+                    <li><a href="#">Status Page</a></li>
+                    <li><a href="#">Support</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Privacy</a></li>
+                    <li><a href="#">Terms</a></li>
+                    <li><a href="#">Security</a></li>
+                    <li><a href="#">Compliance</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 Trinity Research. Built by <a href="https://thomasaarup.dk" target="_blank">HUMANIFIED</a>. Blockchain-verified. Fully transparent.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
