@@ -26,20 +26,20 @@
 
 /* PRIMARY BUTTON */
 .btn-primary {
-  background-color: var(--accent);
+  background-color: #FF8C00;
   color: var(--color-white);
-  border-color: var(--accent);
+  border-color: #FF8C00;
 }
 
 .btn-primary:hover {
-  background-color: var(--color-accent-light);
-  border-color: var(--color-accent-light);
+  background-color: #FFB84D;
+  border-color: #FFB84D;
   transform: translateY(-2px);
   box-shadow: var(--shadow-lg);
 }
 
 .btn-primary:active {
-  background-color: var(--color-accent-dark);
+  background-color: #B87333;
   transform: translateY(0);
 }
 
@@ -59,12 +59,12 @@
 /* OUTLINE BUTTON */
 .btn-outline {
   background-color: transparent;
-  color: var(--accent);
-  border-color: var(--accent);
+  color: #FF8C00;
+  border-color: #FF8C00;
 }
 
 .btn-outline:hover {
-  background-color: var(--accent);
+  background-color: #FF8C00;
   color: var(--color-white);
 }
 
