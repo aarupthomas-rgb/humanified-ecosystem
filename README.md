@@ -5,23 +5,12 @@
 ## 📍 TIERS
 
 - **TIER 1:** [thomasaarup.dk](https://thomasaarup.dk) - Personal brand + values gateway
-- **TIER 2:** [humanified.dk](https://humanified.dk) - Values-aligned AI research & orchestration platform
-  - **/trinity/** - Trinity Research Service (6 specialized AI agents)
-  - **/power/** - POWER Orchestrator (intelligent routing & cost optimization)
+- **TIER 2:** [humanified.dk](https://humanified.dk) - Self-discovery with AI
 - **TIER 3:** [ohgodmode.dk](https://ohgodmode.dk) - Free templates for founders
-
-## 🎯 HUMANIFIED ECOSYSTEM VISION
-
-**Values-aligned AI services built on:**
-- 🔐 **Integrity** - Transparent execution, blockchain-verified, no hidden costs
-- 🤝 **Partnership** - AI that works with you, not for you
-- 🚀 **Autonomy** - Independent agents, decentralized routing, your control
 
 ## 🚀 DEPLOYMENT
 
 All platforms deploy automatically via Vercel when code is pushed to main.
-
-**Status:** Production-ready. See [[DEPLOYMENT-GUIDE.md]] for setup instructions.
 
 ## 📁 STRUCTURE
 
