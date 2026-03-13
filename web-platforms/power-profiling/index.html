@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="POWER-PROFILING - 6-8 ugers værdi-profiling for ledere, kandidater og teams">
+    <title>POWER-PROFILING - Værdi-Klarhed for Ledelse</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-dark: #0a0a0a;
+            --color-darker: #050505;
+            --color-orange: #ff8c00;
+            --color-orange-bright: #ff9f1c;
+            --color-white: #ffffff;
+            --color-light-gray: #f5f5f5;
+            --color-medium-gray: #cccccc;
+        }
+
+        html, body {
+            height: 100%;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            color: var(--color-white);
+            background-color: var(--color-dark);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, rgba(255, 140, 0, 0.1) 0%, rgba(255, 140, 0, 0.05) 100%);
+            border-bottom: 2px solid var(--color-orange);
+            padding: 2rem 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .header-logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            color: var(--color-white);
+        }
+
+        .header-logo h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--color-orange) 0%, var(--color-orange-bright) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin: 0;
+        }
+
+        .header-nav {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .header-nav a {
+            color: var(--color-medium-gray);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .header-nav a:hover {
+            color: var(--color-orange);
+        }
+
+        main {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 4rem 1rem;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 4rem;
+            padding: 3rem 0;
+            border-bottom: 2px solid var(--color-orange);
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            color: var(--color-orange);
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--color-medium-gray);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        section {
+            margin-bottom: 4rem;
+        }
+
+        section h2 {
+            font-size: 2rem;
+            color: var(--color-orange);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        section h3 {
+            font-size: 1.3rem;
+            color: var(--color-orange);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        section p {
+            color: var(--color-medium-gray);
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .process-step {
+            background: linear-gradient(135deg, rgba(255, 140, 0, 0.08) 0%, rgba(255, 140, 0, 0.03) 100%);
+            border: 1px solid var(--color-orange);
+            border-radius: 0.5rem;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .step-number {
+            font-size: 2.5rem;
+            color: var(--color-orange);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .process-step h4 {
+            color: var(--color-orange);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .process-step p {
+            font-size: 0.95rem;
+            color: var(--color-medium-gray);
+            margin: 0;
+        }
+
+        .features-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .feature-item {
+            background: rgba(255, 140, 0, 0.05);
+            padding: 1.5rem;
+            border-left: 3px solid var(--color-orange);
+            border-radius: 0.25rem;
+        }
+
+        .feature-item strong {
+            color: var(--color-orange);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-item p {
+            font-size: 0.9rem;
+            color: var(--color-medium-gray);
+            margin: 0;
+        }
+
+        .use-cases {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .use-case-card {
+            background: linear-gradient(135deg, rgba(255, 140, 0, 0.08) 0%, rgba(255, 140, 0, 0.03) 100%);
+            border: 1px solid var(--color-orange);
+            border-radius: 0.5rem;
+            padding: 2rem;
+        }
+
+        .use-case-card h4 {
+            color: var(--color-orange);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .use-case-card ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .use-case-card li {
+            color: var(--color-medium-gray);
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .use-case-card li:before {
+            content: "→";
+            color: var(--color-orange);
+            position: absolute;
+            left: 0;
+            font-weight: 700;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, rgba(255, 140, 0, 0.08) 0%, rgba(255, 140, 0, 0.03) 100%);
+            border: 2px solid var(--color-orange);
+            border-radius: 0.75rem;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin: 4rem 0;
+        }
+
+        .cta-section h2 {
+            margin-top: 0;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, var(--color-orange) 0%, var(--color-orange-bright) 100%);
+            color: var(--color-dark);
+            text-decoration: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1.5rem;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 140, 0, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid var(--color-orange);
+            color: var(--color-orange);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 140, 0, 0.1);
+        }
+
+        footer {
+            background-color: var(--color-darker);
+            border-top: 2px solid var(--color-orange);
+            padding: 2rem 1rem;
+            text-align: center;
+            color: var(--color-medium-gray);
+            font-size: 0.9rem;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+        }
+
+        .footer-links {
+            margin-top: 1rem;
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--color-orange);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .footer-links a:hover {
+            color: var(--color-orange-bright);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            section h2 {
+                font-size: 1.5rem;
+            }
+
+            .header-content {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .header-nav {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <a href="/" class="header-logo">
+                <h1>POWER-PROFILING</h1>
+            </a>
+            <nav class="header-nav">
+                <a href="https://humanified.dk">HUMANIFIED</a>
+                <a href="https://thomasaarup.dk">Thomas Aarup</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- HERO SECTION -->
+        <section class="hero">
+            <h1>POWER-PROFILING</h1>
+            <p>6-8 ugers værdi-profiling der systematiserer autentiske værdier, udviklingsbehov, og økosystem-fit for ledere, kandidater, og teams</p>
+        </section>
+
+        <!-- HVAD ER DET SECTION -->
+        <section>
+            <h2>Hvad er POWER-PROFILING?</h2>
+            <p>
+                POWER-PROFILING er en metodologi designet til at skabe dybde-forståelse af værdier, motivatorer, og ledelsespotentiale. Det handler ikke om psykologiske tests eller personlighedskategorier - det handler om at forstå hvad der betyder noget for dig, og hvordan det alignment med konteksten omkring dig.
+            </p>
+            <p>
+                Systemet bruger værktøjer fra værdi-baseret ledelse, systemtænkning, og integrativ coaching til at opbygge en komprehensiv profil på tværs af:
+            </p>
+            <ul style="list-style: none; margin: 1.5rem 0; padding: 0;">
+                <li style="padding: 0.5rem 0; padding-left: 1.5rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: var(--color-orange); font-weight: 700;">→</span>
+                    <strong style="color: var(--color-orange);">Autentiske værdier</strong> - ikke hvad du tror du burde værdsætte, men hvad du faktisk værdsætter
+                </li>
+                <li style="padding: 0.5rem 0; padding-left: 1.5rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: var(--color-orange); font-weight: 700;">→</span>
+                    <strong style="color: var(--color-orange);">Udviklingsbehov</strong> - hvor skal fokus være for at udvikle dig
+                </li>
+                <li style="padding: 0.5rem 0; padding-left: 1.5rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: var(--color-orange); font-weight: 700;">→</span>
+                    <strong style="color: var(--color-orange);">Økosystem-fit</strong> - hvordan passer du ind i organisationen/rollen/teamet
+                </li>
+            </ul>
+        </section>
+
+        <!-- PROCESSEN SECTION -->
+        <section>
+            <h2>6-8 Ugers Proces</h2>
+            <p>POWER-PROFILING følger en struktureret men fleksibel proces designet til at gå i dybden uden at bliver rigid.</p>
+
+            <div class="process-grid">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h4>Værdier-Workshop</h4>
+                    <p>Identifikation af autentiske værdier gennem systematisk dialog og analyse</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h4>360° Feedback</h4>
+                    <p>Input fra ledere, peers, og team omkring opfattet værdi-alignment og ledelsestil</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h4>Dybde-Interviews</h4>
+                    <p>1:1 sessioner der udforsker karrierejekt, motivatorer, og udviklingspotentiale</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <h4>Analyse & Mapping</h4>
+                    <p>Strukturering af indsigt i værdi-alignment matrix og udviklingsveje</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">5</div>
+                    <h4>Rapport & Planlægning</h4>
+                    <p>Komprehensiv rapport med actionable anbefalinger for udvikling</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">6</div>
+                    <h4>Opfølg & Refinement</h4>
+                    <p>Løbende support til implementering og udvikling af indsigt</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- NØGLE FEATURES SECTION -->
+        <section>
+            <h2>Nøgle Features</h2>
+
+            <div class="features-list">
+                <div class="feature-item">
+                    <strong>Værdi-Klarhed</strong>
+                    <p>Definerer hvad der betyder noget for dig på dybeste niveau - ikke trends eller forventninger</p>
+                </div>
+                <div class="feature-item">
+                    <strong>Objektiv Måling</strong>
+                    <p>Kvantificerbar værdi-alignment på 1-10 skala, baseret på systematisk analyse</p>
+                </div>
+                <div class="feature-item">
+                    <strong>Udvikling vs Matching</strong>
+                    <p>Fokus på både værdi-fit OG udviklingspotentiale - ikke enten/eller</p>
+                </div>
+                <div class="feature-item">
+                    <strong>Reproducerbar</strong>
+                    <p>Metodologi der skalerer - samme dybde på 1 person som 100 personer</p>
+                </div>
+                <div class="feature-item">
+                    <strong>Dokumenteret</strong>
+                    <p>Komprehensiv rapport med konkrete indsigter og anbefalinger</p>
+                </div>
+                <div class="feature-item">
+                    <strong>Løbende Support</strong>
+                    <p>Ikke en one-time test - feedback og refinement gennem processen</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- BRUGSTILFÆLDE SECTION -->
+        <section>
+            <h2>Brugstilfælde</h2>
+
+            <div class="use-cases">
+                <div class="use-case-card">
+                    <h4>Executive Recruitment</h4>
+                    <ul>
+                        <li>Værdi-match før ansættelse</li>
+                        <li>Vurdering af kulturel fit</li>
+                        <li>Basislinje for onboarding</li>
+                        <li>Reducer turnover-risiko</li>
+                    </ul>
+                </div>
+                <div class="use-case-card">
+                    <h4>Leadership Development</h4>
+                    <ul>
+                        <li>Værdi-aligned coaching</li>
+                        <li>Udviklings-roadmap</li>
+                        <li>Team-alignment work</li>
+                        <li>Organisatorisk kultur-kernen</li>
+                    </ul>
+                </div>
+                <div class="use-case-card">
+                    <h4>Organisatorisk Transformation</h4>
+                    <ul>
+                        <li>Værdi-assess af ledelses-team</li>
+                        <li>Identificer kultur-gaps</li>
+                        <li>Planlæg talent-retension</li>
+                        <li>Dokumenter transformation</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- RESULTATER SECTION -->
+        <section>
+            <h2>Forventet Resultater</h2>
+            <h3>For Kandidater/Ledere:</h3>
+            <ul style="list-style: none; margin: 1.5rem 0; padding: 0;">
+                <li style="padding: 0.5rem 0; padding-left: 1.5rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: var(--color-orange); font-weight: 700;">→</span>
+                    Dybde-forståelse af hvad der betyder noget for dig
+                </li>
+                <li style="padding: 0.5rem 0; padding-left: 1.5rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: var(--color-orange); font-weight: 700;">→</span>
+                    Klart udviklings-roadmap baseret på autentiske værdier
+                </li>
+                <li style="padding: 0.5rem 0; padding-left: 1.5rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: var(--color-orange); font-weight: 700;">→</span>
+                    Styrket selvværd og karriere-klarhed
+                </li>
+            </ul>
+
+            <h3>For Organisationer:</h3>
+            <ul style="list-style: none; margin: 1.5rem 0; padding: 0;">
+                <li style="padding: 0.5rem 0; padding-left: 1.5rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: var(--color-orange); font-weight: 700;">→</span>
+                    Reduceret turnover gennem bedre værdi-match
+                </li>
+                <li style="padding: 0.5rem 0; padding-left: 1.5rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: var(--color-orange); font-weight: 700;">→</span>
+                    Stronger kultur gennem værdi-alignment
+                </li>
+                <li style="padding: 0.5rem 0; padding-left: 1.5rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: var(--color-orange); font-weight: 700;">→</span>
+                    Dokumenteret værdier-profiler for talent-management
+                </li>
+            </ul>
+        </section>
+
+        <!-- CTA SECTION -->
+        <section class="cta-section">
+            <h2>Klar til at gå i dybden?</h2>
+            <p>POWER-PROFILING starter med en kostnadsfri konsultation hvor vi diskuterer konteksten og hvad værdi-klarhed kan betyde for dig eller din organisation.</p>
+            <a href="mailto:info@thomasaarup.dk" class="btn">Book Konsultation</a>
+            <a href="https://humanified.dk" class="btn btn-secondary">Tilbage til HUMANIFIED</a>
+        </section>
+    </main>
+
+    <footer>
+        <p><strong>POWER-PROFILING</strong> — Værdi-Klarhed for Ledelse</p>
+        <p>© 2026 HUMANIFIED. Bygget med integritet.</p>
+        <div class="footer-links">
+            <a href="https://thomasaarup.dk">Thomas Aarup</a>
+            <a href="mailto:info@thomasaarup.dk">Kontakt</a>
+            <a href="https://humanified.dk">HUMANIFIED</a>
+        </div>
+    </footer>
+</body>
+</html>

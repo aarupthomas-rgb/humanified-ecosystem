@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="TRINITY - AI-agent orchestration system for værdi-styret beslutningstagning">
+    <title>TRINITY - AI-Driven Values-Based Strategy</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-dark: #0a0a0a;
+            --color-darker: #050505;
+            --color-orange: #ff8c00;
+            --color-orange-bright: #ff9f1c;
+            --color-white: #ffffff;
+            --color-light-gray: #f5f5f5;
+            --color-medium-gray: #cccccc;
+        }
+
+        html, body {
+            height: 100%;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            color: var(--color-white);
+            background-color: var(--color-dark);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, rgba(255, 140, 0, 0.1) 0%, rgba(255, 140, 0, 0.05) 100%);
+            border-bottom: 2px solid var(--color-orange);
+            padding: 2rem 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .header-logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            color: var(--color-white);
+        }
+
+        .header-logo h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--color-orange) 0%, var(--color-orange-bright) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin: 0;
+        }
+
+        .header-nav {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .header-nav a {
+            color: var(--color-medium-gray);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .header-nav a:hover {
+            color: var(--color-orange);
+        }
+
+        main {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 4rem 1rem;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 4rem;
+            padding: 3rem 0;
+            border-bottom: 2px solid var(--color-orange);
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            color: var(--color-orange);
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--color-medium-gray);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        section {
+            margin-bottom: 4rem;
+        }
+
+        section h2 {
+            font-size: 2rem;
+            color: var(--color-orange);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        section h3 {
+            font-size: 1.3rem;
+            color: var(--color-orange);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        section p {
+            color: var(--color-medium-gray);
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .agents-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .agent-card {
+            background: linear-gradient(135deg, rgba(255, 140, 0, 0.08) 0%, rgba(255, 140, 0, 0.03) 100%);
+            border: 1px solid var(--color-orange);
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+        }
+
+        .agent-card h4 {
+            color: var(--color-orange);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .agent-card p {
+            font-size: 0.9rem;
+            color: var(--color-medium-gray);
+            margin: 0;
+        }
+
+        .capabilities {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .capability-item {
+            background: rgba(255, 140, 0, 0.05);
+            padding: 1.5rem;
+            border-left: 3px solid var(--color-orange);
+            border-radius: 0.25rem;
+        }
+
+        .capability-item strong {
+            color: var(--color-orange);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .capability-item p {
+            font-size: 0.9rem;
+            color: var(--color-medium-gray);
+            margin: 0;
+        }
+
+        .workflow-diagram {
+            background: linear-gradient(135deg, rgba(255, 140, 0, 0.08) 0%, rgba(255, 140, 0, 0.03) 100%);
+            border: 1px solid var(--color-orange);
+            border-radius: 0.5rem;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .workflow-step {
+            display: inline-block;
+            padding: 1rem 1.5rem;
+            margin: 0.5rem;
+            background: rgba(255, 140, 0, 0.1);
+            border: 1px solid var(--color-orange);
+            border-radius: 0.3rem;
+            color: var(--color-orange);
+            font-weight: 600;
+        }
+
+        .use-cases {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .use-case-card {
+            background: linear-gradient(135deg, rgba(255, 140, 0, 0.08) 0%, rgba(255, 140, 0, 0.03) 100%);
+            border: 1px solid var(--color-orange);
+            border-radius: 0.5rem;
+            padding: 2rem;
+        }
+
+        .use-case-card h4 {
+            color: var(--color-orange);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .use-case-card ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .use-case-card li {
+            color: var(--color-medium-gray);
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .use-case-card li:before {
+            content: "→";
+            color: var(--color-orange);
+            position: absolute;
+            left: 0;
+            font-weight: 700;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, rgba(255, 140, 0, 0.08) 0%, rgba(255, 140, 0, 0.03) 100%);
+            border: 2px solid var(--color-orange);
+            border-radius: 0.75rem;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin: 4rem 0;
+        }
+
+        .cta-section h2 {
+            margin-top: 0;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, var(--color-orange) 0%, var(--color-orange-bright) 100%);
+            color: var(--color-dark);
+            text-decoration: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1.5rem;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 140, 0, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid var(--color-orange);
+            color: var(--color-orange);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 140, 0, 0.1);
+        }
+
+        footer {
+            background-color: var(--color-darker);
+            border-top: 2px solid var(--color-orange);
+            padding: 2rem 1rem;
+            text-align: center;
+            color: var(--color-medium-gray);
+            font-size: 0.9rem;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+        }
+
+        .footer-links {
+            margin-top: 1rem;
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--color-orange);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .footer-links a:hover {
+            color: var(--color-orange-bright);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            section h2 {
+                font-size: 1.5rem;
+            }
+
+            .header-content {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .header-nav {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <a href="/" class="header-logo">
+                <h1>TRINITY</h1>
+            </a>
+            <nav class="header-nav">
+                <a href="https://humanified.dk">HUMANIFIED</a>
+                <a href="https://thomasaarup.dk">Thomas Aarup</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- HERO SECTION -->
+        <section class="hero">
+            <h1>TRINITY</h1>
+            <p>AI-agent orchestration system der integrerer værdi-klarhed med strategisk analyse, operative planer, og execution guidance</p>
+        </section>
+
+        <!-- HVAD ER DET SECTION -->
+        <section>
+            <h2>Hvad er TRINITY?</h2>
+            <p>
+                TRINITY er et AI-driven system designet til at være din strategiske partner i værdistyret beslutningstagning. Det kombinerer mennskelig værdier-klarhed med AI-kapacitet til at analysere, planlægge, og eksekvere strategisk arbejde.
+            </p>
+            <p>
+                Systemet orchestrerer 6 specialiserede AI-agenter der hver bidrager med unik ekspertise:
+            </p>
+        </section>
+
+        <!-- AGENTER SECTION -->
+        <section>
+            <h2>De 6 Specialiserede Agenter</h2>
+
+            <div class="agents-grid">
+                <div class="agent-card">
+                    <h4>🔍 Researcher</h4>
+                    <p>Søger, analyserer og syntetiserer information fra multiple kilder for at opbygge en solid kunnskapsfundament</p>
+                </div>
+                <div class="agent-card">
+                    <h4>📊 Strategist</h4>
+                    <p>Udvikler værdistyret strategiske planer med klare mål, timelines, og succes-kriterier baseret på dine værdier</p>
+                </div>
+                <div class="agent-card">
+                    <h4>🏗️ Architect</h4>
+                    <p>Designerer systemerne og strukturerne der skal understøtte din strategi - både menneske og teknologi</p>
+                </div>
+                <div class="agent-card">
+                    <h4>⚙️ Tactician</h4>
+                    <p>Planlægger konkret execution med step-by-step taktikker, ressourcer, og risikohåndtering</p>
+                </div>
+                <div class="agent-card">
+                    <h4>💬 Communicator</h4>
+                    <p>Artikulerer komplekse idéer klart og overbevisende for forskellige stakeholders og publikummer</p>
+                </div>
+                <div class="agent-card">
+                    <h4>✅ Validator</h4>
+                    <p>Sikrer kvalitet, validerer antagelser, og identificerer blindspots før implementering</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- HVORDAN VIRKER DET SECTION -->
+        <section>
+            <h2>Hvordan Virker Det?</h2>
+            <p>TRINITY arbejder gennem en struktureret proces der sikrer både dybde og hastighed:</p>
+
+            <div class="workflow-diagram">
+                <div class="workflow-step">1. Input</div>
+                <span style="color: var(--color-orange); margin: 0 1rem;">→</span>
+                <div class="workflow-step">2. Research</div>
+                <span style="color: var(--color-orange); margin: 0 1rem;">→</span>
+                <div class="workflow-step">3. Analyse</div>
+                <br><br>
+                <div class="workflow-step">4. Strategi</div>
+                <span style="color: var(--color-orange); margin: 0 1rem;">→</span>
+                <div class="workflow-step">5. Plan</div>
+                <span style="color: var(--color-orange); margin: 0 1rem;">→</span>
+                <div class="workflow-step">6. Output</div>
+            </div>
+
+            <h3>Hver fase:</h3>
+            <ul style="list-style: none; margin: 1.5rem 0; padding: 0;">
+                <li style="padding: 0.5rem 0; padding-left: 1.5rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: var(--color-orange); font-weight: 700;">→</span>
+                    <strong style="color: var(--color-orange);">Input:</strong> Du beskriver situationen, målene, og værdi-prioriteringerne
+                </li>
+                <li style="padding: 0.5rem 0; padding-left: 1.5rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: var(--color-orange); font-weight: 700;">→</span>
+                    <strong style="color: var(--color-orange);">Research:</strong> Researcher samler relevant information og data
+                </li>
+                <li style="padding: 0.5rem 0; padding-left: 1.5rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: var(--color-orange); font-weight: 700;">→</span>
+                    <strong style="color: var(--color-orange);">Analyse:</strong> Strategist og Architect analyserer muligheder og design
+                </li>
+                <li style="padding: 0.5rem 0; padding-left: 1.5rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: var(--color-orange); font-weight: 700;">→</span>
+                    <strong style="color: var(--color-orange);">Strategi:</strong> Fælles værdi-styret strategi udvikles
+                </li>
+                <li style="padding: 0.5rem 0; padding-left: 1.5rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: var(--color-orange); font-weight: 700;">→</span>
+                    <strong style="color: var(--color-orange);">Plan:</strong> Tactician og Architect planlægger konkret execution
+                </li>
+                <li style="padding: 0.5rem 0; padding-left: 1.5rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: var(--color-orange); font-weight: 700;">→</span>
+                    <strong style="color: var(--color-orange);">Output:</strong> Validator sikrer kvalitet, Communicator pakker resultatet
+                </li>
+            </ul>
+        </section>
+
+        <!-- NØGLE KAPACITETER SECTION -->
+        <section>
+            <h2>Nøgle Kapaciteter</h2>
+
+            <div class="capabilities">
+                <div class="capability-item">
+                    <strong>Værdi-Styret Strategi</strong>
+                    <p>Alle anbefalinger filtreres gennem dine værdier - ikke blot hvad der er muligt, men hvad der er rigtigt for dig</p>
+                </div>
+                <div class="capability-item">
+                    <strong>Dybde-Analyse</strong>
+                    <p>Multi-perspektiv analyse der udforsker både det indlysende og det ikke-indlysende</p>
+                </div>
+                <div class="capability-item">
+                    <strong>Actionable Output</strong>
+                    <p>Ikke bare strategier - konkrete planer med taktikker, timelines, og success-kriterier</p>
+                </div>
+                <div class="capability-item">
+                    <strong>Løbende Læring</strong>
+                    <p>Systemet forbedrer sig baseret på feedback og resultater - kontinuerlig refinement</p>
+                </div>
+                <div class="capability-item">
+                    <strong>Transparens</strong>
+                    <p>Du ser hele ræsonnementet bag hver anbefaling - ingen black boxes</p>
+                </div>
+                <div class="capability-item">
+                    <strong>Skalabilitet</strong>
+                    <p>Fra 1 minut til 1 måned arbejde - samme grundig proces på alle skalaer</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- BRUGSTILFÆLDE SECTION -->
+        <section>
+            <h2>Brugstilfælde</h2>
+
+            <div class="use-cases">
+                <div class="use-case-card">
+                    <h4>Strategic Planning</h4>
+                    <ul>
+                        <li>Udvikl værdistyret 3-5 års strategi</li>
+                        <li>Identificer kritiske initiativer</li>
+                        <li>Planlæg organisatorisk transformation</li>
+                    </ul>
+                </div>
+                <div class="use-case-card">
+                    <h4>Organisatorisk Design</h4>
+                    <ul>
+                        <li>Designér strukturer omkring værdier</li>
+                        <li>Planlæg kultur-opbygning</li>
+                        <li>Udvikl ledelsesmodeller</li>
+                    </ul>
+                </div>
+                <div class="use-case-card">
+                    <h4>Business Development</h4>
+                    <ul>
+                        <li>Evaluér nye markeder/produkter</li>
+                        <li>Udvikl go-to-market strategi</li>
+                        <li>Identificér partnership-muligheder</li>
+                    </ul>
+                </div>
+                <div class="use-case-card">
+                    <h4>Crisis Management</h4>
+                    <ul>
+                        <li>Analysér krise through værdi-linse</li>
+                        <li>Udvikl respons-strategi</li>
+                        <li>Planlæg recovery med integritet</li>
+                    </ul>
+                </div>
+                <div class="use-case-card">
+                    <h4>Talent Strategy</h4>
+                    <ul>
+                        <li>Udvikl værdi-aligned talent-model</li>
+                        <li>Planlæg leadership pipeline</li>
+                        <li>Designér kultur-driven retention</li>
+                    </ul>
+                </div>
+                <div class="use-case-card">
+                    <h4>Innovation Strategy</h4>
+                    <ul>
+                        <li>Identificér værdi-aligned innovations</li>
+                        <li>Planlæg innovation-ekosystem</li>
+                        <li>Udvikl eksperiment-strategi</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- THE VALUES LOCK SECTION -->
+        <section>
+            <h2>Values-Locked Architecture</h2>
+            <p>
+                TRINITY er bygget på værdi-låst arkitektur - det betyder at systemets struktur selv sikrer at alle output filtres gennem værdier. Det er ikke et feature, det er fundamentet. Integritet kan ikke deaktiveres.
+            </p>
+            <p>
+                4 søjler understøtter hele systemet:
+            </p>
+            <ul style="list-style: none; margin: 1.5rem 0; padding: 0;">
+                <li style="padding: 0.5rem 0; padding-left: 1.5rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: var(--color-orange); font-weight: 700;">→</span>
+                    <strong style="color: var(--color-orange);">FADERSKAB:</strong> Langsigtede løsninger der forbliver relevante
+                </li>
+                <li style="padding: 0.5rem 0; padding-left: 1.5rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: var(--color-orange); font-weight: 700;">→</span>
+                    <strong style="color: var(--color-orange);">FAMILIESAMMENHOLD:</strong> Relationsbaseret analyse der respekterer mennesker
+                </li>
+                <li style="padding: 0.5rem 0; padding-left: 1.5rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: var(--color-orange); font-weight: 700;">→</span>
+                    <strong style="color: var(--color-orange);">INTEGRITET:</strong> Ingen genveje, ingen småt print - fuld transparens
+                </li>
+                <li style="padding: 0.5rem 0; padding-left: 1.5rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: var(--color-orange); font-weight: 700;">→</span>
+                    <strong style="color: var(--color-orange);">SELVVÆRD:</strong> Respect for dig selv og dine valg
+                </li>
+            </ul>
+        </section>
+
+        <!-- CTA SECTION -->
+        <section class="cta-section">
+            <h2>Klar til værdi-styret strategi?</h2>
+            <p>TRINITY starter med en konsultation hvor vi diskuterer hvor du er, hvor du vil hen, og hvad værdi-klarhed kan betyde for din strategi.</p>
+            <a href="mailto:info@thomasaarup.dk" class="btn">Book Konsultation</a>
+            <a href="https://humanified.dk" class="btn btn-secondary">Tilbage til HUMANIFIED</a>
+        </section>
+    </main>
+
+    <footer>
+        <p><strong>TRINITY</strong> — AI-Driven Values-Based Strategy</p>
+        <p>© 2026 HUMANIFIED. Bygget med integritet.</p>
+        <div class="footer-links">
+            <a href="https://thomasaarup.dk">Thomas Aarup</a>
+            <a href="mailto:info@thomasaarup.dk">Kontakt</a>
+            <a href="https://humanified.dk">HUMANIFIED</a>
+        </div>
+    </footer>
+</body>
+</html>
