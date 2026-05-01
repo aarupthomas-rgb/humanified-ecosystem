@@ -3,490 +3,773 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Thomas Aarup - Values-based Leadership Design & POWER-PROFILING">
-    <title>Thomas Aarup - Leadership Design</title>
+    <meta name="description" content="Thomas Aarup — POWER-PROFILING og ledelsesguidance. Systemarkitekt baseret i Farsø, Danmark.">
+    <title>Thomas Aarup — POWER-PROFILING & Ledelsesguidance</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
-            --color-dark: #0a0a0a;
-            --color-darker: #050505;
-            --color-orange: #ff8c00;
-            --color-orange-bright: #ff9f1c;
-            --color-white: #ffffff;
-            --color-light-gray: #f5f5f5;
-            --color-medium-gray: #cccccc;
-            --color-dark-gray: #333333;
-            --spacing-unit: 1rem;
+            --orange: #ff8c00;
+            --orange-bright: #ff9f1c;
+            --dark: #0a0a0a;
+            --darker: #050505;
+            --card-bg: rgba(255,140,0,0.06);
+            --card-border: rgba(255,140,0,0.25);
+            --white: #ffffff;
+            --gray: #cccccc;
+            --light: #f5f5f5;
         }
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
-            background-color: var(--color-dark);
-            color: var(--color-white);
-            line-height: 1.6;
+            background: var(--dark);
+            color: var(--white);
+            line-height: 1.7;
         }
 
+        /* ── HEADER ── */
         header {
-            background: linear-gradient(135deg, rgba(255, 140, 0, 0.1) 0%, rgba(255, 140, 0, 0.05) 100%);
-            border-bottom: 2px solid var(--color-orange);
-            padding: 2rem 1rem;
+            background: linear-gradient(135deg, rgba(255,140,0,0.1), rgba(255,140,0,0.04));
+            border-bottom: 2px solid var(--orange);
+            padding: 1.5rem 1rem;
             position: sticky;
             top: 0;
             z-index: 100;
+            backdrop-filter: blur(8px);
         }
 
-        .header-content {
-            max-width: 1200px;
+        .header-inner {
+            max-width: 1100px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .header-logo {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
+        .logo {
             text-decoration: none;
-            color: var(--color-white);
+            color: var(--white);
         }
 
-        .header-logo h1 {
-            font-size: 1.5rem;
+        .logo h1 {
+            font-size: 1.4rem;
             font-weight: 700;
-            background: linear-gradient(135deg, var(--color-orange) 0%, var(--color-orange-bright) 100%);
+            background: linear-gradient(135deg, var(--orange), var(--orange-bright));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin: 0;
         }
 
-        .header-tagline {
-            font-size: 0.75rem;
-            color: var(--color-orange);
+        .logo .sub {
+            font-size: 0.68rem;
+            color: var(--orange);
             font-weight: 600;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
             text-transform: uppercase;
         }
 
-        .header-nav {
-            display: flex;
-            gap: 2rem;
-        }
+        nav { display: flex; gap: 2rem; }
 
-        .header-nav a {
-            color: var(--color-medium-gray);
+        nav a {
+            color: var(--gray);
             text-decoration: none;
-            font-size: 0.9rem;
-            transition: color 0.3s ease;
+            font-size: 0.88rem;
+            transition: color 0.25s;
         }
 
-        .header-nav a:hover {
-            color: var(--color-orange);
-        }
+        nav a:hover { color: var(--orange); }
 
+        /* ── LAYOUT ── */
         main {
-            max-width: 1200px;
+            max-width: 1100px;
             margin: 0 auto;
-            padding: 4rem 1rem;
+            padding: 5rem 1.5rem;
         }
 
-        section {
-            margin-bottom: 6rem;
-        }
+        section { margin-bottom: 7rem; }
 
-        section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-            color: var(--color-orange);
+        h2 {
+            font-size: 2.2rem;
+            color: var(--orange);
             font-weight: 700;
+            margin-bottom: 1.25rem;
         }
 
-        section p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: var(--color-medium-gray);
-            max-width: 800px;
+        p {
+            color: var(--gray);
+            font-size: 1.05rem;
+            max-width: 780px;
         }
 
-        /* VELKOMMEN Section */
-        #velkommen {
+        p + p { margin-top: 1rem; }
+
+        /* ── HERO ── */
+        #hero {
             text-align: center;
-            padding: 4rem 0;
-            border-bottom: 2px solid var(--color-orange);
+            padding: 5rem 0 4rem;
+            border-bottom: 2px solid var(--orange);
         }
 
-        #velkommen h2 {
-            font-size: 3rem;
-            margin-bottom: 2rem;
+        #hero .eyebrow {
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--orange);
+            margin-bottom: 1.5rem;
         }
 
-        #velkommen p {
-            font-size: 1.3rem;
-            color: var(--color-light-gray);
-            max-width: 900px;
-            margin: 0 auto 2rem;
+        #hero h2 {
+            font-size: 3.2rem;
+            line-height: 1.15;
+            color: var(--white);
+            max-width: 800px;
+            margin: 0 auto 1.5rem;
         }
 
-        .cta-buttons {
+        #hero h2 span {
+            background: linear-gradient(135deg, var(--orange), var(--orange-bright));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        #hero .lead {
+            font-size: 1.2rem;
+            color: var(--light);
+            max-width: 680px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.8;
+        }
+
+        .btn-row {
             display: flex;
             gap: 1rem;
             justify-content: center;
             flex-wrap: wrap;
-            margin-top: 2rem;
         }
 
         .btn {
-            padding: 1rem 2rem;
+            padding: 0.9rem 2rem;
             border-radius: 0.5rem;
             font-weight: 600;
-            font-size: 1rem;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            border: 2px solid var(--color-orange);
-            cursor: pointer;
-        }
-
-        .btn-primary {
-            background-color: var(--color-orange);
-            color: var(--color-dark);
-        }
-
-        .btn-primary:hover {
-            background-color: var(--color-orange-bright);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(255, 140, 0, 0.3);
-        }
-
-        .btn-outline {
-            background-color: transparent;
-            color: var(--color-orange);
-        }
-
-        .btn-outline:hover {
-            background-color: rgba(255, 140, 0, 0.1);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(255, 140, 0, 0.2);
-        }
-
-        /* HVEM ER JEG Section */
-        #hvem-er-jeg p:first-of-type {
-            margin-bottom: 1.5rem;
-        }
-
-        .about-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .about-card {
-            background: linear-gradient(135deg, rgba(255, 140, 0, 0.05) 0%, rgba(255, 140, 0, 0.02) 100%);
-            border-left: 4px solid var(--color-orange);
-            padding: 2rem;
-            border-radius: 0.5rem;
-        }
-
-        .about-card h3 {
-            color: var(--color-orange);
-            margin-bottom: 0.5rem;
-            font-size: 1.2rem;
-        }
-
-        .about-card p {
-            color: var(--color-medium-gray);
             font-size: 0.95rem;
-            margin: 0;
+            text-decoration: none;
+            transition: all 0.25s;
+            border: 2px solid var(--orange);
+            cursor: pointer;
+            display: inline-block;
         }
 
-        /* HVAD LAVER JEG Section */
-        .initiatives {
+        .btn-solid {
+            background: var(--orange);
+            color: var(--dark);
+        }
+
+        .btn-solid:hover {
+            background: var(--orange-bright);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(255,140,0,0.3);
+        }
+
+        .btn-ghost {
+            background: transparent;
+            color: var(--orange);
+        }
+
+        .btn-ghost:hover {
+            background: rgba(255,140,0,0.1);
+            transform: translateY(-2px);
+        }
+
+        /* ── ABOUT CARDS ── */
+        .fact-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2.5rem;
         }
 
-        .initiative-card {
-            background: linear-gradient(135deg, rgba(255, 140, 0, 0.08) 0%, rgba(255, 140, 0, 0.03) 100%);
-            border: 1px solid var(--color-orange);
+        .fact-card {
+            background: var(--card-bg);
+            border-left: 3px solid var(--orange);
             border-radius: 0.5rem;
-            padding: 2rem;
-            transition: all 0.3s ease;
-        }
-
-        .initiative-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 30px rgba(255, 140, 0, 0.15);
-            border-color: var(--color-orange-bright);
-        }
-
-        .initiative-card h3 {
-            color: var(--color-orange);
-            font-size: 1.4rem;
-            margin-bottom: 1rem;
-        }
-
-        .initiative-card p {
-            color: var(--color-medium-gray);
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
-        }
-
-        .initiative-card .btn {
-            width: 100%;
-            text-align: center;
-            padding: 0.75rem 1.5rem;
-            font-size: 0.9rem;
-        }
-
-        /* FÅ FAT PÅ MIG Section */
-        #kontakt {
-            text-align: center;
-            padding: 3rem;
-            background: linear-gradient(135deg, rgba(255, 140, 0, 0.08) 0%, rgba(255, 140, 0, 0.03) 100%);
-            border-radius: 1rem;
-            border: 2px solid var(--color-orange);
-        }
-
-        #kontakt h2 {
-            text-align: center;
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .contact-item {
             padding: 1.5rem;
         }
 
-        .contact-item h3 {
-            color: var(--color-orange);
-            margin-bottom: 0.5rem;
-            font-size: 1rem;
+        .fact-card .label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            color: var(--orange);
+            margin-bottom: 0.5rem;
         }
 
-        .contact-item p {
-            color: var(--color-medium-gray);
-            margin: 0;
-            font-size: 1.1rem;
+        .fact-card p {
+            color: var(--gray);
+            font-size: 0.95rem;
+            max-width: none;
         }
+
+        /* ── POWER-PROFILING ── */
+        #power-profiling h2 { margin-bottom: 0.5rem; }
+
+        .kicker {
+            font-size: 0.85rem;
+            color: var(--orange);
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 1.25rem;
+        }
+
+        .process-timeline {
+            margin: 3rem 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .process-step {
+            display: grid;
+            grid-template-columns: 80px 1fr;
+            gap: 1.5rem;
+            position: relative;
+        }
+
+        .process-step:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 38px;
+            top: 52px;
+            width: 2px;
+            height: calc(100% - 20px);
+            background: linear-gradient(to bottom, var(--orange), rgba(255,140,0,0.15));
+        }
+
+        .step-num {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: var(--card-bg);
+            border: 2px solid var(--orange);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--orange);
+            font-size: 1.1rem;
+            flex-shrink: 0;
+            z-index: 1;
+        }
+
+        .step-body {
+            padding: 0.75rem 0 2rem;
+        }
+
+        .step-body h3 {
+            color: var(--white);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+        }
+
+        .step-body p {
+            font-size: 0.95rem;
+            color: var(--gray);
+            max-width: none;
+        }
+
+        /* ── RESULTAT-BOKS ── */
+        .result-box {
+            background: var(--card-bg);
+            border: 1px solid var(--orange);
+            border-radius: 0.75rem;
+            padding: 2.5rem;
+            margin: 2rem 0;
+        }
+
+        .result-box h3 {
+            color: var(--orange);
+            font-size: 1.2rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .result-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 0.75rem 2rem;
+        }
+
+        .result-list li {
+            color: var(--gray);
+            font-size: 0.95rem;
+            padding-left: 1.25rem;
+            position: relative;
+        }
+
+        .result-list li::before {
+            content: '→';
+            color: var(--orange);
+            font-weight: 700;
+            position: absolute;
+            left: 0;
+        }
+
+        /* ── PRICING ── */
+        .price-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+        }
+
+        .price-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 0.75rem;
+            padding: 2rem 1.75rem;
+            transition: all 0.25s;
+        }
+
+        .price-card:hover {
+            border-color: var(--orange);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(255,140,0,0.12);
+        }
+
+        .price-card.featured {
+            border-color: var(--orange);
+            background: linear-gradient(135deg, rgba(255,140,0,0.1), rgba(255,140,0,0.04));
+        }
+
+        .price-card .tier {
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--orange);
+            margin-bottom: 0.75rem;
+        }
+
+        .price-card .price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 0.25rem;
+        }
+
+        .price-card .price-desc {
+            font-size: 0.85rem;
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+            max-width: none;
+        }
+
+        .price-card ul {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .price-card ul li {
+            font-size: 0.9rem;
+            color: var(--gray);
+            padding: 0.35rem 0;
+            padding-left: 1.25rem;
+            position: relative;
+        }
+
+        .price-card ul li::before {
+            content: '→';
+            color: var(--orange);
+            font-weight: 700;
+            position: absolute;
+            left: 0;
+        }
+
+        /* ── LEADERSHIP ── */
+        .ledelse-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+        }
+
+        .ledelse-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 0.75rem;
+            padding: 2rem;
+            transition: border-color 0.25s, transform 0.25s;
+        }
+
+        .ledelse-card:hover {
+            border-color: var(--orange);
+            transform: translateY(-3px);
+        }
+
+        .ledelse-card .icon {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+        }
+
+        .ledelse-card h3 {
+            color: var(--white);
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 0.6rem;
+        }
+
+        .ledelse-card p {
+            font-size: 0.9rem;
+            color: var(--gray);
+            max-width: none;
+        }
+
+        /* ── KONTAKT ── */
+        #kontakt {
+            text-align: center;
+            background: linear-gradient(135deg, rgba(255,140,0,0.08), rgba(255,140,0,0.03));
+            border: 2px solid var(--orange);
+            border-radius: 1rem;
+            padding: 4rem 2rem;
+        }
+
+        #kontakt h2 { text-align: center; }
+
+        #kontakt .lead {
+            margin: 1rem auto 2.5rem;
+            max-width: 600px;
+        }
+
+        .contact-row {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .contact-item .label {
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--orange);
+            margin-bottom: 0.4rem;
+        }
+
+        .contact-item p { margin: 0; max-width: none; }
 
         .contact-item a {
-            color: var(--color-orange);
+            color: var(--orange);
             text-decoration: none;
             font-weight: 600;
-            transition: color 0.3s ease;
+            font-size: 1.05rem;
+            transition: color 0.2s;
         }
 
-        .contact-item a:hover {
-            color: var(--color-orange-bright);
-        }
+        .contact-item a:hover { color: var(--orange-bright); }
 
+        /* ── FOOTER ── */
         footer {
-            background-color: var(--color-darker);
-            border-top: 2px solid var(--color-orange);
+            background: var(--darker);
+            border-top: 2px solid var(--orange);
             padding: 2rem 1rem;
             text-align: center;
-            color: var(--color-medium-gray);
-            font-size: 0.9rem;
-            margin-top: 6rem;
+            color: var(--gray);
+            font-size: 0.88rem;
+            margin-top: 4rem;
         }
 
-        footer p {
-            margin: 0.5rem 0;
+        footer p { margin: 0.4rem 0; }
+
+        .footer-links {
+            margin-top: 1rem;
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
         }
 
-        /* Responsive */
+        .footer-links a {
+            color: var(--orange);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover { color: var(--orange-bright); }
+
+        /* ── RESPONSIVE ── */
         @media (max-width: 768px) {
-            header {
-                padding: 1rem;
-            }
-
-            .header-content {
-                flex-direction: column;
-                gap: 1rem;
-                align-items: flex-start;
-            }
-
-            .header-nav {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
-
-            section h2 {
-                font-size: 1.8rem;
-            }
-
-            #velkommen h2 {
-                font-size: 2rem;
-            }
-
-            #velkommen p {
-                font-size: 1.1rem;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .btn {
-                width: 100%;
-                max-width: 300px;
-            }
-
-            main {
-                padding: 2rem 1rem;
-            }
-
-            section {
-                margin-bottom: 3rem;
-            }
+            .header-inner { flex-direction: column; align-items: flex-start; gap: 1rem; }
+            nav { flex-wrap: wrap; gap: 1rem; }
+            #hero h2 { font-size: 2.1rem; }
+            h2 { font-size: 1.7rem; }
+            main { padding: 3rem 1rem; }
+            section { margin-bottom: 4rem; }
+            .process-step { grid-template-columns: 50px 1fr; }
         }
     </style>
 </head>
 <body>
-    <header>
-        <div class="header-content">
-            <a href="/" class="header-logo">
-                <div>
-                    <h1>Thomas Aarup</h1>
-                    <div class="header-tagline">Leadership Design</div>
-                </div>
-            </a>
-            <nav class="header-nav">
-                <a href="#hvem-er-jeg">Hvem er jeg</a>
-                <a href="#hvad-laver-jeg">Hvad laver jeg</a>
-                <a href="#kontakt">Få fat på mig</a>
-            </nav>
+
+<header>
+    <div class="header-inner">
+        <a href="/" class="logo">
+            <h1>Thomas Aarup</h1>
+            <div class="sub">POWER-PROFILING &amp; Ledelsesguidance</div>
+        </a>
+        <nav>
+            <a href="#hvem-er-jeg">Om mig</a>
+            <a href="#power-profiling">POWER-PROFILING</a>
+            <a href="#ledelse">Ledelse</a>
+            <a href="#kontakt">Kontakt</a>
+            <a href="https://humanified.dk" style="color: var(--orange);">Humanified →</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+
+    <!-- HERO -->
+    <section id="hero">
+        <div class="eyebrow">Systemarkitekt · Farsø, Danmark</div>
+        <h2>Ledere der kender sig selv<br><span>leder anderledes.</span></h2>
+        <p class="lead">
+            Jeg hjælper ledere og kandidater med at finde den struktur der allerede er i dem —
+            og bygge derfra. Ikke med teorier. Med data, mønstre og 6-8 ugers metodisk arbejde.
+        </p>
+        <div class="btn-row">
+            <a href="#power-profiling" class="btn btn-solid">Se POWER-PROFILING</a>
+            <a href="#kontakt" class="btn btn-ghost">Book en samtale</a>
         </div>
-    </header>
+    </section>
 
-    <main>
-        <!-- VELKOMMEN -->
-        <section id="velkommen">
-            <h2>Velkommen</h2>
-            <p>
-                Jeg bygger værdi-baserede ledelsessystemer for iværksættere og organisationer der vil vinde på integritet.
-            </p>
-            <p style="font-size: 1rem; color: var(--color-medium-gray);">
-                Arkitektur før strategi. Integritet før resultater. Systemtænkning for menneskelig transformation.
-            </p>
-            <div class="cta-buttons">
-                <a href="#kontakt" class="btn btn-primary">Book Sparring</a>
-                <a href="#hvad-laver-jeg" class="btn btn-outline">Læs Mere</a>
+    <!-- OM MIG -->
+    <section id="hvem-er-jeg">
+        <h2>Hvem er jeg</h2>
+        <p>
+            Jeg hedder Thomas Aarup og er baseret i Farsø, Nordjylland. Mit arbejde ligger i
+            skæringspunktet mellem systemarkitektur og menneskelig ledelse — og det udgangspunkt
+            er ikke tilfældigt.
+        </p>
+        <p>
+            Jeg tror på at de bedste beslutninger kommer fra selvkendskab, ikke fra frameworks.
+            At den stærkeste strategi er bygget på en leder der ved præcis hvad han eller hun
+            prioriterer, og hvorfor. Og at integritet ikke er noget du tilføjer til en organisation —
+            det er noget du bygger ind i fundamentet fra dag ét.
+        </p>
+
+        <div class="fact-grid">
+            <div class="fact-card">
+                <div class="label">Udgangspunkt</div>
+                <p>Jeg designer systemer der er skalerbare. Det gælder kode, organisationer og det enkelte menneske.</p>
             </div>
-        </section>
-
-        <!-- HVEM ER JEG -->
-        <section id="hvem-er-jeg">
-            <h2>Hvem er jeg</h2>
-            <p>
-                Jeg er Thomas Aarup, systemarkitekt og værdi-baseret ledelsesforsker baseret i Farsø, Danmark.
-            </p>
-            <p>
-                Mit arbejde handler om at bygge organisationer og systemer på hvad der betyder noget – ikke blot hvad der generer resultater.
-            </p>
-
-            <div class="about-grid">
-                <div class="about-card">
-                    <h3>Fokus</h3>
-                    <p>Værdi-alignment som strategisk fundament, ikke som B-sektion</p>
-                </div>
-                <div class="about-card">
-                    <h3>Metode</h3>
-                    <p>Systematisk profiling, målbar udvikling, dokumenterbar transformation</p>
-                </div>
-                <div class="about-card">
-                    <h3>Tilgang</h3>
-                    <p>Partnership-model. Du sætter retningen, jeg designer systemerne</p>
-                </div>
+            <div class="fact-card">
+                <div class="label">Metode</div>
+                <p>Data-drevet profiling over 6-8 uger. Narrativer, daglig tracking, algoritmisk mønsterfinding.</p>
             </div>
-        </section>
+            <div class="fact-card">
+                <div class="label">Tilgang</div>
+                <p>Jeg stiller spørgsmål, det er dig der svarer. Mit job er at få strukturen frem — ikke at fortælle dig hvem du er.</p>
+            </div>
+            <div class="fact-card">
+                <div class="label">Grundværdier</div>
+                <p>Integritet er ikke en option — det er strukturen. Fuldstændig suverænitet. Ingen afhængighed af systemer der ikke tjener dig.</p>
+            </div>
+        </div>
+    </section>
 
-        <!-- HVAD LAVER JEG -->
-        <section id="hvad-laver-jeg">
-            <h2>Hvad laver jeg</h2>
+    <!-- POWER-PROFILING -->
+    <section id="power-profiling">
+        <div class="kicker">6–8 ugers metodisk profiling</div>
+        <h2>POWER-PROFILING</h2>
+        <p>
+            De fleste kender intuitivt hvad de holder af. Færre ved præcis <em>hvorfor</em> de tager
+            de beslutninger de tager — hvilke værdier der styrer dem, hvilke mønstre der dræner dem,
+            og hvilke roller der frigiver dem.
+        </p>
+        <p>
+            POWER-PROFILING er en systematisk metode til at afdække din faktiske arkitektur.
+            Ikke din selvopfattelse. Det du rent faktisk gør, over tid, under pres.
+        </p>
 
-            <div class="initiatives">
-                <div class="initiative-card">
-                    <h3>POWER-PROFILING</h3>
-                    <p>
-                        6-8 ugers værdi-profiling for ledere og kandidater. Systematisk klarhed omkring autentiske værdier, udviklingsbehov, og werksystemfit.
-                    </p>
-                    <p style="font-size: 0.9rem; color: var(--color-orange);">
-                        For rekruttering, coaching, og ledelsesudvikling
-                    </p>
-                </div>
-
-                <div class="initiative-card">
-                    <h3>TRINITY</h3>
-                    <p>
-                        AI-agent orchestration system for værdistyret beslutningstagning. Integrerer værdi-klarhed med strategisk analyse og execution.
-                    </p>
-                    <p style="font-size: 0.9rem; color: var(--color-orange);">
-                        For organisationel transformation
-                    </p>
-                </div>
-
-                <div class="initiative-card">
-                    <h3>HUMANIFIED-AI-OS</h3>
-                    <p>
-                        Operativsystem for menneske-AI partnership baseret på værdi-låst arkitektur. Framework for autentisk selvudvikling med AI som partner.
-                    </p>
-                    <p style="font-size: 0.9rem; color: var(--color-orange);">
-                        For iværksættere og organisationer
-                    </p>
+        <div class="process-timeline">
+            <div class="process-step">
+                <div class="step-num">1</div>
+                <div class="step-body">
+                    <h3>Indledende interview</h3>
+                    <p>Du skriver narrativer om afgørende øjeblikke: valg du tog på trods af modstand, hvad der giver dig energi, hvad der dræner dig. Udgangspunktet er ærlige historier — ikke selvpræsentation.</p>
                 </div>
             </div>
-        </section>
-
-        <!-- FÅ FAT PÅ MIG -->
-        <section id="kontakt">
-            <h2>Få fat på mig</h2>
-            <p style="margin-bottom: 2rem;">
-                Klar til at snakke værdi-baseret strategi? Jeg tager samtaler omkring POWER-PROFILING, Trinity, og ledelsesdesign.
-            </p>
-
-            <div class="contact-grid">
-                <div class="contact-item">
-                    <h3>Email</h3>
-                    <p>
-                        <a href="mailto:info@thomasaarup.dk">info@thomasaarup.dk</a>
-                    </p>
-                </div>
-                <div class="contact-item">
-                    <h3>Telefon</h3>
-                    <p>
-                        <a href="tel:+4550296911">+45 50 29 69 11</a>
-                    </p>
-                </div>
-                <div class="contact-item">
-                    <h3>Lokation</h3>
-                    <p>
-                        Farsø, Danmark
-                    </p>
+            <div class="process-step">
+                <div class="step-num">2</div>
+                <div class="step-body">
+                    <h3>Daglig tracking (uge 1–6)</h3>
+                    <p>Kortfattede daglige svar: hvad energiserede dig i dag, hvilken beslutning tog du, hvad dræner dig? Over 28+ datapunkter tegner der sig mønstre der ikke lyver.</p>
                 </div>
             </div>
-        </section>
-    </main>
+            <div class="process-step">
+                <div class="step-num">3</div>
+                <div class="step-body">
+                    <h3>Mønsterfinding</h3>
+                    <p>Algoritmen finder gentagelser, konflikter og mønstre i dit datasæt. Hvad vægter du faktisk over hvad, når det kommer til stykket? Hvad er din tænkestil? Hvad er din naturlige rolle?</p>
+                </div>
+            </div>
+            <div class="process-step">
+                <div class="step-num">4</div>
+                <div class="step-body">
+                    <h3>Værdihierarki</h3>
+                    <p>Dine kerneværdier rangeret med evidens. Ikke hvad du synes du burde prioritere — hvad du faktisk prioriterer, dokumenteret med eksempler fra dine egne historier.</p>
+                </div>
+            </div>
+            <div class="process-step">
+                <div class="step-num">5</div>
+                <div class="step-body">
+                    <h3>Din superkraft + blinde vinkler</h3>
+                    <p>Hvor er dit genius? Hvad giver dig asymmetrisk fordel? Og hvad er de mønstre der koster dig mest — ikke som svagheder der skal fikses, men som konflikter der skal navigeres.</p>
+                </div>
+            </div>
+            <div class="process-step">
+                <div class="step-num">6</div>
+                <div class="step-body">
+                    <h3>POWER-MAP + handlingsplan</h3>
+                    <p>Din komplette profil omsættes til en konkret POWER-MAP: hvad skal du gøre mere af, hvad skal du undgå, hvad er din personlige vej frem. Ikke generiske råd — en arkitektur baseret på din data.</p>
+                </div>
+            </div>
+        </div>
 
-    <footer>
-        <p><strong>Thomas Aarup</strong> — Værdi-baseret Ledelsesdesign</p>
-        <p>© 2026 Thomas Aarup. Bygget med integritet.</p>
-    </footer>
+        <div class="result-box">
+            <h3>Hvad du får ud af det</h3>
+            <ul class="result-list">
+                <li>Dokumenteret værdihierarki med evidens</li>
+                <li>Kortlagt tænkestil og beslutningsstrategi</li>
+                <li>Energikort: hvad lader dig op, hvad dræner dig</li>
+                <li>Identifikation af din naturlige lederrolle</li>
+                <li>Superkraft-beskrivelse med konkrete applikationer</li>
+                <li>POWER-MAP: personlig handlingsplan og vej frem</li>
+                <li>Grundlag for rekruttering, coaching, og ledelsesudvikling</li>
+                <li>Reproducerbar profil der kan opdateres over tid</li>
+            </ul>
+        </div>
+
+        <div class="price-grid">
+            <div class="price-card">
+                <div class="tier">Selvstændig</div>
+                <div class="price">€199</div>
+                <div class="price-desc">Fuld adgang til profileringsforløbet. Du arbejder selv.</div>
+                <ul>
+                    <li>6-ugers struktureret forløb</li>
+                    <li>Komplet profil + POWER-MAP</li>
+                    <li>Digital vejledning inkluderet</li>
+                </ul>
+                <a href="#kontakt" class="btn btn-ghost" style="width:100%; text-align:center;">Kom i gang</a>
+            </div>
+            <div class="price-card featured">
+                <div class="tier">Guidet forløb</div>
+                <div class="price">€599</div>
+                <div class="price-desc">Profileringsforløb med løbende vejledning og fortolkningssamtale.</div>
+                <ul>
+                    <li>Alt i Selvstændig</li>
+                    <li>3 vejledningssamtaler undervejs</li>
+                    <li>Fortolknings- og handlingssession</li>
+                    <li>Opfølgning efter 30 dage</li>
+                </ul>
+                <a href="#kontakt" class="btn btn-solid" style="width:100%; text-align:center;">Book forløb</a>
+            </div>
+            <div class="price-card">
+                <div class="tier">Dyb sparring</div>
+                <div class="price">€3.000</div>
+                <div class="price-desc">Komplet forløb med personlig sparring og strategisk integration.</div>
+                <ul>
+                    <li>Alt i Guidet forløb</li>
+                    <li>Løbende adgang til Thomas</li>
+                    <li>Strategisk integrationsplan</li>
+                    <li>Profilen ind i org-kontekst</li>
+                </ul>
+                <a href="#kontakt" class="btn btn-ghost" style="width:100%; text-align:center;">Forespørg</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- LEDELSE -->
+    <section id="ledelse">
+        <h2>Ledelsesguidance</h2>
+        <p>
+            Selvkendskab er starten. Den næste opgave er at omsætte det til bedre beslutninger,
+            stærkere teams og en organisation der virker. Det er det jeg hjælper med.
+        </p>
+
+        <div class="ledelse-grid">
+            <div class="ledelse-card">
+                <div class="icon">◈</div>
+                <h3>Arkitektur før strategi</h3>
+                <p>De fleste organisationer bygger strategi oven på et fundament de aldrig har undersøgt. Vi starter med fundamentet: hvad er det faktisk denne leder og dette team er sat i verden for?</p>
+            </div>
+            <div class="ledelse-card">
+                <div class="icon">◈</div>
+                <h3>Integritet som struktur</h3>
+                <p>Værdier er ikke plakater på væggen. De er enten hårdt kodet i beslutningsprocesserne — eller de er ikke der. Jeg hjælper med at bygge systemer hvor integritet er infrastruktur.</p>
+            </div>
+            <div class="ledelse-card">
+                <div class="icon">◈</div>
+                <h3>Rekruttering på evidens</h3>
+                <p>En POWER-PROFIL af en kandidat giver dig noget ingen CV eller samtale kan give: dokumenteret adfærd under pres, faktiske prioriteringer, og et neutralt grundlag for decision.</p>
+            </div>
+            <div class="ledelse-card">
+                <div class="icon">◈</div>
+                <h3>Lederudvikling der virker</h3>
+                <p>Coaching og lederudvikling er mest effektiv når den tager afsæt i præcis hvem denne leder er — ikke i generiske modeller. POWER-PROFILING er fundamentet for det arbejde.</p>
+            </div>
+        </div>
+
+        <div style="margin-top: 2.5rem; padding: 1.5rem 2rem; background: var(--card-bg); border-left: 3px solid var(--orange); border-radius: 0.5rem; max-width: 700px;">
+            <p style="color: var(--light); font-style: italic; font-size: 1rem; max-width: none;">
+                "Systemtænkning for menneskelig transformation. Du sætter retningen — jeg designer strukturerne."
+            </p>
+        </div>
+    </section>
+
+    <!-- KONTAKT -->
+    <section id="kontakt">
+        <h2>Lad os tale</h2>
+        <p class="lead">
+            Nysgerrig på et POWER-PROFILING forløb eller vil du have en uformel snak om ledelse og
+            selvkendskab? Jeg tager begge dele.
+        </p>
+        <div class="btn-row">
+            <a href="mailto:info@thomasaarup.dk" class="btn btn-solid">Skriv til mig</a>
+        </div>
+        <div class="contact-row">
+            <div class="contact-item">
+                <div class="label">Email</div>
+                <p><a href="mailto:info@thomasaarup.dk">info@thomasaarup.dk</a></p>
+            </div>
+            <div class="contact-item">
+                <div class="label">Telefon</div>
+                <p><a href="tel:+4550296911">+45 50 29 69 11</a></p>
+            </div>
+            <div class="contact-item">
+                <div class="label">Lokation</div>
+                <p style="color: var(--gray); font-size: 1.05rem;">Farsø, Danmark</p>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <p><strong>Thomas Aarup</strong> — POWER-PROFILING &amp; Ledelsesguidance</p>
+    <p>© 2026 Thomas Aarup · Farsø, Danmark</p>
+    <div class="footer-links">
+        <a href="https://humanified.dk">Humanified</a>
+        <a href="mailto:info@thomasaarup.dk">Kontakt</a>
+    </div>
+</footer>
+
 </body>
 </html>

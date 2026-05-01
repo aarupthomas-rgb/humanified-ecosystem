@@ -3,297 +3,470 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="HUMANIFIED - Værdi-baseret AI-partnership for iværksættere">
-    <title>HUMANIFIED - AI Partnership Systems</title>
+    <meta name="description" content="HUMANIFIED — POWER-MAPPING for organisationer. Forstå dit teams faktiske arkitektur og byg på det.">
+    <title>HUMANIFIED — POWER-MAPPING for Organisationer</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
-            --color-dark: #0a0a0a;
-            --color-darker: #050505;
-            --color-orange: #ff8c00;
-            --color-orange-bright: #ff9f1c;
-            --color-white: #ffffff;
-            --color-light-gray: #f5f5f5;
-            --color-medium-gray: #cccccc;
+            --orange: #ff8c00;
+            --orange-bright: #ff9f1c;
+            --dark: #0a0a0a;
+            --darker: #050505;
+            --card-bg: rgba(255,140,0,0.06);
+            --card-border: rgba(255,140,0,0.22);
+            --white: #ffffff;
+            --gray: #cccccc;
+            --light: #f5f5f5;
         }
 
-        html, body {
-            height: 100%;
+        body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
-            color: var(--color-white);
-            background-color: var(--color-dark);
-            line-height: 1.6;
+            background: var(--dark);
+            color: var(--white);
+            line-height: 1.7;
         }
 
+        /* ── HEADER ── */
         header {
-            background: linear-gradient(135deg, rgba(255, 140, 0, 0.1) 0%, rgba(255, 140, 0, 0.05) 100%);
-            border-bottom: 2px solid var(--color-orange);
-            padding: 2rem 1rem;
+            background: linear-gradient(135deg, rgba(255,140,0,0.1), rgba(255,140,0,0.04));
+            border-bottom: 2px solid var(--orange);
+            padding: 1.5rem 1rem;
             position: sticky;
             top: 0;
             z-index: 100;
+            backdrop-filter: blur(8px);
         }
 
-        .header-content {
-            max-width: 1200px;
+        .header-inner {
+            max-width: 1100px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 2rem;
         }
 
-        .header-logo {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
+        .logo {
             text-decoration: none;
-            color: var(--color-white);
+            color: var(--white);
         }
 
-        .header-logo h1 {
-            font-size: 1.8rem;
+        .logo h1 {
+            font-size: 1.5rem;
             font-weight: 700;
-            background: linear-gradient(135deg, var(--color-orange) 0%, var(--color-orange-bright) 100%);
+            background: linear-gradient(135deg, var(--orange), var(--orange-bright));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin: 0;
         }
 
-        .header-tagline {
+        .logo .sub {
+            font-size: 0.68rem;
+            color: var(--orange);
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        nav { display: flex; gap: 2rem; align-items: center; }
+
+        nav a {
+            color: var(--gray);
+            text-decoration: none;
+            font-size: 0.88rem;
+            transition: color 0.25s;
+        }
+
+        nav a:hover { color: var(--orange); }
+
+        /* ── LAYOUT ── */
+        main {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 5rem 1.5rem;
+        }
+
+        section { margin-bottom: 7rem; }
+
+        h2 {
+            font-size: 2.2rem;
+            color: var(--orange);
+            font-weight: 700;
+            margin-bottom: 1.25rem;
+        }
+
+        p {
+            color: var(--gray);
+            font-size: 1.05rem;
+            max-width: 780px;
+        }
+
+        p + p { margin-top: 1rem; }
+
+        /* ── HERO ── */
+        #hero {
+            text-align: center;
+            padding: 5rem 0 4rem;
+            border-bottom: 2px solid var(--orange);
+        }
+
+        #hero .eyebrow {
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--orange);
+            margin-bottom: 1.5rem;
+        }
+
+        #hero h2 {
+            font-size: 3.2rem;
+            line-height: 1.15;
+            color: var(--white);
+            max-width: 850px;
+            margin: 0 auto 1.5rem;
+        }
+
+        #hero h2 span {
+            background: linear-gradient(135deg, var(--orange), var(--orange-bright));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        #hero .lead {
+            font-size: 1.2rem;
+            color: var(--light);
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.8;
+        }
+
+        .btn-row {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.9rem 2rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: all 0.25s;
+            border: 2px solid var(--orange);
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .btn-solid {
+            background: var(--orange);
+            color: var(--dark);
+        }
+
+        .btn-solid:hover {
+            background: var(--orange-bright);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(255,140,0,0.3);
+        }
+
+        .btn-ghost {
+            background: transparent;
+            color: var(--orange);
+        }
+
+        .btn-ghost:hover {
+            background: rgba(255,140,0,0.1);
+            transform: translateY(-2px);
+        }
+
+        /* ── INTRO: Fra individ til organisation ── */
+        .pipeline {
+            display: flex;
+            align-items: stretch;
+            gap: 0;
+            margin: 3rem 0;
+            flex-wrap: wrap;
+        }
+
+        .pipe-block {
+            flex: 1;
+            min-width: 160px;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 0.5rem;
+            padding: 1.75rem 1.5rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .pipe-block:not(:last-child) {
+            margin-right: 1px;
+            border-right: none;
+            border-radius: 0.5rem 0 0 0.5rem;
+        }
+
+        .pipe-block:not(:first-child):not(:last-child) {
+            border-radius: 0;
+        }
+
+        .pipe-block:last-child {
+            border-left: none;
+            border-radius: 0 0.5rem 0.5rem 0;
+        }
+
+        .pipe-block.highlight {
+            background: linear-gradient(135deg, rgba(255,140,0,0.12), rgba(255,140,0,0.06));
+            border-color: var(--orange);
+        }
+
+        .pipe-block .pipe-label {
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--orange);
+            margin-bottom: 0.5rem;
+        }
+
+        .pipe-block .pipe-title {
+            color: var(--white);
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .pipe-block .pipe-desc {
+            color: var(--gray);
+            font-size: 0.82rem;
+            max-width: none;
+        }
+
+        .pipe-arrow {
+            display: flex;
+            align-items: center;
+            color: var(--orange);
+            font-size: 1.5rem;
+            font-weight: 700;
+            padding: 0 0.25rem;
+            flex-shrink: 0;
+        }
+
+        /* ── HVAD ER POWER-MAPPING ── */
+        .mapping-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+        }
+
+        .mapping-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 0.75rem;
+            padding: 2rem;
+            transition: border-color 0.25s, transform 0.25s;
+        }
+
+        .mapping-card:hover {
+            border-color: var(--orange);
+            transform: translateY(-3px);
+        }
+
+        .mapping-card .num {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: rgba(255,140,0,0.2);
+            line-height: 1;
+            margin-bottom: 0.75rem;
+        }
+
+        .mapping-card h3 {
+            color: var(--white);
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 0.6rem;
+        }
+
+        .mapping-card p {
+            font-size: 0.9rem;
+            color: var(--gray);
+            max-width: none;
+        }
+
+        /* ── SIGNALHIERARKI ── */
+        .signal-chain {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            margin: 2.5rem 0;
+            max-width: 700px;
+        }
+
+        .signal-row {
+            display: grid;
+            grid-template-columns: 160px 1fr;
+            gap: 1.5rem;
+            align-items: start;
+            padding: 1.25rem 0;
+            border-bottom: 1px solid rgba(255,140,0,0.1);
+        }
+
+        .signal-row:last-child { border-bottom: none; }
+
+        .signal-tag {
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--orange);
+            padding-top: 0.15rem;
+        }
+
+        .signal-desc {
+            font-size: 0.95rem;
+            color: var(--gray);
+            max-width: none;
+        }
+
+        /* ── PROCESSEN ── */
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1px;
+            background: rgba(255,140,0,0.1);
+            border: 1px solid rgba(255,140,0,0.2);
+            border-radius: 0.75rem;
+            overflow: hidden;
+            margin-top: 2.5rem;
+        }
+
+        .p-step {
+            background: var(--dark);
+            padding: 2rem 1.75rem;
+            position: relative;
+        }
+
+        .p-step .p-num {
             font-size: 0.7rem;
-            color: var(--color-orange);
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--orange);
+            margin-bottom: 0.6rem;
+        }
+
+        .p-step h3 {
+            color: var(--white);
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 0.6rem;
+        }
+
+        .p-step p {
+            font-size: 0.88rem;
+            color: var(--gray);
+            max-width: none;
+        }
+
+        /* ── HVEM BRUGER DET ── */
+        .use-cases {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+        }
+
+        .use-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 0.75rem;
+            padding: 2rem;
+            transition: border-color 0.25s;
+        }
+
+        .use-card:hover { border-color: var(--orange); }
+
+        .use-card .uc-label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--orange);
+            margin-bottom: 0.75rem;
+        }
+
+        .use-card h3 {
+            color: var(--white);
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.6rem;
+        }
+
+        .use-card p {
+            font-size: 0.88rem;
+            color: var(--gray);
+            max-width: none;
+        }
+
+        /* ── QUOTE-BOX ── */
+        .quote-box {
+            background: linear-gradient(135deg, rgba(255,140,0,0.1), rgba(255,140,0,0.04));
+            border: 1px solid var(--orange);
+            border-radius: 0.75rem;
+            padding: 2.5rem 3rem;
+            text-align: center;
+            margin: 3rem 0;
+        }
+
+        .quote-box blockquote {
+            font-size: 1.3rem;
+            color: var(--light);
+            font-style: italic;
+            line-height: 1.7;
+            max-width: 760px;
+            margin: 0 auto;
+        }
+
+        .quote-box .attribution {
+            margin-top: 1rem;
+            font-size: 0.82rem;
+            color: var(--orange);
             font-weight: 600;
             letter-spacing: 1px;
             text-transform: uppercase;
         }
 
-        .header-nav {
-            display: flex;
-            gap: 2rem;
-        }
-
-        .header-nav a {
-            color: var(--color-medium-gray);
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: color 0.3s ease;
-        }
-
-        .header-nav a:hover {
-            color: var(--color-orange);
-        }
-
-        @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .header-nav {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
-        }
-
-        main {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 4rem 1rem;
-        }
-
-        .hero {
+        /* ── KONTAKT ── */
+        #kontakt {
             text-align: center;
-            margin-bottom: 6rem;
-            padding: 4rem 0;
-            border-bottom: 2px solid var(--color-orange);
+            background: linear-gradient(135deg, rgba(255,140,0,0.08), rgba(255,140,0,0.03));
+            border: 2px solid var(--orange);
+            border-radius: 1rem;
+            padding: 4rem 2rem;
         }
 
-        .hero h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-            color: var(--color-orange);
-            font-weight: 700;
+        #kontakt h2 { text-align: center; }
+
+        #kontakt .lead {
+            margin: 1rem auto 2.5rem;
+            max-width: 600px;
         }
 
-        .hero p {
-            font-size: 1.2rem;
-            color: var(--color-medium-gray);
-            max-width: 800px;
-            margin: 0 auto 1.5rem;
-            line-height: 1.8;
-        }
-
-        .description {
-            font-size: 1rem;
-            color: var(--color-medium-gray);
-            max-width: 900px;
-            margin: 0 auto;
-            line-height: 1.8;
-        }
-
-        @media (max-width: 768px) {
-            .hero h2 {
-                font-size: 1.8rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 0.9rem 2rem;
-            background: linear-gradient(135deg, var(--color-orange) 0%, var(--color-orange-bright) 100%);
-            color: var(--color-dark);
-            text-decoration: none;
-            border-radius: 0.5rem;
-            font-weight: 600;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(255, 140, 0, 0.3);
-        }
-
-        .projects {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
+        /* ── FOOTER ── */
+        footer {
+            background: var(--darker);
+            border-top: 2px solid var(--orange);
+            padding: 2rem 1rem;
+            text-align: center;
+            color: var(--gray);
+            font-size: 0.88rem;
             margin-top: 4rem;
         }
 
-        .project-card {
-            background: linear-gradient(135deg, rgba(255, 140, 0, 0.08) 0%, rgba(255, 140, 0, 0.03) 100%);
-            border: 2px solid var(--color-orange);
-            border-radius: 0.75rem;
-            padding: 3rem 2rem;
-            text-align: center;
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .project-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(255, 140, 0, 0.2);
-            border-color: var(--color-orange-bright);
-        }
-
-        .project-card h3 {
-            font-size: 1.8rem;
-            color: var(--color-orange);
-            margin-bottom: 1rem;
-            font-weight: 700;
-        }
-
-        .project-card p {
-            color: var(--color-medium-gray);
-            margin-bottom: 2rem;
-            line-height: 1.8;
-            flex-grow: 1;
-        }
-
-        .project-card .project-details {
-            font-size: 0.9rem;
-            color: var(--color-light-gray);
-            background: rgba(255, 140, 0, 0.05);
-            padding: 1.5rem;
-            border-radius: 0.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .project-card .project-details strong {
-            color: var(--color-orange);
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-
-        .feature-list {
-            text-align: left;
-            display: inline-block;
-            margin-top: 1rem;
-        }
-
-        .feature-list li {
-            list-style: none;
-            padding: 0.5rem 0;
-            color: var(--color-medium-gray);
-        }
-
-        .feature-list li:before {
-            content: "→ ";
-            color: var(--color-orange);
-            font-weight: 700;
-            margin-right: 0.5rem;
-        }
-
-        @media (max-width: 768px) {
-            .btn {
-                padding: 0.75rem 1.5rem;
-                font-size: 0.9rem;
-            }
-
-            .projects {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        section h2 {
-            color: var(--color-orange);
-            font-weight: 700;
-            text-align: center;
-            margin-bottom: 1.5rem;
-        }
-
-        .architecture {
-            text-align: center;
-            margin-top: 6rem;
-            padding-top: 3rem;
-            border-top: 2px solid var(--color-orange);
-        }
-
-        .architecture h2 {
-            margin-bottom: 1.5rem;
-        }
-
-        .architecture p {
-            color: var(--color-medium-gray);
-            font-size: 1rem;
-            max-width: 800px;
-            margin: 0 auto 1rem;
-            line-height: 1.8;
-        }
-
-        .architecture p strong {
-            color: var(--color-orange);
-        }
-
-        footer {
-            background-color: var(--color-darker);
-            border-top: 2px solid var(--color-orange);
-            padding: 2rem 1rem;
-            text-align: center;
-            color: var(--color-medium-gray);
-            font-size: 0.9rem;
-            margin-top: 6rem;
-        }
-
-        footer p {
-            margin: 0.5rem 0;
-        }
+        footer p { margin: 0.4rem 0; }
 
         .footer-links {
             margin-top: 1rem;
@@ -304,119 +477,300 @@
         }
 
         .footer-links a {
-            color: var(--color-orange);
+            color: var(--orange);
             text-decoration: none;
             font-weight: 600;
-            transition: color 0.3s ease;
+            transition: color 0.2s;
         }
 
-        .footer-links a:hover {
-            color: var(--color-orange-bright);
+        .footer-links a:hover { color: var(--orange-bright); }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 768px) {
+            .header-inner { flex-direction: column; align-items: flex-start; gap: 1rem; }
+            nav { flex-wrap: wrap; gap: 1rem; }
+            #hero h2 { font-size: 2.1rem; }
+            h2 { font-size: 1.7rem; }
+            main { padding: 3rem 1rem; }
+            section { margin-bottom: 4rem; }
+            .pipeline { flex-direction: column; }
+            .pipe-block, .pipe-block:not(:last-child), .pipe-block:not(:first-child):not(:last-child) {
+                border-radius: 0.5rem;
+                border: 1px solid var(--card-border);
+            }
+            .pipe-arrow { display: none; }
+            .signal-row { grid-template-columns: 1fr; }
+            .signal-tag { margin-bottom: 0.25rem; }
+            .quote-box { padding: 2rem 1.5rem; }
+            .quote-box blockquote { font-size: 1.1rem; }
         }
     </style>
 </head>
 <body>
-    <header>
-        <div class="header-content">
-            <a href="/" class="header-logo">
-                <div>
-                    <h1>HUMANIFIED</h1>
-                    <div class="header-tagline">AI Partnership Systems</div>
-                </div>
-            </a>
-            <nav class="header-nav">
-                <a href="#projekter">Projekter</a>
-                <a href="https://thomasaarup.dk">Thomas Aarup</a>
-            </nav>
+
+<header>
+    <div class="header-inner">
+        <a href="/" class="logo">
+            <h1>HUMANIFIED</h1>
+            <div class="sub">POWER-MAPPING for Organisationer</div>
+        </a>
+        <nav>
+            <a href="#hvad-er">Hvad er det</a>
+            <a href="#processen">Processen</a>
+            <a href="#hvem">Hvem er det for</a>
+            <a href="#kontakt">Kontakt</a>
+            <a href="https://thomasaarup.dk" style="color: var(--orange);">Thomas Aarup →</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+
+    <!-- HERO -->
+    <section id="hero">
+        <div class="eyebrow">Organisatorisk intelligens</div>
+        <h2>Din organisation er et levende system<br>af <span>menneskelige mønstre.</span></h2>
+        <p class="lead">
+            Når du kortlægger hvad dine mennesker faktisk prioriterer — ikke hvad de siger — opstår der
+            et billede ingen CV, assessment eller lederuddannelse kan give dig.
+            Det kalder vi POWER-MAPPING.
+        </p>
+        <div class="btn-row">
+            <a href="#hvad-er" class="btn btn-solid">Hvad er POWER-MAPPING</a>
+            <a href="#kontakt" class="btn btn-ghost">Tag kontakt</a>
         </div>
-    </header>
+    </section>
 
-    <main>
-        <!-- HERO SECTION -->
-        <section class="hero" id="velkommen">
-            <h2>Velkommen til HUMANIFIED</h2>
-            <p>
-                Værdi-baseret AI-partnership for iværksættere og organisationer der vil vinde på integritet
-            </p>
-            <p class="description">
-                HUMANIFIED er et økosystem af værktøjer og systemer designet til at integrere menneskelig vision med AI-kapacitet.
-                Alt bygget på værdi-låst arkitektur – integritet er ikke en option, det er strukturen.
-            </p>
-        </section>
+    <!-- FRA INDIVID TIL ORGANISATION -->
+    <section id="fra-individ">
+        <h2>Fra person til organisation</h2>
+        <p>
+            Udgangspunktet er enkelt: individuelle profiler.
+            6-8 uger med struktureret dataindsamling — narrativer, daglig tracking, mønsterfinding —
+            resulterer i en dokumenteret profil af hvem dette menneske faktisk er under pres.
+        </p>
+        <p>
+            Når du kombinerer profiler på tværs af et team, opstår noget andet: mønsteret i mønsterne.
+            Hvem komplementerer hvem, og hvem skaber friktion? Hvad er teamets kollektive blinde vinkel?
+            Hvor sidder beslutningskraften faktisk?
+        </p>
 
-        <!-- PROJEKTER SECTION -->
-        <section id="projekter">
-            <div class="projects">
-                <!-- POWER-PROFILING Card -->
-                <div class="project-card">
-                    <div>
-                        <h3>POWER-PROFILING</h3>
-                        <p>
-                            Systematisk værdi-klarhed for ledere, kandidater, og teams.
-                        </p>
-
-                        <div class="project-details">
-                            <strong>Hvad det gør:</strong>
-                            6-8 ugers dybde-profiling der systematiserer autentiske værdier, udviklingsbehov, og økosystem-fit
-                        </div>
-
-                        <ul class="feature-list">
-                            <li>Værdi-baseline + udviklingsplan</li>
-                            <li>For rekruttering, coaching, og ledelse</li>
-                            <li>Objektiv måling af værdi-alignment</li>
-                            <li>Reproducerbar across scale</li>
-                        </ul>
-                    </div>
-
-                    <a href="../power-profiling/" class="btn">Læs Mere</a>
-                </div>
-
-                <!-- TRINITY Card -->
-                <div class="project-card">
-                    <div>
-                        <h3>TRINITY</h3>
-                        <p>
-                            AI-agent orchestration system for værdistyret beslutningstagning.
-                        </p>
-
-                        <div class="project-details">
-                            <strong>Hvad det gør:</strong>
-                            Integrerer værdi-klarhed med strategisk analyse, operative planer, og execution guidance
-                        </div>
-
-                        <ul class="feature-list">
-                            <li>Multi-agent AI coordination</li>
-                            <li>Værdi-styret strategi</li>
-                            <li>Kontinuerlig læring + refinement</li>
-                            <li>Partnership-model (AI + Human)</li>
-                        </ul>
-                    </div>
-
-                    <a href="../trinity/" class="btn">Læs Mere</a>
-                </div>
+        <div style="margin-top: 3rem; display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+            <div class="pipe-block">
+                <div class="pipe-label">Start</div>
+                <div class="pipe-title">Narrativer</div>
+                <div class="pipe-desc">Hvad du faktisk gør under pres</div>
             </div>
-        </section>
-
-        <!-- ARCHITECTURE SECTION -->
-        <section class="architecture">
-            <h2>Built on Values-Locked Architecture</h2>
-            <p>
-                Alle HUMANIFIED systemer er bygget på 4 søjler: <strong>FADERSKAB</strong> (long-term thinking), <strong>FAMILIESAMMENHOLD</strong> (relationships matter),
-                <strong>INTEGRITET</strong> (no shortcuts), og <strong>SELVVÆRD</strong> (dignity). Disse værdier er ikke guidelines – de er strukturen.
-            </p>
-            <p style="color: var(--color-medium-gray); font-size: 0.9rem;">
-                <strong style="color: var(--color-orange);">Resultat:</strong> Systemer der ikke kan misbruges fordi integritet er fundamentet.
-            </p>
-        </section>
-    </main>
-
-    <footer>
-        <p><strong>HUMANIFIED</strong> — Værdi-baseret AI-partnership</p>
-        <p>© 2026 HUMANIFIED. Bygget med integritet.</p>
-        <div class="footer-links">
-            <a href="https://thomasaarup.dk">Thomas Aarup</a>
-            <a href="mailto:info@thomasaarup.dk">Kontakt</a>
+            <div class="pipe-arrow">→</div>
+            <div class="pipe-block">
+                <div class="pipe-label">Uge 1–6</div>
+                <div class="pipe-title">Daglig data</div>
+                <div class="pipe-desc">Mønstre over tid, ikke selvopfattelse</div>
+            </div>
+            <div class="pipe-arrow">→</div>
+            <div class="pipe-block">
+                <div class="pipe-label">Uge 6</div>
+                <div class="pipe-title">Individuel profil</div>
+                <div class="pipe-desc">Værdihierarki, tænkestil, superkraft</div>
+            </div>
+            <div class="pipe-arrow">→</div>
+            <div class="pipe-block highlight">
+                <div class="pipe-label">Organisationsniveau</div>
+                <div class="pipe-title">POWER-MAP</div>
+                <div class="pipe-desc">Teamets faktiske arkitektur</div>
+            </div>
         </div>
-    </footer>
+    </section>
+
+    <!-- HVAD ER POWER-MAPPING -->
+    <section id="hvad-er">
+        <h2>Hvad er POWER-MAPPING?</h2>
+        <p>
+            POWER-MAPPING er ikke en test. Det er ikke et typologi-framework. Det er en
+            kortlægning af det der faktisk sker i din organisation — hvem der faktisk
+            leder (uanset titel), hvad der faktisk driver beslutninger (uanset strategi),
+            og hvad der faktisk skaber friktion (uanset de officielle forklaringer).
+        </p>
+
+        <div class="mapping-grid">
+            <div class="mapping-card">
+                <div class="num">01</div>
+                <h3>Komplementaritetskort</h3>
+                <p>Hvem supplerer hvem? Hvor er der kognitive overlap der skaber ekkokamre, og hvem bringer perspektiver ingen andre har? Organisationer der kender deres komplementaritetsprofil rekrutterer anderledes.</p>
+            </div>
+            <div class="mapping-card">
+                <div class="num">02</div>
+                <h3>Friktionszoner</h3>
+                <p>De fleste teamkonflikter er ikke personlighedskonflikter — de er værdikonflikter. Når to mennesker med modsat prioriering af hastighed vs. kvalitet samarbejder, er friction strukturel. Kortlæg det, løs det.</p>
+            </div>
+            <div class="mapping-card">
+                <div class="num">03</div>
+                <h3>Beslutningsarkitektur</h3>
+                <p>Hvem har faktisk beslutningskraft i din organisation? Ikke organisationskortet — det faktiske magtlandskab. Hvem påvirker hvem, og langs hvilke værdidimensioner? Det er POWER-MAPPING.</p>
+            </div>
+            <div class="mapping-card">
+                <div class="num">04</div>
+                <h3>Energilandskab</h3>
+                <p>Hvilke opgaver dræner hvilke mennesker systematisk? Organisationer der matcher opgaver til energisignaturer og ikke kun kompetencer, har lavere burnout og højere output. Datagrundlaget er her.</p>
+            </div>
+            <div class="mapping-card">
+                <div class="num">05</div>
+                <h3>Værdialignment på tværs</h3>
+                <p>Siger jeres organisation noget om sine værdier? POWER-MAPPING viser dig om de faktiske prioriteringer i teamet lever op til det. Og hvis ikke — præcis på hvilke punkter de divergerer.</p>
+            </div>
+            <div class="mapping-card">
+                <div class="num">06</div>
+                <h3>Lederroller i virkeligheden</h3>
+                <p>Hvem er den naturlige leder i dit team? Hvem er arkitekten der aldrig vil have titlen, men driver alt? Hvem er katalysatoren der frigiver andre? Roller som organisationskortet sjældent fanger.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- QUOTE -->
+    <div class="quote-box">
+        <blockquote>
+            "De store aktører priser begivenheder ind 24-72 timer før resten af verden ved hvad der sker.
+            Det gælder finansmarkedet. Det gælder din organisation.
+            Smart money i mennesker — dem der ved hvad de faktisk er sat i verden for — bevæger sig
+            anderledes. POWER-MAPPING er kortet."
+        </blockquote>
+        <div class="attribution">Thomas Aarup — HUMANIFIED</div>
+    </div>
+
+    <!-- SIGNALHIERARKI -->
+    <section id="signaler">
+        <h2>Hvad kortlægningen afslører</h2>
+        <p>
+            En POWER-MAP er ikke en statisk beskrivelse. Den er et levende dokument over det
+            der driver din organisation — og det der bremser den.
+        </p>
+
+        <div class="signal-chain">
+            <div class="signal-row">
+                <div class="signal-tag">Niveau 1</div>
+                <div class="signal-desc">Individuelle profiler: faktiske værdier, tænkestil, superkraft og energisignatur for hvert teammedlem.</div>
+            </div>
+            <div class="signal-row">
+                <div class="signal-tag">Niveau 2</div>
+                <div class="signal-desc">Teamoverlæg: komplementaritetsprofil, friktionszoner og kollektive blinde vinkler synliggjort på tværs.</div>
+            </div>
+            <div class="signal-row">
+                <div class="signal-tag">Niveau 3</div>
+                <div class="signal-desc">Beslutningsdynamik: hvem påvirker hvem, langs hvilke dimensioner, og hvad driver de faktiske valg.</div>
+            </div>
+            <div class="signal-row">
+                <div class="signal-tag">Niveau 4</div>
+                <div class="signal-desc">Organisatorisk alignment: om det strategiske fundament afspejles i de faktiske prioriteringer på alle niveauer.</div>
+            </div>
+            <div class="signal-row">
+                <div class="signal-tag">Output</div>
+                <div class="signal-desc">Handlingsplan: konkrete anbefalinger til roller, rekruttering, teamstruktur og ledelsesdesign baseret på data — ikke intuition.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROCESSEN -->
+    <section id="processen">
+        <h2>Processen</h2>
+        <p>
+            POWER-MAPPING starter altid med individuelle profiler. Du kan ikke kortlægge et teams
+            arkitektur uden at kende de enkelte menneskers. Det er rækkefølgen — og den er vigtig.
+        </p>
+
+        <div class="process-steps">
+            <div class="p-step">
+                <div class="p-num">Fase 1</div>
+                <h3>Individuelle POWER-PROFILER</h3>
+                <p>Hvert teammedlem gennemgår 6-8 ugers profileringsforløb. Narrativer, daglig tracking, mønsterfinding → komplet individuel profil.</p>
+            </div>
+            <div class="p-step">
+                <div class="p-num">Fase 2</div>
+                <h3>Teamoverlæg</h3>
+                <p>Profilerne lægges oveni hinanden. Komplementaritet, overlap, friktionszoner og manglende perspektiver kortlægges systematisk.</p>
+            </div>
+            <div class="p-step">
+                <div class="p-num">Fase 3</div>
+                <h3>Beslutningsdynamik</h3>
+                <p>Hvem påvirker hvem i dit team? Magtlandskabet kortlægges — ikke som kritik, men som datagrundlag for bedre beslutningsdesign.</p>
+            </div>
+            <div class="p-step">
+                <div class="p-num">Fase 4</div>
+                <h3>POWER-MAP + anbefalinger</h3>
+                <p>Komplet kortlægning af teamets arkitektur med konkrete anbefalinger til struktur, roller, rekruttering og ledelsesdesign.</p>
+            </div>
+            <div class="p-step">
+                <div class="p-num">Fase 5</div>
+                <h3>Løbende opdatering</h3>
+                <p>En organisation udvikler sig. Profiler opdateres, nye teammedlemmer integreres, og kortet forbliver levende og brugbart over tid.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- HVEM ER DET FOR -->
+    <section id="hvem">
+        <h2>Hvem er POWER-MAPPING for</h2>
+        <p>
+            POWER-MAPPING er for organisationer der vil forstå hvad der faktisk driver dem —
+            og bygge på det frem for at arbejde imod det.
+        </p>
+
+        <div class="use-cases">
+            <div class="use-card">
+                <div class="uc-label">Lederteams</div>
+                <h3>Fælles fundament, ikke fælles facade</h3>
+                <p>Lederteams der kender hinandens faktiske prioriteringer og tænkestile, tager bedre beslutninger under pres og bruger mindre energi på intern friktion.</p>
+            </div>
+            <div class="use-card">
+                <div class="uc-label">Rekruttering</div>
+                <h3>Hvad mangler vi faktisk?</h3>
+                <p>Rekruttering ud fra en POWER-MAP handler ikke om hvem der passer kulturelt — men om hvem der supplerer det eksisterende team præcist på de dimensioner der mangler.</p>
+            </div>
+            <div class="use-card">
+                <div class="uc-label">Organisationsudvikling</div>
+                <h3>Byg på det der er der</h3>
+                <p>Organisationsudvikling der ignorerer menneskenes faktiske arkitektur er dyrt og kortlivet. POWER-MAPPING giver fundament for transformation der faktisk holder.</p>
+            </div>
+            <div class="use-card">
+                <div class="uc-label">M&A / Due diligence</div>
+                <h3>Menneskelig kapital synliggjort</h3>
+                <p>Ved fusion og opkøb er menneskelig kapital oftest undervurderet. En POWER-MAP af nøglepersoner giver et datagrundlag der rækker langt ud over CV og reference.</p>
+            </div>
+            <div class="use-card">
+                <div class="uc-label">Succession</div>
+                <h3>Hvem er næste leder faktisk?</h3>
+                <p>Successionsplanlægning kræver præcis viden om hvem der kan hvad. POWER-MAPPING giver den viden — dokumenteret, ikke intuitiv.</p>
+            </div>
+            <div class="use-card">
+                <div class="uc-label">Iværksætterteams</div>
+                <h3>Kend din co-founders arkitektur</h3>
+                <p>De fleste iværksætterteams splittes ikke på grund af markedet — men på grund af interne værdikonflikter de aldrig kortlagde. POWER-MAPPING er den samtale taget på forhånd.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- KONTAKT -->
+    <section id="kontakt">
+        <h2>Start kortlægningen</h2>
+        <p class="lead" style="max-width: 600px; margin: 1rem auto 2.5rem;">
+            Vil du vide hvad din organisation faktisk er sat i verden for?
+            Tag en uformel snak med Thomas om POWER-MAPPING — ingen forpligtelse.
+        </p>
+        <div class="btn-row">
+            <a href="mailto:info@thomasaarup.dk" class="btn btn-solid">Skriv til Thomas</a>
+            <a href="https://thomasaarup.dk" class="btn btn-ghost">Se POWER-PROFILING (individ)</a>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <p><strong>HUMANIFIED</strong> — POWER-MAPPING for Organisationer</p>
+    <p>© 2026 HUMANIFIED · Et projekt af Thomas Aarup</p>
+    <div class="footer-links">
+        <a href="https://thomasaarup.dk">Thomas Aarup</a>
+        <a href="mailto:info@thomasaarup.dk">Kontakt</a>
+    </div>
+</footer>
+
 </body>
 </html>
