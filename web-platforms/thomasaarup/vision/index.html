@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="HUMANIFIED AI-OS Master Definition — Suveræn AI-infrastruktur for distribuerede organisationer. Thomas Aarup.">
+<title>Vision — Thomas Aarup · HUMANIFIED AI-OS Master Definition</title>
+<style>
+  /* SITE NAV */
+  .site-nav {
+    background: #080808;
+    border-bottom: 1px solid #1e1e1e;
+    padding: 0.75rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 200;
+    font-family: 'Georgia', serif;
+  }
+  .site-nav .site-logo { font-size: 0.72rem; letter-spacing: 2px; color: #c9a84c; text-decoration: none; }
+  .site-nav nav { display: flex; gap: 1.5rem; align-items: center; }
+  .site-nav nav a { font-size: 0.75rem; letter-spacing: 0.5px; color: #666; text-decoration: none; transition: color 0.2s; }
+  .site-nav nav a:hover { color: #c9a84c; }
+  .site-nav nav a.active { color: #c9a84c; }
+  .site-nav .site-cta { font-size: 0.7rem; letter-spacing: 1px; text-transform: uppercase; color: #c9a84c; text-decoration: none; border: 1px solid #c9a84c; padding: 0.4rem 1rem; transition: all 0.2s; }
+  .site-nav .site-cta:hover { background: #c9a84c; color: #0d0d0d; }
+
+  :root {
+    --dark: #0d0d0d;
+    --dark2: #111111;
+    --dark3: #1a1a1a;
+    --dark4: #222222;
+    --gold: #c9a84c;
+    --gold-dim: #8a6f30;
+    --gold-bright: #e8c46a;
+    --text: #e8e8e8;
+    --text-dim: #999999;
+    --blue: #4a9eff;
+    --green: #4ecf7a;
+    --purple: #a374ff;
+    --red: #ff6b6b;
+    --tier1: #4a9eff;
+    --tier2: #f0a040;
+    --tier3: #4ecf7a;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--dark);
+    color: var(--text);
+    font-family: 'Courier New', Courier, monospace;
+    line-height: 1.7;
+    padding: 0;
+  }
+
+  header {
+    background: linear-gradient(135deg, #0d0d0d 0%, #1a1200 50%, #0d0d0d 100%);
+    border-bottom: 2px solid var(--gold);
+    padding: 60px 40px 50px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  header::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(ellipse at center, rgba(201,168,76,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .doc-badge {
+    display: inline-block;
+    background: rgba(201,168,76,0.15);
+    border: 1px solid var(--gold-dim);
+    color: var(--gold);
+    font-size: 10px;
+    letter-spacing: 3px;
+    padding: 6px 18px;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+  }
+
+  header h1 { font-size: 2.4rem; color: var(--gold); letter-spacing: 4px; text-transform: uppercase; margin-bottom: 8px; }
+  header .subtitle { font-size: 0.95rem; color: var(--text-dim); letter-spacing: 2px; margin-bottom: 30px; }
+
+  .one-liner {
+    max-width: 800px;
+    margin: 0 auto;
+    background: rgba(201,168,76,0.08);
+    border: 1px solid var(--gold-dim);
+    border-left: 4px solid var(--gold);
+    padding: 24px 30px;
+    font-size: 1.05rem;
+    font-style: italic;
+    color: var(--text);
+    line-height: 1.8;
+  }
+
+  main { max-width: 1100px; margin: 0 auto; padding: 60px 40px; }
+  section { margin-bottom: 70px; }
+
+  h2 { color: var(--gold); font-size: 1.3rem; letter-spacing: 3px; text-transform: uppercase; border-bottom: 1px solid var(--gold-dim); padding-bottom: 12px; margin-bottom: 30px; }
+  h3 { color: var(--gold-bright); font-size: 1rem; letter-spacing: 2px; margin: 28px 0 14px; }
+  p { margin-bottom: 14px; color: var(--text); }
+
+  .formula-block { background: var(--dark3); border: 1px solid var(--gold-dim); border-top: 3px solid var(--gold); padding: 30px; text-align: center; margin: 24px 0; }
+  .formula-main { font-size: 2rem; color: var(--gold); letter-spacing: 4px; margin-bottom: 20px; }
+  .formula-table { display: inline-block; text-align: left; }
+  .formula-row { display: flex; gap: 20px; padding: 4px 0; color: var(--text-dim); font-size: 0.9rem; }
+  .formula-sym { color: var(--gold-bright); width: 30px; }
+
+  .split-diagram { display: grid; grid-template-columns: 1fr; gap: 0; margin: 24px 0; max-width: 680px; }
+  .split-core { background: rgba(74,158,255,0.08); border: 1px solid var(--blue); border-top: 3px solid var(--blue); padding: 24px 28px; }
+  .split-arrow { text-align: center; padding: 16px; color: var(--gold-dim); font-size: 0.85rem; line-height: 1.6; }
+  .split-edge { background: rgba(78,207,122,0.08); border: 1px solid var(--green); border-top: 3px solid var(--green); padding: 24px 28px; }
+  .split-label { font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; color: var(--text-dim); margin-bottom: 8px; }
+  .split-core .split-label { color: var(--blue); }
+  .split-edge .split-label { color: var(--green); }
+  .split-title { font-size: 1.1rem; color: var(--text); margin-bottom: 12px; }
+  .split-core .split-title { color: var(--blue); }
+  .split-edge .split-title { color: var(--green); }
+  .split-desc { color: var(--text-dim); font-size: 0.9rem; line-height: 1.6; }
+  .split-owner { margin-top: 12px; font-size: 0.85rem; color: var(--text-dim); }
+
+  pre { background: var(--dark3); border: 1px solid var(--dark4); border-left: 3px solid var(--gold-dim); padding: 20px 24px; overflow-x: auto; font-size: 0.85rem; line-height: 1.6; color: var(--text); white-space: pre; margin: 16px 0; }
+
+  .component-card { background: var(--dark2); border: 1px solid var(--dark4); margin-bottom: 40px; overflow: hidden; }
+  .component-header { padding: 18px 24px; border-bottom: 1px solid var(--dark4); display: flex; align-items: center; gap: 16px; }
+  .component-number { background: var(--gold); color: var(--dark); width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.9rem; flex-shrink: 0; }
+  .component-title { color: var(--gold); font-size: 1rem; letter-spacing: 2px; }
+  .component-body { padding: 24px; }
+
+  table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.88rem; }
+  th { background: var(--dark3); color: var(--gold); padding: 10px 14px; text-align: left; border-bottom: 2px solid var(--gold-dim); letter-spacing: 1px; font-size: 0.8rem; text-transform: uppercase; }
+  td { padding: 10px 14px; border-bottom: 1px solid var(--dark4); color: var(--text); vertical-align: top; }
+  tr:hover td { background: rgba(201,168,76,0.04); }
+  td:first-child { color: var(--gold-bright); font-weight: bold; }
+
+  .tier-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 20px 0; }
+  @media (max-width: 800px) { .tier-grid { grid-template-columns: 1fr; } }
+  .tier-card { border: 1px solid var(--dark4); padding: 20px; }
+  .tier-1 { border-top: 3px solid var(--tier1); }
+  .tier-2 { border-top: 3px solid var(--tier2); }
+  .tier-3 { border-top: 3px solid var(--tier3); }
+  .tier-badge { font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; padding: 4px 10px; margin-bottom: 12px; display: inline-block; }
+  .tier-1 .tier-badge { background: rgba(74,158,255,0.15); color: var(--tier1); }
+  .tier-2 .tier-badge { background: rgba(240,160,64,0.15); color: var(--tier2); }
+  .tier-3 .tier-badge { background: rgba(78,207,122,0.15); color: var(--tier3); }
+  .tier-card h4 { color: var(--text); margin-bottom: 10px; font-size: 0.9rem; }
+  .tier-access { font-size: 0.8rem; color: var(--text-dim); margin-top: 10px; font-style: italic; }
+
+  .aura-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 20px 0; }
+  @media (max-width: 800px) { .aura-grid { grid-template-columns: 1fr; } }
+  .aura-card { background: var(--dark3); border: 1px solid var(--dark4); padding: 20px; }
+  .aura-card h4 { color: var(--gold-bright); margin-bottom: 10px; font-size: 0.9rem; letter-spacing: 1px; }
+  .aura-card p { color: var(--text-dim); font-size: 0.85rem; }
+
+  .profile-dims { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 16px 0; }
+  @media (max-width: 600px) { .profile-dims { grid-template-columns: 1fr; } }
+  .profile-dim { background: var(--dark3); border: 1px solid var(--dark4); border-left: 3px solid var(--gold-dim); padding: 12px 16px; }
+  .profile-dim-name { color: var(--gold); font-size: 0.85rem; margin-bottom: 4px; }
+  .profile-dim-desc { color: var(--text-dim); font-size: 0.82rem; }
+
+  .layer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 20px 0; }
+  @media (max-width: 800px) { .layer-grid { grid-template-columns: 1fr; } }
+  .layer-card { background: var(--dark3); border: 1px solid var(--dark4); padding: 22px; }
+  .layer-1 { border-top: 3px solid var(--gold); }
+  .layer-2 { border-top: 3px solid var(--blue); }
+  .layer-3 { border-top: 3px solid var(--purple); }
+  .layer-title { font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 14px; }
+  .layer-1 .layer-title { color: var(--gold); }
+  .layer-2 .layer-title { color: var(--blue); }
+  .layer-3 .layer-title { color: var(--purple); }
+  .layer-items { list-style: none; }
+  .layer-items li { padding: 4px 0; color: var(--text-dim); font-size: 0.85rem; padding-left: 16px; position: relative; }
+  .layer-items li::before { content: '├─'; position: absolute; left: 0; color: var(--dark4); }
+  .layer-items li:last-child::before { content: '└─'; }
+  .layer-proof { margin-top: 14px; padding: 8px 12px; font-size: 0.8rem; font-style: italic; }
+  .layer-1 .layer-proof { background: rgba(201,168,76,0.08); color: var(--gold); }
+  .layer-2 .layer-proof { background: rgba(74,158,255,0.08); color: var(--blue); }
+  .layer-3 .layer-proof { background: rgba(163,116,255,0.08); color: var(--purple); }
+
+  .vs-table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+  .vs-table th { background: var(--dark3); color: var(--gold); padding: 12px 16px; text-align: left; font-size: 0.8rem; letter-spacing: 1px; text-transform: uppercase; border-bottom: 2px solid var(--gold-dim); }
+  .vs-table td { padding: 14px 16px; border-bottom: 1px solid var(--dark4); vertical-align: top; font-size: 0.88rem; }
+  .vs-table tr:hover td { background: rgba(201,168,76,0.04); }
+  .vs-competitor { color: var(--text-dim); }
+  .vs-diff { color: var(--text); }
+
+  .impl-phases { margin: 20px 0; }
+  .impl-phase { display: flex; gap: 20px; margin-bottom: 16px; align-items: flex-start; }
+  .impl-num { background: var(--dark3); border: 1px solid var(--gold-dim); color: var(--gold); width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; flex-shrink: 0; font-weight: bold; }
+  .impl-content { flex: 1; }
+  .impl-title { color: var(--gold-bright); font-size: 0.9rem; margin-bottom: 6px; }
+  .impl-desc { color: var(--text-dim); font-size: 0.85rem; line-height: 1.5; }
+
+  .math-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin: 20px 0; }
+  .math-card { background: var(--dark3); border: 1px solid var(--dark4); padding: 16px; text-align: center; }
+  .math-scale { color: var(--gold); font-size: 0.8rem; letter-spacing: 1px; margin-bottom: 8px; }
+  .math-manifestation { color: var(--text-dim); font-size: 0.8rem; line-height: 1.4; }
+
+  .not-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 20px 0; }
+  @media (max-width: 600px) { .not-grid { grid-template-columns: 1fr; } }
+  .not-item { background: var(--dark3); border: 1px solid var(--dark4); border-left: 3px solid var(--red); padding: 12px 16px; color: var(--text-dim); font-size: 0.88rem; }
+  .not-item::before { content: '✗ '; color: var(--red); }
+
+  .is-infra { background: rgba(201,168,76,0.08); border: 1px solid var(--gold-dim); padding: 20px 24px; text-align: center; font-size: 1.1rem; color: var(--gold); margin-top: 20px; letter-spacing: 1px; }
+
+  .info-box { background: rgba(201,168,76,0.06); border: 1px solid var(--gold-dim); border-left: 4px solid var(--gold); padding: 16px 20px; margin: 16px 0; color: var(--text-dim); font-size: 0.9rem; }
+  .info-box strong { color: var(--gold); }
+
+  .game-theory { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+  @media (max-width: 600px) { .game-theory { grid-template-columns: 1fr; } }
+  .gt-bad { background: rgba(255,107,107,0.06); border: 1px solid rgba(255,107,107,0.3); border-top: 3px solid var(--red); padding: 18px; }
+  .gt-good { background: rgba(78,207,122,0.06); border: 1px solid rgba(78,207,122,0.3); border-top: 3px solid var(--green); padding: 18px; }
+  .gt-label { font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; }
+  .gt-bad .gt-label { color: var(--red); }
+  .gt-good .gt-label { color: var(--green); }
+  .gt-text { color: var(--text-dim); font-size: 0.85rem; line-height: 1.6; }
+
+  footer.doc-footer { border-top: 1px solid var(--dark4); padding: 30px 40px; text-align: center; color: var(--text-dim); font-size: 0.8rem; letter-spacing: 1px; }
+  footer.doc-footer .version { color: var(--gold-dim); margin-bottom: 6px; }
+
+  .site-footer { background: #080808; border-top: 1px solid #1e1e1e; padding: 2rem; text-align: center; font-family: 'Georgia', serif; font-size: 0.78rem; color: #555; letter-spacing: 0.5px; }
+  .site-footer a { color: #c9a84c; text-decoration: none; margin: 0 1rem; }
+  .site-footer a:hover { color: #e8c97a; }
+
+  .highlight { color: var(--gold-bright); }
+  .dim { color: var(--text-dim); }
+</style>
+</head>
+<body>
+
+<!-- SITE NAVIGATION -->
+<nav class="site-nav">
+  <a href="https://thomasaarup.dk" class="site-logo">Thomas Aarup</a>
+  <nav>
+    <a href="https://thomasaarup.dk">POWER-PROFILING</a>
+    <a href="/vision" class="active">Vision</a>
+    <a href="https://thomasaarup.dk#ledelse">Ledelse</a>
+    <a href="https://humanified.dk">Humanified</a>
+  </nav>
+  <a href="mailto:info@thomasaarup.dk" class="site-cta">Kontakt →</a>
+</nav>
+
+<header>
+  <div class="doc-badge">Autoritativt kildedokument · v1.0 · 2026-05-01</div>
+  <h1>HUMANIFIED AI-OS</h1>
+  <p class="subtitle">Master Definition · Sovereign AI Infrastructure for Distributed Organizations</p>
+  <div class="one-liner">
+    Humanified AI-OS er den suveræne AI-infrastruktur, der giver distribuerede organisationer evnen til at operere med matematisk integritet — hvor hvert individ ejer sin egen intelligens, og helheden bliver eksponentielt klogere uden at ofre den enkeltes suverænitet.
+  </div>
+</header>
+
+<main>
+
+  <!-- KERNEPRINCIPPET -->
+  <section>
+    <h2>Kerneprincippet: I = 1.01</h2>
+    <div class="formula-block">
+      <div class="formula-main">I(t) = R(t) / S(t) ≥ 1.01</div>
+      <div class="formula-table">
+        <div class="formula-row"><span class="formula-sym">I</span><span>Integrity Index — systemets samlede suverænitet</span></div>
+        <div class="formula-row"><span class="formula-sym">R</span><span>Resonans — graden af alignment mellem ord og handling</span></div>
+        <div class="formula-row"><span class="formula-sym">S</span><span>Entropi — støj, uærlighed, fragmenterede processer</span></div>
+        <div class="formula-row"><span class="formula-sym">1.01</span><span>Tærsklen der adskiller orden fra kaos</span></div>
+      </div>
+    </div>
+    <div class="info-box">
+      <strong>Systemets logik:</strong> Sandhed er gjort til den mest profitable strategi. At lyve for sin egen node er som at lyve for sin læge før en operation — du er den eneste, det går ud over.
+    </div>
+  </section>
+
+  <!-- 7 KOMPONENTER -->
+  <section>
+    <h2>De 7 Komponenter</h2>
+
+    <div class="component-card">
+      <div class="component-header">
+        <div class="component-number">1</div>
+        <div class="component-title">THE SOVEREIGN SPLIT</div>
+      </div>
+      <div class="component-body">
+        <p class="dim">Dualistisk struktur der sikrer 100% Zero-Data-Leak.</p>
+        <div class="split-diagram">
+          <div class="split-core">
+            <div class="split-label">Top-lag</div>
+            <div class="split-title">CORE</div>
+            <div class="split-desc">Virksomhedens DNA, vision, akkumuleret kollektiv intelligens. Tung LLM. On-premise eller sikker cloud.</div>
+            <div class="split-owner"><span class="dim">Ejer:</span> Organisationen &nbsp;·&nbsp; <span class="dim">Indhold:</span> Destilleret matematik — aldrig rådata</div>
+          </div>
+          <div class="split-arrow">↕ LoRA-weights (top-down) · Anonyme gradienter (bottom-up)</div>
+          <div class="split-edge">
+            <div class="split-label">Edge-lag</div>
+            <div class="split-title">EDGE — Den Suveræne Node</div>
+            <div class="split-desc">Medarbejderens personlige fæstning. Alt kører lokalt. Power-Profile, Vector Vault, AI-Mentor.</div>
+            <div class="split-owner"><span class="dim">Ejer:</span> Individet &nbsp;·&nbsp; <span class="dim">Indhold:</span> Alt. Forlader aldrig maskinen.</div>
+          </div>
+        </div>
+        <div class="info-box">
+          <strong>The Sovereign Split løser organisationens grundproblem:</strong> Ledelsens vision når aldrig ud på gulvet. CORE sender virksomhedens DNA ned. EDGE oversætter det til individets virkelighed. Intet privat data bevæger sig opad.
+        </div>
+      </div>
+    </div>
+
+    <div class="component-card">
+      <div class="component-header">
+        <div class="component-number">2</div>
+        <div class="component-title">THE NODE</div>
+      </div>
+      <div class="component-body">
+        <p class="dim">Den fysiske manifestation af individets suveræne AI-infrastruktur.</p>
+        <h3>Anbefalet Hardware (2026)</h3>
+        <table>
+          <thead><tr><th>Option</th><th>Hardware</th><th>RAM</th><th>Pris</th><th>Bedst til</th></tr></thead>
+          <tbody>
+            <tr><td>Tier 1</td><td>Mac mini M4</td><td>16GB Unified</td><td>~5.000 DKK</td><td>Proof-of-concept, R&D</td></tr>
+            <tr><td>Tier 2</td><td>Orange Pi 5 Max + NVMe</td><td>16GB + NPU</td><td>~1.400 DKK</td><td>Industrial edge deployment</td></tr>
+            <tr><td>Tier 3</td><td>Raspberry Pi 5 + Hailo AI Kit</td><td>8GB + 13 TOPS</td><td>~1.500 DKK</td><td>Letvægt field agents</td></tr>
+          </tbody>
+        </table>
+        <h3>Software-lag på noden</h3>
+        <pre>Noden (Mac mini M4 / Orange Pi 5)
+├── Ollama (LLM-motor, kører via Apple Metal eller NPU)
+│   └── Lokalt hostet model (Llama-3 8B kvantiseret)
+├── Qdrant (Vector Vault — Personal Power-Profile)
+│   └── FORLADER ALDRIG ENHEDEN
+├── Docker-workspace (3-lags container-arkitektur)
+│   ├── Tier 1: Global Connectors
+│   ├── Tier 2: Tactical Pods (rolle-specifik)
+│   └── Tier 3: Sovereign Pods (personlige superkræfter)
+└── Edge-Sync Agent (Rust)
+    └── Eneste forbindelse til CORE — kun matematik, aldrig rådata</pre>
+        <div class="info-box">
+          <strong>Princip:</strong> Medarbejderen arbejder DIREKTE på noden. Ingen netværksgab, ingen Man-in-the-Middle, ingen GDPR-problemer. Data opstår lokalt, behandles lokalt, forbliver lokalt.
+        </div>
+      </div>
+    </div>
+
+    <div class="component-card">
+      <div class="component-header">
+        <div class="component-number">3</div>
+        <div class="component-title">THE AURA</div>
+      </div>
+      <div class="component-body">
+        <p class="dim">Den usynlige AI-mentor der er omnipresent i medarbejderens arbejdsflow.</p>
+        <p>En <strong style="color:var(--gold-bright)">Sidecar-container</strong> der injiceres i alle arbejdscontainere og fungerer som en proaktiv, usynlig exoskellet-dragt.</p>
+        <div class="aura-grid">
+          <div class="aura-card"><h4>The Harvester</h4><p>Læser konteksten af det, medarbejderen arbejder med NU. Dokumenter, mail, analyser — allerede på maskinen, nul forsinkelse.</p></div>
+          <div class="aura-card"><h4>The Refiner</h4><p>Slår op i lokal Vector Vault. Finder: tidligere løsninger + virksomhedens DNA + best-practices for netop DENNE funktion.</p></div>
+          <div class="aura-card"><h4>The Mentor</h4><p>Kender medarbejderens Power-Profile. Svag til diplomati? → Omskriver automatisk skarpe mails. Svag til beslutninger? → Præsenterer data som handlingsorienterede muligheder.</p></div>
+        </div>
+        <h3>Visuel manifestation (ikke forstyrrende)</h3>
+        <pre>Glimmer / Edge Lighting
+└── Kanten af vinduet glimter svagt (guld/blå)
+    Signal: "Jeg har ryggen på dig her"
+
+Hover State (Cmd + Space)
+└── Folder sig ud som færdigtyggede Action Items
+    — ikke som chat, men som præcise forslag
+
+Ghost Writer
+└── Auto-fuldfører baseret på:
+    1. Medarbejderens Power-Profile (HOW du kommunikerer)
+    2. Virksomhedens DNA (HVAD du kommunikerer)</pre>
+      </div>
+    </div>
+
+    <div class="component-card">
+      <div class="component-header">
+        <div class="component-number">4</div>
+        <div class="component-title">THE INTEGRITY LOOP</div>
+      </div>
+      <div class="component-body">
+        <p class="dim">I=1.01 som organisatorisk speedometer — erstatningen for KPI-skemaer og trivselsmålinger.</p>
+        <pre>Medarbejder accepterer Auraens råd
+         ↓
+Handlingen skaber flow → succes registreres lokalt som "Hit"
+         ↓
+Integrity-Container (Sensoren) — isoleret Docker-container
+    Måler: matematisk retning (vektor-koordinat + I-værdi)
+    Fjerner: IP, navn, afdeling, tidsstempel, alt PII
+    Sender: Kun krypteret, anonym matematik
+         ↓
+Firmaets Central-Integrity-Container (Barometeret)
+    Akkumulerer tusindvis af anonyme datapunkter
+    Output: Ét tal — firmaets samlede I-indeks
+         ↓
+Ledelsens dashboard
+    I = 1.01+ → resonans, vækst, alignment
+    I &lt; 1.01  → entropi stiger, beslutning skal justeres</pre>
+        <h3>Spilteoriens elegans (Incentive Alignment)</h3>
+        <div class="game-theory">
+          <div class="gt-bad"><div class="gt-label">Manipulation straffer sig selv</div><div class="gt-text">En medarbejder der lyver om sin Power-Profile får en Aura der rådgiver ud fra den falske profil. Forslagene passer ikke. Han fejler. Støjen eksploderer. Han mister sin "superpower" og arbejder dobbelt så hårdt.</div></div>
+          <div class="gt-good"><div class="gt-label">Sandhed udløser superkræfter</div><div class="gt-text">En medarbejder der overgiver sig til sin sande profil frigøres fra sine blinde vinkler. Auraen håndterer dem automatisk. Kognitiv energi frigøres til kernen. 10x performance på det man faktisk er god til.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="component-card">
+      <div class="component-header">
+        <div class="component-number">5</div>
+        <div class="component-title">THE FEDERATED LAYER</div>
+      </div>
+      <div class="component-body">
+        <p class="dim">Arkitekturen der lader organisationen blive klogere uden at overvåge nogen.</p>
+        <h3>To-trins asymmetrisk motor (Edge → CORE)</h3>
+        <pre>PYTHON — The Refiner/Krystallisatoren
+└── Tygger medarbejderens succeser og rådata
+    Output: Ren matematisk repræsentation (vektorer/mønstre)
+    Fjerner: Alt personligt indhold — bevarer kun metoden
+
+RUST — The Validator/Membranen
+└── Uigennemtrængelig hukommelsessikker membran
+    Regel: Hvis pakken indeholder NOGET personligt → destrueres lokalt
+    Slipper igennem: Kun kold, anonym matematik og LoRA-gradienter</pre>
+        <h3>Vidensspredningen (CORE → Edge)</h3>
+        <pre>Forsker A (afdeling Nord) knækker en kompleks kode
+    → Python krystalliserer metoden  →  Rust validerer: ingen PII
+    → Anonym matematik sendes til CORE
+         ↓
+Næste morgen: Forsker B (afdeling Syd) møder relateret problem
+    → Auraen trækker gårsdagens succes ned fra CORE
+    → Tilpasser til Forsker B's Power-Profile
+    → Løsning hvisket i øret</pre>
+        <div class="info-box"><strong>Effekten:</strong> Viden dør aldrig i en lokal mappe. En receptionist i frontlinjen kan skabe en proces der justerer den overordnede HR-politik dagen efter.</div>
+      </div>
+    </div>
+
+    <div class="component-card">
+      <div class="component-header">
+        <div class="component-number">6</div>
+        <div class="component-title">POWER-PROFILING</div>
+      </div>
+      <div class="component-body">
+        <p class="dim">Adgangsprotokollen. Sandhed som adgangskrav. Implementeringen starter ikke med kode — den starter med mennesket.</p>
+        <h3>Fase 0: DNA-Ekstraktion (Ledelsen først)</h3>
+        <pre>Input:  År med adfærdsdata, kommunikation, beslutninger
+Motor:  Pattern-Analyzer (valideret på 4.074.805 ord)
+Output: Power-Profile — individets matematiske DNA</pre>
+        <h3>Profilens 5 dimensioner</h3>
+        <div class="profile-dims">
+          <div class="profile-dim"><div class="profile-dim-name">Værdiprofil</div><div class="profile-dim-desc">Innovation, Integritet, Fællesskab, Vision, Vækst</div></div>
+          <div class="profile-dim"><div class="profile-dim-name">Tænkestil</div><div class="profile-dim-desc">Visuel / Logisk / Mønster / Intuitiv</div></div>
+          <div class="profile-dim"><div class="profile-dim-name">Energisignatur</div><div class="profile-dim-desc">Hvad energiserer / dræner individet</div></div>
+          <div class="profile-dim"><div class="profile-dim-name">Adfærdskonsistens</div><div class="profile-dim-desc">Alignment mellem udtalte værdier og faktisk handling</div></div>
+          <div class="profile-dim" style="grid-column: 1 / -1;"><div class="profile-dim-name">Integrationslag</div><div class="profile-dim-desc">Individets unikke superpower — det ingen andre har</div></div>
+        </div>
+        <div class="info-box"><strong>Profilen er individets ejendom.</strong> Medarbejderens Power-Profile tilhører medarbejderen — ikke virksomheden. Den ligger i hans personlige Vector Vault på hans node. Virksomheden ser aldrig rådata. Den ser kun, om individet og organisationen resonerer.</div>
+      </div>
+    </div>
+
+    <div class="component-card">
+      <div class="component-header">
+        <div class="component-number">7</div>
+        <div class="component-title">THE CONTAINERIZED WORKSPACE (DOCKEROS)</div>
+      </div>
+      <div class="component-body">
+        <p class="dim">Edge-noden afvikler et fuldt containeriseret arbejdsøkosystem. Tre strikte sikkerhedslag.</p>
+        <div class="tier-grid">
+          <div class="tier-card tier-1">
+            <div class="tier-badge">Tier 1 — Virksomheden</div>
+            <h4>Global Connectors</h4>
+            <pre style="font-size:0.75rem; padding:12px;">├── mail-proxy
+├── federated-sync
+└── vpn-gateway</pre>
+            <div class="tier-access">Adgang: Internet + VPN. Kan IKKE tilgå Tier 3.</div>
+          </div>
+          <div class="tier-card tier-2">
+            <div class="tier-badge">Tier 2 — Afdelingen</div>
+            <h4>Tactical Pods</h4>
+            <pre style="font-size:0.75rem; padding:12px;">├── crm-vector-agent
+├── code-context-agent
+├── profile-engine
+└── contract-parser</pre>
+            <div class="tier-access">Kan modtage Tier 1 data. Kan IKKE trække fra Tier 3.</div>
+          </div>
+          <div class="tier-card tier-3">
+            <div class="tier-badge">Tier 3 — Individet</div>
+            <h4>Sovereign Pods</h4>
+            <pre style="font-size:0.75rem; padding:12px;">├── personal-vector-vault
+├── local-llm
+├── mentor-agent
+├── integrity-sensor
+└── superpower-plugins</pre>
+            <div class="tier-access">Sender ALDRIG rådata. Bridged = ingen internet.</div>
+          </div>
+        </div>
+        <h3>Docker-compose CORE (kører på virksomhedens server)</h3>
+        <pre>services:
+  core-llm:           # Tung LLM trænet på virksomhedens DNA
+  federated-aggregator: # Modtager matematiske deltas fra alle Edge-noder
+  core-vector-vault:  # Virksomhedens samlede historik, krystalliseret viden
+  integrity-barometer: # Akkumulerer anonyme I-værdier → ét samlet tal</pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 PRODUKTLAG -->
+  <section>
+    <h2>De 3 Produktlag</h2>
+    <div class="layer-grid">
+      <div class="layer-card layer-1">
+        <div class="layer-title">Lag 1 · Personal</div>
+        <ul class="layer-items">
+          <li>NNLA Docker-stack (operationel)</li>
+          <li>KILO-Swarm 1.347 agenter</li>
+          <li>Bitcoin mempool-trading</li>
+          <li>SHIELD-noder (IoT/MQTT)</li>
+          <li>hmem-mcp (præfrontal cortex)</li>
+        </ul>
+        <div class="layer-proof">BEVIS: Det virker. Thomas er sin egen prototype.</div>
+      </div>
+      <div class="layer-card layer-2">
+        <div class="layer-title">Lag 2 · Enterprise</div>
+        <ul class="layer-items">
+          <li>Power-Profiling (DNA-ekstraktion)</li>
+          <li>Edge-OS deployment (noder per medarbejder)</li>
+          <li>The Aura (usynlig AI-mentor)</li>
+          <li>Integrity Barometer (dashboard)</li>
+          <li>Federated Learning</li>
+        </ul>
+        <div class="layer-proof">MARKED: Enhver org. med field agents og Integration Gap.</div>
+      </div>
+      <div class="layer-card layer-3">
+        <div class="layer-title">Lag 3 · Ecosystem</div>
+        <ul class="layer-items">
+          <li>Netværk af organisationer deler anonymiseret visdom</li>
+          <li>Industri-specifikke CORE-modeller</li>
+          <li>Humanified som infrastrukturstandard</li>
+        </ul>
+        <div class="layer-proof">STATUS: Vision — bygges oven på Lag 2.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- POSITIONERING -->
+  <section>
+    <h2>Positionering</h2>
+    <table class="vs-table">
+      <thead><tr><th>Sammenlignet med</th><th>Humanified AI-OS gør det anderledes</th></tr></thead>
+      <tbody>
+        <tr><td class="vs-competitor">Microsoft Copilot</td><td class="vs-diff">Copilot sender data til Microsofts sky. Humanified: data forlader aldrig noden.</td></tr>
+        <tr><td class="vs-competitor">ChatGPT Enterprise</td><td class="vs-diff">Centraliseret. Humanified: Distribueret — ingen single point of failure.</td></tr>
+        <tr><td class="vs-competitor">SAP / Workday HR</td><td class="vs-diff">KPI-rapporter baseret på hvad folk siger. Humanified: matematik baseret på hvad de faktisk gør.</td></tr>
+        <tr><td class="vs-competitor">Consulting (McKinsey)</td><td class="vs-diff">Ekstern analyse der dør i en PowerPoint. Humanified: permanent, selvlærende infrastruktur.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- IMPLEMENTERING -->
+  <section>
+    <h2>Implementeringsprotokollen</h2>
+    <div class="impl-phases">
+      <div class="impl-phase"><div class="impl-num">0</div><div class="impl-content"><div class="impl-title">Sandhed som adgangskrav</div><div class="impl-desc">Ledelsen gennemgår Power-Profiling. Virksomhedens DNA ekstraheres. CORE-modellen fodres med det første indhold.</div></div></div>
+      <div class="impl-phase"><div class="impl-num">1</div><div class="impl-content"><div class="impl-title">Creative Destruction</div><div class="impl-desc">Eksisterende fragmenterede AI-løsninger deaktiveres. De repræsenterer entropi — forhindrer primær resonans.</div></div></div>
+      <div class="impl-phase"><div class="impl-num">2</div><div class="impl-content"><div class="impl-title">Node-deployment</div><div class="impl-desc">Pilot: 5-10 noder (én afdeling). Medarbejderne modtager deres suveræne workspace. The Aura aktiveres.</div></div></div>
+      <div class="impl-phase"><div class="impl-num">3</div><div class="impl-content"><div class="impl-title">Federated Learning aktivt</div><div class="impl-desc">Viden begynder at krystallisere og bevæge sig. CORE-modellen bliver klogere. I-indekset måles live.</div></div></div>
+      <div class="impl-phase"><div class="impl-num">4</div><div class="impl-content"><div class="impl-title">Skalering</div><div class="impl-desc">Udrulning til hele organisationen. Tier 2 pods tilpasses afdeling for afdeling.</div></div></div>
+    </div>
+  </section>
+
+  <!-- MATEMATISK FUNDAMENT -->
+  <section>
+    <h2>Det Matematiske Fundament</h2>
+    <p class="dim">Systemet er forankret i fem peer-reviewede skalaer hvor I ≥ 1.01 optræder identisk.</p>
+    <div class="math-grid">
+      <div class="math-card"><div class="math-scale">Kvantum</div><div class="math-manifestation">Off-diagonal density matrix preservation = coherence</div></div>
+      <div class="math-card"><div class="math-scale">Biologisk</div><div class="math-manifestation">Schrödinger's negentropi — liv defineret som I ≥ 1.01</div></div>
+      <div class="math-card"><div class="math-scale">Neural</div><div class="math-manifestation">θ-oscillationer ved 7.83 Hz opretholder kognitiv kohærens</div></div>
+      <div class="math-card"><div class="math-scale">Information</div><div class="math-manifestation">Shannon SNR > 1 (positiv kanalkapacitet)</div></div>
+      <div class="math-card"><div class="math-scale">Human</div><div class="math-manifestation">Kognitiv suverænitet — strukturel betingelse for ikke-deterministisk tænkning</div></div>
+    </div>
+    <p class="dim" style="font-size:0.8rem; margin-top:12px;">Reference: Aarup &amp; Claude Sonnet 4.6 (2026). Dynamic Integrity Coefficient I = 1.01. 101NNLA Core Research Group.</p>
+  </section>
+
+  <!-- HVAD DET IKKE ER -->
+  <section>
+    <h2>Hvad Humanified AI-OS IKKE er</h2>
+    <div class="not-grid">
+      <div class="not-item">Et chatbot-produkt</div>
+      <div class="not-item">Et overvågningsværktøj for ledelsen</div>
+      <div class="not-item">En HR-platform med spørgeskemaer</div>
+      <div class="not-item">Et AI-add-on oven på eksisterende systemer</div>
+      <div class="not-item" style="grid-column: 1 / -1;">En tjeneste man abonnerer på og glemmer</div>
+    </div>
+    <div class="is-infra">
+      Det er infrastruktur. Som el-nettet. Det er der. Det virker. Alt oven på det bliver bedre.
+    </div>
+  </section>
+
+</main>
+
+<footer class="doc-footer">
+  <div class="version">HUMANIFIED AI-OS · Master Definition · v1.0 · 2026-05-01</div>
+</footer>
+
+<footer class="site-footer">
+  <a href="https://thomasaarup.dk">← Thomas Aarup</a>
+  <a href="https://humanified.dk/enterprise">Enterprise Blueprint (EN)</a>
+  <a href="https://humanified.dk/ai-os">AI-OS Definition (EN)</a>
+  <a href="mailto:info@thomasaarup.dk">Kontakt</a>
+</footer>
+
+</body>
+</html>
