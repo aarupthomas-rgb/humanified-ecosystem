@@ -4,7 +4,79 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Thomas Aarup — POWER-PROFILING og ledelsesguidance. Systemarkitekt baseret i Farsø, Danmark.">
+    <link rel="canonical" href="https://www.thomasaarup.dk/">
+    <meta name="robots" content="index, follow">
     <title>Thomas Aarup — POWER-PROFILING & Ledelsesguidance</title>
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Thomas Aarup">
+    <meta property="og:locale" content="da_DK">
+    <meta property="og:url" content="https://www.thomasaarup.dk/">
+    <meta property="og:title" content="Thomas Aarup — POWER-PROFILING & Ledelsesguidance">
+    <meta property="og:description" content="Systemarkitekt baseret i Farsø, Danmark. POWER-PROFILING: 6–8 ugers metodisk profilering for ledere og kandidater.">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Thomas Aarup — POWER-PROFILING & Ledelsesguidance">
+    <meta name="twitter:description" content="Systemarkitekt baseret i Farsø, Danmark. POWER-PROFILING: 6–8 ugers metodisk profilering for ledere og kandidater.">
+
+    <!-- JSON-LD: Person -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Thomas Aarup",
+      "url": "https://www.thomasaarup.dk/",
+      "jobTitle": "Systemarkitekt",
+      "email": "mailto:info@thomasaarup.dk",
+      "telephone": "+45 50 29 69 11",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Farsø",
+        "addressCountry": "DK"
+      },
+      "sameAs": ["https://humanified.dk"]
+    }
+    </script>
+
+    <!-- JSON-LD: Service (POWER-PROFILING) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "POWER-PROFILING",
+      "serviceType": "Leadership profiling and guidance",
+      "description": "Systematisk 6–8 ugers data-drevet profileringsforløb der afdækker værdihierarki, beslutningsstrategi, energimønstre og naturlig lederrolle.",
+      "provider": {
+        "@type": "Person",
+        "name": "Thomas Aarup",
+        "url": "https://www.thomasaarup.dk/"
+      },
+      "areaServed": "DK",
+      "url": "https://www.thomasaarup.dk/#power-profiling",
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "Selvstændig",
+          "price": "199",
+          "priceCurrency": "EUR"
+        },
+        {
+          "@type": "Offer",
+          "name": "Guidet forløb",
+          "price": "599",
+          "priceCurrency": "EUR"
+        },
+        {
+          "@type": "Offer",
+          "name": "Dyb sparring",
+          "price": "3000",
+          "priceCurrency": "EUR"
+        }
+      ]
+    }
+    </script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -31,13 +103,13 @@
 
         /* ── HEADER ── */
         header {
-            background: linear-gradient(135deg, #0d0d0d 0%, #1a1208 50%, #0d0d0d 100%);
+            background: #0d0d0d;
+            background-image: linear-gradient(135deg, #0d0d0d 0%, #1a1208 50%, #0d0d0d 100%);
             border-bottom: 1px solid var(--gold);
             padding: 1.5rem 1rem;
             position: sticky;
             top: 0;
             z-index: 100;
-            backdrop-filter: blur(8px);
         }
 
         .header-inner {
@@ -544,8 +616,9 @@
 
         /* ── RESPONSIVE ── */
         @media (max-width: 768px) {
-            .header-inner { flex-direction: column; align-items: flex-start; gap: 1rem; }
-            nav { flex-wrap: wrap; gap: 1rem; }
+            .header-inner { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+            nav { gap: 0.75rem 1.25rem; flex-wrap: wrap; row-gap: 0.5rem; font-size: 0.78rem; }
+            nav a { font-size: 0.78rem; white-space: nowrap; }
             #hero h2 { font-size: 1.9rem; }
             main { padding: 3rem 1rem; }
             section { margin-bottom: 4rem; }
