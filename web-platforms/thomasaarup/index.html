@@ -1,10 +1,19 @@
 <!DOCTYPE html>
-<html lang="da">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Thomas Aarup — POWER-PROFILING og ledelsesguidance. Systemarkitekt baseret i Farsø, Danmark.">
-    <title>Thomas Aarup — POWER-PROFILING & Ledelsesguidance</title>
+    <meta name="description" content="Thomas Aarup builds systems for finding where people, organisations and reality drift out of sync.">
+    <title>Thomas Aarup - Human systems, data and organisational intelligence</title>
+
+    <meta property="og:title" content="Thomas Aarup - Finding the places where systems drift">
+    <meta property="og:description" content="Founder of Humanified and Guardian Intel. Working with human patterns, public signals and organisational clarity.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://thomasaarup.dk/">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Thomas Aarup - Finding the places where systems drift">
+    <meta name="twitter:description" content="Founder of Humanified and Guardian Intel. Working with human patterns, public signals and organisational clarity.">
+
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -236,8 +245,8 @@
             line-height: 1.7;
         }
 
-        /* ── POWER-PROFILING ── */
-        #power-profiling h2 { margin-bottom: 0.5rem; }
+        /* ── METHOD / SENTRY ── */
+        #method h2 { margin-bottom: 0.5rem; }
 
         .kicker {
             font-size: 0.72rem;
@@ -284,9 +293,11 @@
             justify-content: center;
             font-weight: normal;
             color: var(--gold);
-            font-size: 1.3rem;
+            font-size: 1rem;
             letter-spacing: 1px;
             border-right: 1px solid var(--dark-border);
+            text-align: center;
+            padding: 0.5rem;
         }
 
         .step-body {
@@ -308,7 +319,7 @@
             line-height: 1.7;
         }
 
-        /* ── RESULTAT-BOKS ── */
+        /* ── PULL QUOTE / RESULT-BOX ── */
         .result-box {
             background: var(--dark-card);
             border: 1px solid var(--dark-border);
@@ -328,51 +339,37 @@
             border-bottom: 1px solid var(--dark-border);
         }
 
-        .result-list {
-            list-style: none;
+        .result-box .pull-quote {
+            font-size: 1.15rem;
+            color: #ccc;
+            font-style: italic;
+            line-height: 1.7;
+            max-width: none;
+        }
+
+        /* ── CROSS-LINK CARDS ── */
+        .crosslink-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 0.75rem 2rem;
-        }
-
-        .result-list li {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            padding-left: 1.25rem;
-            position: relative;
-            line-height: 1.6;
-        }
-
-        .result-list li::before {
-            content: '→';
-            color: var(--gold);
-            font-weight: normal;
-            position: absolute;
-            left: 0;
-        }
-
-        /* ── PRICING ── */
-        .price-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 1px;
             background: var(--dark-border);
             border: 1px solid var(--dark-border);
             margin-top: 2.5rem;
         }
 
-        .price-card {
+        .crosslink-card {
             background: var(--dark-card);
             padding: 2rem 1.75rem;
-            position: relative;
+            display: flex;
+            flex-direction: column;
         }
 
-        .price-card.featured {
+        .crosslink-card.featured {
             background: linear-gradient(135deg, rgba(201,168,76,0.08), rgba(201,168,76,0.02));
             border-top: 2px solid var(--gold);
         }
 
-        .price-card .tier {
+        .crosslink-card .tier {
             font-size: 0.65rem;
             font-weight: normal;
             letter-spacing: 2px;
@@ -381,45 +378,24 @@
             margin-bottom: 0.75rem;
         }
 
-        .price-card .price {
-            font-size: 2.2rem;
+        .crosslink-card h3 {
+            font-size: 1.4rem;
             font-weight: normal;
             color: #fff;
-            margin-bottom: 0.25rem;
-            letter-spacing: 1px;
+            margin-bottom: 0.75rem;
+            letter-spacing: 0.5px;
         }
 
-        .price-card .price-desc {
-            font-size: 0.85rem;
+        .crosslink-card p {
+            font-size: 0.92rem;
             color: var(--text-muted);
-            margin-bottom: 1.5rem;
             max-width: none;
-            line-height: 1.6;
-        }
-
-        .price-card ul {
-            list-style: none;
+            line-height: 1.7;
             margin-bottom: 2rem;
+            flex-grow: 1;
         }
 
-        .price-card ul li {
-            font-size: 0.88rem;
-            color: var(--text-muted);
-            padding: 0.35rem 0;
-            padding-left: 1.25rem;
-            position: relative;
-            line-height: 1.6;
-        }
-
-        .price-card ul li::before {
-            content: '→';
-            color: var(--gold);
-            font-weight: normal;
-            position: absolute;
-            left: 0;
-        }
-
-        /* ── LEADERSHIP ── */
+        /* ── WORK AREAS ── */
         .ledelse-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -459,15 +435,15 @@
             line-height: 1.7;
         }
 
-        /* ── KONTAKT ── */
-        #kontakt {
+        /* ── CONTACT ── */
+        #contact {
             text-align: center;
             background: linear-gradient(135deg, rgba(201,168,76,0.06), rgba(201,168,76,0.02));
             border: 1px solid var(--gold);
             padding: 4rem 2rem;
         }
 
-        #kontakt h2 {
+        #contact h2 {
             text-align: center;
             font-size: 1.6rem;
             letter-spacing: 2px;
@@ -478,9 +454,9 @@
             font-weight: normal;
         }
 
-        #kontakt .lead {
+        #contact .lead {
             margin: 1rem auto 2.5rem;
-            max-width: 600px;
+            max-width: 640px;
         }
 
         .contact-row {
@@ -524,7 +500,7 @@
             letter-spacing: 0.5px;
         }
 
-        footer p { margin: 0.4rem 0; }
+        footer p { margin: 0.4rem 0; max-width: 720px; margin-left: auto; margin-right: auto; }
 
         .footer-links {
             margin-top: 1rem;
@@ -559,14 +535,14 @@
     <div class="header-inner">
         <a href="/" class="logo">
             <h1>Thomas Aarup</h1>
-            <div class="sub">POWER-PROFILING &amp; Ledelsesguidance</div>
+            <div class="sub">Human systems &middot; Public signals &middot; Organisational clarity</div>
         </a>
         <nav>
-            <a href="#hvem-er-jeg">Om mig</a>
-            <a href="#power-profiling">POWER-PROFILING</a>
-            <a href="/vision">Vision</a>
-            <a href="#kontakt">Kontakt</a>
-            <a href="https://humanified.dk" class="nav-highlight">Humanified →</a>
+            <a href="#work">Work</a>
+            <a href="#method">Method</a>
+            <a href="https://humanified.dk">Humanified</a>
+            <a href="https://guardian-intel.com" class="nav-highlight">Guardian Intel &rarr;</a>
+            <a href="#contact">Contact</a>
         </nav>
     </div>
 </header>
@@ -575,213 +551,279 @@
 
     <!-- HERO -->
     <section id="hero">
-        <div class="eyebrow">Systemarkitekt · Farsø, Danmark</div>
-        <h2>Ledere der kender sig selv<br><span>leder anderledes.</span></h2>
+        <div class="eyebrow">Human systems. Public signals. Organisational clarity.</div>
+        <h2>I build systems for finding where people, organisations<br><span>and reality drift out of sync.</span></h2>
         <p class="lead">
-            Jeg hjælper ledere og kandidater med at finde den struktur der allerede er i dem —
-            og bygge derfra. Ikke med teorier. Med data, mønstre og 6-8 ugers metodisk arbejde.
+            My work sits between human experience, data, AI and organisational reality.
+            I am interested in the places where people say one thing, do another and
+            slowly lose the ability to see the gap. In a person, that gap becomes
+            friction. In a team, it becomes mistrust. In an organisation, it becomes
+            wasted energy, poorer decisions and patterns that no one quite owns.
         </p>
         <div class="btn-row">
-            <a href="#power-profiling" class="btn btn-solid">Se POWER-PROFILING</a>
-            <a href="#kontakt" class="btn btn-ghost">Book en samtale</a>
+            <a href="#work" class="btn btn-solid">Explore the work</a>
+            <a href="#contact" class="btn btn-ghost">Start a conversation</a>
         </div>
     </section>
 
-    <!-- OM MIG -->
-    <section id="hvem-er-jeg">
-        <h2>Om mig</h2>
-        <h3 style="margin-bottom:1rem;">Hvem er jeg</h3>
+    <!-- WORK -->
+    <section id="work">
+        <h2>What I work on</h2>
+        <h3 style="margin-bottom:1rem;">I work with the patterns beneath decisions.</h3>
         <p>
-            Jeg hedder Thomas Aarup og er baseret i Farsø, Nordjylland. Mit arbejde ligger i
-            skæringspunktet mellem systemarkitektur og menneskelig ledelse — og det udgangspunkt
-            er ikke tilfældigt.
+            Most problems do not begin where they are finally noticed.
         </p>
         <p>
-            Jeg tror på at de bedste beslutninger kommer fra selvkendskab, ikke fra frameworks.
-            At den stærkeste strategi er bygget på en leder der ved præcis hvad han eller hun
-            prioriterer, og hvorfor. Og at integritet ikke er noget du tilføjer til en organisation —
-            det er noget du bygger ind i fundamentet fra dag ét.
+            They begin earlier: in pressure, unclear values, broken feedback,
+            misread signals, defensive habits and the small distance between
+            what a system says and what it rewards.
+        </p>
+        <p>
+            My work is to build methods and tools that make those patterns easier
+            to see, speak about and act on.
         </p>
 
         <div class="fact-grid">
             <div class="fact-card">
-                <div class="label">Udgangspunkt</div>
-                <p>Jeg designer systemer der er skalerbare. Det gælder kode, organisationer og det enkelte menneske.</p>
+                <div class="label">Humanified</div>
+                <p>Humanified works with human patterns, personal clarity, team composition and organisational alignment.</p>
             </div>
             <div class="fact-card">
-                <div class="label">Metode</div>
-                <p>Data-drevet profiling over 6-8 uger. Narrativer, daglig tracking, algoritmisk mønsterfinding.</p>
+                <div class="label">Guardian Intel</div>
+                <p>Guardian Intel works with public signals, source-backed intelligence and organisational pressure mapping.</p>
             </div>
             <div class="fact-card">
-                <div class="label">Tilgang</div>
-                <p>Jeg stiller spørgsmål, det er dig der svarer. Mit job er at få strukturen frem — ikke at fortælle dig hvem du er.</p>
+                <div class="label">Sentry Profiling</div>
+                <p>The profiling method being developed to make human strengths, drains, pressure responses and collaboration needs visible in a responsible way. Used across an organisation, it can also help map where force gathers and where recurring friction traps appear.</p>
             </div>
             <div class="fact-card">
-                <div class="label">Grundværdier</div>
-                <p>Integritet er ikke en option — det er strukturen. Fuldstændig suverænitet. Ingen afhængighed af systemer der ikke tjener dig.</p>
+                <div class="label">Method Library</div>
+                <p>The discipline behind the work: signal before conclusion, evidence before claim, truth-state before presentation.</p>
             </div>
         </div>
     </section>
 
-    <!-- POWER-PROFILING -->
-    <section id="power-profiling">
-        <div class="kicker">6–8 ugers metodisk profiling</div>
-        <div class="section-title">POWER-PROFILING</div>
+    <!-- WHY THIS EXISTS -->
+    <section id="origin">
+        <h2>Why this exists</h2>
+        <h3 style="margin-bottom:1rem;">The work began with a simple observation.</h3>
         <p>
-            De fleste kender intuitivt hvad de holder af. Færre ved præcis <em>hvorfor</em> de tager
-            de beslutninger de tager — hvilke værdier der styrer dem, hvilke mønstre der dræner dem,
-            og hvilke roller der frigiver dem.
+            People rarely create dysfunction because they want to. More often, they
+            repeat patterns that once helped them manage pressure, gain safety or
+            survive a difficult environment.
         </p>
         <p>
-            POWER-PROFILING er en systematisk metode til at afdække din faktiske arkitektur.
-            Ikke din selvopfattelse. Det du rent faktisk gør, over tid, under pres.
+            Those patterns can be useful in one context and destructive in another.
+            A defence mechanism can become a leadership style. A survival strategy
+            can become a team problem. A company value can become a slogan if the
+            organisation rewards something else.
         </p>
+        <p>
+            I wanted a way to see those patterns clearly without turning people
+            into diagnoses or organisations into villains.
+        </p>
+    </section>
 
-        <div class="process-timeline">
-            <div class="process-step">
-                <div class="step-num">1</div>
-                <div class="step-body">
-                    <h3>Indledende interview</h3>
-                    <p>Du skriver narrativer om afgørende øjeblikke: valg du tog på trods af modstand, hvad der giver dig energi, hvad der dræner dig. Udgangspunktet er ærlige historier — ikke selvpræsentation.</p>
-                </div>
-            </div>
-            <div class="process-step">
-                <div class="step-num">2</div>
-                <div class="step-body">
-                    <h3>Daglig tracking (uge 1–6)</h3>
-                    <p>Kortfattede daglige svar: hvad energiserede dig i dag, hvilken beslutning tog du, hvad dræner dig? Over 28+ datapunkter tegner der sig mønstre der ikke lyver.</p>
-                </div>
-            </div>
-            <div class="process-step">
-                <div class="step-num">3</div>
-                <div class="step-body">
-                    <h3>Mønsterfinding</h3>
-                    <p>Algoritmen finder gentagelser, konflikter og mønstre i dit datasæt. Hvad vægter du faktisk over hvad, når det kommer til stykket? Hvad er din tænkestil? Hvad er din naturlige rolle?</p>
-                </div>
-            </div>
-            <div class="process-step">
-                <div class="step-num">4</div>
-                <div class="step-body">
-                    <h3>Værdihierarki</h3>
-                    <p>Dine kerneværdier rangeret med evidens. Ikke hvad du synes du burde prioritere — hvad du faktisk prioriterer, dokumenteret med eksempler fra dine egne historier.</p>
-                </div>
-            </div>
-            <div class="process-step">
-                <div class="step-num">5</div>
-                <div class="step-body">
-                    <h3>Din superkraft + blinde vinkler</h3>
-                    <p>Hvor er dit genius? Hvad giver dig asymmetrisk fordel? Og hvad er de mønstre der koster dig mest — ikke som svagheder der skal fikses, men som konflikter der skal navigeres.</p>
-                </div>
-            </div>
-            <div class="process-step">
-                <div class="step-num">6</div>
-                <div class="step-body">
-                    <h3>POWER-MAP + handlingsplan</h3>
-                    <p>Din komplette profil omsættes til en konkret POWER-MAP: hvad skal du gøre mere af, hvad skal du undgå, hvad er din personlige vej frem. Ikke generiske råd — en arkitektur baseret på din data.</p>
-                </div>
-            </div>
-        </div>
+    <!-- CORE BELIEF -->
+    <section id="belief">
+        <h2>The core belief</h2>
+        <h3 style="margin-bottom:1rem;">Truth is not harsh when it is handled with care.</h3>
+        <p>
+            The point is not to expose people. The point is to reduce the cost of
+            not seeing.
+        </p>
+        <p>
+            When people, teams and organisations can describe reality more
+            honestly, they waste less energy protecting false pictures of
+            themselves. That does not make the work easy. It makes it useful.
+        </p>
+        <p>
+            For me, truth is not a weapon. It is a way to lower friction.
+        </p>
 
         <div class="result-box">
-            <h3>Hvad du får ud af det</h3>
-            <ul class="result-list">
-                <li>Dokumenteret værdihierarki med evidens</li>
-                <li>Kortlagt tænkestil og beslutningsstrategi</li>
-                <li>Energikort: hvad lader dig op, hvad dræner dig</li>
-                <li>Identifikation af din naturlige lederrolle</li>
-                <li>Superkraft-beskrivelse med konkrete applikationer</li>
-                <li>POWER-MAP: personlig handlingsplan og vej frem</li>
-                <li>Grundlag for rekruttering, coaching, og ledelsesudvikling</li>
-                <li>Reproducerbar profil der kan opdateres over tid</li>
-            </ul>
-        </div>
-
-        <div class="price-grid">
-            <div class="price-card">
-                <div class="tier">Selvstændig</div>
-                <div class="price">€199</div>
-                <div class="price-desc">Fuld adgang til profileringsforløbet. Du arbejder selv.</div>
-                <ul>
-                    <li>6-ugers struktureret forløb</li>
-                    <li>Komplet profil + POWER-MAP</li>
-                    <li>Digital vejledning inkluderet</li>
-                </ul>
-                <a href="#kontakt" class="btn btn-ghost" style="width:100%; text-align:center; display:block;">Kom i gang</a>
-            </div>
-            <div class="price-card featured">
-                <div class="tier">Guidet forløb</div>
-                <div class="price">€599</div>
-                <div class="price-desc">Profileringsforløb med løbende vejledning og fortolkningssamtale.</div>
-                <ul>
-                    <li>Alt i Selvstændig</li>
-                    <li>3 vejledningssamtaler undervejs</li>
-                    <li>Fortolknings- og handlingssession</li>
-                    <li>Opfølgning efter 30 dage</li>
-                </ul>
-                <a href="#kontakt" class="btn btn-solid" style="width:100%; text-align:center; display:block;">Book forløb</a>
-            </div>
-            <div class="price-card">
-                <div class="tier">Dyb sparring</div>
-                <div class="price">€3.000</div>
-                <div class="price-desc">Komplet forløb med personlig sparring og strategisk integration.</div>
-                <ul>
-                    <li>Alt i Guidet forløb</li>
-                    <li>Løbende adgang til Thomas</li>
-                    <li>Strategisk integrationsplan</li>
-                    <li>Profilen ind i org-kontekst</li>
-                </ul>
-                <a href="#kontakt" class="btn btn-ghost" style="width:100%; text-align:center; display:block;">Forespørg</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- LEDELSE -->
-    <section id="ledelse">
-        <h2>Ledelsesguidance</h2>
-        <p>
-            Selvkendskab er starten. Den næste opgave er at omsætte det til bedre beslutninger,
-            stærkere teams og en organisation der virker. Det er det jeg hjælper med.
-        </p>
-
-        <div class="ledelse-grid">
-            <div class="ledelse-card">
-                <div class="icon">◈</div>
-                <h3>Arkitektur før strategi</h3>
-                <p>De fleste organisationer bygger strategi oven på et fundament de aldrig har undersøgt. Vi starter med fundamentet: hvad er det faktisk denne leder og dette team er sat i verden for?</p>
-            </div>
-            <div class="ledelse-card">
-                <div class="icon">◈</div>
-                <h3>Integritet som struktur</h3>
-                <p>Værdier er ikke plakater på væggen. De er enten hårdt kodet i beslutningsprocesserne — eller de er ikke der. Jeg hjælper med at bygge systemer hvor integritet er infrastruktur.</p>
-            </div>
-            <div class="ledelse-card">
-                <div class="icon">◈</div>
-                <h3>Rekruttering på evidens</h3>
-                <p>En POWER-PROFIL af en kandidat giver dig noget ingen CV eller samtale kan give: dokumenteret adfærd under pres, faktiske prioriteringer, og et neutralt grundlag for decision.</p>
-            </div>
-            <div class="ledelse-card">
-                <div class="icon">◈</div>
-                <h3>Lederudvikling der virker</h3>
-                <p>Coaching og lederudvikling er mest effektiv når den tager afsæt i præcis hvem denne leder er — ikke i generiske modeller. POWER-PROFILING er fundamentet for det arbejde.</p>
-            </div>
-        </div>
-
-        <div style="margin-top: 2.5rem; padding: 1.5rem 2rem; background: rgba(201,168,76,0.06); border: 1px solid var(--dark-border); border-left: 2px solid var(--gold); max-width: 700px;">
-            <p style="color: #ccc; font-style: italic; font-size: 1rem; max-width: none;">
-                "Systemtænkning for menneskelig transformation. Du sætter retningen — jeg designer strukturerne."
+            <h3>Pull quote</h3>
+            <p class="pull-quote">
+                &ldquo;The cleanest path through complexity is the one with the least hidden contradiction.&rdquo;
             </p>
         </div>
     </section>
 
-    <!-- KONTAKT -->
-    <section id="kontakt">
-        <h2>Lad os tale</h2>
-        <p class="lead" style="max-width:600px; margin: 1rem auto 2.5rem; text-align:center; border:none; padding:0;">
-            Nysgerrig på et POWER-PROFILING forløb eller vil du have en uformel snak om ledelse og
-            selvkendskab? Jeg tager begge dele.
+    <!-- METHOD -->
+    <section id="method">
+        <div class="kicker">How I think about systems</div>
+        <div class="section-title">A system drifts when its nodes stop matching.</div>
+        <p>
+            A node can be a person, a decision, a document, a value, a process,
+            a team or a public signal.
+        </p>
+        <p>
+            When enough nodes stop matching each other, the system becomes harder
+            to understand and more expensive to operate. People compensate. Meetings
+            multiply. Language becomes vague. Decisions slow down. The organisation
+            explains more and moves less.
+        </p>
+        <p>
+            That is the kind of drift I look for.
+        </p>
+
+        <div class="process-timeline">
+            <div class="process-step">
+                <div class="step-num">01</div>
+                <div class="step-body">
+                    <h3>What we say</h3>
+                    <p>The stated values, the public language, the things written into strategy decks and onboarding pages.</p>
+                </div>
+            </div>
+            <div class="process-step">
+                <div class="step-num">02</div>
+                <div class="step-body">
+                    <h3>What we do</h3>
+                    <p>The actual behaviour under pressure. How decisions are made when the room gets tight, not when the slides are clean.</p>
+                </div>
+            </div>
+            <div class="process-step">
+                <div class="step-num">03</div>
+                <div class="step-body">
+                    <h3>What we document</h3>
+                    <p>What gets written down, recorded, filed and made available, and what is left implicit or unsaid.</p>
+                </div>
+            </div>
+            <div class="process-step">
+                <div class="step-num">04</div>
+                <div class="step-body">
+                    <h3>What we reward</h3>
+                    <p>The behaviours that actually get promoted, defended or tolerated, regardless of what the stated values claim.</p>
+                </div>
+            </div>
+            <div class="process-step">
+                <div class="step-num">05</div>
+                <div class="step-body">
+                    <h3>What people carry</h3>
+                    <p>The pressure, beliefs, history and patterns that people bring into the system and that quietly shape how they respond.</p>
+                </div>
+            </div>
+            <div class="process-step">
+                <div class="step-num">06</div>
+                <div class="step-body">
+                    <h3>What the outside world can see</h3>
+                    <p>The public signals: publications, regulation, market behaviour, the surface an organisation shows when it does not think it is being read carefully.</p>
+                </div>
+            </div>
+        </div>
+
+        <p style="margin-top: 2rem; font-style: italic; color: #ccc;">
+            The distance between those layers is often where the useful signal lives.
+        </p>
+    </section>
+
+    <!-- AI AND THE WORK -->
+    <section id="ai">
+        <h2>AI and the work</h2>
+        <h3 style="margin-bottom:1rem;">AI does not replace judgement. It changes the scale of pattern work.</h3>
+        <p>
+            AI is useful because it can hold more material, compare more signals
+            and keep structure across more iterations than one person can.
+        </p>
+        <p>
+            But AI does not remove responsibility. A model can suggest a pattern.
+            It cannot make the pattern true. That requires sources, reasoning,
+            verification and a human decision about what is fair to say.
+        </p>
+        <p>
+            The best use of AI in this work is not automation for its own sake.
+            It is disciplined assistance in finding, testing and refining patterns.
+        </p>
+    </section>
+
+    <!-- HUMANIFIED & GUARDIAN INTEL -->
+    <section id="sites">
+        <h2>Two sides of the same work</h2>
+        <p>
+            Humanified and Guardian Intel are two public doors into the same body
+            of work. Humanified begins with the person. Guardian Intel reads the
+            public surface. Together they help describe how an organisation
+            actually operates, inside and out.
+        </p>
+
+        <div class="crosslink-grid">
+            <div class="crosslink-card featured">
+                <div class="tier">Humanified</div>
+                <h3>Humanified begins with the person.</h3>
+                <p>
+                    Humanified is the human side of the work. It is about people,
+                    values, pressure, energy, cooperation and the conditions that
+                    allow a person or team to do better work.
+                </p>
+                <p>
+                    The goal is not to label people. The goal is to give people
+                    and organisations a clearer language for what is already
+                    affecting them.
+                </p>
+                <p>
+                    Organisations have human force fields. Some people and teams
+                    create clarity, trust and forward movement around them. Others
+                    become places where energy, information or responsibility gets
+                    trapped. Sentry Profiling is meant to help make those patterns
+                    visible without turning them into blame.
+                </p>
+                <a href="https://humanified.dk" class="btn btn-solid" style="align-self: flex-start;">Visit Humanified</a>
+            </div>
+            <div class="crosslink-card">
+                <div class="tier">Guardian Intel</div>
+                <h3>Guardian Intel reads the public surface.</h3>
+                <p>
+                    Guardian Intel is the external signal side of the work. It uses
+                    public material to understand how organisations present, adapt,
+                    disclose and respond under pressure.
+                </p>
+                <p>
+                    It is not surveillance. It is not certainty. It is careful
+                    reading of public signals so leaders and advisors can ask
+                    better questions earlier.
+                </p>
+                <a href="https://guardian-intel.com" class="btn btn-ghost" style="align-self: flex-start;">Visit Guardian Intel</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHAT I AM BUILDING TOWARD -->
+    <section id="building">
+        <h2>What I am building toward</h2>
+        <h3 style="margin-bottom:1rem;">A more honest operating system for human organisations.</h3>
+        <p>
+            The long-term work is to connect the internal and external views.
+        </p>
+
+        <div class="ledelse-grid">
+            <div class="ledelse-card">
+                <div class="icon">&#x25C8;</div>
+                <h3>Inside</h3>
+                <p>People, values, teams, leadership and lived reality. The conditions and patterns that shape how an organisation actually behaves day to day.</p>
+            </div>
+            <div class="ledelse-card">
+                <div class="icon">&#x25C8;</div>
+                <h3>Outside</h3>
+                <p>Public signals, publications, regulation, market pressure and organisational behaviour as it appears on the public surface.</p>
+            </div>
+            <div class="ledelse-card">
+                <div class="icon">&#x25C8;</div>
+                <h3>Together</h3>
+                <p>When those views are handled responsibly, they can help people build organisations with less hidden friction and better decision quality.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+        <h2>Contact</h2>
+        <p class="lead" style="max-width:640px; margin: 1rem auto 2.5rem; text-align:center; border:none; padding:0; font-style: normal;">
+            If this sounds like the conversation you have been trying to have, reach out.
+            I am open to serious conversations with founders, leaders, advisors and people
+            working on human systems, organisational intelligence or decision quality.
         </p>
         <div class="btn-row" style="margin-bottom:2rem;">
-            <a href="mailto:info@thomasaarup.dk" class="btn btn-solid">Skriv til mig</a>
+            <a href="mailto:info@thomasaarup.dk" class="btn btn-solid">Start a conversation</a>
         </div>
         <div class="contact-row">
             <div class="contact-item">
@@ -789,12 +831,8 @@
                 <p><a href="mailto:info@thomasaarup.dk">info@thomasaarup.dk</a></p>
             </div>
             <div class="contact-item">
-                <div class="label">Telefon</div>
-                <p><a href="tel:+4550296911">+45 50 29 69 11</a></p>
-            </div>
-            <div class="contact-item">
-                <div class="label">Lokation</div>
-                <p style="color: var(--text-muted); font-size: 1rem;">Farsø, Danmark</p>
+                <div class="label">Based in</div>
+                <p style="color: var(--text-muted); font-size: 1rem;">Farsø, Denmark</p>
             </div>
         </div>
     </section>
@@ -803,12 +841,12 @@
 
 <footer>
     <p style="color: var(--gold); letter-spacing: 2px; text-transform: uppercase; font-size: 0.78rem;">Thomas Aarup</p>
-    <p style="margin-top:0.4rem;">POWER-PROFILING &amp; Ledelsesguidance · Farsø, Danmark</p>
-    <p>© 2026 Thomas Aarup</p>
+    <p style="margin-top:0.4rem;">Thomas Aarup is the founder of Humanified and Guardian Intel, working with human systems, public signals and organisational clarity.</p>
+    <p>&copy; 2026 Thomas Aarup</p>
     <div class="footer-links">
-        <a href="/vision">Vision</a>
         <a href="https://humanified.dk">Humanified</a>
-        <a href="mailto:info@thomasaarup.dk">Kontakt</a>
+        <a href="https://guardian-intel.com">Guardian Intel</a>
+        <a href="mailto:info@thomasaarup.dk">Contact</a>
     </div>
 </footer>
 
