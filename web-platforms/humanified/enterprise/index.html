@@ -1,798 +1,291 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="HUMANIFIED AI-OS Enterprise Blueprint — Sovereign AI Infrastructure for Distributed Organizations">
-<title>HUMANIFIED AI-OS — Enterprise Blueprint</title>
-<style>
-  /* SITE NAV */
-  .site-nav {
-    background: #080808;
-    border-bottom: 1px solid #1e1e1e;
-    padding: 0.75rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: sticky;
-    top: 0;
-    z-index: 200;
-  }
-  .site-nav .site-logo {
-    font-family: 'Georgia', serif;
-    font-size: 0.72rem;
-    letter-spacing: 3px;
-    color: #c9a84c;
-    text-transform: uppercase;
-    text-decoration: none;
-  }
-  .site-nav nav { display: flex; gap: 1.5rem; align-items: center; }
-  .site-nav nav a {
-    font-family: 'Georgia', serif;
-    font-size: 0.75rem;
-    letter-spacing: 0.5px;
-    color: #666;
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-  .site-nav nav a:hover { color: #c9a84c; }
-  .site-nav nav a.active { color: #c9a84c; }
-  .site-nav .site-cta {
-    font-family: 'Georgia', serif;
-    font-size: 0.7rem;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: #c9a84c;
-    text-decoration: none;
-    border: 1px solid #c9a84c;
-    padding: 0.4rem 1rem;
-    transition: all 0.2s;
-  }
-  .site-nav .site-cta:hover { background: #c9a84c; color: #0d0d0d; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Humanified for organisations — making team friction, power centres and recurring entropy traps visible in a constructive, consent-based way.">
+    <title>Humanified — For organisations</title>
+    <meta property="og:title" content="Humanified — For organisations">
+    <meta property="og:description" content="A method for making human patterns, team friction and organisational clarity visible in a responsible way.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
-  :root {
-    --gold: #c9a84c;
-    --gold-light: #e8c97a;
-    --dark: #0d0d0d;
-    --dark-mid: #141414;
-    --dark-card: #1a1a1a;
-    --dark-border: #2a2a2a;
-    --text: #e8e8e8;
-    --text-muted: #888;
-    --accent: #4a9eff;
-    --green: #4caf82;
-    --red: #cf6679;
-  }
+        :root {
+            --gold: #c9a84c;
+            --gold-light: #e8c97a;
+            --dark: #0d0d0d;
+            --darker: #080808;
+            --dark-card: #1a1a1a;
+            --dark-border: #2a2a2a;
+            --text: #e8e8e8;
+            --text-muted: #888;
+        }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            background: var(--dark);
+            color: var(--text);
+            line-height: 1.7;
+        }
 
-  body {
-    font-family: 'Georgia', 'Times New Roman', serif;
-    background: var(--dark);
-    color: var(--text);
-    line-height: 1.7;
-    font-size: 16px;
-  }
+        header {
+            background: linear-gradient(135deg, #0d0d0d 0%, #1a1208 50%, #0d0d0d 100%);
+            border-bottom: 1px solid var(--gold);
+            padding: 1.5rem 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
 
-  /* HEADER */
-  .header {
-    background: linear-gradient(135deg, #0d0d0d 0%, #1a1208 50%, #0d0d0d 100%);
-    border-bottom: 1px solid var(--gold);
-    padding: 60px 40px 50px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-  .header::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: radial-gradient(ellipse at center top, rgba(201,168,76,0.08) 0%, transparent 70%);
-  }
-  .header-logo {
-    font-family: 'Georgia', serif;
-    font-size: 11px;
-    letter-spacing: 4px;
-    color: var(--gold);
-    text-transform: uppercase;
-    margin-bottom: 20px;
-  }
-  .header h1 {
-    font-size: 36px;
-    font-weight: normal;
-    letter-spacing: 2px;
-    color: #fff;
-    margin-bottom: 8px;
-  }
-  .header h1 span { color: var(--gold); }
-  .header .subtitle {
-    font-size: 14px;
-    color: var(--text-muted);
-    letter-spacing: 1px;
-    margin-bottom: 24px;
-  }
-  .header .tagline {
-    font-style: italic;
-    font-size: 18px;
-    color: var(--gold-light);
-    max-width: 700px;
-    margin: 0 auto;
-  }
+        .header-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-  /* LAYOUT */
-  .container { max-width: 960px; margin: 0 auto; padding: 0 32px; }
+        .logo { text-decoration: none; color: var(--text); }
+        .logo h1 {
+            font-size: 1.4rem;
+            font-weight: normal;
+            letter-spacing: 3px;
+            color: var(--gold);
+            text-transform: uppercase;
+        }
+        .logo .sub {
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
 
-  /* SECTIONS */
-  section { padding: 60px 0; border-bottom: 1px solid var(--dark-border); }
-  section:last-child { border-bottom: none; }
+        nav { display: flex; gap: 2rem; align-items: center; }
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.82rem;
+            letter-spacing: 0.5px;
+            transition: color 0.25s;
+        }
+        nav a:hover, nav a.nav-highlight { color: var(--gold); }
 
-  h2 {
-    font-size: 13px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 32px;
-    padding-bottom: 12px;
-    border-bottom: 1px solid var(--dark-border);
-  }
+        main {
+            max-width: 880px;
+            margin: 0 auto;
+            padding: 6rem 1.5rem;
+        }
 
-  h3 {
-    font-size: 24px;
-    font-weight: normal;
-    color: #fff;
-    margin-bottom: 8px;
-  }
+        section { margin-bottom: 5rem; }
 
-  h4 {
-    font-size: 13px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    margin: 28px 0 12px;
-  }
+        h2 {
+            font-size: 0.75rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold);
+            font-weight: normal;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid var(--dark-border);
+        }
 
-  p { margin-bottom: 16px; color: var(--text); }
+        h3 {
+            font-size: 1.6rem;
+            font-weight: normal;
+            color: #fff;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
 
-  .lead {
-    font-size: 19px;
-    line-height: 1.8;
-    color: #ccc;
-    font-style: italic;
-    border-left: 3px solid var(--gold);
-    padding-left: 24px;
-    margin-bottom: 32px;
-  }
+        p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.85;
+            max-width: 720px;
+        }
 
-  strong { color: var(--gold-light); }
-  em { color: #ccc; }
+        p + p { margin-top: 1rem; }
 
-  /* PHASE OVERVIEW */
-  .phases-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1px;
-    background: var(--dark-border);
-    border: 1px solid var(--dark-border);
-    border-radius: 4px;
-    overflow: hidden;
-    margin: 32px 0;
-  }
-  .phase-card {
-    background: var(--dark-card);
-    padding: 28px 20px;
-    position: relative;
-  }
-  .phase-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-  }
-  .phase-card:nth-child(1)::before { background: var(--gold); }
-  .phase-card:nth-child(2)::before { background: var(--accent); }
-  .phase-card:nth-child(3)::before { background: var(--green); }
-  .phase-card:nth-child(4)::before { background: #a78bfa; }
+        .eyebrow {
+            font-size: 0.7rem;
+            font-weight: normal;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+        }
 
-  .phase-num { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px; }
-  .phase-name { font-size: 18px; color: #fff; margin-bottom: 10px; }
-  .phase-quote { font-style: italic; font-size: 13px; color: var(--gold-light); margin-bottom: 14px; line-height: 1.5; }
-  .phase-meta { font-size: 12px; color: var(--text-muted); line-height: 1.8; }
+        .btn-row {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
 
-  .arrow-bar {
-    text-align: center;
-    padding: 16px;
-    font-size: 12px;
-    letter-spacing: 3px;
-    color: var(--gold);
-    text-transform: uppercase;
-    background: rgba(201,168,76,0.05);
-    border: 1px solid rgba(201,168,76,0.15);
-    border-radius: 2px;
-    margin-bottom: 48px;
-  }
+        .btn {
+            padding: 0.85rem 2rem;
+            border-radius: 2px;
+            font-size: 0.82rem;
+            letter-spacing: 1px;
+            text-decoration: none;
+            border: 1px solid var(--gold);
+            font-family: 'Georgia', serif;
+            text-transform: uppercase;
+            transition: all 0.25s;
+        }
+        .btn-solid { background: var(--gold); color: var(--dark); }
+        .btn-solid:hover { background: var(--gold-light); }
+        .btn-ghost { background: transparent; color: var(--gold); }
+        .btn-ghost:hover { background: rgba(201,168,76,0.08); }
 
-  /* PHASE DETAIL BLOCKS */
-  .phase-block {
-    background: var(--dark-card);
-    border: 1px solid var(--dark-border);
-    border-radius: 6px;
-    overflow: hidden;
-    margin: 32px 0;
-  }
-  .phase-block-header {
-    padding: 20px 28px;
-    border-bottom: 1px solid var(--dark-border);
-    display: flex;
-    align-items: baseline;
-    gap: 16px;
-  }
-  .phase-block-num { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); white-space: nowrap; }
-  .phase-block-title { font-size: 20px; color: #fff; font-weight: normal; }
-  .phase-block-body { padding: 28px; }
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1px;
+            background: var(--dark-border);
+            border: 1px solid var(--dark-border);
+            margin-top: 2rem;
+        }
+        .card {
+            background: var(--dark-card);
+            padding: 1.75rem;
+        }
+        .card h4 {
+            color: var(--gold-light);
+            font-size: 0.95rem;
+            font-weight: normal;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.6rem;
+        }
+        .card p { font-size: 0.9rem; }
 
-  /* FLOW DIAGRAMS */
-  .flow-diagram {
-    background: #0a0a0a;
-    border: 1px solid var(--dark-border);
-    border-radius: 4px;
-    padding: 28px;
-    font-family: 'Courier New', monospace;
-    font-size: 13px;
-    color: #aaa;
-    line-height: 1.6;
-    overflow-x: auto;
-    margin: 20px 0;
-    white-space: pre;
-  }
+        footer {
+            background: var(--darker);
+            border-top: 1px solid var(--dark-border);
+            padding: 2.5rem 1rem;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.82rem;
+            letter-spacing: 0.5px;
+        }
+        footer p { margin: 0.4rem 0; }
+        .footer-links {
+            margin-top: 1rem;
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .footer-links a { color: var(--gold); text-decoration: none; }
+        .footer-links a:hover { color: var(--gold-light); }
 
-  /* NODE DIAGRAM */
-  .node-diagram { display: flex; flex-direction: column; align-items: center; gap: 0; margin: 28px 0; }
-  .core-box {
-    background: linear-gradient(135deg, #1a1208, #1a1a1a);
-    border: 1px solid var(--gold);
-    border-radius: 6px;
-    padding: 20px 40px;
-    text-align: center;
-    width: 320px;
-  }
-  .core-box .label { font-size: 11px; letter-spacing: 2px; color: var(--gold); text-transform: uppercase; margin-bottom: 8px; }
-  .core-box .items { font-size: 13px; color: #888; line-height: 1.8; }
-  .nodes-row { display: flex; gap: 16px; }
-  .node-box {
-    background: var(--dark-card);
-    border: 1px solid var(--dark-border);
-    border-radius: 6px;
-    padding: 16px 20px;
-    text-align: center;
-    width: 140px;
-  }
-  .node-box .label { font-size: 11px; letter-spacing: 1px; color: var(--accent); text-transform: uppercase; margin-bottom: 6px; }
-  .node-box .items { font-size: 12px; color: #888; line-height: 1.7; }
-  .node-note { font-size: 12px; font-style: italic; color: var(--text-muted); text-align: center; margin-top: 12px; }
-
-  /* AURA FLOW */
-  .aura-flow { display: flex; flex-direction: column; gap: 0; max-width: 580px; margin: 20px auto; }
-  .aura-step { background: var(--dark-card); border: 1px solid var(--dark-border); border-radius: 4px; padding: 16px 22px; position: relative; }
-  .aura-step-title { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
-  .aura-step-desc { font-size: 14px; color: #aaa; line-height: 1.5; }
-  .aura-arrow { text-align: center; color: var(--dark-border); font-size: 20px; line-height: 1.2; padding: 2px 0; }
-
-  /* INTEGRITY BAR */
-  .integrity-levels { margin: 20px 0; }
-  .i-level { display: flex; align-items: center; gap: 16px; margin-bottom: 10px; }
-  .i-value { font-family: 'Courier New', monospace; font-size: 13px; color: var(--gold); width: 70px; flex-shrink: 0; }
-  .i-bar-wrap { flex: 1; height: 12px; background: #111; border-radius: 2px; overflow: hidden; }
-  .i-bar { height: 100%; border-radius: 2px; }
-  .i-label { font-size: 13px; color: var(--text-muted); width: 200px; }
-  .level-resonance .i-bar { background: linear-gradient(90deg, var(--green), #7ed4a0); width: 100%; }
-  .level-threshold .i-bar { background: linear-gradient(90deg, var(--gold), var(--gold-light)); width: 80%; }
-  .level-entropy .i-bar { background: linear-gradient(90deg, #e8a020, #f0b840); width: 50%; }
-  .level-crisis .i-bar { background: linear-gradient(90deg, var(--red), #e07080); width: 28%; }
-
-  /* TABLES */
-  table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 14px; }
-  th {
-    text-align: left;
-    padding: 12px 16px;
-    font-size: 11px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: var(--gold);
-    border-bottom: 1px solid var(--gold);
-    background: rgba(201,168,76,0.05);
-  }
-  td {
-    padding: 13px 16px;
-    border-bottom: 1px solid var(--dark-border);
-    color: #ccc;
-    vertical-align: top;
-  }
-  tr:last-child td { border-bottom: none; }
-  td strong { color: var(--gold-light); }
-
-  /* COMPARISON */
-  .comparison-grid {
-    display: grid;
-    grid-template-columns: 160px repeat(5, 1fr);
-    gap: 1px;
-    background: var(--dark-border);
-    border: 1px solid var(--dark-border);
-    border-radius: 4px;
-    overflow: hidden;
-    margin: 20px 0;
-    font-size: 13px;
-  }
-  .cmp-header { background: rgba(201,168,76,0.08); padding: 10px 12px; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: var(--gold); }
-  .cmp-cell { background: var(--dark-card); padding: 10px 12px; text-align: center; color: #888; font-size: 12px; }
-  .cmp-name { text-align: left; font-size: 13px; color: #ccc; }
-  .dot-full { color: var(--green); }
-  .dot-empty { color: #333; }
-  .dot-gold { color: var(--gold); }
-
-  /* TIMELINE */
-  .timeline {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1px;
-    background: var(--dark-border);
-    border: 1px solid var(--dark-border);
-    border-radius: 4px;
-    overflow: hidden;
-    margin: 20px 0;
-  }
-  .tl-col { background: var(--dark-card); padding: 20px 16px; }
-  .tl-period { font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
-  .tl-phase { font-size: 13px; color: #fff; margin-bottom: 14px; font-weight: bold; }
-  .tl-item { font-size: 12px; color: #888; margin-bottom: 8px; padding-left: 12px; border-left: 2px solid var(--dark-border); line-height: 1.4; }
-
-  /* ROI CARDS */
-  .roi-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin: 20px 0; }
-  .roi-card { background: var(--dark-card); border: 1px solid var(--dark-border); border-radius: 6px; padding: 22px; }
-  .roi-phase { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
-  .roi-title { font-size: 16px; color: #fff; margin-bottom: 10px; }
-  .roi-desc { font-size: 13px; color: #888; line-height: 1.6; }
-
-  /* MATH BLOCK */
-  .math-block {
-    background: #0a0a0a;
-    border: 1px solid var(--gold);
-    border-radius: 6px;
-    padding: 32px;
-    font-family: 'Courier New', monospace;
-    margin: 24px 0;
-  }
-  .math-formula { font-size: 22px; color: var(--gold); text-align: center; margin-bottom: 24px; letter-spacing: 2px; }
-  .math-vars { display: grid; grid-template-columns: 40px 1fr; gap: 8px 16px; font-size: 13px; }
-  .math-var { color: var(--gold); }
-  .math-def { color: #aaa; }
-  .math-scales { margin-top: 20px; border-top: 1px solid var(--dark-border); padding-top: 16px; font-size: 12px; color: #666; line-height: 2; }
-
-  /* PROOF BLOCK */
-  .proof-block {
-    background: linear-gradient(135deg, #0d0d0d, #1a1208);
-    border: 1px solid var(--gold);
-    border-radius: 6px;
-    padding: 32px;
-    margin: 24px 0;
-  }
-  .proof-stack { font-family: 'Courier New', monospace; font-size: 13px; color: #888; line-height: 1.8; margin: 16px 0; }
-  .proof-quote { font-style: italic; font-size: 17px; color: var(--gold-light); border-left: 3px solid var(--gold); padding-left: 20px; margin-top: 20px; line-height: 1.7; }
-
-  /* FOOTER */
-  .footer {
-    background: var(--dark-mid);
-    border-top: 1px solid var(--dark-border);
-    padding: 40px;
-    text-align: center;
-    font-size: 12px;
-    color: var(--text-muted);
-    letter-spacing: 1px;
-  }
-  .footer strong { color: var(--gold); }
-
-  /* SITE FOOTER */
-  .site-footer {
-    background: #080808;
-    border-top: 1px solid #1e1e1e;
-    padding: 2rem;
-    text-align: center;
-    font-family: 'Georgia', serif;
-    font-size: 0.78rem;
-    color: #555;
-    letter-spacing: 0.5px;
-  }
-  .site-footer a { color: #c9a84c; text-decoration: none; margin: 0 1rem; }
-  .site-footer a:hover { color: #e8c97a; }
-
-  @media (max-width: 768px) {
-    .phases-grid { grid-template-columns: repeat(2, 1fr); }
-    .timeline { grid-template-columns: repeat(2, 1fr); }
-    .roi-grid { grid-template-columns: 1fr; }
-    .site-nav { flex-wrap: wrap; gap: 0.5rem; }
-    .site-nav nav { flex-wrap: wrap; gap: 0.75rem; }
-  }
-</style>
+        @media (max-width: 768px) {
+            .header-inner { flex-direction: column; align-items: flex-start; gap: 1rem; }
+            nav { flex-wrap: wrap; gap: 1rem; }
+            main { padding: 3rem 1rem; }
+            h3 { font-size: 1.3rem; }
+        }
+    </style>
 </head>
 <body>
 
-<!-- SITE NAVIGATION -->
-<nav class="site-nav">
-  <a href="https://humanified.dk" class="site-logo">Humanified</a>
-  <nav>
-    <a href="https://humanified.dk">Power-Mapping</a>
-    <a href="/enterprise" class="active">Enterprise</a>
-    <a href="/ai-os">AI-OS</a>
-    <a href="https://thomasaarup.dk">Thomas Aarup</a>
-  </nav>
-  <a href="mailto:info@thomasaarup.dk" class="site-cta">Contact →</a>
-</nav>
-
-<div class="header">
-  <div class="header-logo">Humanified AI-OS &nbsp;·&nbsp; Sovereign AI Infrastructure</div>
-  <h1><span>HUMANIFIED</span> AI-OS</h1>
-  <h1 style="font-size:22px; margin-top:4px; color:#888; letter-spacing:4px;">ENTERPRISE BLUEPRINT</h1>
-  <div class="subtitle">Version 1.0 &nbsp;·&nbsp; 2026-05-01 &nbsp;·&nbsp; Commercial Source Document</div>
-  <div class="tagline">The sovereign AI infrastructure that gives distributed organizations the ability to operate with mathematical integrity — where every individual owns their intelligence, and the whole becomes exponentially smarter without sacrificing individual sovereignty.</div>
-</div>
-
-<div class="container">
-
-  <!-- THE INEVITABLE STARTING POINT -->
-  <section>
-    <h2>The Inevitable Starting Point</h2>
-    <p class="lead">Every organization is trying to implement AI. Most fail. Not because the technology is too complex — but because they are trying to build a precision instrument on an unknown foundation.</p>
-    <p><strong>The fundamental problem:</strong> No one knows who is in the organization. HR systems measure what people say. AI systems amplify what people already do. If no one knows the real human DNA — who is strong, weak, misplaced, undervalued — AI simply scales entropy faster.</p>
-    <p><strong>Phase 1 is inevitable.</strong> Not because we say so — but because mathematics says so.</p>
-
-    <div class="phases-grid">
-      <div class="phase-card">
-        <div class="phase-num">Phase 1</div>
-        <div class="phase-name">Sovereign Kernel</div>
-        <div class="phase-quote">"Who are we, really?"</div>
-        <div class="phase-meta">2–4 weeks<br>Leadership + DNA<br>Power-Profiling</div>
-      </div>
-      <div class="phase-card">
-        <div class="phase-num">Phase 2</div>
-        <div class="phase-name">The Node Pilot</div>
-        <div class="phase-quote">"Give me superpowers"</div>
-        <div class="phase-meta">4–8 weeks<br>5–10 nodes<br>Pilot team</div>
-      </div>
-      <div class="phase-card">
-        <div class="phase-num">Phase 3</div>
-        <div class="phase-name">Federated Intelligence</div>
-        <div class="phase-quote">"Knowledge moves"</div>
-        <div class="phase-meta">3–6 months<br>50–100 nodes<br>Department-wide</div>
-      </div>
-      <div class="phase-card">
-        <div class="phase-num">Phase 4</div>
-        <div class="phase-name">Enterprise AI-OS</div>
-        <div class="phase-quote">"Everything is connected"</div>
-        <div class="phase-meta">Ongoing<br>Org-wide<br>Self-learning</div>
-      </div>
+<header>
+    <div class="header-inner">
+        <a href="/" class="logo">
+            <h1>HUMANIFIED</h1>
+            <div class="sub">Human patterns · Organisational clarity</div>
+        </a>
+        <nav>
+            <a href="/#method">Method</a>
+            <a href="/#organisation">Organisation</a>
+            <a href="/#sentry">Sentry Profiling</a>
+            <a href="/#ethics">Ethics</a>
+            <a href="https://thomasaarup.dk" class="nav-highlight">Thomas Aarup →</a>
+        </nav>
     </div>
-    <div class="arrow-bar">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ Inevitable Progression ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━▶</div>
-  </section>
+</header>
 
-  <!-- PHASE 1 -->
-  <section>
-    <h2>Phase 1 — The Sovereign Kernel</h2>
-    <h3>The Organization's DNA Extraction</h3>
-    <p>Leadership undergoes Power-Profiling <strong>before</strong> any technology is deployed. The result is a mathematical map of the organization's real human capital — not what people say about themselves, but what behavioral data proves.</p>
-    <p><em>Why it is inevitable:</em> No CTO, CHRO, or CEO will approve an AI-OS operating on an unknown foundation. Phase 1 is due diligence — the only responsible first step.</p>
+<main>
 
-    <div class="flow-diagram">INPUT                    ENGINE                   OUTPUT
+    <section>
+        <div class="eyebrow">For organisations</div>
+        <h3>When the human side of the organisation is taken seriously, decisions become easier.</h3>
+        <p>
+            Humanified works with leaders, founders, advisors and teams who want to understand the
+            patterns that shape trust, energy, cooperation and decision quality inside their
+            organisation.
+        </p>
+        <p>
+            The work is not a personality test, a transformation programme or a scoring system. It is
+            a structured way of making human patterns visible — so they can be discussed, designed
+            around and supported.
+        </p>
+    </section>
 
-Behavioral data      ┌───────────────┐         Power-Profile
-Communications  ───► │  Pattern-     │ ───►    (individual's
-Decisions            │  Analyzer     │         mathematical DNA)
-4M+ words            │  I = R/S      │
-                     └───────────────┘         Org-Map
-                                               (who is strong,
-⚠  Leadership FIRST                            weak, misplaced)
-No one can ask others
-to do what they haven't                        Integration-Gap
-done themselves.                               Score
-                                               (distance: words↔action)</div>
+    <section>
+        <h2>What an engagement can help with</h2>
+        <div class="card-grid">
+            <div class="card">
+                <h4>Role fit and team composition</h4>
+                <p>Understanding the conditions under which each person contributes best, and how strengths combine — or collide — across a team.</p>
+            </div>
+            <div class="card">
+                <h4>Leadership clarity</h4>
+                <p>Helping leaders see where their stated values still hold under pressure, and where the system is asking people to carry a contradiction.</p>
+            </div>
+            <div class="card">
+                <h4>Friction and overload</h4>
+                <p>Identifying recurring friction traps and points where the organisation steadily loses energy, trust, clarity or decision quality.</p>
+            </div>
+            <div class="card">
+                <h4>Power centres</h4>
+                <p>Recognising where trust, energy and movement actually gather inside the organisation — independent of titles or org charts.</p>
+            </div>
+            <div class="card">
+                <h4>Cooperation under pressure</h4>
+                <p>Understanding how teams behave when conditions tighten, and what kind of support keeps decision quality intact.</p>
+            </div>
+            <div class="card">
+                <h4>Honest conversations</h4>
+                <p>Giving leadership a shared language for things the organisation already feels but has not yet found a careful way to discuss.</p>
+            </div>
+        </div>
+    </section>
 
-    <h4>The 5 Profile Dimensions</h4>
-    <table>
-      <tr><th>Dimension</th><th>What is Revealed</th></tr>
-      <tr><td><strong>Value Profile</strong></td><td>Innovation vs. Stability vs. Growth vs. Community</td></tr>
-      <tr><td><strong>Thinking Style</strong></td><td>Visual / Logical / Pattern / Intuitive</td></tr>
-      <tr><td><strong>Energy Signature</strong></td><td>What energizes vs. drains the individual</td></tr>
-      <tr><td><strong>Behavioral Consistency</strong></td><td>Gap between stated values and actual behavior</td></tr>
-      <tr><td><strong>Superpower</strong></td><td>The unique contribution no one else can replace</td></tr>
-    </table>
+    <section>
+        <h2>How it works</h2>
+        <p>
+            Engagements begin with a conversation. Each piece of work is shaped to the situation rather
+            than sold from a fixed catalogue. The method follows the same principles whether the work
+            is with one person or a leadership group: consent first, constructive output, individual
+            ownership of personal insight, and a clear separation between what helps a person and what
+            helps the organisation.
+        </p>
+        <p>
+            The deeper logic of the method, the role of Sentry Profiling, and the ethical boundaries
+            that shape every engagement are described on the main site.
+        </p>
 
-    <h4>What Leadership Receives</h4>
-    <table>
-      <tr><td><strong>Individual Power-Profiles</strong></td><td>Owned by the individual — not the company</td></tr>
-      <tr><td><strong>Integration-Gap Score</strong></td><td>Baseline I-index for the organization</td></tr>
-      <tr><td><strong>Misalignment Map</strong></td><td>Which roles drain people instead of energizing them</td></tr>
-      <tr><td><strong>Company DNA v1.0</strong></td><td>The foundation all future AI is built upon</td></tr>
-    </table>
-    <p><strong>Commercial logic:</strong> Phase 1 delivers concrete, actionable value <em>regardless</em> of whether the client continues to Phase 2. This is not a proof-of-concept — it is a standalone product that pays for itself before AI touches the organization.</p>
-  </section>
+        <div class="btn-row">
+            <a href="/#method" class="btn btn-solid">Read the method</a>
+            <a href="/#sentry" class="btn btn-ghost">Sentry Profiling</a>
+            <a href="mailto:info@thomasaarup.dk" class="btn btn-ghost">Start a conversation</a>
+        </div>
+    </section>
 
-  <!-- PHASE 2 -->
-  <section>
-    <h2>Phase 2 — The Node Pilot</h2>
-    <h3>The First Physical Edge-Nodes</h3>
-    <p>Deployed to a pilot team (5–10 people). Each person receives their sovereign AI infrastructure — a dedicated machine that knows their Power-Profile and acts as an <strong>invisible AI-mentor</strong> in their daily workflow.</p>
+</main>
 
-    <div class="node-diagram">
-      <div class="core-box">
-        <div class="label">CORE — The Organization</div>
-        <div class="items">Org-DNA &nbsp;·&nbsp; Federated Aggregator &nbsp;·&nbsp; Integrity Barometer</div>
-      </div>
-      <div style="display:flex;flex-direction:column;align-items:center;padding:8px 0;">
-        <div style="width:1px;height:20px;background:#2a2a2a;"></div>
-        <div style="font-size:11px;color:#555;font-family:monospace;padding:4px 8px;background:#111;border:1px solid #2a2a2a;border-radius:2px;">LoRA-weights ↓ &nbsp;/&nbsp; Mathematics ↑</div>
-        <div style="width:1px;height:20px;background:#2a2a2a;"></div>
-      </div>
-      <div class="nodes-row">
-        <div class="node-box"><div class="label">Node 1</div><div class="items">Power Profile<br><br>The Aura</div></div>
-        <div class="node-box"><div class="label">Node 2</div><div class="items">Power Profile<br><br>The Aura</div></div>
-        <div class="node-box"><div class="label">Node 3</div><div class="items">Power Profile<br><br>The Aura</div></div>
-        <div class="node-box" style="border-style:dashed;color:#444;"><div style="font-size:24px;color:#333;text-align:center;margin-top:16px;">···</div></div>
-      </div>
-      <div class="node-note">Data <strong>never</strong> leaves the node. Only mathematics moves to CORE.</div>
+<footer>
+    <p style="color: var(--gold); letter-spacing: 2px; text-transform: uppercase; font-size: 0.78rem;">HUMANIFIED</p>
+    <p>Humanified works with human patterns, organisational clarity and responsible profiling methods.</p>
+    <p>© 2026 Humanified</p>
+    <div class="footer-links">
+        <a href="/#method">Method</a>
+        <a href="/#sentry">Sentry Profiling</a>
+        <a href="/#ethics">Ethics</a>
+        <a href="https://thomasaarup.dk">Thomas Aarup</a>
+        <a href="mailto:info@thomasaarup.dk">Contact</a>
     </div>
-
-    <h4>The Aura — The Invisible Mentor</h4>
-    <div class="aura-flow">
-      <div class="aura-step"><div class="aura-step-title">The Harvester</div><div class="aura-step-desc">Reads context: document, email, analysis — already on the machine. Zero latency. Zero upload.</div></div>
-      <div class="aura-arrow">↓</div>
-      <div class="aura-step"><div class="aura-step-title">The Refiner</div><div class="aura-step-desc">Looks up personal Vector Vault + company DNA from CORE. Finds relevant precedents and best practices.</div></div>
-      <div class="aura-arrow">↓</div>
-      <div class="aura-step"><div class="aura-step-title">The Mentor</div><div class="aura-step-desc">Adapts output to the individual's Power-Profile. Strong with data, weak at diplomacy? → Rewrites sharp emails. Visual thinker? → Presents options as Action Items.</div></div>
-      <div class="aura-arrow">↓</div>
-      <div class="aura-step" style="border-color:rgba(201,168,76,0.3)"><div class="aura-step-title" style="color:#888;">Output</div><div class="aura-step-desc">Subtle glow at screen edge. <kbd style="background:#1a1a1a;border:1px solid #333;padding:1px 6px;border-radius:2px;font-family:monospace;font-size:12px;">⌘ Space</kbd> → Precise suggestions. Never interruptions.</div></div>
-    </div>
-
-    <h4>Hardware Options</h4>
-    <table>
-      <tr><th>Tier</th><th>Hardware</th><th>Price</th><th>Best For</th></tr>
-      <tr><td><strong>Tier 1</strong></td><td>Mac mini M4 (16GB)</td><td>~$600</td><td>Leadership, R&D, knowledge workers</td></tr>
-      <tr><td><strong>Tier 2</strong></td><td>Orange Pi 5 Max + NVMe</td><td>~$175</td><td>Field agents, decentralized teams</td></tr>
-      <tr><td><strong>Tier 3</strong></td><td>Raspberry Pi 5 + Hailo AI Kit</td><td>~$185</td><td>Frontline, field operators</td></tr>
-    </table>
-    <p>Week one: <em>"It's slightly uncanny how well it knows me."</em> &nbsp; Week three: <em>"I can't imagine working without it."</em></p>
-  </section>
-
-  <!-- PHASE 3 -->
-  <section>
-    <h2>Phase 3 — Federated Intelligence</h2>
-    <h3>The Organization Learns From Itself</h3>
-    <p>Anonymously and securely. When an employee solves a complex problem, the method is crystallized and sent as pure mathematics to CORE. The next employee with a related challenge draws the solution down — without knowing who found it, without giving up anything personal.</p>
-
-    <div class="flow-diagram">EDGE NODE (Employee A)              CORE
-
-Solves complex challenge       ┌─────────────────────┐
-        ↓                      │                     │
-Aura registers success         │   Federated         │
-        ↓                      │   Aggregator        │
-Python Refiner:                │                     │
-"What was the method?"    ───► │   Receives method   │
-Strips all personal data       │   (math only)       │
-        ↓                      │   Integrates into   │
-Rust Validator:                │   CORE model        │
-PII scan → approved       ───► │                     │
-        ↓                      │        ↓            │
-Anonymous math transmitted     │   LoRA update       │
-                               │   distributed       │
-                               └──────────┬──────────┘
-                                          │
-EDGE NODE (Employee B)                    │
-Faces related challenge    ◄──────────────┘
-Aura pulls the method down
-Adapts to B's profile
-B solves the problem 3× faster
-
-B doesn't know it was A's solution. A doesn't know B used it.
-CORE only knows the method works.</div>
-
-    <h4>Integrity Barometer — The Organizational Speedometer</h4>
-    <div class="integrity-levels">
-      <div class="i-level level-resonance"><div class="i-value">I ≥ 1.10</div><div class="i-bar-wrap"><div class="i-bar"></div></div><div class="i-label">RESONANCE — Operating above potential</div></div>
-      <div class="i-level level-threshold"><div class="i-value">I = 1.01</div><div class="i-bar-wrap"><div class="i-bar"></div></div><div class="i-label">THRESHOLD — Minimum healthy operation</div></div>
-      <div class="i-level level-entropy"><div class="i-value">I = 0.95</div><div class="i-bar-wrap"><div class="i-bar"></div></div><div class="i-label">ENTROPY — Decision required</div></div>
-      <div class="i-level level-crisis"><div class="i-value">I = 0.85</div><div class="i-bar-wrap"><div class="i-bar"></div></div><div class="i-label">CRISIS — Dysfunction accelerating</div></div>
-    </div>
-    <p>What leadership sees: <strong>One number.</strong> The I-index. Not who is underperforming. Not which department has problems. Simply: <em>Are we in resonance or entropy?</em> And when did it shift.</p>
-  </section>
-
-  <!-- PHASE 4 -->
-  <section>
-    <h2>Phase 4 — Enterprise AI-OS</h2>
-    <h3>Complete Organizational Deployment</h3>
-    <p>Every employee has a node. The CORE model is trained on the company's specific DNA — markets, customers, processes, products. Tier 2 pods are customized per department. The system is <strong>self-learning, self-correcting</strong>, and scales with the organization.</p>
-
-    <div class="flow-diagram">                ┌──────────────────────────────┐
-                │         CORE                 │
-                │  ┌────────────────────────┐  │
-                │  │  Company LLM            │  │
-                │  │  (trained on own DNA)   │  │
-                │  ├────────────────────────┤  │
-                │  │  Federated Aggregator   │  │
-                │  ├────────────────────────┤  │
-                │  │  Integrity Barometer    │  │
-                │  ├────────────────────────┤  │
-                │  │  Core Vector Vault      │  │
-                │  └────────────────────────┘  │
-                └──────────────┬───────────────┘
-                               │
-     ┌─────────────────────────┼─────────────────────────┐
-     │                         │                         │
-TIER 2: Sales             TIER 2: R&D              TIER 2: HR
-├── CRM-Vector             ├── Code-Context         ├── Profile-Engine
-└── Deal-Analyzer          └── Literature-RAG       └── Talent-Matcher
-     │                         │                         │
-EDGE NODES                EDGE NODES               EDGE NODES
-Sales team                Researchers              HR + Management
-(field + office)          (lab + remote)</div>
-
-    <h4>What Phase 4 Delivers</h4>
-    <table>
-      <tr><th>Capability</th><th>What It Means in Practice</th></tr>
-      <tr><td><strong>Zero Data Leak</strong></td><td>All personal data on the node. GDPR structurally solved.</td></tr>
-      <tr><td><strong>No Single Point of Failure</strong></td><td>Distributed — one node down doesn't affect the others</td></tr>
-      <tr><td><strong>Self-Learning Core</strong></td><td>The more data, the smarter CORE — no external vendor required</td></tr>
-      <tr><td><strong>Real-Time I-Index</strong></td><td>Leadership sees organizational health live — not quarterly</td></tr>
-      <tr><td><strong>Role Precision</strong></td><td>Every employee in the role that leverages their superpower</td></tr>
-      <tr><td><strong>Field-to-HQ Alignment</strong></td><td>Field agents and headquarters operate from the same DNA</td></tr>
-    </table>
-  </section>
-
-  <!-- COMPARISON -->
-  <section>
-    <h2>Market Comparison</h2>
-    <table>
-      <tr><th>Solution</th><th>Control</th><th>Privacy</th><th>Integration</th><th>Scaling</th><th>Cost Model</th></tr>
-      <tr>
-        <td><strong>Microsoft Copilot</strong><br><span style="font-size:12px;color:#555">cloud-dependent</span></td>
-        <td style="color:#c44">Low</td><td style="color:#c44">Low</td><td style="color:var(--green)">High</td><td style="color:var(--green)">High</td><td style="color:#c44">$/seat/month</td>
-      </tr>
-      <tr>
-        <td><strong>SAP / Workday</strong><br><span style="font-size:12px;color:#555">KPI reports</span></td>
-        <td style="color:#e8a020">Medium</td><td style="color:#e8a020">Medium</td><td style="color:#e8a020">Medium</td><td style="color:var(--green)">High</td><td style="color:#c44">Very expensive</td>
-      </tr>
-      <tr>
-        <td><strong>ChatGPT Enterprise</strong><br><span style="font-size:12px;color:#555">centralized</span></td>
-        <td style="color:#c44">Low</td><td style="color:#c44">Low</td><td style="color:#e8a020">Medium</td><td style="color:var(--green)">High</td><td style="color:#e8a020">$/seat/month</td>
-      </tr>
-      <tr style="background:rgba(201,168,76,0.04);border:1px solid rgba(201,168,76,0.2);">
-        <td><strong style="color:var(--gold)">Humanified AI-OS</strong><br><span style="font-size:12px;color:#666">edge-sovereign</span></td>
-        <td style="color:var(--green)"><strong>Full</strong></td>
-        <td style="color:var(--green)"><strong>Full</strong></td>
-        <td style="color:var(--green)"><strong>Full</strong></td>
-        <td style="color:var(--green)"><strong>Exponential</strong></td>
-        <td style="color:var(--green)"><strong>Hardware once</strong></td>
-      </tr>
-    </table>
-    <p><strong>Humanified AI-OS is not cheaper than competitors — it is more profitable.</strong> Hardware purchased once. No monthly SaaS fee. No vendor lock-in. No data leaving the organization to train someone else's AI.</p>
-  </section>
-
-  <!-- TIMELINE -->
-  <section>
-    <h2>Implementation Timeline</h2>
-    <div class="timeline">
-      <div class="tl-col">
-        <div class="tl-period">Week 1–4</div>
-        <div class="tl-phase">Phase 1</div>
-        <div class="tl-item">Power-Profiling of leadership</div>
-        <div class="tl-item">DNA extraction of company</div>
-        <div class="tl-item">Baseline I-index measured</div>
-        <div class="tl-item">Misalignment visible now</div>
-      </div>
-      <div class="tl-col">
-        <div class="tl-period">Week 4–12</div>
-        <div class="tl-phase">Phase 2</div>
-        <div class="tl-item">5–10 pilot nodes deployed</div>
-        <div class="tl-item">Aura activated per person</div>
-        <div class="tl-item">First "wow" experience</div>
-        <div class="tl-item">ROI measurable before Phase 3</div>
-      </div>
-      <div class="tl-col">
-        <div class="tl-period">Month 3–6</div>
-        <div class="tl-phase">Phase 3</div>
-        <div class="tl-item">Federated Intelligence active</div>
-        <div class="tl-item">Integrity Barometer live</div>
-        <div class="tl-item">Knowledge begins moving</div>
-        <div class="tl-item">ROI exponential</div>
-      </div>
-      <div class="tl-col">
-        <div class="tl-period">Month 6+</div>
-        <div class="tl-phase">Phase 4</div>
-        <div class="tl-item">Org-wide deployment</div>
-        <div class="tl-item">Tier 2 pods per department</div>
-        <div class="tl-item">Self-learning system</div>
-        <div class="tl-item">Competitors fall behind</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ROI -->
-  <section>
-    <h2>The ROI Logic</h2>
-    <div class="roi-grid">
-      <div class="roi-card">
-        <div class="roi-phase">Phase 1</div>
-        <div class="roi-title">Pays for itself alone</div>
-        <div class="roi-desc">An organization that discovers 20% of leadership is misplaced in roles that drain them — regardless of what happens next, Phase 1 delivers life-changing intelligence.</div>
-      </div>
-      <div class="roi-card">
-        <div class="roi-phase">Phase 2</div>
-        <div class="roi-title">Starts the compound effect</div>
-        <div class="roi-desc">One employee avoiding one strategic mistake per week = 2–4 hours saved. Across 10 nodes = 20–40 hours/week. Over one year = more than a full hire's annual output.</div>
-      </div>
-      <div class="roi-card">
-        <div class="roi-phase">Phase 3</div>
-        <div class="roi-title">Creates network effects</div>
-        <div class="roi-desc">Collective intelligence grows exponentially with nodes. The 100th node is not 10× more valuable than the 10th — it is 100×. Knowledge compounds.</div>
-      </div>
-      <div class="roi-card">
-        <div class="roi-phase">Phase 4</div>
-        <div class="roi-title">Competitive unreachability</div>
-        <div class="roi-desc">After 12+ months of training on its own DNA, the CORE model is unique. It cannot be purchased, copied, or replaced by a new vendor. The moat is the knowledge itself.</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- MATH -->
-  <section>
-    <h2>The Mathematical Foundation</h2>
-    <div class="math-block">
-      <div class="math-formula">I(t) = R(t) / S(t) ≥ 1.01</div>
-      <div class="math-vars">
-        <span class="math-var">I</span><span class="math-def">= Integrity Index — the system's sovereign health</span>
-        <span class="math-var">R</span><span class="math-def">= Resonance — alignment between words and actions</span>
-        <span class="math-var">S</span><span class="math-def">= Entropy — noise, dishonesty, fragmentation</span>
-        <span class="math-var">1.01</span><span class="math-def">= The threshold separating order from chaos</span>
-      </div>
-      <div class="math-scales">
-        Identical mathematics appears in:<br>
-        &nbsp;Quantum coherence (off-diagonal density matrix preservation)<br>
-        &nbsp;Biological negentropy (life = active entropy reduction)<br>
-        &nbsp;Shannon SNR &gt; 1 (positive information channel capacity)<br>
-        &nbsp;Schumann resonance 7.83 Hz (neural coherence)
-      </div>
-    </div>
-    <p><strong>The system makes truth the most profitable strategy — not as a moral choice, but as a technical necessity.</strong> Dishonesty degrades the AI's output quality. The only way to keep the instruments sharp is to keep the data honest.</p>
-  </section>
-
-  <!-- PROOF -->
-  <section>
-    <h2>Proof of Concept</h2>
-    <h3>Thomas Aarup is his own prototype.</h3>
-    <p>Humanified AI-OS is not a concept. It is operational — today — at the founder's own installation.</p>
-    <div class="proof-block">
-      <div style="font-size:11px;letter-spacing:2px;color:var(--gold);text-transform:uppercase;margin-bottom:12px;">Personal NNLA-Stack — Layer 1 — Operational 2026</div>
-      <div class="proof-stack">32 Docker services:<br>
-├── hmem-mcp (prefrontal AI memory)<br>
-├── vector-vault (22,800+ chunk knowledge base)<br>
-├── synthesis-agent (autonomous knowledge synthesis loop)<br>
-├── backtest-weaver (real-time crypto signals)<br>
-├── neural-weaver + resonance-router + entropy-sweeper (Rust)<br>
-└── ... 26 additional services<br><br>
-Validated on: 4,074,805 words of personal data<br>
-Result: Self-calibrating system operating at I=1.01</div>
-      <div class="proof-quote">"I didn't ask the system to tell me who I am.<br>I let it analyze 4 million words to prove who I am."</div>
-    </div>
-  </section>
-
-</div>
-
-<div class="footer">
-  <strong>HUMANIFIED AI-OS</strong> &nbsp;·&nbsp; Sovereign AI Infrastructure for Distributed Organizations<br>
-  Blueprint v1.0 &nbsp;·&nbsp; 2026-05-01 &nbsp;·&nbsp; I = 1.01
-</div>
-
-<footer class="site-footer">
-  <a href="https://humanified.dk">← HUMANIFIED</a>
-  <a href="/ai-os">AI-OS Definition</a>
-  <a href="https://thomasaarup.dk">Thomas Aarup</a>
-  <a href="mailto:info@thomasaarup.dk">Contact</a>
 </footer>
 
 </body>

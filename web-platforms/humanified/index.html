@@ -1,10 +1,13 @@
 <!DOCTYPE html>
-<html lang="da">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="HUMANIFIED — POWER-MAPPING for organisationer. Forstå dit teams faktiske arkitektur og byg på det.">
-    <title>HUMANIFIED — POWER-MAPPING for Organisationer</title>
+    <meta name="description" content="Humanified helps people and organisations understand the patterns that shape trust, energy, cooperation and decision quality.">
+    <title>Humanified — Human patterns, organisational clarity</title>
+    <meta property="og:title" content="Humanified — Understand the human system">
+    <meta property="og:description" content="A method for making human patterns, team friction and organisational clarity visible in a responsible way.">
+    <meta property="og:type" content="website">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -206,62 +209,6 @@
             transform: translateY(-1px);
         }
 
-        /* ── PIPELINE ── */
-        .pipeline {
-            display: flex;
-            align-items: stretch;
-            gap: 0;
-            margin: 3rem 0;
-            flex-wrap: wrap;
-        }
-
-        .pipe-block {
-            flex: 1;
-            min-width: 160px;
-            background: var(--dark-card);
-            border: 1px solid var(--dark-border);
-            padding: 1.75rem 1.5rem;
-            text-align: center;
-            position: relative;
-        }
-
-        .pipe-block.highlight {
-            background: linear-gradient(135deg, rgba(201,168,76,0.1), rgba(201,168,76,0.04));
-            border-color: var(--gold);
-        }
-
-        .pipe-block .pipe-label {
-            font-size: 0.62rem;
-            font-weight: normal;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--gold);
-            margin-bottom: 0.5rem;
-            font-family: 'Georgia', serif;
-        }
-
-        .pipe-block .pipe-title {
-            color: #fff;
-            font-weight: normal;
-            font-size: 0.95rem;
-            margin-bottom: 0.4rem;
-        }
-
-        .pipe-block .pipe-desc {
-            color: var(--text-muted);
-            font-size: 0.8rem;
-            max-width: none;
-        }
-
-        .pipe-arrow {
-            display: flex;
-            align-items: center;
-            color: var(--gold);
-            font-size: 1.2rem;
-            padding: 0 0.4rem;
-            flex-shrink: 0;
-        }
-
         /* ── MAPPING GRID ── */
         .mapping-grid {
             display: grid;
@@ -293,7 +240,7 @@
 
         .mapping-card h3 {
             color: var(--gold-light);
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             font-weight: normal;
             letter-spacing: 1px;
             margin-bottom: 0.6rem;
@@ -318,7 +265,7 @@
 
         .signal-row {
             display: grid;
-            grid-template-columns: 150px 1fr;
+            grid-template-columns: 200px 1fr;
             gap: 1.5rem;
             align-items: start;
             padding: 1.25rem 1.5rem;
@@ -328,7 +275,7 @@
         .signal-row:last-child { border-bottom: none; }
 
         .signal-tag {
-            font-size: 0.65rem;
+            font-size: 0.7rem;
             font-weight: normal;
             letter-spacing: 2px;
             text-transform: uppercase;
@@ -337,7 +284,7 @@
         }
 
         .signal-desc {
-            font-size: 0.9rem;
+            font-size: 0.92rem;
             color: var(--text-muted);
             max-width: none;
         }
@@ -369,14 +316,14 @@
 
         .p-step h3 {
             color: #fff;
-            font-size: 0.95rem;
+            font-size: 1rem;
             font-weight: normal;
             margin-bottom: 0.6rem;
             letter-spacing: 0.5px;
         }
 
         .p-step p {
-            font-size: 0.85rem;
+            font-size: 0.88rem;
             color: var(--text-muted);
             max-width: none;
             line-height: 1.7;
@@ -394,34 +341,41 @@
 
         .use-card {
             background: var(--dark-card);
-            padding: 2rem;
+            padding: 1.75rem 1.5rem;
             transition: background 0.2s;
         }
 
         .use-card:hover { background: rgba(201,168,76,0.04); }
 
-        .use-card .uc-label {
-            font-size: 0.62rem;
-            font-weight: normal;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--gold);
-            margin-bottom: 0.75rem;
-        }
-
-        .use-card h3 {
-            color: var(--gold-light);
+        .use-card .uc-text {
             font-size: 0.9rem;
-            font-weight: normal;
-            margin-bottom: 0.6rem;
-            letter-spacing: 0.5px;
+            color: var(--text);
+            line-height: 1.6;
         }
 
-        .use-card p {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            max-width: none;
-            line-height: 1.7;
+        /* ── BOUNDARY LIST ── */
+        .boundary-list {
+            list-style: none;
+            margin-top: 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 0.5rem 2rem;
+            max-width: 900px;
+        }
+
+        .boundary-list li {
+            color: var(--text);
+            font-size: 0.95rem;
+            padding: 0.5rem 0 0.5rem 1.5rem;
+            position: relative;
+            border-bottom: 1px solid var(--dark-border);
+        }
+
+        .boundary-list li::before {
+            content: '—';
+            color: var(--gold);
+            position: absolute;
+            left: 0;
         }
 
         /* ── QUOTE-BOX ── */
@@ -451,15 +405,59 @@
             text-transform: uppercase;
         }
 
-        /* ── KONTAKT ── */
-        #kontakt {
+        /* ── LAYER LIST ── */
+        .layer-list {
+            list-style: none;
+            margin-top: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            max-width: 700px;
+            border: 1px solid var(--dark-border);
+        }
+
+        .layer-list li {
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid var(--dark-border);
+            color: var(--text);
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+        }
+
+        .layer-list li:last-child { border-bottom: none; }
+
+        .layer-list li::before {
+            content: '·  ';
+            color: var(--gold);
+            margin-right: 0.5rem;
+        }
+
+        /* ── INTERNAL MODEL ── */
+        .model-flow {
+            margin: 2rem 0;
+            padding: 1.75rem 2rem;
+            background: var(--dark-card);
+            border: 1px solid var(--dark-border);
+            border-left: 3px solid var(--gold);
+            font-family: 'Georgia', serif;
+            color: var(--text);
+            font-size: 0.95rem;
+            line-height: 2;
+            max-width: 700px;
+        }
+
+        .model-flow .step { color: var(--gold-light); }
+        .model-flow .arrow { color: var(--gold); margin: 0 0.5rem; }
+
+        /* ── CONTACT ── */
+        #contact {
             text-align: center;
             background: linear-gradient(135deg, rgba(201,168,76,0.06), rgba(201,168,76,0.02));
             border: 1px solid var(--gold);
             padding: 4rem 2rem;
         }
 
-        #kontakt h2 {
+        #contact h2 {
             text-align: center;
             font-size: 1.6rem;
             letter-spacing: 2px;
@@ -470,7 +468,7 @@
             font-weight: normal;
         }
 
-        #kontakt .lead {
+        #contact .lead {
             margin: 1rem auto 2.5rem;
             max-width: 600px;
         }
@@ -512,8 +510,6 @@
             #hero h2 { font-size: 1.9rem; }
             main { padding: 3rem 1rem; }
             section { margin-bottom: 4rem; }
-            .pipeline { flex-direction: column; }
-            .pipe-arrow { display: none; }
             .signal-row { grid-template-columns: 1fr; }
             .signal-tag { margin-bottom: 0.25rem; }
             .quote-box { padding: 2rem 1.5rem; }
@@ -527,13 +523,14 @@
     <div class="header-inner">
         <a href="/" class="logo">
             <h1>HUMANIFIED</h1>
-            <div class="sub">POWER-MAPPING for Organisationer</div>
+            <div class="sub">Human patterns · Organisational clarity</div>
         </a>
         <nav>
-            <a href="#hvad-er">Power-Mapping</a>
-            <a href="/enterprise">Enterprise</a>
-            <a href="/ai-os">AI-OS</a>
-            <a href="#kontakt">Kontakt</a>
+            <a href="#method">Method</a>
+            <a href="#organisation">Organisation</a>
+            <a href="#sentry">Sentry Profiling</a>
+            <a href="#ethics">Ethics</a>
+            <a href="#contact">Contact</a>
             <a href="https://thomasaarup.dk" class="nav-highlight">Thomas Aarup →</a>
         </nav>
     </div>
@@ -543,236 +540,276 @@
 
     <!-- HERO -->
     <section id="hero">
-        <div class="eyebrow">Organisatorisk intelligens</div>
-        <h2>Din organisation er et levende system<br>af <span>menneskelige mønstre.</span></h2>
+        <div class="eyebrow">Human systems · Organisational clarity</div>
+        <h2>People are not resources.<br>They are the <span>first system.</span></h2>
         <p class="lead">
-            Når du kortlægger hvad dine mennesker faktisk prioriterer — ikke hvad de siger — opstår der
-            et billede ingen CV, assessment eller lederuddannelse kan give dig.
-            Det kalder vi POWER-MAPPING.
+            Humanified helps people and organisations understand the patterns that shape trust, energy,
+            cooperation and decision quality. When people drift out of sync with themselves, each other
+            or the work they are asked to carry, the organisation feels it long before the numbers
+            explain it. Humanified makes those patterns visible without reducing people to labels.
         </p>
         <div class="btn-row">
-            <a href="#hvad-er" class="btn btn-solid">Hvad er POWER-MAPPING</a>
-            <a href="#kontakt" class="btn btn-ghost">Tag kontakt</a>
+            <a href="#method" class="btn btn-solid">Explore the method</a>
+            <a href="#contact" class="btn btn-ghost">Start a conversation</a>
         </div>
     </section>
 
-    <!-- FRA INDIVID TIL ORGANISATION -->
-    <section id="fra-individ">
-        <h2>Fra person til organisation</h2>
-        <h3>Udgangspunktet er enkelt: individuelle profiler.</h3>
+    <!-- THE HUMAN NODE -->
+    <section id="human-node">
+        <h2>The work begins with the human node</h2>
+        <h3>Every organisation starts with a person under pressure.</h3>
         <p>
-            6-8 uger med struktureret dataindsamling — narrativer, daglig tracking, mønsterfinding —
-            resulterer i en dokumenteret profil af hvem dette menneske faktisk er under pres.
+            Most organisational friction does not begin as strategy failure. It begins in smaller places:
+            a person who loses energy, a team that stops saying the difficult thing, a manager who says
+            one thing while the system rewards another.
         </p>
         <p>
-            Når du kombinerer profiler på tværs af et team, opstår noget andet: mønsteret i mønsterne.
-            Hvem komplementerer hvem, og hvem skaber friktion? Hvad er teamets kollektive blinde vinkel?
-            Hvor sidder beslutningskraften faktisk?
+            Left alone, those small misalignments spread. One person carries less. Another carries more.
+            Decisions slow down. Trust thins out. The organisation spends more energy compensating for
+            friction than doing the work it was built to do.
+        </p>
+        <p>
+            Humanified exists to help people and organisations see those patterns earlier, speak about
+            them more clearly and work with them more responsibly.
         </p>
 
-        <div style="margin-top: 3rem; display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap;">
-            <div class="pipe-block">
-                <div class="pipe-label">Start</div>
-                <div class="pipe-title">Narrativer</div>
-                <div class="pipe-desc">Hvad du faktisk gør under pres</div>
-            </div>
-            <div class="pipe-arrow">→</div>
-            <div class="pipe-block">
-                <div class="pipe-label">Uge 1–6</div>
-                <div class="pipe-title">Daglig data</div>
-                <div class="pipe-desc">Mønstre over tid, ikke selvopfattelse</div>
-            </div>
-            <div class="pipe-arrow">→</div>
-            <div class="pipe-block">
-                <div class="pipe-label">Uge 6</div>
-                <div class="pipe-title">Individuel profil</div>
-                <div class="pipe-desc">Værdihierarki, tænkestil, superkraft</div>
-            </div>
-            <div class="pipe-arrow">→</div>
-            <div class="pipe-block highlight">
-                <div class="pipe-label">Organisationsniveau</div>
-                <div class="pipe-title">POWER-MAP</div>
-                <div class="pipe-desc">Teamets faktiske arkitektur</div>
-            </div>
+        <div class="quote-box">
+            <blockquote>
+                Friction is not always a failure of will. Often it is a signal that the system has
+                stopped matching the people inside it.
+            </blockquote>
+            <div class="attribution">Humanified</div>
         </div>
     </section>
 
-    <!-- HVAD ER POWER-MAPPING -->
-    <section id="hvad-er">
-        <h2>Hvad er POWER-MAPPING?</h2>
-        <h3 style="margin-bottom:1rem;">Ikke en test. Ikke et typologi-framework.</h3>
+    <!-- WHAT HUMANIFIED STUDIES -->
+    <section id="what-we-study">
+        <h2>What Humanified studies</h2>
+        <h3>The distance between what people carry and what the organisation can see.</h3>
         <p>
-            POWER-MAPPING er en kortlægning af det der faktisk sker i din organisation — hvem der faktisk
-            leder (uanset titel), hvad der faktisk driver beslutninger (uanset strategi),
-            og hvad der faktisk skaber friktion (uanset de officielle forklaringer).
+            Humanified works with the human side of organisational reality: energy, values, pressure,
+            trust, decision behaviour, cooperation and the conditions under which people do their best
+            work.
+        </p>
+        <p>
+            The method is not a personality test in the usual sense. It is a structured way of observing
+            how people understand themselves, where they gain or lose energy, what kind of pressure
+            changes their behaviour and which combinations of people create strength or friction.
+        </p>
+        <p>
+            The goal is not to judge people. The goal is to make better cooperation possible.
         </p>
 
         <div class="mapping-grid">
             <div class="mapping-card">
                 <div class="num">01</div>
-                <h3>Komplementaritetskort</h3>
-                <p>Hvem supplerer hvem? Hvor er der kognitive overlap der skaber ekkokamre, og hvem bringer perspektiver ingen andre har? Organisationer der kender deres komplementaritetsprofil rekrutterer anderledes.</p>
+                <h3>Values</h3>
+                <p>What a person says matters, but what they protect under pressure often matters more. Values become operational only when they can be seen in decisions.</p>
             </div>
             <div class="mapping-card">
                 <div class="num">02</div>
-                <h3>Friktionszoner</h3>
-                <p>De fleste teamkonflikter er ikke personlighedskonflikter — de er værdikonflikter. Når to mennesker med modsat prioriering af hastighed vs. kvalitet samarbejder, er friction strukturel. Kortlæg det, løs det.</p>
+                <h3>Energy</h3>
+                <p>People do not contribute equally under every condition. Humanified looks for the conditions that create strength, drain, resistance or clarity.</p>
             </div>
             <div class="mapping-card">
                 <div class="num">03</div>
-                <h3>Beslutningsarkitektur</h3>
-                <p>Hvem har faktisk beslutningskraft i din organisation? Ikke organisationskortet — det faktiske magtlandskab. Hvem påvirker hvem, og langs hvilke værdidimensioner? Det er POWER-MAPPING.</p>
+                <h3>Pressure</h3>
+                <p>Under sustained pressure, people often fall back on older patterns. Understanding those patterns makes it easier to support people before friction becomes damage.</p>
             </div>
             <div class="mapping-card">
                 <div class="num">04</div>
-                <h3>Energilandskab</h3>
-                <p>Hvilke opgaver dræner hvilke mennesker systematisk? Organisationer der matcher opgaver til energisignaturer og ikke kun kompetencer, har lavere burnout og højere output. Datagrundlaget er her.</p>
-            </div>
-            <div class="mapping-card">
-                <div class="num">05</div>
-                <h3>Værdialignment på tværs</h3>
-                <p>Siger jeres organisation noget om sine værdier? POWER-MAPPING viser dig om de faktiske prioriteringer i teamet lever op til det. Og hvis ikke — præcis på hvilke punkter de divergerer.</p>
-            </div>
-            <div class="mapping-card">
-                <div class="num">06</div>
-                <h3>Lederroller i virkeligheden</h3>
-                <p>Hvem er den naturlige leder i dit team? Hvem er arkitekten der aldrig vil have titlen, men driver alt? Hvem er katalysatoren der frigiver andre? Roller som organisationskortet sjældent fanger.</p>
+                <h3>Cooperation</h3>
+                <p>Teams are not made stronger by adding talent alone. They become stronger when the right strengths, limits and values are combined deliberately.</p>
             </div>
         </div>
     </section>
 
-    <!-- QUOTE -->
-    <div class="quote-box">
-        <blockquote>
-            "De store aktører priser begivenheder ind 24-72 timer før resten af verden ved hvad der sker.
-            Det gælder finansmarkedet. Det gælder din organisation.
-            Smart money i mennesker — dem der ved hvad de faktisk er sat i verden for — bevæger sig
-            anderledes. POWER-MAPPING er kortet."
-        </blockquote>
-        <div class="attribution">Thomas Aarup — HUMANIFIED</div>
-    </div>
-
-    <!-- SIGNALHIERARKI -->
-    <section id="signaler">
-        <h2>Hvad kortlægningen afslører</h2>
+    <!-- THE METHOD -->
+    <section id="method">
+        <h2>The method</h2>
+        <h3>A careful method for making human patterns visible.</h3>
         <p>
-            En POWER-MAP er ikke en statisk beskrivelse. Den er et levende dokument over det
-            der driver din organisation — og det der bremser den.
+            Humanified uses structured reflection, written material, guided questions and pattern
+            analysis to build a profile that a person can recognise and use.
         </p>
-
-        <div class="signal-chain">
-            <div class="signal-row">
-                <div class="signal-tag">Niveau 1</div>
-                <div class="signal-desc">Individuelle profiler: faktiske værdier, tænkestil, superkraft og energisignatur for hvert teammedlem.</div>
-            </div>
-            <div class="signal-row">
-                <div class="signal-tag">Niveau 2</div>
-                <div class="signal-desc">Teamoverlæg: komplementaritetsprofil, friktionszoner og kollektive blinde vinkler synliggjort på tværs.</div>
-            </div>
-            <div class="signal-row">
-                <div class="signal-tag">Niveau 3</div>
-                <div class="signal-desc">Beslutningsdynamik: hvem påvirker hvem, langs hvilke dimensioner, og hvad driver de faktiske valg.</div>
-            </div>
-            <div class="signal-row">
-                <div class="signal-tag">Niveau 4</div>
-                <div class="signal-desc">Organisatorisk alignment: om det strategiske fundament afspejles i de faktiske prioriteringer på alle niveauer.</div>
-            </div>
-            <div class="signal-row">
-                <div class="signal-tag">Output</div>
-                <div class="signal-desc">Handlingsplan: konkrete anbefalinger til roller, rekruttering, teamstruktur og ledelsesdesign baseret på data — ikke intuition.</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- PROCESSEN -->
-    <section id="processen">
-        <h2>Processen</h2>
         <p>
-            POWER-MAPPING starter altid med individuelle profiler. Du kan ikke kortlægge et teams
-            arkitektur uden at kende de enkelte menneskers. Det er rækkefølgen — og den er vigtig.
+            The process is designed to identify constructive information: strengths, drains, preferred
+            conditions, decision patterns, collaboration needs and the kind of work that gives a person
+            the best chance to contribute well.
+        </p>
+        <p>
+            In organisational use, the method must be handled with care. The individual owns their own
+            data. Any organisational insight must be limited to what helps cooperation, leadership and
+            team design. The purpose is clarity, not control.
         </p>
 
         <div class="process-steps">
             <div class="p-step">
-                <div class="p-num">Fase 1</div>
-                <h3>Individuelle POWER-PROFILER</h3>
-                <p>Hvert teammedlem gennemgår 6-8 ugers profileringsforløb. Narrativer, daglig tracking, mønsterfinding → komplet individuel profil.</p>
+                <div class="p-num">Step 1</div>
+                <h3>Structured input</h3>
+                <p>The person provides material through a defined process, not random self-description.</p>
             </div>
             <div class="p-step">
-                <div class="p-num">Fase 2</div>
-                <h3>Teamoverlæg</h3>
-                <p>Profilerne lægges oveni hinanden. Komplementaritet, overlap, friktionszoner og manglende perspektiver kortlægges systematisk.</p>
+                <div class="p-num">Step 2</div>
+                <h3>Pattern reading</h3>
+                <p>The material is analysed for recurring themes, pressure responses, energy signals and values.</p>
             </div>
             <div class="p-step">
-                <div class="p-num">Fase 3</div>
-                <h3>Beslutningsdynamik</h3>
-                <p>Hvem påvirker hvem i dit team? Magtlandskabet kortlægges — ikke som kritik, men som datagrundlag for bedre beslutningsdesign.</p>
+                <div class="p-num">Step 3</div>
+                <h3>Profile construction</h3>
+                <p>The output is written in plain language so the person can recognise themselves without being reduced to a category.</p>
             </div>
             <div class="p-step">
-                <div class="p-num">Fase 4</div>
-                <h3>POWER-MAP + anbefalinger</h3>
-                <p>Komplet kortlægning af teamets arkitektur med konkrete anbefalinger til struktur, roller, rekruttering og ledelsesdesign.</p>
-            </div>
-            <div class="p-step">
-                <div class="p-num">Fase 5</div>
-                <h3>Løbende opdatering</h3>
-                <p>En organisation udvikler sig. Profiler opdateres, nye teammedlemmer integreres, og kortet forbliver levende og brugbart over tid.</p>
+                <div class="p-num">Step 4</div>
+                <h3>Practical use</h3>
+                <p>The profile becomes useful only when it helps someone make better choices, ask better questions or build better cooperation.</p>
             </div>
         </div>
     </section>
 
-    <!-- HVEM ER DET FOR -->
-    <section id="hvem">
-        <h2>Hvem er POWER-MAPPING for</h2>
+    <!-- FROM PERSON TO ORGANISATION -->
+    <section id="organisation">
+        <h2>From person to organisation</h2>
+        <h3>When people come into sync, organisations become easier to lead.</h3>
         <p>
-            POWER-MAPPING er for organisationer der vil forstå hvad der faktisk driver dem —
-            og bygge på det frem for at arbejde imod det.
+            An organisation is not one mind. It is a living field of people, decisions, incentives,
+            documents, habits and pressure. When those layers point in different directions, friction
+            grows.
+        </p>
+        <p>
+            Humanified looks at the organisation through layers:
         </p>
 
+        <ul class="layer-list">
+            <li>Individual clarity</li>
+            <li>Team cooperation</li>
+            <li>Leadership behaviour</li>
+            <li>Declared values</li>
+            <li>Actual decisions</li>
+            <li>Operational reality</li>
+        </ul>
+
+        <p style="margin-top: 2rem;">
+            The question is not whether a company has values on a wall. The question is whether those
+            values can still be seen when choices become costly.
+        </p>
+        <p>
+            That is where trust is built or lost.
+        </p>
+    </section>
+
+    <!-- SENTRY PROFILING -->
+    <section id="sentry">
+        <h2>Sentry Profiling</h2>
+        <h3>Sentry Profiling maps where an organisation gains or loses force.</h3>
+        <p>
+            Sentry Profiling is the Humanified method in operational form. It is a structured way to
+            understand people, teams and the conditions that create strength, drain, trust, resistance
+            and decision quality.
+        </p>
+        <p>
+            At the individual level, it helps a person recognise their strengths, pressure patterns,
+            drains and best working conditions. At the organisational level, it can help identify where
+            force gathers and where friction repeats.
+        </p>
+        <p>
+            In plain terms: some people, teams and relationships become <strong style="color: var(--gold-light); font-weight: normal;">power centres</strong>.
+            They create trust, energy, clarity and movement around them. Others become
+            <strong style="color: var(--gold-light); font-weight: normal;">friction traps</strong>,
+            often without intending to. They absorb energy, slow decisions or force the organisation to
+            compensate.
+        </p>
+        <p>
+            Where friction repeats over time, the result is what Sentry Profiling calls an
+            <strong style="color: var(--gold-light); font-weight: normal;">entropy trap</strong>:
+            a recurring loss of energy, trust, clarity or decision quality. Naming such patterns is not
+            an accusation. It is a way of describing where the system steadily costs more than it
+            returns, so it can be addressed deliberately.
+        </p>
+        <p>
+            Sentry Profiling is designed to make those patterns visible in a constructive, consent-based
+            and operationally useful way.
+        </p>
+
+        <h3 style="margin-top: 3rem; font-size: 1.1rem; color: var(--gold-light); letter-spacing: 1px;">What it can help with</h3>
         <div class="use-cases">
-            <div class="use-card">
-                <div class="uc-label">Lederteams</div>
-                <h3>Fælles fundament, ikke fælles facade</h3>
-                <p>Lederteams der kender hinandens faktiske prioriteringer og tænkestile, tager bedre beslutninger under pres og bruger mindre energi på intern friktion.</p>
-            </div>
-            <div class="use-card">
-                <div class="uc-label">Rekruttering</div>
-                <h3>Hvad mangler vi faktisk?</h3>
-                <p>Rekruttering ud fra en POWER-MAP handler ikke om hvem der passer kulturelt — men om hvem der supplerer det eksisterende team præcist på de dimensioner der mangler.</p>
-            </div>
-            <div class="use-card">
-                <div class="uc-label">Organisationsudvikling</div>
-                <h3>Byg på det der er der</h3>
-                <p>Organisationsudvikling der ignorerer menneskenes faktiske arkitektur er dyrt og kortlivet. POWER-MAPPING giver fundament for transformation der faktisk holder.</p>
-            </div>
-            <div class="use-card">
-                <div class="uc-label">M&A / Due diligence</div>
-                <h3>Menneskelig kapital synliggjort</h3>
-                <p>Ved fusion og opkøb er menneskelig kapital oftest undervurderet. En POWER-MAP af nøglepersoner giver et datagrundlag der rækker langt ud over CV og reference.</p>
-            </div>
-            <div class="use-card">
-                <div class="uc-label">Succession</div>
-                <h3>Hvem er næste leder faktisk?</h3>
-                <p>Successionsplanlægning kræver præcis viden om hvem der kan hvad. POWER-MAPPING giver den viden — dokumenteret, ikke intuitiv.</p>
-            </div>
-            <div class="use-card">
-                <div class="uc-label">Iværksætterteams</div>
-                <h3>Kend din co-founders arkitektur</h3>
-                <p>De fleste iværksætterteams splittes ikke på grund af markedet — men på grund af interne værdikonflikter de aldrig kortlagde. POWER-MAPPING er den samtale taget på forhånd.</p>
-            </div>
+            <div class="use-card"><div class="uc-text">Better role fit</div></div>
+            <div class="use-card"><div class="uc-text">Clearer collaboration</div></div>
+            <div class="use-card"><div class="uc-text">Earlier detection of overload</div></div>
+            <div class="use-card"><div class="uc-text">More honest leadership conversations</div></div>
+            <div class="use-card"><div class="uc-text">Stronger team composition</div></div>
+            <div class="use-card"><div class="uc-text">More responsible use of individual strengths</div></div>
+            <div class="use-card"><div class="uc-text">Identification of organisational power centres</div></div>
+            <div class="use-card"><div class="uc-text">Identification of recurring friction traps</div></div>
+            <div class="use-card"><div class="uc-text">Better understanding of where entropy enters the system</div></div>
+        </div>
+
+        <h3 style="margin-top: 3rem; font-size: 1.1rem; color: var(--gold-light); letter-spacing: 1px;">From individual profile to organisational force map</h3>
+        <div class="model-flow">
+            <span class="step">Individual profile</span><span class="arrow">→</span>
+            <span class="step">team pattern</span><span class="arrow">→</span>
+            <span class="step">leadership layer</span><span class="arrow">→</span>
+            <span class="step">organisational force map</span><span class="arrow">→</span>
+            <span class="step">power centres and entropy traps</span>
         </div>
     </section>
 
-    <!-- KONTAKT -->
-    <section id="kontakt">
-        <h2>Start kortlægningen</h2>
-        <p class="lead" style="max-width: 600px; margin: 1rem auto 2.5rem; text-align:center; border:none; padding:0;">
-            Vil du vide hvad din organisation faktisk er sat i verden for?
-            Tag en uformel snak med Thomas om POWER-MAPPING — ingen forpligtelse.
+    <!-- ETHICS -->
+    <section id="ethics">
+        <h2>Ethics and boundaries</h2>
+        <h3>Human insight must be handled with restraint.</h3>
+        <p>
+            Humanified is built on a simple boundary: people are not data sources for someone else's
+            control. The person must remain the owner of their own profile.
+        </p>
+        <p>
+            When Humanified is used in an organisation, the relevant output must be constructive. It
+            should help people work better, understand each other better and reduce avoidable friction.
+            It should not create negative labels, hidden scoring or private judgement.
+        </p>
+        <p>
+            The method is strongest when it increases dignity, agency and clarity at the same time.
+        </p>
+
+        <ul class="boundary-list">
+            <li>Consent before profiling</li>
+            <li>Constructive use only</li>
+            <li>No hidden psychological scoring</li>
+            <li>No negative labels</li>
+            <li>No diagnostic claims</li>
+            <li>Clear separation between personal insight and organisational use</li>
+        </ul>
+    </section>
+
+    <!-- WHY THIS MATTERS -->
+    <section id="why">
+        <h2>Why this matters</h2>
+        <h3>Clarity is not softness. It is operational strength.</h3>
+        <p>
+            Many organisations try to solve human friction with structure alone. More process. More
+            meetings. More reporting. More control.
+        </p>
+        <p>
+            Sometimes structure helps. But when the real problem is that people, values, incentives
+            and decisions are no longer aligned, more structure can hide the problem instead of
+            solving it.
+        </p>
+        <p>
+            Humanified works from the opposite direction. Start with the person. Understand the
+            pattern. Then build the organisation around what is true enough to carry weight.
+        </p>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+        <h2>If the human system matters, it should be understood.</h2>
+        <p class="lead" style="max-width: 640px; margin: 1rem auto 2.5rem; text-align:center; border:none; padding:0; font-style: normal; color: #ccc;">
+            Humanified is for leaders, founders, advisors and people who believe that organisations
+            become stronger when the human reality inside them is taken seriously.
         </p>
         <div class="btn-row">
-            <a href="mailto:info@thomasaarup.dk" class="btn btn-solid">Skriv til Thomas</a>
-            <a href="https://thomasaarup.dk" class="btn btn-ghost">Se POWER-PROFILING (individ)</a>
+            <a href="mailto:info@thomasaarup.dk" class="btn btn-solid">Start a conversation</a>
+            <a href="https://thomasaarup.dk" class="btn btn-ghost">About Thomas Aarup</a>
         </div>
     </section>
 
@@ -780,13 +817,14 @@
 
 <footer>
     <p style="color: var(--gold); letter-spacing: 2px; text-transform: uppercase; font-size: 0.78rem;">HUMANIFIED</p>
-    <p style="margin-top:0.4rem;">POWER-MAPPING for Organisationer · Et projekt af Thomas Aarup</p>
-    <p>© 2026 HUMANIFIED</p>
+    <p style="margin-top:0.4rem;">Humanified works with human patterns, organisational clarity and responsible profiling methods.</p>
+    <p>© 2026 Humanified</p>
     <div class="footer-links">
-        <a href="/enterprise">Enterprise Blueprint</a>
-        <a href="/ai-os">AI-OS Definition</a>
+        <a href="#method">Method</a>
+        <a href="#sentry">Sentry Profiling</a>
+        <a href="#ethics">Ethics</a>
         <a href="https://thomasaarup.dk">Thomas Aarup</a>
-        <a href="mailto:info@thomasaarup.dk">Kontakt</a>
+        <a href="mailto:info@thomasaarup.dk">Contact</a>
     </div>
 </footer>
 

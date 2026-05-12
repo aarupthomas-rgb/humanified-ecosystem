@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Trinity Research Service - AI Research You Can Trust. 6 specialized agents, blockchain-verified, transparent pricing.">
-    <title>Trinity Research — AI You Can Trust</title>
+    <meta name="description" content="Humanified — how the three sites in this body of work relate to each other.">
+    <title>Humanified — Related work</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -13,7 +13,6 @@
             --gold-light: #e8c97a;
             --dark: #0d0d0d;
             --darker: #080808;
-            --dark-mid: #141414;
             --dark-card: #1a1a1a;
             --dark-border: #2a2a2a;
             --text: #e8e8e8;
@@ -27,7 +26,6 @@
             line-height: 1.7;
         }
 
-        /* ── HEADER ── */
         header {
             background: linear-gradient(135deg, #0d0d0d 0%, #1a1208 50%, #0d0d0d 100%);
             border-bottom: 1px solid var(--gold);
@@ -35,7 +33,6 @@
             position: sticky;
             top: 0;
             z-index: 100;
-            backdrop-filter: blur(8px);
         }
 
         .header-inner {
@@ -46,11 +43,7 @@
             align-items: center;
         }
 
-        .logo {
-            text-decoration: none;
-            color: var(--text);
-        }
-
+        .logo { text-decoration: none; color: var(--text); }
         .logo h1 {
             font-size: 1.4rem;
             font-weight: normal;
@@ -58,36 +51,29 @@
             color: var(--gold);
             text-transform: uppercase;
         }
-
         .logo .sub {
             font-size: 0.65rem;
             color: var(--text-muted);
-            font-weight: normal;
             letter-spacing: 1.5px;
             text-transform: uppercase;
         }
 
         nav { display: flex; gap: 2rem; align-items: center; }
-
         nav a {
             color: var(--text-muted);
             text-decoration: none;
             font-size: 0.82rem;
             letter-spacing: 0.5px;
-            transition: color 0.25s;
         }
+        nav a:hover, nav a.nav-highlight { color: var(--gold); }
 
-        nav a:hover { color: var(--gold); }
-        nav a.nav-highlight { color: var(--gold); }
-
-        /* ── LAYOUT ── */
         main {
-            max-width: 1100px;
+            max-width: 880px;
             margin: 0 auto;
-            padding: 5rem 1.5rem;
+            padding: 6rem 1.5rem;
         }
 
-        section { margin-bottom: 7rem; }
+        section { margin-bottom: 4rem; }
 
         h2 {
             font-size: 0.75rem;
@@ -100,592 +86,175 @@
             border-bottom: 1px solid var(--dark-border);
         }
 
-        p {
-            color: var(--text-muted);
-            font-size: 1rem;
-            max-width: 780px;
-            line-height: 1.8;
-        }
-
-        p + p { margin-top: 1rem; }
-
         h3 {
             font-size: 1.4rem;
             font-weight: normal;
             color: #fff;
-            margin-bottom: 0.6rem;
+            margin-bottom: 0.8rem;
         }
 
-        /* ── HERO ── */
-        #hero {
-            text-align: center;
-            padding: 5rem 0 4rem;
-            border-bottom: 1px solid var(--dark-border);
+        p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.85;
+            max-width: 720px;
         }
 
-        #hero .eyebrow {
+        p + p { margin-top: 1rem; }
+
+        .eyebrow {
             font-size: 0.7rem;
-            font-weight: normal;
             letter-spacing: 3px;
             text-transform: uppercase;
             color: var(--gold);
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
         }
 
-        #hero h2 {
-            font-size: 2.8rem;
-            line-height: 1.2;
-            color: #fff;
-            max-width: 850px;
-            margin: 0 auto 1.5rem;
-            letter-spacing: 1px;
-            border: none;
-            padding: 0;
-            font-weight: normal;
+        .site-card {
+            background: var(--dark-card);
+            border: 1px solid var(--dark-border);
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.2s;
         }
 
-        #hero h2 span { color: var(--gold); }
+        .site-card:hover {
+            border-color: rgba(201,168,76,0.4);
+        }
 
-        #hero .lead {
+        .site-card .label {
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            color: var(--gold);
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .site-card h3 {
             font-size: 1.1rem;
-            color: #ccc;
-            max-width: 700px;
-            margin: 0 auto 2.5rem;
-            line-height: 1.9;
-            font-style: italic;
-            border-left: 3px solid var(--gold);
-            padding-left: 1.5rem;
-            text-align: left;
-        }
-
-        .btn-row {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 0.85rem 2rem;
-            border-radius: 2px;
-            font-weight: normal;
-            font-size: 0.82rem;
-            letter-spacing: 1px;
-            text-decoration: none;
-            transition: all 0.25s;
-            border: 1px solid var(--gold);
-            cursor: pointer;
-            display: inline-block;
-            font-family: 'Georgia', serif;
-            text-transform: uppercase;
-        }
-
-        .btn-solid {
-            background: var(--gold);
-            color: var(--dark);
-        }
-
-        .btn-solid:hover {
-            background: var(--gold-light);
-            transform: translateY(-1px);
-            box-shadow: 0 6px 20px rgba(201,168,76,0.25);
-        }
-
-        .btn-ghost {
-            background: transparent;
-            color: var(--gold);
-        }
-
-        .btn-ghost:hover {
-            background: rgba(201,168,76,0.08);
-            transform: translateY(-1px);
-        }
-
-        /* ── FEATURE GRID ── */
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1px;
-            background: var(--dark-border);
-            border: 1px solid var(--dark-border);
-            margin-top: 2.5rem;
-        }
-
-        .feature-card {
-            background: var(--dark-card);
-            padding: 2rem;
-            transition: background 0.2s;
-        }
-
-        .feature-card:hover {
-            background: rgba(201,168,76,0.04);
-        }
-
-        .feature-card h3 {
             color: var(--gold-light);
-            font-size: 0.95rem;
-            font-weight: normal;
-            letter-spacing: 0.5px;
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.6rem;
         }
 
-        .feature-card p {
-            font-size: 0.88rem;
-            color: var(--text-muted);
-            max-width: none;
-            line-height: 1.7;
-        }
-
-        /* ── AGENTS GRID ── */
-        .agents-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 1px;
-            background: var(--dark-border);
-            border: 1px solid var(--dark-border);
-            margin-top: 2.5rem;
-        }
-
-        .agent-card {
-            background: var(--dark-card);
-            padding: 2rem;
-            transition: background 0.2s;
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
-
-        .agent-card:hover {
-            background: rgba(201,168,76,0.04);
-        }
-
-        .agent-card h3 {
-            color: #fff;
+        .site-card p {
             font-size: 0.92rem;
-            font-weight: normal;
-            letter-spacing: 0.5px;
-            margin-bottom: 0;
-        }
-
-        .agent-card p {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            max-width: none;
-            line-height: 1.6;
-        }
-
-        .agent-price {
-            font-size: 0.78rem;
-            letter-spacing: 1.5px;
-            color: var(--gold);
-            text-transform: uppercase;
-            margin-top: auto;
-            padding-top: 0.5rem;
-        }
-
-        /* ── PRICING TABLE ── */
-        .pricing-table {
-            border: 1px solid var(--dark-border);
-            margin-top: 2.5rem;
-            overflow: hidden;
-        }
-
-        .pricing-table table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        .pricing-table th {
-            background: var(--dark-card);
-            color: var(--gold);
-            font-size: 0.7rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            font-weight: normal;
-            padding: 1rem 1.5rem;
-            text-align: left;
-            border-bottom: 1px solid var(--dark-border);
-        }
-
-        .pricing-table td {
-            padding: 1.1rem 1.5rem;
-            border-bottom: 1px solid var(--dark-border);
-            font-size: 0.9rem;
-            color: var(--text-muted);
-        }
-
-        .pricing-table tr:last-child td {
-            border-bottom: none;
-        }
-
-        .pricing-table tr:hover td {
-            background: rgba(201,168,76,0.03);
-            color: var(--text);
-        }
-
-        .pricing-table td strong {
-            color: var(--text);
-            font-weight: normal;
-        }
-
-        .pricing-table .price-val {
-            color: var(--gold);
-            font-size: 1rem;
-        }
-
-        .pricing-info {
-            margin-top: 2rem;
-            border: 1px solid var(--dark-border);
-            background: var(--dark-card);
-            padding: 2rem;
-            text-align: center;
-        }
-
-        .pricing-info h3 {
-            font-size: 0.78rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--gold);
-            font-weight: normal;
-            margin-bottom: 0.75rem;
-        }
-
-        .pricing-info p {
-            font-size: 0.9rem;
-            max-width: none;
-        }
-
-        /* ── STEPS ── */
-        .steps {
-            display: flex;
-            flex-direction: column;
-            gap: 0;
-            margin-top: 2.5rem;
-            border: 1px solid var(--dark-border);
-        }
-
-        .step-row {
-            display: grid;
-            grid-template-columns: 72px 1fr;
-            gap: 0;
-            border-bottom: 1px solid var(--dark-border);
-        }
-
-        .step-row:last-child { border-bottom: none; }
-
-        .step-num {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 80px;
-            background: var(--dark-card);
-            color: var(--gold);
-            font-size: 1.2rem;
-            letter-spacing: 1px;
-            border-right: 1px solid var(--dark-border);
-        }
-
-        .step-body {
-            padding: 1.5rem 2rem;
-        }
-
-        .step-body h3 {
-            color: #fff;
-            font-size: 0.95rem;
-            font-weight: normal;
-            letter-spacing: 0.5px;
-            margin-bottom: 0.4rem;
-        }
-
-        .step-body p {
-            font-size: 0.88rem;
-            max-width: none;
-        }
-
-        .step-body code {
-            display: inline-block;
-            margin-top: 0.5rem;
-            background: var(--dark);
-            border: 1px solid var(--dark-border);
-            padding: 0.4rem 0.75rem;
-            font-family: 'Courier New', monospace;
-            font-size: 0.8rem;
-            color: var(--gold-light);
-            border-radius: 2px;
-        }
-
-        /* ── FOOTER ── */
-        footer {
-            background: var(--darker);
-            border-top: 1px solid var(--dark-border);
-            padding: 3rem 1.5rem;
-            margin-top: 5rem;
-        }
-
-        .footer-inner {
-            max-width: 1100px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 2.5rem;
-            margin-bottom: 2.5rem;
-        }
-
-        .footer-col h4 {
-            font-size: 0.7rem;
-            letter-spacing: 2.5px;
-            text-transform: uppercase;
-            color: var(--gold);
-            font-weight: normal;
             margin-bottom: 1rem;
         }
 
-        .footer-col a {
-            display: block;
-            color: var(--text-muted);
+        .site-card a {
+            color: var(--gold);
             text-decoration: none;
-            font-size: 0.85rem;
-            margin-bottom: 0.6rem;
-            transition: color 0.2s;
+            font-size: 0.82rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s;
         }
+        .site-card a:hover { border-color: var(--gold); }
 
-        .footer-col a:hover { color: var(--gold); }
-
-        .footer-bottom {
-            max-width: 1100px;
-            margin: 0 auto;
+        footer {
+            background: var(--darker);
             border-top: 1px solid var(--dark-border);
-            padding-top: 1.5rem;
-            font-size: 0.78rem;
-            color: var(--text-muted);
+            padding: 2.5rem 1rem;
             text-align: center;
+            color: var(--text-muted);
+            font-size: 0.82rem;
+            letter-spacing: 0.5px;
         }
-
-        .footer-bottom a { color: var(--gold); text-decoration: none; }
+        footer p { margin: 0.4rem 0; }
+        .footer-links {
+            margin-top: 1rem;
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .footer-links a { color: var(--gold); text-decoration: none; }
 
         @media (max-width: 768px) {
-            nav { gap: 1rem; }
-            nav a { font-size: 0.75rem; }
-            #hero h2 { font-size: 1.8rem; }
-            .feature-grid { grid-template-columns: 1fr; }
-            .agents-grid { grid-template-columns: 1fr; }
-            .pricing-table td, .pricing-table th { padding: 0.75rem 1rem; }
+            .header-inner { flex-direction: column; align-items: flex-start; gap: 1rem; }
+            nav { flex-wrap: wrap; gap: 1rem; }
+            main { padding: 3rem 1rem; }
+            h3 { font-size: 1.2rem; }
         }
     </style>
 </head>
 <body>
-    <header>
-        <div class="header-inner">
-            <a href="https://humanified.dk" class="logo">
-                <h1>Humanified</h1>
-                <div class="sub">Trinity Research</div>
-            </a>
-            <nav>
-                <a href="https://humanified.dk">Power-Mapping</a>
-                <a href="https://humanified.dk/enterprise">Enterprise</a>
-                <a href="https://humanified.dk/ai-os">AI-OS</a>
-                <a href="https://thomasaarup.dk" class="nav-highlight">Thomas Aarup →</a>
-            </nav>
+
+<header>
+    <div class="header-inner">
+        <a href="/" class="logo">
+            <h1>HUMANIFIED</h1>
+            <div class="sub">Human patterns · Organisational clarity</div>
+        </a>
+        <nav>
+            <a href="/#method">Method</a>
+            <a href="/#sentry">Sentry Profiling</a>
+            <a href="/#ethics">Ethics</a>
+            <a href="https://thomasaarup.dk" class="nav-highlight">Thomas Aarup →</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+
+    <section>
+        <div class="eyebrow">Related work</div>
+        <h3>Three public doors into one body of work.</h3>
+        <p>
+            Humanified is one of three related public sites. They are written as separate doors into
+            the same underlying thinking, and each one is meant to be read on its own terms.
+        </p>
+    </section>
+
+    <section>
+        <h2>The three sites</h2>
+
+        <div class="site-card">
+            <div class="label">Humanified.dk</div>
+            <h3>Human patterns and organisational clarity</h3>
+            <p>
+                This site. It describes how Humanified looks at people, teams and organisations, and
+                introduces Sentry Profiling as the method in operational form.
+            </p>
+            <a href="/">Read Humanified →</a>
         </div>
-    </header>
 
-    <main>
-        <!-- HERO -->
-        <section id="hero">
-            <div class="eyebrow">Humanified — Research Infrastructure</div>
-            <h2>Trinity <span>Research Service</span></h2>
-            <p class="lead">AI Research You Can Trust. 6 specialized agents, blockchain-verified, transparent pricing. Complete research in minutes.</p>
-            <div class="btn-row">
-                <a href="#pricing" class="btn btn-solid">View Pricing</a>
-                <a href="#integration" class="btn btn-ghost">See API Docs</a>
-            </div>
-        </section>
-
-        <!-- FEATURES -->
-        <section id="features">
-            <h2>Why Choose Trinity</h2>
-            <h3>Six capabilities that set a new standard for AI research</h3>
-            <div class="feature-grid">
-                <div class="feature-card">
-                    <h3>Fast &amp; Reliable</h3>
-                    <p>Complete research in under 30 seconds. Consistent results you can depend on.</p>
-                </div>
-                <div class="feature-card">
-                    <h3>Comprehensive</h3>
-                    <p>6 specialized agents validate, research, synthesize, format, and quality-check every result.</p>
-                </div>
-                <div class="feature-card">
-                    <h3>Blockchain Verified</h3>
-                    <p>Every execution is logged on blockchain. Complete transparency. Proof of work.</p>
-                </div>
-                <div class="feature-card">
-                    <h3>Transparent Pricing</h3>
-                    <p>No hidden costs. Pay exactly for what you use. Clear cost breakdown per agent.</p>
-                </div>
-                <div class="feature-card">
-                    <h3>Easy Integration</h3>
-                    <p>REST API. Webhooks. SDK support. Integrate in minutes, not days.</p>
-                </div>
-                <div class="feature-card">
-                    <h3>Results Sourcing</h3>
-                    <p>Every finding includes sources. Know exactly where information came from.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- AGENTS -->
-        <section id="agents">
-            <h2>The Trinity Agents</h2>
-            <h3>Six specialized agents — one unified result</h3>
-            <div class="agents-grid">
-                <div class="agent-card">
-                    <h3>Validator Agent</h3>
-                    <p>Checks query safety, quality, and feasibility before research begins.</p>
-                    <div class="agent-price">0.02 USDC / query</div>
-                </div>
-                <div class="agent-card">
-                    <h3>Research Agent</h3>
-                    <p>Executes comprehensive research across multiple sources and validates findings.</p>
-                    <div class="agent-price">0.10 USDC / query</div>
-                </div>
-                <div class="agent-card">
-                    <h3>Synthesizer Agent</h3>
-                    <p>Combines multiple research results into coherent, unified insights.</p>
-                    <div class="agent-price">0.03 USDC / query</div>
-                </div>
-                <div class="agent-card">
-                    <h3>Formatter Agent</h3>
-                    <p>Converts raw research into polished, professional output (JSON, Markdown, PDF).</p>
-                    <div class="agent-price">0.01 USDC / query</div>
-                </div>
-                <div class="agent-card">
-                    <h3>Quality Agent</h3>
-                    <p>Final verification of accuracy, completeness, and relevance before delivery.</p>
-                    <div class="agent-price">0.02 USDC / query</div>
-                </div>
-                <div class="agent-card">
-                    <h3>Optimizer Agent</h3>
-                    <p>Analyzes execution pattern and learns for future optimization and cost reduction.</p>
-                    <div class="agent-price">0.015 USDC / query</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- PRICING -->
-        <section id="pricing">
-            <h2>Pricing</h2>
-            <h3>Pay per query — no subscriptions, no surprises</h3>
-            <div class="pricing-table">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Research Depth</th>
-                            <th>Agents Involved</th>
-                            <th>Typical Cost</th>
-                            <th>Speed</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Quick</strong></td>
-                            <td>Validator + Research</td>
-                            <td class="price-val">0.12 USDC</td>
-                            <td>&lt; 10s</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Standard</strong></td>
-                            <td>All 6 agents</td>
-                            <td class="price-val">0.165 USDC</td>
-                            <td>15–30s</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Comprehensive</strong></td>
-                            <td>All 6 + deep synthesis</td>
-                            <td class="price-val">0.20 USDC</td>
-                            <td>30–60s</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="pricing-info">
-                <h3>How Billing Works</h3>
-                <p>You pay exactly for the agents you use. Each query shows cost breakdown before execution. No subscriptions. No hidden fees. Pay per query.</p>
-            </div>
-        </section>
-
-        <!-- INTEGRATION -->
-        <section id="integration">
-            <h2>Integration Guide</h2>
-            <h3>From API key to first result in four steps</h3>
-            <div class="steps">
-                <div class="step-row">
-                    <div class="step-num">01</div>
-                    <div class="step-body">
-                        <h3>Get Your API Key</h3>
-                        <p>Sign up and receive an API key instantly. No approval process. Start immediately.</p>
-                    </div>
-                </div>
-                <div class="step-row">
-                    <div class="step-num">02</div>
-                    <div class="step-body">
-                        <h3>Make Your First Request</h3>
-                        <p>Call the Trinity Research API with your query and preferred depth:</p>
-                        <code>POST /api/research — Body: {"query": "...", "depth": "standard"}</code>
-                    </div>
-                </div>
-                <div class="step-row">
-                    <div class="step-num">03</div>
-                    <div class="step-body">
-                        <h3>Receive Payment Confirmation</h3>
-                        <p>Trinity returns blockchain tx_id proving payment was processed. Complete transparency.</p>
-                    </div>
-                </div>
-                <div class="step-row">
-                    <div class="step-num">04</div>
-                    <div class="step-body">
-                        <h3>Get Results</h3>
-                        <p>Receive comprehensive research results with source citations, methodology, and cost breakdown. Ready to use immediately.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- CTA -->
-        <section id="cta" style="text-align: center; border-top: 1px solid var(--dark-border); padding-top: 4rem;">
-            <h2>Ready to Transform Your Research?</h2>
-            <h3 style="margin-bottom: 1.5rem;">Start with Trinity today</h3>
-            <p style="margin: 0 auto 2.5rem; text-align: center;">No credit card. No commitment. First research on us.</p>
-            <div class="btn-row">
-                <a href="https://api.humanified.dk/trinity/getstarted" class="btn btn-solid">Get Started Free</a>
-                <a href="https://humanified.dk/enterprise" class="btn btn-ghost">Enterprise Blueprint →</a>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="footer-inner">
-            <div class="footer-col">
-                <h4>Trinity</h4>
-                <a href="#pricing">Pricing</a>
-                <a href="#integration">Integration</a>
-                <a href="#agents">The 6 Agents</a>
-            </div>
-            <div class="footer-col">
-                <h4>Humanified</h4>
-                <a href="https://humanified.dk">Power-Mapping</a>
-                <a href="https://humanified.dk/power">POWER Orchestrator</a>
-                <a href="https://humanified.dk/enterprise">Enterprise Blueprint</a>
-                <a href="https://humanified.dk/ai-os">AI-OS</a>
-            </div>
-            <div class="footer-col">
-                <h4>Contact</h4>
-                <a href="https://thomasaarup.dk">Thomas Aarup</a>
-                <a href="mailto:info@thomasaarup.dk">info@thomasaarup.dk</a>
-            </div>
+        <div class="site-card">
+            <div class="label">ThomasAarup.dk</div>
+            <h3>Origin, founder and method worldview</h3>
+            <p>
+                The story behind the method, the perspective that shapes it, and the personal
+                background of the work.
+            </p>
+            <a href="https://thomasaarup.dk">Visit ThomasAarup.dk →</a>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 Trinity Research. Built by <a href="https://thomasaarup.dk">Humanified</a>. Blockchain-verified. Fully transparent.</p>
+
+        <div class="site-card">
+            <div class="label">Guardian-Intel.com</div>
+            <h3>Public signal intelligence and decision support</h3>
+            <p>
+                A separate body of work focused on public-source intelligence, source discipline and
+                decision support. It is described in its own language on its own site.
+            </p>
+            <a href="https://guardian-intel.com">Visit Guardian-Intel.com →</a>
         </div>
-    </footer>
+    </section>
+
+</main>
+
+<footer>
+    <p style="color: var(--gold); letter-spacing: 2px; text-transform: uppercase; font-size: 0.78rem;">HUMANIFIED</p>
+    <p>Humanified works with human patterns, organisational clarity and responsible profiling methods.</p>
+    <p>© 2026 Humanified</p>
+    <div class="footer-links">
+        <a href="/#method">Method</a>
+        <a href="/#sentry">Sentry Profiling</a>
+        <a href="/#ethics">Ethics</a>
+        <a href="https://thomasaarup.dk">Thomas Aarup</a>
+        <a href="mailto:info@thomasaarup.dk">Contact</a>
+    </div>
+</footer>
+
 </body>
 </html>
